@@ -47,13 +47,12 @@ function Tile({
 }
 
 function useColumnCount() {
-  const [count, setCount] = useState(1);
+  const [count, setCount] = useState(2);
 
   useEffect(() => {
     const update = () => {
       if (window.matchMedia("(min-width: 1024px)").matches) setCount(3);
-      else if (window.matchMedia("(min-width: 640px)").matches) setCount(2);
-      else setCount(1);
+      else setCount(2);
     };
     update();
     window.addEventListener("resize", update);
@@ -173,7 +172,7 @@ export default function IllustrationsView() {
         ) : (
           <div
             key={`${tab}-${columnCount}`}
-            className="animate-rise -mx-5 grid grid-cols-1 sm:-mx-6 sm:grid-cols-2 md:-mx-10 lg:grid-cols-3"
+            className="animate-rise -mx-5 grid grid-cols-2 sm:-mx-6 md:-mx-10 lg:grid-cols-3"
           >
             {columns.map((col, colIndex) => (
               <div key={colIndex} className="flex flex-col">
