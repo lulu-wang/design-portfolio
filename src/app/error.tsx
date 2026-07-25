@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import Footer from "@/components/Footer";
 
 export default function Error({
@@ -25,12 +26,12 @@ export default function Error({
           >
             TRY AGAIN
           </button>
-          <a
+          <Link
             href="/"
             className="text-sm font-bold tracking-widest transition-opacity hover:opacity-60"
           >
             Back home →
-          </a>
+          </Link>
         </div>
       </section>
       <Footer />

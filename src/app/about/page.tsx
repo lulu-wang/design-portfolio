@@ -49,7 +49,7 @@ export default function AboutPage() {
   return (
     <main className="mx-auto max-w-6xl px-5 sm:px-6 md:px-10">
       {/* Bio */}
-      <section className="grid gap-10 pb-20 pt-12 sm:gap-14 sm:pb-24 sm:pt-14 md:grid-cols-[minmax(0,280px)_1fr] md:items-start md:gap-16 md:pb-28 md:pt-20 lg:grid-cols-[minmax(0,320px)_1fr] lg:gap-20">
+      <section className="grid gap-16 pb-20 pt-12 sm:gap-14 sm:pb-24 sm:pt-14 md:grid-cols-[minmax(0,280px)_1fr] md:items-start md:gap-16 md:pb-28 md:pt-20 lg:grid-cols-[minmax(0,320px)_1fr] lg:gap-20">
         <div className="animate-rise mx-auto w-full max-w-[260px] md:mx-0 md:max-w-none">
           <div className="overflow-hidden">
             <Image
@@ -119,7 +119,7 @@ export default function AboutPage() {
           Capabilities
         </h2>
 
-        <div className="mt-12 grid gap-10 sm:grid-cols-3 sm:gap-8">
+        <div className="mt-12 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 sm:gap-8">
           {skills.map((group) => (
             <div key={group.category}>
               <h3 className="text-[13px] font-bold uppercase tracking-[0.18em] text-muted">
