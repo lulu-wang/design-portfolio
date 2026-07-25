@@ -135,11 +135,8 @@ export default function IllustrationsView() {
       </section>
 
       {/* Horizontal category tabs */}
-      <nav
-        className="mt-10 -mx-5 border-b border-black/[0.08] sm:mx-0 sm:mt-12 sm:border-0"
-        aria-label="Gallery categories"
-      >
-        <div className="flex sm:gap-12">
+      <nav className="mt-10 sm:mt-12" aria-label="Gallery categories">
+        <div className="flex gap-6 overflow-x-auto pb-px sm:gap-12">
           {galleryTabs.map((t) => {
             const selected = tab === t.id;
             return (
@@ -147,7 +144,7 @@ export default function IllustrationsView() {
                 key={t.id}
                 type="button"
                 onClick={() => setTab(t.id)}
-                className={`min-h-11 flex-1 border-b-2 px-1 pb-3 pt-2 text-center text-[11px] font-bold uppercase tracking-[0.14em] transition-colors sm:min-h-0 sm:flex-none sm:px-0 sm:pt-0 sm:text-left sm:text-[13px] sm:tracking-[0.18em] ${
+                className={`min-h-11 shrink-0 border-b-2 pb-3 pt-2 text-left text-[12px] font-bold uppercase tracking-[0.14em] transition-colors sm:min-h-0 sm:pt-0 sm:text-[13px] sm:tracking-[0.18em] ${
                   selected
                     ? "border-foreground text-foreground"
                     : "border-transparent text-muted hover:text-foreground"
