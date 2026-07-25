@@ -136,27 +136,29 @@ export default function IllustrationsView() {
 
       {/* Horizontal category tabs */}
       <nav
-        className="mt-10 flex gap-8 overflow-x-auto sm:mt-12 sm:gap-12"
+        className="mt-10 -mx-5 border-b border-black/[0.08] sm:mx-0 sm:mt-12 sm:border-0"
         aria-label="Gallery categories"
       >
-        {galleryTabs.map((t) => {
-          const selected = tab === t.id;
-          return (
-            <button
-              key={t.id}
-              type="button"
-              onClick={() => setTab(t.id)}
-              className={`shrink-0 border-b-2 pb-3 text-[13px] font-bold uppercase tracking-[0.18em] transition-colors ${
-                selected
-                  ? "border-foreground text-foreground"
-                  : "border-transparent text-muted hover:text-foreground"
-              }`}
-              aria-pressed={selected}
-            >
-              {t.label}
-            </button>
-          );
-        })}
+        <div className="flex sm:gap-12">
+          {galleryTabs.map((t) => {
+            const selected = tab === t.id;
+            return (
+              <button
+                key={t.id}
+                type="button"
+                onClick={() => setTab(t.id)}
+                className={`min-h-11 flex-1 border-b-2 px-1 pb-3 pt-2 text-center text-[11px] font-bold uppercase tracking-[0.14em] transition-colors sm:min-h-0 sm:flex-none sm:px-0 sm:pt-0 sm:text-left sm:text-[13px] sm:tracking-[0.18em] ${
+                  selected
+                    ? "border-foreground text-foreground"
+                    : "border-transparent text-muted hover:text-foreground"
+                }`}
+                aria-pressed={selected}
+              >
+                {t.label}
+              </button>
+            );
+          })}
+        </div>
       </nav>
 
       {/* Masonry — full-bleed, no gaps */}
