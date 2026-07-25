@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f9f9f9;
+  --foreground: #050505;
+  --muted: #6b6b6b;
+  --lavender: #cdc4ea;
+  --font-helvetica: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-lavender: var(--lavender);
+  --font-sans: var(--font-helvetica);
+  --font-display: var(--font-helvetica);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: "Helvetica Neue", Helvetica, Arial, var(--font-inter), sans-serif;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+.font-display {
+  font-family: "Helvetica Neue", Helvetica, Arial, var(--font-inter), sans-serif;
+  letter-spacing: -0.03em;
+}
+
+.font-secondary {
+  font-family: var(--font-inter), "Inter", "Helvetica Neue", Helvetica, sans-serif;
+}
+
+.font-cursive {
+  font-family: var(--font-cursive), "Caveat", cursive;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.hl {
+  border-radius: 3px;
+  padding: 0.05em 0.28em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-rise {
+  animation: riseIn 0.95s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.arrow-link:hover .arrow {
+  transform: translateX(6px);
+}
+
+.arrow {
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
