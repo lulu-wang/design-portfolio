@@ -98,9 +98,10 @@ export default function AboutPage() {
 
           <div className="font-secondary mt-8 space-y-6 text-base leading-[29px] text-[#5c5c5c]">
             <p>
-              After more than four years as a software engineer building
-              user-centered products, I began my journey in{" "}
-              <span className="hl bg-[#fadadd]">product design</span>.
+              Before transitioning into{" "}
+              <span className="hl bg-[#fadadd]">product design</span>, I spent
+              more than four years as a software engineer creating
+              user-centered products and features for Meta and Xbox.
             </p>
             <p>
               I&rsquo;m interested in building products that challenge the
