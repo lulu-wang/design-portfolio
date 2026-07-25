@@ -18,11 +18,17 @@ function Tile({
   item: Illustration;
   onOpen: () => void;
 }) {
+  // Tall phone mockups — slight inset so they don't dominate the masonry
+  const compactPreview =
+    item.id === "d08" || item.id === "d09" || item.id === "d10";
+
   return (
     <button
       type="button"
       onClick={onOpen}
-      className="group relative block w-full overflow-hidden text-left"
+      className={`group relative block w-full overflow-hidden text-left ${
+        compactPreview ? "px-5 py-5 sm:px-6 sm:py-6" : ""
+      }`}
       aria-label={`View ${item.title}`}
     >
       <Image
@@ -30,7 +36,9 @@ function Tile({
         alt={item.title}
         width={item.width}
         height={item.height}
-        className="h-auto w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+        className={`h-auto w-full transition-transform duration-500 group-hover:scale-[1.02] ${
+          compactPreview ? "object-contain" : "object-cover"
+        }`}
         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
       />
       <span className="pointer-events-none absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/10" />

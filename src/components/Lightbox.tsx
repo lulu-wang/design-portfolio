@@ -49,8 +49,9 @@ export default function Lightbox({
   const onKey = useCallback(
     (e: KeyboardEvent) => {
       if (e.key === "Escape") {
-        if (zoomed) setZoomed(false);
-        else onClose();
+        e.preventDefault();
+        onClose();
+        return;
       }
       if (!zoomed && e.key === "ArrowLeft") onPrev();
       if (!zoomed && e.key === "ArrowRight") onNext();
@@ -62,10 +63,10 @@ export default function Lightbox({
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
-    window.addEventListener("keydown", onKey);
+    window.addEventListener("keydown", onKey, true);
     return () => {
       document.body.style.overflow = "";
-      window.removeEventListener("keydown", onKey);
+      window.removeEventListener("keydown", onKey, true);
     };
   }, [onKey]);
 
@@ -171,12 +172,13 @@ export default function Lightbox({
             </button>
           </div>
         ) : (
-          <div className="flex h-full w-full items-center justify-center p-1">
+          // Leave room for top controls + bottom caption so the image never covers text
+          <div className="absolute inset-x-0 top-14 bottom-[4.25rem] flex items-center justify-center px-3 sm:top-16 sm:bottom-[4.75rem] sm:px-6">
             <button
               type="button"
               onClick={() => setZoomed(true)}
               aria-label="Zoom to 200%"
-              className="relative block h-[96dvh] w-[96vw] cursor-zoom-in border-0 bg-transparent p-0 sm:h-[97dvh] sm:w-[97vw]"
+              className="relative h-full w-full max-h-full max-w-full cursor-zoom-in border-0 bg-transparent p-0"
             >
               <Image
                 src={item.image}
@@ -184,7 +186,7 @@ export default function Lightbox({
                 fill
                 className="object-contain"
                 priority
-                sizes="97vw"
+                sizes="100vw"
               />
             </button>
           </div>
@@ -192,7 +194,7 @@ export default function Lightbox({
       </div>
 
       {!zoomed && (
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 pb-2 text-center text-white sm:pb-3">
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 px-4 pb-4 text-center text-white sm:pb-5">
           <h2 className="text-sm font-medium tracking-tight sm:text-base">
             {item.title}
           </h2>

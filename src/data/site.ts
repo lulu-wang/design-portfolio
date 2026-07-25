@@ -438,7 +438,7 @@ export const projects: Project[] = [
 ];
 
 export const social = [
-  { label: "LINKEDIN", href: "https://www.linkedin.com" },
-  { label: "INSTAGRAM", href: "https://www.instagram.com" },
+  { label: "LINKEDIN", href: "https://www.linkedin.com/in/luluwang25" },
+  { label: "INSTAGRAM", href: "https://www.instagram.com/luluw.art" },
   { label: "EMAIL", href: "mailto:lulu.wang25@gmail.com" },
 ];
