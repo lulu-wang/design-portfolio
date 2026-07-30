@@ -43,11 +43,6 @@ export default async function ProjectDetail({
   const currentIndex = projects.findIndex((p) => p.slug === slug);
   const nextProject = projects[(currentIndex + 1) % projects.length];
   const personas = cs.research.personas ?? [cs.research.persona];
-  const sectionOffset = cs.define ? 1 : 0;
-  const onboardingOffset = cs.onboarding ? 1 : 0;
-  const styleOffset = cs.branding ? 1 : 0;
-  const testOffset = cs.testing ? 1 : 0;
-  const padIdx = (n: number) => String(n + sectionOffset).padStart(2, "0");
 
   const metaLine = [cs.meta.role, cs.meta.timeline, cs.meta.team, cs.meta.platform]
     .filter(Boolean)
@@ -152,7 +147,6 @@ export default async function ProjectDetail({
 
       <main className="mx-auto max-w-6xl px-5 sm:px-6 md:px-10">
         <CaseSection
-          index="00"
           label="Overview"
           title="Overview"
           intro={cs.overview}
@@ -160,7 +154,6 @@ export default async function ProjectDetail({
         />
 
         <CaseSection
-          index="01"
           label="Problem"
           title={cs.problem.statement}
         >
@@ -174,14 +167,12 @@ export default async function ProjectDetail({
         </CaseSection>
 
         <CaseSection
-          index="02"
           label="Goals"
           title="Goals"
           intro={cs.goals}
         />
 
         <CaseSection
-          index="03"
           label="Research"
           title="Research"
           intro={cs.research.intro}
@@ -251,7 +242,6 @@ export default async function ProjectDetail({
 
         {cs.define && (
           <CaseSection
-            index="04"
             label="Process"
             title="Process"
             intro={cs.define.intro}
@@ -279,7 +269,6 @@ export default async function ProjectDetail({
         )}
 
         <CaseSection
-          index={padIdx(4)}
           label="Architecture"
           title="Architecture"
           intro={cs.ia.intro}
@@ -308,7 +297,6 @@ export default async function ProjectDetail({
         </CaseSection>
 
         <CaseSection
-          index={padIdx(5)}
           label="Wireframes"
           title="Wireframes"
           intro={cs.wireframes.lowFi}
@@ -339,7 +327,6 @@ export default async function ProjectDetail({
         <>
           <div className="mx-auto max-w-6xl px-5 sm:px-6 md:px-10">
             <CaseSection
-              index={padIdx(6)}
               label="Onboarding"
               title="Onboarding quiz"
               intro={cs.onboarding.intro}
@@ -381,16 +368,8 @@ export default async function ProjectDetail({
       )}
 
       <div className="mx-auto max-w-6xl px-5 sm:px-6 md:px-10">
-        <CaseSection
-          index={padIdx(6 + onboardingOffset)}
-          label="Visual Design"
-          title="Visual design"
-          intro={cs.wireframes.hiFi}
-        />
-
         {cs.branding && (
           <CaseSection
-            index={padIdx(7 + onboardingOffset)}
             label="Style"
             title="Style"
             intro={cs.branding.intro}
@@ -403,6 +382,12 @@ export default async function ProjectDetail({
             />
           </CaseSection>
         )}
+
+        <CaseSection
+          label="Hi-Fidelity"
+          title="Hi-fidelity prototypes"
+          intro={cs.wireframes.hiFi}
+        />
       </div>
 
       <CaseBleed>
@@ -428,7 +413,6 @@ export default async function ProjectDetail({
 
       <main className="mx-auto max-w-6xl px-5 sm:px-6 md:px-10">
         <CaseSection
-          index={padIdx(7 + onboardingOffset + styleOffset)}
           label="Solution"
           title="Solution"
           intro={cs.solution.intro}
@@ -447,7 +431,6 @@ export default async function ProjectDetail({
 
         {cs.testing && (
           <CaseSection
-            index={padIdx(8 + onboardingOffset + styleOffset)}
             label="Test"
             title="Testing"
             intro={cs.testing.intro}
@@ -475,7 +458,6 @@ export default async function ProjectDetail({
         )}
 
         <CaseSection
-          index={padIdx(8 + onboardingOffset + styleOffset + testOffset)}
           label="Impact"
           title="Impact"
         >
@@ -494,7 +476,6 @@ export default async function ProjectDetail({
         </CaseSection>
 
         <CaseSection
-          index={padIdx(9 + onboardingOffset + styleOffset + testOffset)}
           label="Conclusion"
           title="Reflection"
           intro={cs.reflection}
