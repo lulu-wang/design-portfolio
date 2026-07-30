@@ -48,7 +48,6 @@ const skills = [
 export default function AboutPage() {
   return (
     <main className="mx-auto max-w-6xl px-5 sm:px-6 md:px-10">
-      {/* Bio */}
       <section className="grid gap-16 pb-20 pt-12 sm:gap-14 sm:pb-24 sm:pt-14 md:grid-cols-[minmax(0,280px)_1fr] md:items-start md:gap-16 md:pb-28 md:pt-20 lg:grid-cols-[minmax(0,320px)_1fr] lg:gap-20">
         <div className="animate-rise mx-auto w-full max-w-[260px] md:mx-0 md:max-w-none">
           <div className="overflow-hidden">
@@ -61,33 +60,14 @@ export default function AboutPage() {
               priority
             />
           </div>
-
-          <dl className="mt-8 grid grid-cols-2 gap-6">
-            <div>
-              <dt className="text-[13px] font-bold uppercase tracking-[0.18em] text-muted">
-                Background
-              </dt>
-              <dd className="mt-2 text-sm font-medium">
-                Design &amp; Engineering
-              </dd>
-            </div>
-            <div>
-              <dt className="text-[13px] font-bold uppercase tracking-[0.18em] text-muted">
-                Practice
-              </dt>
-              <dd className="mt-2 text-sm font-medium">
-                Product &amp; UX Design
-              </dd>
-            </div>
-          </dl>
         </div>
 
         <div className="animate-rise md:pt-4" style={{ animationDelay: "120ms" }}>
-          <h1 className="text-[2.4rem] font-bold uppercase leading-[0.95] tracking-tight sm:text-4xl md:text-5xl">
+          <h1 className="text-[2.4rem] font-bold leading-[1.05] tracking-tight sm:text-4xl md:text-5xl">
             I&rsquo;m Lulu Wang.
           </h1>
 
-          <p className="font-secondary mt-8 text-lg leading-[1.5] text-foreground sm:mt-10 sm:text-xl">
+          <p className="page-subtitle mt-8 max-w-2xl sm:mt-10">
             I&rsquo;m a{" "}
             <span className="hl bg-lavender">product designer</span> with a
             background in{" "}
@@ -96,7 +76,7 @@ export default function AboutPage() {
             <span className="hl bg-lavender">software engineering</span>.
           </p>
 
-          <div className="font-secondary mt-8 space-y-6 text-base leading-[29px] text-[#5c5c5c]">
+          <div className="page-subtitle mt-8 max-w-2xl space-y-6 md:max-w-3xl">
             <p>
               Before transitioning into{" "}
               <span className="hl bg-[#fadadd]">product design</span>, I spent
@@ -114,23 +94,22 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Skills */}
       <section className="pb-20 sm:pb-28">
-        <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
+        <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
           Capabilities
         </h2>
 
-        <div className="mt-12 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 sm:gap-8">
+        <div className="mt-12 grid grid-cols-2 gap-x-6 gap-y-12 sm:grid-cols-3 sm:gap-10">
           {skills.map((group) => (
             <div key={group.category}>
-              <h3 className="text-[13px] font-bold uppercase tracking-[0.18em] text-muted">
+              <h3 className="text-xl font-bold tracking-tight md:text-2xl">
                 {group.category}
               </h3>
-              <ul className="mt-5 space-y-2">
+              <ul className="mt-5 space-y-2.5">
                 {group.items.map((item) => (
                   <li
                     key={item}
-                    className="font-secondary text-base leading-snug text-foreground/80"
+                    className="font-secondary text-base leading-snug text-foreground/70 md:text-lg"
                   >
                     {item}
                   </li>
@@ -141,12 +120,11 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Contact */}
       <section className="pb-4">
-        <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
+        <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
           Get in touch
         </h2>
-        <p className="font-secondary mt-6 max-w-2xl text-base leading-[29px] text-[#5c5c5c]">
+        <p className="page-subtitle mt-6 max-w-2xl md:max-w-3xl">
           Have a project in mind, a role to discuss, or simply want to say hello?
           Reach me at{" "}
           <a

@@ -49,6 +49,35 @@ h3,
   text-transform: none;
 }
 
+/* Shared page intro under H1 — slightly above luluwang.design baseline */
+.page-subtitle {
+  font-family: var(--font-inter), "Inter", "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 17px;
+  line-height: 30px;
+  color: #5c5c5c;
+}
+
+@media (min-width: 640px) {
+  .page-subtitle {
+    font-size: 18px;
+    line-height: 29px;
+  }
+}
+
+@media (min-width: 768px) {
+  .page-subtitle {
+    font-size: 18px;
+    line-height: 30px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .page-subtitle {
+    font-size: 19px;
+    line-height: 32px;
+  }
+}
+
 .hl {
   border-radius: 3px;
   padding: 0.05em 0.28em;

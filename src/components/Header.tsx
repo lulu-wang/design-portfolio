@@ -6,10 +6,10 @@ import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 
 const nav = [
-  { label: "HOME", href: "/" },
-  { label: "PROJECTS", href: "/projects" },
-  { label: "GALLERY", href: "/illustrations" },
-  { label: "ABOUT", href: "/about" },
+  { label: "Home", href: "/" },
+  { label: "Projects", href: "/projects" },
+  { label: "Gallery", href: "/illustrations" },
+  { label: "About", href: "/about" },
 ];
 
 export default function Header() {
@@ -64,7 +64,7 @@ export default function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`font-display text-sm tracking-widest transition-colors md:text-[15px] ${
+                className={`font-display text-base transition-colors md:text-lg ${
                   isActive(item.href)
                     ? "font-bold text-foreground"
                     : "font-medium text-muted hover:text-foreground"
@@ -130,7 +130,7 @@ export default function Header() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`animate-rise font-display text-4xl uppercase tracking-tight sm:text-5xl ${
+                  className={`animate-rise font-display text-4xl tracking-tight sm:text-5xl ${
                     isActive(item.href)
                       ? "font-bold text-black"
                       : "font-medium text-black/45"

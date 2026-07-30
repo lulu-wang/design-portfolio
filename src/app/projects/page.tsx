@@ -12,15 +12,15 @@ export default function ProjectsPage() {
   return (
     <main className="mx-auto max-w-6xl px-5 sm:px-6 md:px-10">
       <section className="pt-12 pb-12 sm:pt-14 sm:pb-16 md:pt-20 md:pb-24">
-        <h1 className="animate-rise text-[2.75rem] font-bold uppercase leading-[0.95] tracking-tight sm:text-5xl md:text-6xl">
+        <h1 className="animate-rise text-[2.75rem] font-bold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
           Projects
         </h1>
         <p
-          className="font-secondary animate-rise mt-8 max-w-2xl text-base leading-[29px] text-muted sm:mt-10"
+          className="page-subtitle animate-rise mt-8 max-w-3xl sm:mt-10 md:max-w-4xl lg:max-w-5xl"
           style={{ animationDelay: "120ms" }}
         >
-          A selection of product design, UX, and research work spanning
-          fintech, social, and data-rich experiences.
+          Product design, UX, and research across fintech, social, and data-rich
+          experiences.
         </p>
       </section>
 

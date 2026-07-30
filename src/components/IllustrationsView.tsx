@@ -121,21 +121,21 @@ export default function IllustrationsView() {
     <main className="mx-auto max-w-6xl px-5 sm:px-6 md:px-10">
       {/* Hero */}
       <section className="pt-12 sm:pt-14 md:pt-20">
-        <h1 className="animate-rise text-[2.75rem] font-bold uppercase leading-[0.95] tracking-tight sm:text-5xl md:text-6xl">
+        <h1 className="animate-rise text-[2.75rem] font-bold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
           Gallery
         </h1>
         <p
-          className="font-secondary animate-rise mt-8 max-w-2xl text-base leading-[29px] text-muted sm:mt-10"
+          className="page-subtitle animate-rise mt-8 max-w-2xl sm:mt-10 md:max-w-3xl"
           style={{ animationDelay: "120ms" }}
         >
-          A personal archive of studies, editorial work, and visual experiments
-          across illustration, photography, and design.
+          Studies, editorial work, and visual experiments across illustration,
+          photography, and design.
         </p>
       </section>
 
       {/* Horizontal category tabs */}
       <nav className="mt-10 sm:mt-12" aria-label="Gallery categories">
-        <div className="flex gap-6 overflow-x-auto pb-px sm:gap-12">
+        <div className="flex gap-8 overflow-x-auto pb-px sm:gap-12">
           {galleryTabs.map((t) => {
             const selected = tab === t.id;
             return (
@@ -143,9 +143,9 @@ export default function IllustrationsView() {
                 key={t.id}
                 type="button"
                 onClick={() => setTab(t.id)}
-                className={`min-h-11 shrink-0 border-b-2 pb-3 pt-2 text-left text-[12px] font-bold uppercase tracking-[0.14em] transition-colors sm:min-h-0 sm:pt-0 sm:text-[13px] sm:tracking-[0.18em] ${
+                className={`min-h-11 shrink-0 border-b-2 pb-3 pt-2 text-left text-lg transition-colors sm:min-h-0 sm:pt-0 md:text-xl ${
                   selected
-                    ? "border-foreground text-foreground"
+                    ? "border-foreground font-bold text-foreground"
                     : "border-transparent text-muted hover:text-foreground"
                 }`}
                 aria-pressed={selected}
@@ -161,10 +161,10 @@ export default function IllustrationsView() {
       <section className="pb-10 pt-8 sm:pt-10">
         {filtered.length === 0 ? (
           <div className="py-20 sm:py-24">
-            <h2 className="text-xl font-bold uppercase tracking-tight sm:text-2xl">
+            <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
               Nothing here yet
             </h2>
-            <p className="font-secondary mt-4 max-w-md text-base leading-[29px] text-[#5c5c5c]">
+            <p className="font-secondary mt-4 max-w-md text-lg leading-[1.55] text-[#5c5c5c]">
               This collection is empty for now. Check back soon, or explore the
               Illustrations tab.
             </p>
