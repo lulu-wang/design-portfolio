@@ -117,7 +117,7 @@ export const projects: Project[] = [
     slug: "pulsefit",
     name: "PulseFit",
     description:
-      "A mobile fitness platform built around **sustainable habits** — personalized, motivating, and designed for _busy schedules_.",
+      "A mobile fitness and diet tracker designed for people who want to stay consistent without spending their free time in the app.",
     image: "/images/project-pulsefit-cover.png",
     tags: [
       { label: "UX Design", variant: "outline" },
@@ -126,7 +126,7 @@ export const projects: Project[] = [
     ],
     caseStudy: {
       tagline:
-        "Fitness tracking that’s **personalized**, motivating, and built for _busy schedules_.",
+        "A fitness and diet app for busy adults who need tracking that stays simple and personal.",
       presentation: {
         label: "case study presentation",
         href: "https://www.figma.com/deck/UkAoxp7axZkm6oXXOlDUk7",
@@ -139,36 +139,36 @@ export const projects: Project[] = [
         tools: ["Figma", "FigJam"],
       },
       overview:
-        "PulseFit is a personal health, fitness, and diet tracker for busy adults aged 18–40 who want better habits without spending their scarce free time fighting complex apps. As **sole UX/UI lead**, I owned the project end to end — researching users through interviews and competitive analysis, defining the problem and information architecture, iterating from lo-fi wireframes through usability tests, and designing **research-backed high-fidelity prototypes** that turn goals, workouts, nutrition, and community into one cohesive experience built around _sustainable habits_, not aggressive metrics.",
+        "PulseFit is a health, fitness, and diet tracker for adults 18–40 who want better habits but can’t spend hours logging every detail. As **sole UX/UI lead**, I led research, defined the information architecture, iterated from lo-fi through usability testing, and designed the high-fidelity prototype. The product brings workouts, nutrition, and light community features together in an experience that stays quick to use day to day.",
       problem: {
         statement:
-          "Fitness apps are too **complex** and too **generic** for people with _limited time_.",
+          "Fitness apps often demand **too much input** and still feel **generic** for people with limited time.",
         points: [
-          "Busy schedules break when tools demand **too much input** before delivering value.",
-          "Competitors offered either depth or simplicity — rarely both.",
-          "Motivation fades when progress feels **impersonal** or purely calorie-driven.",
+          "Users abandon tracking when setup and logging consume their scarce free time.",
+          "Competing products tended to be either deep and heavy, or simple and incomplete.",
+          "Calorie-only progress rarely felt motivating on its own.",
         ],
       },
       goals:
-        "Build an **all-in-one** fitness and diet experience that stays light for busy schedules — success measured by _consistency_, not calories alone.",
+        "Design a single fitness and diet experience that remains quick to use on busy weeks, with **consistency** as the primary measure of success.",
       research: {
         intro:
-          "Week 1 focused on why people abandon trackers: **5 interviews**, a competitive teardown of MyFitnessPal, Strava, and Apple Fitness, and a card sort. The pattern was clear — users wanted _all-in-one_, but only if it didn’t cost them their free time.",
+          "In week 1 I conducted **5 interviews**, reviewed MyFitnessPal, Strava, and Apple Fitness, and ran a card sort. Participants wanted fitness and diet in one place — as long as the product didn’t become another time sink.",
         methods: [
           {
             title: "User interviews",
             description:
-              "**5 sessions** on motivation, pain points, and current tools — time pressure came up in every conversation.",
+              "**5 sessions** on motivation, current tools, and where tracking breaks down. Time pressure surfaced in every conversation.",
           },
           {
             title: "Competitive analysis",
             description:
-              "Mapped where MyFitnessPal, Strava, and Apple Fitness add friction — especially **onboarding and logging**.",
+              "Reviewed MyFitnessPal, Strava, and Apple Fitness with a focus on **onboarding and logging**, where users most often stalled.",
           },
           {
             title: "Card sorting",
             description:
-              "Validated how users naturally group fitness, diet, and social — informing the five-pillar IA.",
+              "Mapped how participants grouped fitness, diet, and social features, which informed the five primary sections.",
           },
         ],
         insights: [
@@ -238,11 +238,11 @@ export const projects: Project[] = [
       },
       define: {
         intro:
-          "With a **4-week** timeline, I prioritized **structure before polish** — validate flows early, then invest visual design only in what testing supported.",
+          "With a **4-week** timeline, I focused early on flows and lo-fi structure, then moved into visual design once testing confirmed the foundation held up.",
         steps: [
-          "Flows, storyboards, and lo-fi sketches to pressure-test scope",
-          "Usability on lo-fi, then iterate into hi-fi",
-          "Final prototype and a second test pass before lock",
+          "Flows, storyboards, and lo-fi sketches",
+          "Usability testing on lo-fi, then iteration into hi-fi",
+          "Final prototype and a second round of testing",
         ],
         timeline: [
           "Week 1: Research and personas",
@@ -253,7 +253,7 @@ export const projects: Project[] = [
       },
       ia: {
         intro:
-          "Card-sort results pointed to **five pillars** — Home, Fitness, Diet, Social, Profile — so planning, tracking, and motivation live in _one place_ without burying core actions under nested menus.",
+          "The card sort pointed to **five sections** — Home, Fitness, Diet, Social, and Profile — so planning and tracking stayed easy to find in day-to-day use.",
         sitemap: [
           "Home → Dashboard, Activity, Progress, Goals",
           "Fitness → Workouts, Plans, Exercise Library",
@@ -271,7 +271,7 @@ export const projects: Project[] = [
       },
       wireframes: {
         lowFi:
-          "I sketched onboarding through scheduling in lo-fi first — enough fidelity to **validate hierarchy and task flow** with users before committing to visual design.",
+          "I sketched the full set of flows — from onboarding through scheduling — in lo-fi first, with enough detail to **validate hierarchy and task flow** before moving into visual design.",
         layout: "full",
         images: [
           {
@@ -283,26 +283,26 @@ export const projects: Project[] = [
           },
         ],
         hiFi:
-          "Dark UI with **neon lime** accents keeps progress readable at a glance. Workouts and diet stay light by design; social is there to sustain **momentum**, not add another feed to manage.",
+          "The high-fidelity UI uses a dark foundation with **neon lime** accents so progress stands out quickly. Workouts and diet stay intentionally light; social features focus on challenges and friends rather than a heavy feed.",
       },
       onboarding: {
         intro:
-          "Interviews showed personalization mattered — but long setups killed momentum. A short quiz captures fitness level, blockers, diet goals, and body metrics so the plan feels **personal from day one** without a heavy account wizard.",
+          "Participants wanted personalization, but lengthy onboarding reduced follow-through. I kept the quiz short — fitness level, blockers, diet goals, and key body metrics — enough to generate a plan users can **begin the same day**.",
         insights: [
           {
             title: "Time is the #1 blocker",
             description:
-              "Asking about constraints early lets plans adapt to **real schedules**, not idealized routines.",
+              "Asking about schedule constraints early helps the plan reflect how people actually live.",
           },
           {
             title: "Light personalization",
             description:
-              "A few high-signal questions tune intensity and meals — _enough signal, no questionnaire fatigue_.",
+              "A small set of questions is enough to tune intensity and meals without a long setup.",
           },
           {
             title: "Clear goals",
             description:
-              "Height, weight, and targets feed a concrete plan so users can **start now**, not configure forever.",
+              "Height, weight, and a target give the plan concrete inputs from the start.",
           },
         ],
         quotes: [
@@ -481,7 +481,7 @@ export const projects: Project[] = [
       },
       branding: {
         intro:
-          "The visual system had to feel energetic without looking like a flashy gym brand — dark surfaces for focus, a sharp lime accent for progress, and type that stays readable on dense mobile dashboards.",
+          "The visual system needed to feel focused and energetic: dark surfaces for concentration, a sharp lime accent for progress, and type that remains readable on dense mobile dashboards.",
         colors: [
           { name: "Void", hex: "#0B0B0B", role: "App background" },
           { name: "Surface", hex: "#171717", role: "Cards & sheets" },
@@ -502,50 +502,50 @@ export const projects: Project[] = [
           },
         ],
         typography:
-          "**Inter** carries most of the UI — tight tracking at small sizes, clear hierarchy between rings, labels, and lists. **SF Pro** appears on system-adjacent metrics so health data feels native on iPhone. Display stays restrained; emphasis comes from weight and lime accents, not oversized headlines.",
+          "**Inter** carries most of the interface — it stays clear at small sizes across rings, labels, and lists. **SF Pro** appears on selected health metrics for a more native iOS feel. Hierarchy relies on weight and accent color rather than oversized display type.",
         palette:
-          "A near-black base keeps workouts and diet screens calm. **Neon lime** is reserved for progress rings, primary actions, and moments of completion — high contrast on dark surfaces so status reads in a glance. Neutral grays handle secondary info without competing with the accent.",
+          "Near-black backgrounds keep the product calm. **Neon lime** is reserved for progress rings, primary actions, and completion states so status is easy to scan. Neutral grays support secondary information.",
         messaging:
-          "Fitness. Diet. Community. — framed around _your goals_, not punishment metrics.",
+          "Fitness. Diet. Community. — practical language tied to what the user is trying to accomplish.",
       },
       solution: {
         intro:
-          "The product unifies goals, workouts, diet, and community in one light experience — celebrating _small wins_ so motivation doesn’t depend on aggressive calorie targets.",
+          "PulseFit brings goals, workouts, diet, and a light social layer into one experience. Daily progress is framed in a way that stays achievable, even when logging isn’t perfect.",
         features: [
           {
             title: "Dashboard",
             description:
-              "Rings and vitals **at a glance** — designed so a busy user can check in in seconds.",
+              "Rings and vitals up front so users can check in within seconds.",
           },
           {
             title: "Workouts",
             description:
-              "**Personalized** sessions with progression and form tips, tuned from onboarding inputs.",
+              "Sessions shaped by onboarding inputs, with progression and brief form guidance.",
           },
           {
             title: "Diet",
             description:
-              "Macros and recipes plus **image-based** logging — chosen to cut the friction of manual entry.",
+              "Macros, recipes, and **photo logging**, introduced after participants cited manual entry as their biggest pain point.",
           },
           {
             title: "Social",
             description:
-              "Challenges and sharing for accountability — motivation _without guilt_ or feed overload.",
+              "Challenges and sharing with friends — enough for accountability, without a heavy social feed.",
           },
         ],
       },
       testing: {
         intro:
-          "I tested lo-fi early to catch structural issues, then ran hi-fi sessions in week 4 on dashboard, workouts, and diet logging — the flows most tied to daily habit.",
+          "I tested lo-fi early to catch structural issues, then ran high-fidelity sessions in week 4 on dashboard, workouts, and diet logging — the flows users would return to most often.",
         findings: [
-          "Dashboard and workouts felt **familiar and personal** — hierarchy held up.",
-          "Structured sessions and form guidance landed well with less-experienced users.",
-          "**Image-based** calorie tracking stood out as the biggest diet-friction win.",
+          "Participants found the dashboard and workouts clear and suitably personal.",
+          "Structured sessions and form guidance helped less-experienced users.",
+          "**Photo logging** drew the strongest response in the diet flow.",
         ],
         iterations: [
-          "Clearer personal goals on progress rings after users missed intent.",
-          "Weekly and monthly progression views for longer-horizon motivation.",
-          "Text-based recipes over video — faster to scan between meals.",
+          "Clarified personal goals on progress rings after several participants missed them.",
+          "Added weekly and monthly progression views.",
+          "Moved recipes to a text-first format for faster scanning between meals.",
         ],
       },
       outcomes: [
@@ -554,25 +554,25 @@ export const projects: Project[] = [
         { stat: "4 wks", label: "research to prototype" },
       ],
       reflection:
-        "The throughline was that **habits** beat aggressive metrics. Designing for _consistency_ and personal bests — not perfect logging — shaped every tradeoff from onboarding length to how progress is framed.",
+        "The clearest takeaway was how much **consistent use** mattered. That influenced decisions throughout — from onboarding length to how progress is framed and what stayed out of scope.",
       conclusion: {
         challenges: [
-          "Shipping **all-in-one** scope without recreating overwhelm.",
-          "Serving three personas with very different schedules.",
-          "Making progress feel personal without drowning users in data.",
+          "Combining fitness and diet in one product without overwhelming users.",
+          "Designing for three personas with very different schedules.",
+          "Presenting progress in a personal way without overloading the interface with data.",
         ],
         learnings: [
-          "Design for **sporadic schedules**, not ideal weeks.",
-          "Simplicity only works with careful information hierarchy.",
-          "**Image logging** meaningfully cuts diet friction.",
+          "Schedules are irregular, and the product needs to accommodate that.",
+          "Clear information hierarchy is what makes simplicity work.",
+          "Photo logging meaningfully reduced friction in diet tracking during testing.",
         ],
         nextSteps: [
-          "Richer weekly/monthly progression.",
-          "Clearer goal cues on progress rings.",
-          "Broader accessibility pass.",
+          "Richer weekly and monthly progression.",
+          "Clearer goal cues on the progress rings.",
+          "A broader accessibility pass.",
         ],
         proud:
-          "Owning the work **end-to-end** — interviews to tested prototype — while keeping tracking intuitive for busy people.",
+          "Taking the work from interviews through a tested prototype as sole design lead, while keeping the experience usable for time-constrained users.",
       },
     },
   },
@@ -580,7 +580,7 @@ export const projects: Project[] = [
     slug: "prediction-market",
     name: "Prediction Market",
     description:
-      "Reimagining prediction markets through **approachable data visualization** and intuitive interactions, making complex forecasting accessible to a _wider audience_.",
+      "A prediction market redesign focused on people who follow the news but have never placed a forecast before.",
     image: "/images/project-prediction.jpg",
     tags: [
       { label: "UX Design", variant: "outline" },
@@ -589,7 +589,7 @@ export const projects: Project[] = [
     ],
     caseStudy: {
       tagline:
-        "Making **probabilistic thinking** feel intuitive for people who have _never traded before_.",
+        "A prediction market experience designed for people who follow the news but have never traded before.",
       meta: {
         role: "Product Designer",
         timeline: "10 weeks · 2024",
@@ -598,21 +598,21 @@ export const projects: Project[] = [
         tools: ["Figma", "FigJam", "Amplitude", "Framer"],
       },
       overview:
-        "Prediction markets let people forecast real-world events, but the category is dominated by dense, trader-oriented interfaces. I redesigned the experience for **curious newcomers** — translating probabilities and order books into _intuitive interactions_ so forecasting feels like sharing an informed opinion, not day-trading.",
+        "Prediction markets let people forecast real-world events, but most products in the space look and feel like trading terminals. I redesigned the experience for people who follow the news and have **opinions**, without requiring them to learn order books in order to participate.",
       problem: {
         statement:
-          "Prediction markets are powerful but **intimidating** — newcomers bounce off jargon-heavy interfaces built for _expert traders_.",
+          "Prediction markets are compelling, but the interfaces feel built for **traders** — and newcomers struggle to get started.",
         points: [
-          "First-time users didn't understand what 'shares' or 'odds' meant in context.",
-          "Order-book UIs assumed financial literacy most people don't have.",
-          "There was no bridge between casual curiosity and confident participation.",
+          "First-time users didn’t understand what “shares” or “odds” meant in this context.",
+          "Order books assumed financial literacy that most participants didn’t have.",
+          "There was no clear first step between browsing markets and placing a forecast.",
         ],
       },
       goals:
-        "Make probabilistic forecasting **approachable** — clear language and visuals that get newcomers to a _first confident forecast_ without burying depth.",
+        "Help newcomers place a **first forecast** with language and visuals they can follow, while preserving depth for more advanced use.",
       research: {
         intro:
-          "Because the concept was unfamiliar to most people, I centered research on **mental models** — how non-experts reason about likelihood and risk — before inventing UI metaphors that would only make sense to traders.",
+          "Most participants had never used a prediction market, so research started with how they already reason about likelihood and risk — before introducing interface patterns that only made sense to traders.",
         methods: [
           {
             title: "Concept Testing",
@@ -654,7 +654,7 @@ export const projects: Project[] = [
       },
       ia: {
         intro:
-          "I reorganized the product around **topics and questions** rather than tickers and order books, so discovery mirrors how people already think about the news.",
+          "I restructured discovery around **topics and questions**, matching how people already discuss the news.",
         flow: [
           "Browse by topic",
           "Read the question",
@@ -665,35 +665,35 @@ export const projects: Project[] = [
       },
       wireframes: {
         lowFi:
-          "Low-fidelity flows focused on the single riskiest moment: placing a **first forecast**. I prototyped multiple framings of the buy interaction — sliders, cards, and plain-language toggles — to find the _least intimidating_ path.",
+          "Low-fidelity work focused on the highest-risk moment: placing a **first forecast**. I explored sliders, cards, and plain-language toggles until one framing felt clearer in walkthroughs.",
         lowFiVariants: ["list", "detail", "dashboard"],
         hiFi:
-          "High-fidelity design leaned on bold **data visualization** and a confident, editorial style. Probabilities became the hero of each card, and a lavender accent guided attention to primary actions without feeling like a trading terminal.",
+          "High-fidelity design took a more editorial direction. Each card leads with the probability, and a lavender accent marks primary actions — moving the visual language away from a trading terminal.",
       },
       solution: {
         intro:
-          "Every market leads with a **plain-language question** and a clear probability — a deliberate shift away from tickers — so forecasting feels like sharing an _informed opinion_ rather than placing a trade.",
+          "Every market opens with a **plain-language question** and a clear probability, making forecasting feel closer to sharing an informed view on current events.",
         features: [
           {
             title: "Question-First Cards",
             description:
-              "Human questions and large **probabilities** replace tickers so the card reads like news, not a terminal.",
+              "A plain-language question and a large **probability** on each card.",
           },
           {
             title: "Visual Forecasting",
             description:
-              "A slider shows potential outcomes in real dollars **before commit** — reducing the fear of a first forecast.",
+              "A slider shows potential outcomes in dollars before confirmation.",
           },
           {
             title: "Topic Discovery",
             description:
-              "Browse by subjects people already follow — politics, sports, tech — because that matched how they sorted events in research.",
+              "Browse by politics, sports, tech, and other familiar topics — aligned with how participants sorted events in research.",
           },
         ],
       },
       branding: {
         intro:
-          "I wanted the product to feel editorial and confident — closer to a news experience than a trading terminal — so color and type had to signal clarity over complexity.",
+          "The brand direction aimed for an editorial feel closer to reading the news than opening a brokerage product. Color and type needed to stay clear and restrained.",
         colors: [
           { name: "Ink", hex: "#121212", role: "Primary text" },
           { name: "Paper", hex: "#F7F5F2", role: "Page background" },
@@ -714,9 +714,9 @@ export const projects: Project[] = [
           },
         ],
         typography:
-          "**Fraunces** gives market questions a human, editorial voice. **Instrument Sans** keeps probabilities, controls, and supporting copy crisp. Large percentage numerals sit as the visual hero on every card — type hierarchy does the persuasion that dense charts used to.",
+          "**Fraunces** gives market questions a more human, editorial tone. **Instrument Sans** handles the interface, probabilities, and supporting copy. Large percentage numerals carry most of the visual hierarchy on each card.",
         palette:
-          "Warm paper backgrounds soften the finance vibe. **Lavender** marks primary actions without the neon urgency of trading apps. High-contrast ink on paper keeps probabilities legible; graphite handles secondary metadata.",
+          "Warm paper backgrounds soften the finance association. **Lavender** marks primary actions. High-contrast text keeps probabilities readable; graphite supports secondary metadata.",
       },
       outcomes: [
         { stat: "2.4x", label: "newcomer activation rate" },
@@ -724,14 +724,14 @@ export const projects: Project[] = [
         { stat: "+38%", label: "7-day return rate" },
       ],
       reflection:
-        "The biggest lesson was that **clarity is a feature**, not a coat of paint. Reframing the entire product around _questions instead of markets_ did more for accessibility than any single UI tweak could have.",
+        "The most effective change wasn’t a single interface detail — it was rebuilding the product around **questions**. Once markets read like something people would say out loud, much of the intimidation fell away.",
     },
   },
   {
     slug: "meetmews",
     name: "MeetMews",
     description:
-      "A social platform connecting pet owners through **local discovery**, community features, and thoughtful tools that make caring for animals feel more _personal_.",
+      "A social app for pet owners to find local help, meet nearby owners, and keep pet care in one place.",
     image: "/images/project-meetmews.jpg",
     tags: [
       { label: "UX Design", variant: "outline" },
@@ -739,7 +739,7 @@ export const projects: Project[] = [
     ],
     caseStudy: {
       tagline:
-        "Building a **warm, trustworthy community** where pet owners actually want to show up.",
+        "A local community product for pet owners seeking trusted recommendations and nearby connections.",
       meta: {
         role: "Product Designer",
         timeline: "14 weeks · 2023",
@@ -748,21 +748,21 @@ export const projects: Project[] = [
         tools: ["Figma", "Lookback", "Notion", "ProtoPie"],
       },
       overview:
-        "MeetMews is a social platform for pet owners to discover local services, connect with nearby owners, and manage pet care in one place. I designed it to feel **personal and safe** — prioritizing locality and trust over another _noisy feed_ optimized for engagement.",
+        "MeetMews helps pet owners find local services, connect with nearby owners, and keep pet care organized. Much of the design work centered on **trust** — making the product feel local and safe enough for people to ask questions and share openly.",
       problem: {
         statement:
-          "Pet owners juggle **fragmented tools** and scattered communities, with no trusted, _local_ place to connect and care for their animals.",
+          "Pet owners move between **too many tools** and scattered groups, with no clear local place to ask for help.",
         points: [
-          "Local pet info lived across Facebook groups, Nextdoor, and word of mouth.",
-          "New owners felt isolated and unsure who to trust for advice.",
-          "Existing apps optimized for engagement over genuine community.",
+          "Useful information lived across Facebook groups, Nextdoor, and word of mouth.",
+          "Newer owners often felt isolated and unsure whose advice to trust.",
+          "Existing products tended to optimize for engagement more than community quality.",
         ],
       },
       goals:
-        "Create a **safe, local community** that consolidates pet care tools and prioritizes _meaningful connection_ over vanity metrics.",
+        "Build a **local community** where pet care tools live together and people feel safe enough to participate.",
       research: {
         intro:
-          "I focused research on **trust and belonging** — what makes people feel safe enough to participate online when the subject is as personal as their pets — then used those signals to shape verification and locality in the product.",
+          "Research focused on what makes people comfortable participating online when the topic is their pet. Those findings shaped how verification and locality were handled in the product.",
         methods: [
           {
             title: "Diary Study",
@@ -804,7 +804,7 @@ export const projects: Project[] = [
       },
       ia: {
         intro:
-          "I anchored the architecture on **locality and identity** — every experience starts from 'owners and services near me' and builds outward to broader community.",
+          "The information architecture starts from **what’s nearby** — local owners and services first, then broader community from there.",
         flow: [
           "Create pet profile",
           "Discover locally",
@@ -815,35 +815,35 @@ export const projects: Project[] = [
       },
       wireframes: {
         lowFi:
-          "Low-fidelity wireframes explored how to balance three needs — discovery, connection, and pet management — without a cluttered tab bar. I tested several navigation models to find one that kept **community central**.",
+          "Low-fidelity exploration focused on balancing discovery, connection, and pet management without overcrowding navigation. I tested several models until community remained easy to reach.",
         lowFiVariants: ["list", "dashboard", "detail"],
         hiFi:
-          "High-fidelity design used a bold, high-contrast card system and playful photography to feel warm and modern. **Verified badges** and local context were made visually prominent to reinforce _trust_ throughout.",
+          "High-fidelity design uses bold cards and playful photography for a warmer feel. **Verified badges** and local context are visually prominent, reflecting how consistently trust came up in research.",
       },
       solution: {
         intro:
-          "Discovery, connection, and pet care live in one calm space — structured around **locality and verification** so the product feels local and personal instead of like another engagement feed.",
+          "MeetMews brings discovery, nearby owners, and pet care into one place. Local context and verification are surfaced early so the product feels grounded in a real neighborhood.",
         features: [
           {
             title: "Local Discovery",
             description:
-              "Nearby vets, sitters, parks, and events with **owner-verified** recs — because research showed trust beats anonymous advice.",
+              "Nearby vets, sitters, parks, and events with **owner-verified** recommendations.",
           },
           {
             title: "Pet Profiles",
             description:
-              "Health, reminders, and milestones in one home — reducing the six-app juggling owners described in the diary study.",
+              "Health, reminders, and milestones in one place — diary study participants were managing this across roughly six apps.",
           },
           {
             title: "Trusted Community",
             description:
-              "Neighborhood groups with **verified members** keep conversations safe and relevant by design.",
+              "Neighborhood groups with **verified members**, keeping conversations more relevant and less anonymous.",
           },
         ],
       },
       branding: {
         intro:
-          "Warmth and trust had to come through in the chrome itself — playful without becoming childish, and clear enough that verification and locality feel like part of the brand, not bolted-on badges.",
+          "The brand needed to feel warm without becoming overly playful. Verification and locality had to read as part of the interface from the start.",
         colors: [
           { name: "Charcoal", hex: "#1C1C1C", role: "Primary text" },
           { name: "Cream", hex: "#FAF6F1", role: "App background" },
@@ -864,9 +864,9 @@ export const projects: Project[] = [
           },
         ],
         typography:
-          "**Plus Jakarta Sans** keeps the product friendly and modern at mobile sizes. **Fraunces** softens key moments — empty states, community titles — so the brand feels warm without sacrificing UI clarity. Hierarchy favors readable names and places over decorative display.",
+          "**Plus Jakarta Sans** carries most of the interface and stays clear at mobile sizes. **Fraunces** appears sparingly on community titles and empty states for softer moments. Names and places remain the priority in the hierarchy.",
         palette:
-          "A cream base and coral actions feel approachable. **Sage** is reserved for verification and trust cues so safety is visually consistent. Charcoal on cream stays high-contrast for accessibility across discovery cards and profiles.",
+          "Cream backgrounds and coral actions create an approachable foundation. **Sage** marks verified and success states for consistency. Charcoal on cream keeps discovery cards and profiles readable.",
       },
       outcomes: [
         { stat: "12k", label: "waitlist signups pre-launch" },
@@ -874,7 +874,7 @@ export const projects: Project[] = [
         { stat: "+63%", label: "D30 retention vs. benchmark" },
       ],
       reflection:
-        "Community products live or die on **trust**, and trust is built through countless small design decisions — verification, tone, locality. Designing MeetMews taught me to treat _safety and warmth_ as core UX requirements, not afterthoughts.",
+        "This project kept returning to **trust** — verification, tone, and local context. Those details proved as important as the primary product flows.",
     },
   },
 ];

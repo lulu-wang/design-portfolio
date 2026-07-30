@@ -96,17 +96,6 @@ export default function BrandStyle({
                 <p className={`mt-3 ${body}`}>
                   <RichText>{face.role}</RichText>
                 </p>
-                {face.weights && (
-                  <p className="mt-2 text-[13px] text-foreground/40">{face.weights}</p>
-                )}
-                <p
-                  className={`mt-5 text-lg leading-snug text-foreground/70 ${specimen}`}
-                >
-                  The quick brown fox jumps over the lazy dog
-                </p>
-                <p className={`mt-2 text-2xl tracking-tight text-foreground/80 ${specimen}`}>
-                  0123456789
-                </p>
               </div>
             );
           })}

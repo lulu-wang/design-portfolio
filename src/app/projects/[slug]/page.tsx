@@ -107,7 +107,7 @@ export default async function ProjectDetail({
                     rel="noreferrer"
                     className="text-foreground underline decoration-foreground/25 underline-offset-4 transition-colors hover:decoration-foreground"
                   >
-                    View presentation
+                    View case study presentation
                   </a>
                 </>
               )}
