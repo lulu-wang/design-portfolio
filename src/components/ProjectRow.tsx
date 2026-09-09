@@ -1,6 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 import Arrow from "./Arrow";
+import ProjectCover from "./ProjectCover";
 import type { Project } from "@/data/site";
 
 const tagClass: Record<Project["tags"][number]["variant"], string> = {
@@ -32,15 +32,15 @@ export default function ProjectRow({
       style={{ animationDelay: `${index * 100}ms` }}
     >
       <article className="grid grid-cols-1 items-start gap-6 py-8 sm:gap-10 sm:py-10 md:grid-cols-[minmax(0,260px)_1fr] md:gap-14 lg:grid-cols-[minmax(0,300px)_1fr]">
-        <div className="overflow-hidden rounded-md">
-          <Image
-            src={project.image}
-            alt={project.name}
-            width={720}
-            height={480}
-            className="aspect-[239/158] h-auto w-full bg-[#ececec] object-contain transition duration-500 group-hover:scale-[1.02] group-hover:opacity-90"
-          />
-        </div>
+        <ProjectCover
+          name={project.name}
+          src={project.image}
+          alt={project.name}
+          width={720}
+          height={480}
+          className="aspect-[239/158] rounded-md transition duration-500 group-hover:scale-[1.02] group-hover:opacity-90"
+          sizes="(max-width: 768px) 100vw, 300px"
+        />
 
         <div className="min-w-0 pt-0.5">
           <div className="flex items-baseline justify-between gap-4">

@@ -1,6 +1,7 @@
 import {
   Fraunces,
   Instrument_Sans,
+  Newsreader,
   Plus_Jakarta_Sans,
 } from "next/font/google";
 import RichText from "./RichText";
@@ -23,12 +24,19 @@ const plusJakarta = Plus_Jakarta_Sans({
   display: "swap",
 });
 
+const newsreader = Newsreader({
+  subsets: ["latin"],
+  weight: ["500", "600"],
+  display: "swap",
+});
+
 const faceClass: Record<string, string> = {
   Inter: "font-[family-name:var(--font-inter)]",
   "SF Pro": "font-[system-ui,-apple-system,BlinkMacSystemFont,'SF_Pro_Text',sans-serif]",
   Fraunces: fraunces.className,
   "Instrument Sans": instrumentSans.className,
   "Plus Jakarta Sans": plusJakarta.className,
+  Newsreader: newsreader.className,
 };
 
 export type BrandStyleData = {

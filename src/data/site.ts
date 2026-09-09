@@ -14,6 +14,7 @@ export type CaseMediaItem = {
   caption?: string;
   width?: number;
   height?: number;
+  statusBar?: "light" | "dark";
 };
 
 export type CaseStudy = {
@@ -83,6 +84,7 @@ export type CaseStudy = {
   visuals?: {
     images: CaseMediaItem[];
     layout?: "masonry" | "phones" | "full" | "pair" | "stack";
+    tone?: "muted" | "dark" | "plain";
   };
   solution: {
     intro: string;
@@ -577,154 +579,381 @@ export const projects: Project[] = [
     },
   },
   {
-    slug: "prediction-market",
-    name: "Prediction Market",
+    slug: "path-learning",
+    name: "Path Learning",
     description:
-      "A prediction market redesign focused on people who follow the news but have never placed a forecast before.",
-    image: "/images/project-prediction.jpg",
+      "A mobile learning app that replaces tutorial watching with hands-on quests, an adaptive skill map, and feedback from AI, peers, and mentors.",
+    image: "/images/project-path-learning.png",
     tags: [
       { label: "UX Design", variant: "outline" },
-      { label: "Web Design", variant: "lavender" },
       { label: "Product Research", variant: "solid" },
+      { label: "Mobile", variant: "lavender" },
     ],
     caseStudy: {
       tagline:
-        "A prediction market experience designed for people who follow the news but have never traded before.",
+        "A practice-first learning app that turns skill-building into quests — with a map for what to do next, and feedback when you get stuck.",
       meta: {
         role: "Product Designer",
-        timeline: "10 weeks · 2024",
-        team: "2 PMs, 3 Engineers, 1 Designer",
-        platform: "Responsive Web",
-        tools: ["Figma", "FigJam", "Amplitude", "Framer"],
+        timeline: "Capstone · 2026",
+        team: "Solo designer",
+        platform: "iOS",
+        tools: ["Figma", "FigJam", "Google Meet"],
       },
       overview:
-        "Prediction markets let people forecast real-world events, but most products in the space look and feel like trading terminals. I redesigned the experience for people who follow the news and have **opinions**, without requiring them to learn order books in order to participate.",
+        "Path Learning is a project-based mobile app for self-directed learners who are tired of **watching** without **doing**. Instead of course catalogs and completion badges, the product is built around quests — short, artifact-producing practice units — on an adaptive skill map, with a feedback ladder from AI to peers to human mentors. I led research, IA, wireframes, visual design, and two rounds of usability testing as sole designer.",
       problem: {
         statement:
-          "Prediction markets are compelling, but the interfaces feel built for **traders** — and newcomers struggle to get started.",
+          "Learners get stuck in **tutorial hell**, drowned in content choices, and left without feedback that actually helps them improve.",
         points: [
-          "First-time users didn’t understand what “shares” or “odds” meant in this context.",
-          "Order books assumed financial literacy that most participants didn’t have.",
-          "There was no clear first step between browsing markets and placing a forecast.",
+          "Passive video consumption creates a false sense of mastery that disappears the moment someone opens a blank project.",
+          "Feedback is either generic praise or binary pass/fail — not category-specific enough to change lighting, composition, or logic.",
+          "Fragmented catalogs cause choice paralysis, so people spend their limited free time searching instead of practicing.",
         ],
       },
       goals:
-        "Help newcomers place a **first forecast** with language and visuals they can follow, while preserving depth for more advanced use.",
+        "Flip the default EdTech loop from Watch → Read → Quiz to **Try → Struggle → Learn → Feedback → Retry**, so every concept is immediately practiced and every completed quest becomes portfolio evidence.",
       research: {
         intro:
-          "Most participants had never used a prediction market, so research started with how they already reason about likelihood and risk — before introducing interface patterns that only made sense to traders.",
+          "The research question was how self-directed learners move from theory to practice — and where they abandon that jump. I interviewed self-taught creatives, mid-career switchers, and hobbyists, and audited **Maven**, **Exercism**, and **MentorCruise** to map gaps in feedback, structure, and mentorship.",
         methods: [
           {
-            title: "Concept Testing",
+            title: "User interviews",
             description:
-              "Tested language and visual metaphors for 'probability' with 15 non-expert participants.",
+              "Structured sessions on how people currently learn, where projects stall, and what makes feedback feel **actionable** versus empty.",
           },
           {
-            title: "Competitive Audit",
+            title: "Competitive analysis",
             description:
-              "Analyzed 6 existing markets to map the exact moments where newcomers dropped off.",
+              "Compared Maven, Exercism, and MentorCruise on practice loops, mentor access, and whether progress felt like **portfolio work** or video check-offs.",
           },
           {
-            title: "Card Sorting",
+            title: "Affinity mapping",
             description:
-              "Ran open card sorts to understand how people naturally categorize events and topics.",
+              "Synthesized quotes into three problem clusters — tutorial dependency, feedback quality, and choice overload — which became the product’s north star.",
           },
         ],
         insights: [
-          { stat: "0/15", label: "newcomers understood the default order book" },
-          { stat: "3x", label: "higher comprehension with % framing" },
-          { stat: "80%", label: "preferred topic-based discovery" },
+          { stat: "3", label: "problem clusters from affinity mapping" },
+          { stat: "3", label: "competitor platforms audited" },
+          { stat: "5", label: "moderated usability participants" },
+        ],
+        quotes: [
+          "I feel like a pro when I'm following a video tutorial, but the second I close the tab and try to write a single line of code on my own, I realize I haven't actually learned how to think for myself.",
+          "Getting 'looks good!' or vague online comments doesn't tell me what to fix about my lighting or composition to actually get better.",
+          "I spent three hours searching for the 'perfect' intro course. By the time I finally picked one, I was too mentally exhausted to actually start the first lesson.",
         ],
         persona: {
-          name: "Daniel Okafor",
-          role: "31 · Product Manager",
+          name: "Maya Osei",
+          role: "28 · Marketing Coordinator · Atlanta",
           quote:
-            "I follow the news obsessively and have opinions — I just don't want to feel like I'm day-trading to share them.",
+            "I’ve watched a hundred YouTube tutorials and I still can’t build anything from scratch. I need a path — not more content.",
           goals: [
-            "Turn his opinions on events into something tangible",
-            "Understand his potential upside and risk at a glance",
-            "Learn as he goes without reading a manual",
+            "Follow a trusted roadmap toward a new role within 12 months",
+            "Build a portfolio that passes hiring screens",
+            "Use mentor checkpoints to confirm industry-readiness",
           ],
           frustrations: [
-            "Trading terminology feels gatekept and cold",
-            "Can't tell a good position from a bad one",
-            "Existing apps look like Bloomberg terminals",
+            "Tutorial hell and fragmented resources",
+            "No quality signal that work is actually job-ready",
           ],
         },
+        personas: [
+          {
+            name: "Maya Osei",
+            role: "28 · Career switcher · Atlanta",
+            quote:
+              "I’ve watched a hundred YouTube tutorials and I still can’t build anything from scratch. I need a path — not more content.",
+            goals: [
+              "A linear roadmap that removes decision fatigue",
+              "A portfolio of demoable artifacts from every quest",
+            ],
+            frustrations: [
+              "Tutorial hell",
+              "No industry quality signal",
+            ],
+          },
+          {
+            name: "Nico Valls",
+            role: "24 · Creative maker · Portland",
+            quote:
+              "I have a hundred ideas. I just freeze the second I open a blank file.",
+            goals: [
+              "Ship finished projects in small, winnable steps",
+              "Get low-pressure feedback without a lecture",
+            ],
+            frustrations: [
+              "Blank-page paralysis",
+              "Overly theoretical content",
+            ],
+          },
+          {
+            name: "Dr. Priya Nair",
+            role: "35 · Deep-dive scholar · Cambridge",
+            quote:
+              "I don’t want to just build it. I want to understand why it works — and why every alternative doesn’t.",
+            goals: [
+              "Skip rudimentary modules and enter at the right depth",
+              "Socratic mentorship instead of how-to videos",
+            ],
+            frustrations: [
+              "Superficial tutorials",
+              "Black-box tools with no first principles",
+            ],
+          },
+        ],
+      },
+      define: {
+        intro:
+          "Research ran across **four weeks** — planning, interviews, synthesis, then concept testing. Design work followed the same loop the product teaches: try, get feedback, iterate. Two usability rounds (Phase 1 and Phase 2) validated the quest model, then tightened pricing, resources, and mentor booking.",
+        steps: [
+          "Problem framing: tutorial hell, feedback quality, choice overload",
+          "IA around path selection, quest map, submission, and mentor escalation",
+          "Hi-fi prototype and two rounds of remote moderated testing",
+        ],
+        timeline: [
+          "Week 1: Planning and recruitment",
+          "Week 2: Interviews and competitive analysis",
+          "Week 3: Synthesis and insights mapping",
+          "Week 4: Concept testing and prototyping",
+        ],
       },
       ia: {
         intro:
-          "I restructured discovery around **topics and questions**, matching how people already discuss the news.",
+          "The app is organized around a **practice loop**, not a course catalog. Learners pick a path, follow a visual map of quests, submit an artifact, then escalate feedback only when they need it — AI first, then structured peer critique, then a mentor.",
+        sitemap: [
+          "Onboarding → Choose a path, optional diagnostic for depth",
+          "My Path → Adaptive roadmap, XP, milestones",
+          "Quests → Mission checklist, snackable resources, submission",
+          "Feedback → AI evaluation, structured peer critique",
+          "Mentors → Profile, availability, live booking",
+          "Library · Messages · Settings",
+        ],
         flow: [
-          "Browse by topic",
-          "Read the question",
-          "See the probability",
-          "Place a forecast",
-          "Track outcome",
+          "Choose a path",
+          "Follow the map",
+          "Complete a quest",
+          "Get AI & peer feedback",
+          "Book a mentor",
         ],
       },
       wireframes: {
         lowFi:
-          "Low-fidelity work focused on the highest-risk moment: placing a **first forecast**. I explored sliders, cards, and plain-language toggles until one framing felt clearer in walkthroughs.",
-        lowFiVariants: ["list", "detail", "dashboard"],
+          "Early screens locked the core loop before visual design: **path selection**, a photography quest map, a mission with upload, a submission confirmation, and mentor booking. Testing later confirmed the map and quest format; the friction lived in drafts, academic depth, and pricing transparency.",
+        layout: "full",
+        images: [
+          {
+            src: "/images/projects/path-learning/wireframes.jpg",
+            alt: "Path Learning grayscale screens — path selection, quest map, quest detail, submission, and mentor booking",
+            caption: "Core loop in grayscale: choose a path, follow the map, submit work, book a mentor",
+            width: 2400,
+            height: 1218,
+          },
+        ],
         hiFi:
-          "High-fidelity design took a more editorial direction. Each card leads with the probability, and a lavender accent marks primary actions — moving the visual language away from a trading terminal.",
+          "High-fidelity UI sits on warm cream with forest green progress and charcoal actions. Path cards are color-coded by skill. The photography map makes the **next quest** obvious, and submission opens immediately into AI and peer critique instead of a dead end.",
       },
-      solution: {
+      onboarding: {
         intro:
-          "Every market opens with a **plain-language question** and a clear probability, making forecasting feel closer to sharing an informed view on current events.",
-        features: [
+          "Onboarding asks **what path will you take?** — photography, language, coding, or product design — instead of browsing a catalog. Natural-language search is a P0 for turning a freeform goal into a structured path. Testing found 100% completion and a 1.2 / 5 difficulty rating; structured learners then asked for pricing earlier, which Phase 2 added.",
+        insights: [
           {
-            title: "Question-First Cards",
+            title: "Outcome-first phrasing",
             description:
-              "A plain-language question and a large **probability** on each card.",
+              "Participants preferred “What path will you take?” over a course catalogue — it felt tailored rather than like shopping.",
           },
           {
-            title: "Visual Forecasting",
+            title: "Snackable over exhaustive",
             description:
-              "A slider shows potential outcomes in dollars before confirmation.",
+              "Busy professionals wanted directed, short practice — not another hour-long lecture before they could start.",
           },
           {
-            title: "Topic Discovery",
+            title: "Pricing up front",
             description:
-              "Browse by politics, sports, tech, and other familiar topics — aligned with how participants sorted events in research.",
+              "Career switchers wanted ROI and plan details early. Phase 2 added a pricing step without hurting completion.",
+          },
+        ],
+        quotes: [
+          "It's so visually clean and directly asks what I want to make. It feels like it's tailoring the journey to me.",
+          "It's simple and concise—not too much wording. Very easy to read and answer.",
+        ],
+        layout: "full",
+        images: [
+          {
+            src: "/images/projects/path-learning/personas.jpg",
+            alt: "Path Learning platform personas — Maya Osei, Nico Valls, and Dr. Priya Nair",
+            caption: "Three archetypes synthesized from research: switcher, maker, and scholar",
+            width: 1800,
+            height: 2546,
+          },
+          {
+            src: "/images/projects/path-learning/design-system.jpg",
+            alt: "Path Learning design system — type, color, navigation, and path selection",
+            caption: "Visual language: Newsreader wordmark, Inter headings, cream field, charcoal actions",
+            width: 1601,
+            height: 1140,
           },
         ],
       },
       branding: {
         intro:
-          "The brand direction aimed for an editorial feel closer to reading the news than opening a brokerage product. Color and type needed to stay clear and restrained.",
+          "The brand needed to feel like a studio for practice — calm, a little academic, not another gamified course app. Cream surfaces, forest green for progress, and soft path-card pastels keep the map readable without turning the product into a toy.",
         colors: [
-          { name: "Ink", hex: "#121212", role: "Primary text" },
-          { name: "Paper", hex: "#F7F5F2", role: "Page background" },
-          { name: "Lavender", hex: "#C4B5FD", role: "Primary actions & focus" },
-          { name: "Graphite", hex: "#5C5C5C", role: "Secondary text" },
-          { name: "Line", hex: "#E6E2DC", role: "Dividers & borders" },
+          { name: "Cream", hex: "#FEFCFA", role: "App background" },
+          { name: "Charcoal", hex: "#242527", role: "Primary buttons & text" },
+          { name: "Forest", hex: "#388068", role: "Progress, success, brand" },
+          { name: "Mint", hex: "#BDE2D0", role: "Active switches & highlights" },
+          { name: "Sage", hex: "#E3F5DF", role: "Home / path card fields" },
+          { name: "Purple", hex: "#6F67B5", role: "Accent & quest emphasis" },
+          { name: "Lilac", hex: "#F0D9F7", role: "Skill card — coding" },
+          { name: "Sky", hex: "#B6D8FE", role: "Secondary skill fields" },
         ],
         typefaces: [
           {
-            name: "Instrument Sans",
-            role: "UI and body copy",
-            weights: "Regular, Medium, SemiBold",
+            name: "Newsreader",
+            role: "Wordmark and brand moments",
+            weights: "Medium",
           },
           {
-            name: "Fraunces",
-            role: "Question headlines & market titles",
-            weights: "SemiBold",
+            name: "Inter",
+            role: "Headings and UI",
+            weights: "Regular, Medium, Bold",
+          },
+          {
+            name: "Arial",
+            role: "Body copy",
+            weights: "Regular",
           },
         ],
         typography:
-          "**Fraunces** gives market questions a more human, editorial tone. **Instrument Sans** handles the interface, probabilities, and supporting copy. Large percentage numerals carry most of the visual hierarchy on each card.",
+          "**Newsreader** is reserved for the Path Learning wordmark. **Inter** carries headlines and interface chrome so the map, quests, and booking stay clear at phone size. **Arial** handles body copy — instructions, feedback, and mentor bios — without competing with the display type.",
         palette:
-          "Warm paper backgrounds soften the finance association. **Lavender** marks primary actions. High-contrast text keeps probabilities readable; graphite supports secondary metadata.",
+          "Cream (#FEFCFA) keeps long practice sessions from feeling sterile. **Charcoal** buttons are the only high-contrast actions. Forest green marks progress and completion. Soft sage, lilac, and sky tint path cards so skills are distinguishable without loud branding.",
+        messaging:
+          "The product speaks like a coach, not a catalog: “Start my journey,” “Next quest,” “Mark as complete.” Peer critique is constrained to **what works** and **one change**, so comments stay useful instead of vague.",
+      },
+      visuals: {
+        layout: "phones",
+        tone: "dark",
+        images: [
+          {
+            src: "/images/projects/path-learning/screens/01-menu.jpg",
+            alt: "Path Learning navigation drawer",
+            caption: "Menu",
+            width: 780,
+            height: 1733,
+          },
+          {
+            src: "/images/projects/path-learning/screens/02-path.jpg",
+            alt: "Path Learning path selection screen",
+            caption: "Choose a path",
+            width: 780,
+            height: 1722,
+          },
+          {
+            src: "/images/projects/path-learning/screens/03-map.jpg",
+            alt: "Path Learning photography quest map",
+            caption: "Quest map",
+            width: 780,
+            height: 1722,
+          },
+          {
+            src: "/images/projects/path-learning/screens/04-quest.jpg",
+            alt: "Path Learning recreate a film still quest",
+            caption: "Quest",
+            width: 780,
+            height: 1979,
+          },
+          {
+            src: "/images/projects/path-learning/screens/05-submission.jpg",
+            alt: "Path Learning quest submission and AI feedback",
+            caption: "Feedback",
+            width: 780,
+            height: 1722,
+          },
+          {
+            src: "/images/projects/path-learning/screens/06-mentor.jpg",
+            alt: "Path Learning mentor booking with Sarah Chen",
+            caption: "Mentor",
+            width: 780,
+            height: 1722,
+          },
+          {
+            src: "/images/projects/path-learning/screens/07-search.jpg",
+            alt: "Path Learning path selection with skill search",
+            caption: "Search",
+            width: 780,
+            height: 1733,
+          },
+        ],
+      },
+      solution: {
+        intro:
+          "Path is a **quest engine** with a map, not a video library with a progress bar. Four P0 systems carry the core loop; mentors and structured peer critique sit one step up the escalation ladder.",
+        features: [
+          {
+            title: "Quest content system",
+            description:
+              "Action-focused units that require an **artifact** — a photo, file, or reflection — instead of finishing a video. Directly targets tutorial hell.",
+          },
+          {
+            title: "Adaptive skill map",
+            description:
+              "A visual path of the next practice step (e.g. Recreate a Film Still) so learners stop spending evenings picking a lesson.",
+          },
+          {
+            title: "AI-guided feedback",
+            description:
+              "Category-specific evaluation on submitted work — lighting, composition, execution — instead of a compiler-style pass/fail.",
+          },
+          {
+            title: "Mentor marketplace",
+            description:
+              "Live booking when automated feedback runs out. Testing made the calendar easy; the remaining request is a lower-cost **quick critique**.",
+          },
+        ],
+      },
+      testing: {
+        intro:
+          "Two rounds of remote moderated tests with **5 participants** (career switchers, an active maker, a theoretical learner, a structured learner). Phase 1 proved the quest model. Phase 2 measured iterations on pricing, quest progression, collapsible deep-dives, and mentor booking.",
+        findings: [
+          "**100%** completed onboarding in both rounds; difficulty moved from 1.2 to **1.1 / 5** after adding pricing.",
+          "Quest map and snackable resources were the strongest engagement drivers — “checking off videos doesn’t feel like real progress.”",
+          "Mentor booking hit **100%** completion; Phase 2 ease improved from 1.8 to **1.1 / 5**.",
+          "AI + structured peer prompts (“what works” / “one change”) reduced isolation; scholars still wanted Socratic depth over a single 8.5 score.",
+        ],
+        iterations: [
+          "Added early pricing transparency for structured learners and career switchers.",
+          "Collapsible deep-dive literature and Socratic prompts for theoretical learners.",
+          "Persistent “Mark as complete” bar on quests; draft/sandbox remains a next-step for submission anxiety.",
+          "Redesigned Sarah Chen booking calendar; planned a $20 asynchronous quick critique beside live sessions.",
+        ],
       },
       outcomes: [
-        { stat: "2.4x", label: "newcomer activation rate" },
-        { stat: "−55%", label: "drop-off on first forecast" },
-        { stat: "+38%", label: "7-day return rate" },
+        { stat: "100%", label: "onboarding completion in both test rounds" },
+        { stat: "1.1", label: "mentor booking difficulty after iteration" },
+        { stat: "5", label: "archetypes tested across two phases" },
       ],
       reflection:
-        "The most effective change wasn’t a single interface detail — it was rebuilding the product around **questions**. Once markets read like something people would say out loud, much of the intimidation fell away.",
+        "The product only works if the **first session produces work**, not a watched video. The map, the quest, and the feedback ladder all exist to get someone from a blank page to an artifact they can show. What I’m still holding: a true draft/sandbox, and a cheaper asynchronous mentor option so live calls aren’t the only human door.",
+      conclusion: {
+        challenges: [
+          "Serving switchers who want a rigid roadmap, makers who want open quests, and scholars who want depth — without three separate apps.",
+          "Submission anxiety: people would complete the quest steps and still hesitate to mark work final.",
+          "Pricing trust versus onboarding length — adding a plan step helped, but the questionnaire can’t grow forever.",
+        ],
+        learnings: [
+          "Progress has to look like a project milestone, not a video checkbox.",
+          "Feedback is a ladder: AI for speed, constrained peer prompts for quality, humans for judgment.",
+          "Collapsible depth lets scholars go further without trapping casual learners in literature.",
+        ],
+        nextSteps: [
+          "Save-draft / sandbox on quest submission.",
+          "Stronger visual affordance on deep-dive toggles.",
+          "Asynchronous $20 quick critiques next to live booking.",
+        ],
+        proud:
+          "Designing a full practice loop — from path choice through mentor booking — and watching testers describe it as job-ready progress instead of another course to finish.",
+      },
     },
   },
   {
@@ -732,7 +961,7 @@ export const projects: Project[] = [
     name: "MeetMews",
     description:
       "A social app for pet owners to find local help, meet nearby owners, and keep pet care in one place.",
-    image: "/images/project-meetmews.jpg",
+    image: "/images/project-meetmews.png",
     tags: [
       { label: "UX Design", variant: "outline" },
       { label: "Product Research", variant: "solid" },

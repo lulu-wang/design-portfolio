@@ -9,7 +9,7 @@ export default function CaseBleed({
 }) {
   return (
     <div className="w-full max-w-[100vw] overflow-x-hidden">
-      <div className="mx-auto max-w-[1400px]">{children}</div>
+      <div className="mx-auto max-w-[1920px]">{children}</div>
     </div>
   );
 }

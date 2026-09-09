@@ -19,8 +19,8 @@ export default function ProjectsPage() {
           className="page-subtitle animate-rise mt-8 max-w-3xl sm:mt-10 md:max-w-4xl lg:max-w-5xl"
           style={{ animationDelay: "120ms" }}
         >
-          Product design, UX, and research across fintech, social, and data-rich
-          experiences.
+          Product design, UX, and research across health, learning, and
+          community.
         </p>
       </section>
 

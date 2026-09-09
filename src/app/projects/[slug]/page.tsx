@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import CaseSection from "@/components/CaseSection";
 import CaseBleed from "@/components/CaseBleed";
 import CaseGallery from "@/components/CaseGallery";
+import ProjectCover from "@/components/ProjectCover";
 import Wireframe from "@/components/Wireframe";
 import RichText from "@/components/RichText";
 import BrandStyle from "@/components/BrandStyle";
@@ -129,20 +130,17 @@ export default async function ProjectDetail({
       </main>
 
       <CaseBleed>
-        <div
-          className="animate-rise mt-10 overflow-hidden bg-[#ececec] sm:mt-14"
-          style={{ animationDelay: "280ms" }}
-        >
-          <Image
-            src={project.image}
-            alt={`${project.name} preview`}
-            width={2390}
-            height={1580}
-            className="h-auto w-full object-contain"
-            sizes="100vw"
-            priority
-          />
-        </div>
+        <ProjectCover
+          name={project.name}
+          src={project.image}
+          alt={`${project.name} preview`}
+          width={2390}
+          height={1580}
+          className="animate-rise mt-10 aspect-[239/158] sm:mt-14"
+          sizes="100vw"
+          priority
+          size="hero"
+        />
       </CaseBleed>
 
       <main className="mx-auto max-w-6xl px-5 sm:px-6 md:px-10">
@@ -395,7 +393,7 @@ export default async function ProjectDetail({
           <CaseGallery
             items={cs.visuals.images}
             layout={cs.visuals.layout ?? "phones"}
-            tone="dark"
+            tone={cs.visuals.tone ?? "dark"}
           />
         ) : (
           <div className="mt-12 overflow-hidden bg-[#ececec]">

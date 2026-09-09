@@ -6,35 +6,157 @@ export type CaseMediaItem = {
   caption?: string;
   width?: number;
   height?: number;
+  statusBar?: "light" | "dark";
 };
 
 type Layout = "masonry" | "phones" | "full" | "pair" | "stack";
+
+function statusBarStyle(item: CaseMediaItem): {
+  bg: string;
+  bottomBg: string;
+  theme: "light" | "dark";
+} {
+  if (item.statusBar === "dark") {
+    return { bg: "#0D0D0D", bottomBg: "#0D0D0D", theme: "dark" };
+  }
+  if (item.statusBar === "light") {
+    return { bg: "#FFFFFF", bottomBg: "#FFFFFF", theme: "light" };
+  }
+  const src = item.src;
+  if (src.includes("path-learning/screens/03-map")) {
+    return { bg: "#F5F2EB", bottomBg: "#F5F2EB", theme: "light" };
+  }
+  if (src.includes("path-learning")) {
+    return { bg: "#FDFCFA", bottomBg: "#FDFCFA", theme: "light" };
+  }
+  if (src.includes("pulsefit/final/22.png")) {
+    return { bg: "#1D1F1F", bottomBg: "#2B3537", theme: "dark" };
+  }
+  // Workout detail is dark at the top and white at the bottom
+  if (src.includes("pulsefit/final/15.png")) {
+    return { bg: "#0D0D0D", bottomBg: "#FFFFFF", theme: "dark" };
+  }
+  if (/pulsefit\/final\/(01|10|11|23|24)\.png/.test(src)) {
+    return { bg: "#0D0D0D", bottomBg: "#0D0D0D", theme: "dark" };
+  }
+  return { bg: "#FFFFFF", bottomBg: "#FFFFFF", theme: "light" };
+}
+
+function StatusBar({
+  theme,
+}: {
+  theme: "light" | "dark";
+}) {
+  const dark = theme === "dark";
+  return (
+    <div
+      aria-hidden
+      className={`pointer-events-none absolute inset-x-0 top-0 z-10 flex h-[22px] items-center px-[5.5%] sm:h-6 ${
+        dark ? "text-white" : "text-black"
+      }`}
+    >
+      <span className="w-[23%] text-[9px] font-semibold tabular-nums tracking-tight sm:text-[10px]">
+        9:41
+      </span>
+      <div className="flex flex-1 justify-center">
+        <div
+          className={`h-2 w-[30%] max-w-[56px] rounded-full sm:h-2.5 ${
+            dark ? "bg-black ring-1 ring-white/20" : "bg-black"
+          }`}
+        />
+      </div>
+      <div className="flex w-[23%] items-center justify-end gap-[3px] sm:gap-[4px]">
+        <svg
+          viewBox="0 0 17 12"
+          className="h-[8px] w-[11px] sm:h-[9px] sm:w-[12px]"
+          fill="currentColor"
+        >
+          <rect x="0" y="7" width="3" height="5" rx="0.6" />
+          <rect x="4.5" y="5" width="3" height="7" rx="0.6" />
+          <rect x="9" y="2.5" width="3" height="9.5" rx="0.6" />
+          <rect x="13.5" y="0" width="3" height="12" rx="0.6" />
+        </svg>
+        <svg
+          viewBox="0 0 16 12"
+          className="h-[8px] w-[11px] sm:h-[9px] sm:w-[12px]"
+          fill="currentColor"
+        >
+          <path d="M8 9.2a1.35 1.35 0 1 1 0 2.7 1.35 1.35 0 0 1 0-2.7Zm0-3.4c1.7 0 3.28.66 4.47 1.85l-1.2 1.2A4.7 4.7 0 0 0 8 7.4a4.7 4.7 0 0 0-3.27 1.35L3.53 7.55A6.35 6.35 0 0 1 8 5.8Zm0-3.4c2.6 0 5.02 1.02 6.82 2.82L13.6 6.45A7.7 7.7 0 0 0 8 4.05a7.7 7.7 0 0 0-5.6 2.4L1.18 5.22A10.05 10.05 0 0 1 8 2.4Z" />
+        </svg>
+        <svg
+          viewBox="0 0 27 13"
+          className="h-[8px] w-[19px] sm:h-[9px] sm:w-[21px]"
+          fill="currentColor"
+        >
+          <rect
+            x="0.6"
+            y="0.6"
+            width="22"
+            height="11.8"
+            rx="2.6"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.2"
+          />
+          <rect x="2.2" y="2.2" width="18.6" height="8.6" rx="1.4" />
+          <rect x="23.4" y="4.2" width="2.2" height="4.6" rx="0.8" />
+        </svg>
+      </div>
+    </div>
+  );
+}
 
 function PhoneFrame({
   item,
 }: {
   item: CaseMediaItem;
 }) {
+  const { bg, bottomBg, theme } = statusBarStyle(item);
+  const dark = theme === "dark";
+  // PulseFit exports mix 864 and 1076-tall crops; pin them to one iPhone
+  // viewport so shorter screens don't sit above a black gap in the grid.
+  const fillFrame = item.src.includes("pulsefit");
+
   return (
-    <figure className="mx-auto w-full max-w-[260px] sm:max-w-[280px]">
+    <figure className="mx-auto w-full">
       {/* Onur-style device shell — thin dark bezel, soft lift */}
-      <div className="rounded-[2.35rem] bg-[#111] p-[9px] shadow-[0_24px_48px_rgba(0,0,0,0.45)] ring-1 ring-white/[0.08]">
-        <div className="relative overflow-hidden rounded-[1.85rem] bg-white">
-          {/* dynamic island sits in the top status padding */}
+      <div className="rounded-[2.6rem] bg-[#111] p-[10px] shadow-[0_28px_56px_rgba(0,0,0,0.45)] ring-1 ring-white/[0.08] sm:rounded-[2.85rem] sm:p-[11px]">
+        <div
+          className={`relative overflow-hidden rounded-[2.05rem] leading-none sm:rounded-[2.25rem] ${
+            fillFrame ? "aspect-[375/864]" : ""
+          }`}
+          style={{ backgroundColor: bottomBg || bg }}
+        >
+          <StatusBar theme={theme} />
+          {fillFrame ? (
+            <Image
+              src={item.src}
+              alt={item.alt}
+              fill
+              className="object-cover object-top"
+              sizes="(max-width: 768px) 50vw, (max-width: 1536px) 33vw, 25vw"
+            />
+          ) : (
+            <Image
+              src={item.src}
+              alt={item.alt}
+              width={item.width ?? 390}
+              height={item.height ?? 896}
+              className="relative block h-auto w-full"
+              style={{ height: "auto", width: "100%" }}
+              sizes="(max-width: 768px) 50vw, (max-width: 1536px) 33vw, 25vw"
+            />
+          )}
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-x-0 top-0 z-10 flex justify-center pt-3"
+            className="pointer-events-none absolute inset-x-0 bottom-0 z-10 flex justify-center pb-2.5 pt-1"
           >
-            <div className="h-[22px] w-[72px] rounded-full bg-black" />
+            <div
+              className={`h-[5px] w-[32%] max-w-[118px] rounded-full ${
+                dark && bottomBg !== "#FFFFFF" ? "bg-white/25" : "bg-black/20"
+              }`}
+            />
           </div>
-          <Image
-            src={item.src}
-            alt={item.alt}
-            width={item.width ?? 390}
-            height={item.height ?? 896}
-            className="h-auto w-full object-cover"
-            sizes="(max-width: 640px) 45vw, (max-width: 1024px) 30vw, 260px"
-          />
         </div>
       </div>
       {item.caption && (
@@ -71,7 +193,7 @@ export default function CaseGallery({
   if (layout === "full" || layout === "stack") {
     return (
       <div className="mt-10 flex justify-center px-5 sm:mt-12 sm:px-8">
-        <div className="w-full max-w-3xl space-y-4 sm:max-w-4xl">
+        <div className="w-full max-w-5xl space-y-4 sm:max-w-6xl">
           {items.map((item) => (
             <figure key={item.src} className={`overflow-hidden ${surface}`}>
               <Image
@@ -120,8 +242,8 @@ export default function CaseGallery({
 
   if (layout === "phones") {
     return (
-      <div className={`mt-12 sm:mt-16 ${surface} px-5 py-12 sm:px-8 sm:py-16 md:px-12 md:py-20`}>
-        <div className="mx-auto grid max-w-6xl grid-cols-2 items-start justify-items-center gap-x-4 gap-y-10 sm:grid-cols-3 sm:gap-x-6 sm:gap-y-12 lg:grid-cols-4 lg:gap-x-8 lg:gap-y-14">
+      <div className={`mt-12 sm:mt-16 ${surface} px-5 py-16 sm:px-8 sm:py-24 md:px-10 md:py-28 lg:px-14`}>
+        <div className="mx-auto grid grid-cols-2 items-start justify-items-stretch gap-x-6 gap-y-14 sm:gap-x-10 sm:gap-y-16 md:grid-cols-3 md:gap-x-12 md:gap-y-20 2xl:grid-cols-4 2xl:gap-x-14 2xl:gap-y-24">
           {items.map((item) => (
             <PhoneFrame key={item.src} item={item} />
           ))}
