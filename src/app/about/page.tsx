@@ -47,10 +47,17 @@ const skills = [
 
 export default function AboutPage() {
   return (
-    <main className="mx-auto max-w-6xl px-5 sm:px-6 md:px-10">
-      <section className="grid gap-16 pb-20 pt-12 sm:gap-14 sm:pb-24 sm:pt-14 md:grid-cols-[minmax(0,280px)_1fr] md:items-start md:gap-16 md:pb-28 md:pt-20 lg:grid-cols-[minmax(0,320px)_1fr] lg:gap-20">
-        <div className="animate-rise mx-auto w-full max-w-[260px] md:mx-0 md:max-w-none">
-          <div className="overflow-hidden">
+    <main className="page-wrap pt-28 sm:pt-32">
+      <section className="relative grid gap-12 overflow-hidden pb-20 pt-6 sm:gap-14 sm:pb-24 md:grid-cols-[minmax(0,280px)_1fr] md:items-start md:gap-16 md:pb-28 lg:grid-cols-[minmax(0,320px)_1fr] lg:gap-20">
+        <p
+          aria-hidden
+          className="pointer-events-none absolute -left-6 top-0 select-none font-display text-[clamp(5rem,16vw,10rem)] font-extrabold leading-none tracking-[-0.06em] text-foreground/[0.07] blur-[2px]"
+        >
+          Hey!
+        </p>
+
+        <div className="animate-rise relative z-10 mx-auto w-full max-w-[280px] md:mx-0 md:max-w-none">
+          <div className="overflow-hidden rounded-[20px]">
             <Image
               src="/images/portrait.png"
               alt="Illustrated portrait of Lulu Wang"
@@ -62,47 +69,44 @@ export default function AboutPage() {
           </div>
         </div>
 
-        <div className="animate-rise md:pt-4" style={{ animationDelay: "120ms" }}>
-          <h1 className="text-[2.4rem] font-bold leading-[1.05] tracking-tight sm:text-4xl md:text-5xl">
+        <div className="animate-rise relative z-10 md:pt-4" style={{ animationDelay: "120ms" }}>
+          <p className="text-[13px] font-medium uppercase tracking-[0.18em] text-foreground/40">
+            /About me
+          </p>
+          <h1 className="mt-4 text-[2.4rem] font-extrabold leading-[1.02] tracking-tight sm:text-5xl md:text-6xl">
             I&rsquo;m Lulu Wang.
           </h1>
 
           <p className="page-subtitle mt-8 max-w-2xl sm:mt-10">
-            I&rsquo;m a{" "}
-            <span className="hl bg-lavender">product designer</span> with a
-            background in{" "}
-            <span className="hl bg-[#fadadd]">digital art</span>, graphic
-            design, and{" "}
-            <span className="hl bg-lavender">software engineering</span>.
+            I&rsquo;m a product designer with a background in digital art,
+            graphic design, and software engineering.
           </p>
 
           <div className="page-subtitle mt-8 max-w-2xl space-y-6 md:max-w-3xl">
             <p>
-              Before transitioning into{" "}
-              <span className="hl bg-[#fadadd]">product design</span>, I spent
-              more than four years as a software engineer creating
-              user-centered products and features for Meta and Xbox.
+              Before transitioning into product design, I spent more than four
+              years as a software engineer creating user-centered products and
+              features for Meta and Xbox.
             </p>
             <p>
               I&rsquo;m interested in building products that challenge the
-              boundaries of digital experiences and bridge technology with{" "}
-              <span className="hl bg-lavender">creativity</span>. Outside work,
-              I&rsquo;m an avid traveler, maker of art, and enjoy skiing and
-              volleyball.
+              boundaries of digital experiences and bridge technology with
+              creativity. Outside work, I&rsquo;m an avid traveler, maker of
+              art, and enjoy skiing and volleyball.
             </p>
           </div>
         </div>
       </section>
 
       <section className="pb-20 sm:pb-28">
-        <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+        <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
           Capabilities
         </h2>
 
         <div className="mt-12 grid grid-cols-2 gap-x-6 gap-y-12 sm:grid-cols-3 sm:gap-10">
           {skills.map((group) => (
             <div key={group.category}>
-              <h3 className="text-xl font-bold tracking-tight md:text-2xl">
+              <h3 className="text-xl font-extrabold tracking-tight md:text-2xl">
                 {group.category}
               </h3>
               <ul className="mt-5 space-y-2.5">
@@ -120,9 +124,9 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="pb-4">
-        <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-          Get in touch
+      <section id="contact" className="scroll-mt-28 pb-4">
+        <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl md:text-5xl">
+          Let&rsquo;s talk.
         </h2>
         <p className="page-subtitle mt-6 max-w-2xl md:max-w-3xl">
           Have a project in mind, a role to discuss, or simply want to say hello?

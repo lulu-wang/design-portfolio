@@ -21,58 +21,55 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} className="mt-10 max-w-xl space-y-6">
-      <div className="grid gap-6 sm:grid-cols-2">
+    <form onSubmit={onSubmit} className="mt-10 max-w-xl space-y-7">
+      <div className="grid gap-7 sm:grid-cols-2">
         <label className="block">
-          <span className="text-base text-foreground/50 md:text-lg">Name</span>
+          <span className="text-sm text-foreground/50">Name</span>
           <input
             type="text"
             name="name"
             required
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="mt-2 w-full border-b border-black/15 bg-transparent py-3 text-lg outline-none transition-colors placeholder:text-muted/50 focus:border-foreground"
-            placeholder="Your name"
+            className="mt-2 w-full border-b border-black/15 bg-transparent py-3 text-base outline-none transition-colors placeholder:text-muted/50 focus:border-foreground"
+            placeholder="Enter your name"
             autoComplete="name"
           />
         </label>
         <label className="block">
-          <span className="text-base text-foreground/50 md:text-lg">Email</span>
+          <span className="text-sm text-foreground/50">Email</span>
           <input
             type="email"
             name="email"
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="mt-2 w-full border-b border-black/15 bg-transparent py-3 text-lg outline-none transition-colors placeholder:text-muted/50 focus:border-foreground"
-            placeholder="you@email.com"
+            className="mt-2 w-full border-b border-black/15 bg-transparent py-3 text-base outline-none transition-colors placeholder:text-muted/50 focus:border-foreground"
+            placeholder="Enter your email"
             autoComplete="email"
           />
         </label>
       </div>
 
       <label className="block">
-        <span className="text-base text-foreground/50 md:text-lg">Message</span>
+        <span className="text-sm text-foreground/50">Your Project</span>
         <textarea
           name="message"
           required
           rows={4}
           value={message}
           onChange={(e) => setMessage(e.target.value)}
-          className="mt-2 w-full resize-y border-b border-black/15 bg-transparent py-3 text-lg outline-none transition-colors placeholder:text-muted/50 focus:border-foreground"
-          placeholder="What would you like to talk about?"
+          className="mt-2 w-full resize-y border-b border-black/15 bg-transparent py-3 text-base outline-none transition-colors placeholder:text-muted/50 focus:border-foreground"
+          placeholder="Tell me about your project"
         />
       </label>
 
       <div className="flex flex-wrap items-center gap-4 pt-2">
-        <button
-          type="submit"
-          className="bg-foreground px-8 py-4 text-base font-medium text-background transition-opacity hover:opacity-80 md:text-lg"
-        >
-          Send message
+        <button type="submit" className="pill-btn">
+          Submit
         </button>
         {sent && (
-          <p className="font-secondary text-base text-muted">
+          <p className="font-secondary text-sm text-muted">
             Opening your email client…
           </p>
         )}

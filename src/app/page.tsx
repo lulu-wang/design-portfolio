@@ -1,63 +1,57 @@
 import Link from "next/link";
 import Arrow from "@/components/Arrow";
-import ProjectRow from "@/components/ProjectRow";
 import Footer from "@/components/Footer";
+import ProjectCard from "@/components/ProjectCard";
+import ContactForm from "@/components/ContactForm";
+import HomeHero from "@/components/HomeHero";
+import ScrollFillText from "@/components/ScrollFillText";
 import { projects } from "@/data/site";
 
 export default function Home() {
   return (
-    <main className="mx-auto max-w-6xl px-5 sm:px-6 md:px-10">
-      <section className="flex flex-col justify-center pt-28 pb-24 sm:pt-32 sm:pb-32 md:pt-40 md:pb-44">
-        <div className="max-w-2xl md:max-w-3xl">
-          <h1 className="animate-rise text-[2.75rem] font-bold leading-[1.08] tracking-tight sm:text-5xl sm:leading-[1.05] md:text-6xl md:leading-[1.02]">
-            Hi, I&rsquo;m{" "}
-            <span className="font-cursive inline-block align-baseline text-[1.15em] font-medium normal-case tracking-normal text-foreground">
-              Lulu Wang
-            </span>
-          </h1>
-          <p
-            className="page-subtitle animate-rise mt-10 max-w-md md:max-w-lg"
-            style={{ animationDelay: "160ms" }}
-          >
-            Product designer &amp; developer{" "}
-            <span className="font-cursive text-[1.35em] font-medium normal-case tracking-normal text-foreground">
-              inspired
-            </span>{" "}
-            to push the{" "}
-            <span className="hl bg-lavender">boundaries</span> of design.
-            Previously at Meta.
-          </p>
-          <Link
-            href="/projects"
-            className="arrow-link animate-rise mt-10 inline-flex items-center gap-3 text-lg text-foreground transition-opacity hover:opacity-60 md:text-xl"
-            style={{ animationDelay: "300ms" }}
-          >
-            View projects <Arrow />
-          </Link>
-        </div>
-      </section>
+    <main>
+      <HomeHero />
+      <ScrollFillText />
 
-      <section className="pb-6">
-        <div className="flex items-baseline justify-between gap-4">
-          <h2 className="text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl">
-            Selected projects
+      <section className="page-wrap py-24 sm:py-32">
+        <div className="flex items-end justify-between gap-4">
+          <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
+            Featured Projects
           </h2>
           <Link
             href="/projects"
-            className="arrow-link flex shrink-0 items-center gap-1.5 text-base text-foreground/50 transition-opacity hover:opacity-60 md:text-lg"
+            className="arrow-link hidden items-center gap-2 text-sm text-foreground/50 transition-opacity hover:opacity-70 sm:inline-flex"
           >
-            View all <Arrow className="h-3" />
+            View All Work <Arrow className="h-2.5" />
           </Link>
         </div>
-
-        <div className="mt-8 sm:mt-10">
+        <div className="mt-10 grid gap-12 sm:grid-cols-2 sm:gap-8 lg:gap-10">
           {projects.map((project, i) => (
-            <ProjectRow key={project.slug} project={project} index={i} />
+            <ProjectCard key={project.slug} project={project} index={i} />
           ))}
         </div>
+        <Link
+          href="/projects"
+          className="arrow-link mt-10 inline-flex items-center gap-2 text-sm text-foreground/50 sm:hidden"
+        >
+          View All Work <Arrow className="h-2.5" />
+        </Link>
       </section>
 
-      <Footer />
+      <section id="contact" className="page-wrap scroll-mt-28 pb-8">
+        <h2 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl">
+          Let&rsquo;s talk.
+        </h2>
+        <p className="page-subtitle mt-5 max-w-xl">
+          Have a project or a role in mind? Fill out the form, and I&rsquo;ll
+          get back to you soon.
+        </p>
+        <ContactForm />
+      </section>
+
+      <div className="page-wrap">
+        <Footer />
+      </div>
     </main>
   );
 }

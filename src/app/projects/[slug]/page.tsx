@@ -57,37 +57,34 @@ export default async function ProjectDetail({
 
   return (
     <>
-      <main className="mx-auto max-w-6xl px-5 sm:px-6 md:px-10">
-        <section className="pt-8 sm:pt-10 md:pt-14">
-          <Link
-            href="/projects"
-            className="arrow-link inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-foreground"
-          >
-            <Arrow className="h-2.5 rotate-180" /> All projects
-          </Link>
+    <main className="page-wrap pt-24 sm:pt-28">
+      <section className="pt-4 sm:pt-6 md:pt-8">
+        <Link
+          href="/projects"
+          className="arrow-link inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-foreground"
+        >
+          <Arrow className="h-2.5 rotate-180" /> All projects
+        </Link>
 
-          <div className="mt-10 max-w-3xl sm:mt-12">
-            <h1 className="animate-rise text-[2.1rem] font-bold leading-[1.05] tracking-tight sm:text-4xl md:text-5xl md:leading-[1.02]">
-              {project.name}
-            </h1>
+        <div className="mt-10 max-w-3xl sm:mt-12">
+          <p className="animate-rise text-[13px] font-medium tracking-[0.18em] text-foreground/40">
+            /Project
+          </p>
+          <h1 className="animate-rise mt-3 text-[2.1rem] font-extrabold leading-[1.02] tracking-tight sm:text-5xl md:text-6xl md:leading-[0.98]">
+            {project.name}
+          </h1>
 
-            <div className="mt-5 flex flex-wrap gap-2 sm:mt-6">
-              {project.tags.map((tag, i) => (
-                <span
-                  key={tag.label}
-                  className={`animate-rise rounded-full px-3.5 py-1.5 text-xs font-medium sm:text-[13px] ${
-                    tag.variant === "outline"
-                      ? "border-[1.5px] border-black/90 bg-transparent text-foreground"
-                      : tag.variant === "solid"
-                        ? "border-[1.5px] border-foreground bg-foreground text-background"
-                        : "border-[1.5px] border-lavender bg-lavender text-foreground"
-                  }`}
-                  style={{ animationDelay: `${140 + i * 70}ms` }}
-                >
-                  {tag.label}
-                </span>
-              ))}
-            </div>
+          <div className="mt-5 flex flex-wrap gap-2 sm:mt-6">
+            {project.tags.map((tag, i) => (
+              <span
+                key={tag.label}
+                className="animate-rise rounded-full border border-black/15 px-3.5 py-1.5 text-xs font-medium text-foreground/70 sm:text-[13px]"
+                style={{ animationDelay: `${140 + i * 70}ms` }}
+              >
+                {tag.label}
+              </span>
+            ))}
+          </div>
 
             <p
               className="page-subtitle animate-rise mt-6 max-w-3xl sm:mt-8 md:max-w-4xl [&_strong]:text-foreground [&_em]:text-foreground/80"
@@ -130,20 +127,22 @@ export default async function ProjectDetail({
       </main>
 
       <CaseBleed>
-        <ProjectCover
-          name={project.name}
-          src={project.image}
-          alt={`${project.name} preview`}
-          width={2390}
-          height={1580}
-          className="animate-rise mt-10 aspect-[239/158] sm:mt-14"
-          sizes="100vw"
-          priority
-          size="hero"
-        />
+        <div className="page-wrap">
+          <ProjectCover
+            name={project.name}
+            src={project.image}
+            alt={`${project.name} preview`}
+            width={2390}
+            height={1580}
+            className="animate-rise aspect-[239/158] rounded-[20px]"
+            sizes="100vw"
+            priority
+            size="hero"
+          />
+        </div>
       </CaseBleed>
 
-      <main className="mx-auto max-w-6xl px-5 sm:px-6 md:px-10">
+      <main className="page-wrap">
         <CaseSection
           label="Overview"
           title="Overview"
@@ -323,7 +322,7 @@ export default async function ProjectDetail({
 
       {cs.onboarding && (
         <>
-          <div className="mx-auto max-w-6xl px-5 sm:px-6 md:px-10">
+          <div className="page-wrap">
             <CaseSection
               label="Onboarding"
               title="Onboarding quiz"
@@ -365,7 +364,7 @@ export default async function ProjectDetail({
         </>
       )}
 
-      <div className="mx-auto max-w-6xl px-5 sm:px-6 md:px-10">
+      <div className="page-wrap">
         {cs.branding && (
           <CaseSection
             label="Style"
@@ -396,7 +395,7 @@ export default async function ProjectDetail({
             tone={cs.visuals.tone ?? "dark"}
           />
         ) : (
-          <div className="mt-12 overflow-hidden bg-[#ececec]">
+          <div className="mt-12 overflow-hidden rounded-[20px] bg-[#ebe6de]">
             <Image
               src={project.image}
               alt={`${project.name} high fidelity designs`}
@@ -409,7 +408,7 @@ export default async function ProjectDetail({
         )}
       </CaseBleed>
 
-      <main className="mx-auto max-w-6xl px-5 sm:px-6 md:px-10">
+      <main className="page-wrap">
         <CaseSection
           label="Solution"
           title="Solution"
@@ -515,7 +514,7 @@ export default async function ProjectDetail({
           <Link href={`/projects/${nextProject.slug}`} className="group block">
             <p className="text-sm text-foreground/40">Next</p>
             <div className="mt-2 flex items-center justify-between gap-6">
-              <h2 className="text-2xl font-bold tracking-tight transition-opacity group-hover:opacity-60 sm:text-3xl md:text-4xl">
+              <h2 className="text-2xl font-extrabold tracking-tight transition-opacity group-hover:opacity-60 sm:text-3xl md:text-4xl">
                 {nextProject.name}
               </h2>
               <Arrow className="h-3.5 shrink-0 transition-transform group-hover:translate-x-2 sm:h-4" />

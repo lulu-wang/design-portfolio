@@ -31,7 +31,7 @@ export default function ProjectCover({
 
   return (
     <div
-      className={`relative isolate overflow-hidden bg-[#ececec] ${className}`}
+      className={`relative isolate overflow-hidden bg-[#ebe6de] ${className}`}
       style={{ containerType: "size" }}
     >
       <div
@@ -41,7 +41,7 @@ export default function ProjectCover({
         }`}
       >
         <span
-          className={`select-none font-extrabold uppercase tracking-[-0.07em] text-black/[0.2] transition-colors duration-300 group-hover:text-black/[0.26] ${
+          className={`font-display select-none font-extrabold uppercase tracking-[-0.07em] text-black/[0.18] transition-colors duration-300 group-hover:text-black/[0.24] ${
             stacked
               ? `text-left ${
                   hero
