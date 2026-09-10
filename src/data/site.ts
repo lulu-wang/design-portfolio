@@ -957,153 +957,257 @@ export const projects: Project[] = [
     },
   },
   {
-    slug: "meetmews",
-    name: "MeetMews",
+    slug: "netflix-community",
+    name: "Netflix Community",
     description:
-      "A social app for pet owners to find local help, meet nearby owners, and keep pet care in one place.",
-    image: "/images/project-meetmews.png",
+      "A social layer for Netflix that keeps post-watch conversation, spoiler-safe discussion, and trusted recommendations inside the app.",
+    image: "/images/project-netflix-community.png",
     tags: [
       { label: "UX Design", variant: "outline" },
       { label: "Product Research", variant: "solid" },
+      { label: "Mobile", variant: "lavender" },
     ],
     caseStudy: {
       tagline:
-        "A local community product for pet owners seeking trusted recommendations and nearby connections.",
+        "A private social layer for Netflix — spoiler-safe discussion, friend circles, and collections that keep the story going in-app.",
+      presentation: {
+        label: "interactive prototype",
+        href: "/prototypes/netflix-community/index.html",
+      },
       meta: {
         role: "Product Designer",
-        timeline: "14 weeks · 2023",
-        team: "1 PM, 2 Engineers, 2 Designers",
-        platform: "iOS",
-        tools: ["Figma", "Lookback", "Notion", "ProtoPie"],
+        timeline: "Feature concept · 2026",
+        team: "Solo designer",
+        platform: "Mobile",
+        tools: ["Figma", "FigJam"],
       },
       overview:
-        "MeetMews helps pet owners find local services, connect with nearby owners, and keep pet care organized. Much of the design work centered on **trust** — making the product feel local and safe enough for people to ask questions and share openly.",
+        "Netflix Community is a proposed feature set that turns Netflix from a **utility for watching** into a place to sit with a story afterward. As sole designer I framed the problem, prioritized a hybrid social model — private Circles plus a moderated public hub — and designed the flows, wireframes, and high-fidelity prototype. The work targets **platform leakage**: the moment people leave for Reddit, group chats, or IMDb because the app has nothing to say once the credits roll.",
       problem: {
         statement:
-          "Pet owners move between **too many tools** and scattered groups, with no clear local place to ask for help.",
+          "After a title ends, people leave Netflix to talk, search, and decide what to watch next — and the app gives them **no trusted place to stay**.",
         points: [
-          "Useful information lived across Facebook groups, Nextdoor, and word of mouth.",
-          "Newer owners often felt isolated and unsure whose advice to trust.",
-          "Existing products tended to optimize for engagement more than community quality.",
+          "**Fragmented post-viewing insights.** Viewers hunt for analysis off-platform, so the social loop never comes back.",
+          "**Isolation and toxic forums.** Public internet discussion feels unsafe or spoiler-heavy, especially for people without an active watch circle.",
+          "**Discovery paralysis.** A huge catalog plus untrusted recs makes choosing the next title tiring, so sessions end at the credits.",
         ],
       },
       goals:
-        "Build a **local community** where pet care tools live together and people feel safe enough to participate.",
+        "Internalize the post-watch loop: **spoiler-protected discussion** at high-emotion moments, **private circles** for people you actually trust, and **actionable collections** that turn a friend’s note into Play or Add to My List.",
       research: {
         intro:
-          "Research focused on what makes people comfortable participating online when the topic is their pet. Those findings shaped how verification and locality were handled in the product.",
+          "I started from three clustered pains — leakage, isolation, and choice fatigue — and mapped where Netflix currently loses the conversation. The pattern was consistent: people already share through texts and group chats, and they already search elsewhere for plot context. The product opportunity was to bring that behavior **in-app** without turning Netflix into a public forum.",
         methods: [
           {
-            title: "Diary Study",
+            title: "Problem framing",
             description:
-              "A 2-week diary study with 9 pet owners capturing real moments of need and frustration.",
+              "Wrote problem / business-goal / **How Might We** pairs for leakage, isolation, and discovery paralysis so every feature had to serve a named user pain.",
           },
           {
-            title: "Community Audit",
+            title: "Behavior mapping",
             description:
-              "Observed behavior across existing pet forums and local groups to map unmet needs.",
+              "Traced the post-credits path to group chats, Reddit, Discord, YouTube recaps, and IMDb — then asked what a **closed-loop** version of each behavior would look like on a title page.",
           },
           {
-            title: "Stakeholder Interviews",
+            title: "Flow design",
             description:
-              "Interviewed local vets and groomers to understand the service side of the ecosystem.",
+              "Split the system into four jobs: private circle discussion, public hub, curated collections, and a shared-collection prompt — then designed for **mobile and living-room** posting.",
           },
         ],
         insights: [
-          { stat: "6", label: "separate tools used by the average owner" },
-          { stat: "82%", label: "wanted local, verified recommendations" },
-          { stat: "2x", label: "more trust in owner-to-owner advice" },
+          { stat: "3", label: "problem clusters from the framework" },
+          { stat: "4", label: "primary user flows" },
+          { stat: "3", label: "P0 pillars for MVP" },
         ],
         persona: {
-          name: "Priya Sharma",
-          role: "26 · First-time Dog Owner",
+          name: "Jordan Hale",
+          role: "31 · Solo viewer · Oakland",
           quote:
-            "I love my dog but I'm constantly second-guessing myself — I just want people nearby I can actually trust.",
+            "I finish a finale and have no one to talk to. Reddit is a spoiler minefield. I just want a room that waited with me.",
           goals: [
-            "Find trustworthy local vets, sitters, and parks",
-            "Meet other owners in her neighborhood",
-            "Keep her pet's info and reminders in one place",
+            "Talk about a title without being spoiled",
+            "Find people who are at the same episode",
           ],
           frustrations: [
-            "Advice online is contradictory and anonymous",
-            "Juggling multiple apps for one pet",
-            "Feeling judged in large, impersonal groups",
+            "Public forums feel toxic or too loud",
+            "No in-app place to sit with a story after it ends",
           ],
         },
+        personas: [
+          {
+            name: "Jordan Hale",
+            role: "31 · Solo viewer · Oakland",
+            quote:
+              "I finish a finale and have no one to talk to. Reddit is a spoiler minefield. I just want a room that waited with me.",
+            goals: [
+              "Episode-gated discussion that matches progress",
+              "A public hub that still feels safe",
+            ],
+            frustrations: [
+              "Isolation after watching",
+              "Spoilers and pile-on culture off-platform",
+            ],
+          },
+          {
+            name: "Maya Chen",
+            role: "27 · Social watcher · Brooklyn",
+            quote:
+              "I already text my friends ‘you have to watch this.’ I shouldn’t have to leave the app to send the list.",
+            goals: [
+              "Share a must-watch list with notes attached",
+              "Talk with her circle, not the internet",
+            ],
+            frustrations: [
+              "Recommendations leak into iMessage and Notes",
+              "Friend recs are hard to act on later",
+            ],
+          },
+        ],
+      },
+      define: {
+        intro:
+          "The strategy is a **private social layer** first — Circles as digital living rooms — with a moderated public hub so people without an active circle are not locked out. I prioritized by whether a feature reduced leakage, protected trust, or shortened the path to the next title.",
+        steps: [
+          "Frame pains as HMW questions tied to platform outcomes",
+          "Prioritize P0 Circles, public hub, and trusted collections",
+          "Design four flows, then lo-fi through a hi-fi prototype",
+        ],
+        timeline: [
+          "P0: Public hub, friend-circle threads, trusted collections",
+          "P1: Verified context cards, category and mood filters",
+          "P2: Sync alerts and curator badges — only after trust holds",
+        ],
       },
       ia: {
         intro:
-          "The information architecture starts from **what’s nearby** — local owners and services first, then broader community from there.",
+          "Community lives on the **title page** as a third tab beside Episodes and Trailers, and as a tab in Netflix navigation. Discussion is grouped by season, episode, and topic, with spoilers hidden by default. Collections sit in the circle, not in a public popularity contest — no follower counts, no trending ranks.",
+        sitemap: [
+          "Title page → Episodes · Trailers · Community",
+          "Community hub → Episode-sorted threads, spoiler gates, topic chips",
+          "Your circle → Private threads, shared collections, notes",
+          "Collections → Must-watch lists with Add to My List / Play",
+          "Safety → Report, mute, automated spoiler detection",
+        ],
         flow: [
-          "Create pet profile",
-          "Discover locally",
-          "Connect with owners",
-          "Book & save services",
-          "Share in community",
+          "Finish a title",
+          "Open Community",
+          "Join a gated thread",
+          "Post in your circle",
+          "Save a collection",
         ],
       },
       wireframes: {
         lowFi:
-          "Low-fidelity exploration focused on balancing discovery, connection, and pet management without overcrowding navigation. I tested several models until community remained easy to reach.",
-        lowFiVariants: ["list", "dashboard", "detail"],
-        hiFi:
-          "High-fidelity design uses bold cards and playful photography for a warmer feel. **Verified badges** and local context are visually prominent, reflecting how consistently trust came up in research.",
-      },
-      solution: {
-        intro:
-          "MeetMews brings discovery, nearby owners, and pet care into one place. Local context and verification are surfaced early so the product feels grounded in a real neighborhood.",
-        features: [
+          "Lo-fi mapped the four jobs before visual design: a **private circle hub**, a **public community hub**, **recommended collections**, and a prompt when someone shares a list. Device splits (TV vs mobile) showed up early — posting from the living room needed a connect-to-phone path so the remote never became a keyboard.",
+        layout: "full",
+        images: [
           {
-            title: "Local Discovery",
-            description:
-              "Nearby vets, sitters, parks, and events with **owner-verified** recommendations.",
+            src: "/images/projects/netflix-community/user-flows.png",
+            alt: "Netflix Community user flows for private hubs, public discussion, collections, and shared-list prompts",
+            caption: "Four primary flows: private hub, public hub, collections, and a shared-list prompt",
+            width: 1024,
+            height: 608,
           },
           {
-            title: "Pet Profiles",
-            description:
-              "Health, reminders, and milestones in one place — diary study participants were managing this across roughly six apps.",
-          },
-          {
-            title: "Trusted Community",
-            description:
-              "Neighborhood groups with **verified members**, keeping conversations more relevant and less anonymous.",
+            src: "/images/projects/netflix-community/wireframes.jpg",
+            alt: "Netflix Community low-fidelity wireframes across title, hub, thread, composer, and collection screens",
+            caption: "Low-fidelity screens for title, hubs, threads, posting, and collections",
+            width: 1024,
+            height: 287,
           },
         ],
+        hiFi:
+          "High-fidelity stays inside Netflix’s own system — near-black surfaces, the red wordmark, and a Community tab on the title. Copy is quiet on purpose: **Keep the story going.** Spoilers stay hidden until you choose to see them. A post-watch prompt (**What stayed with you?**) starts the thread without turning the credits into a comments section.",
       },
       branding: {
         intro:
-          "The brand needed to feel warm without becoming overly playful. Verification and locality had to read as part of the interface from the start.",
+          "This is a feature inside Netflix, not a new brand. The visual work was about **restraint** — using the existing dark UI, and adding only the cues that make discussion feel safe: spoiler chips, circle lockups, and collection cards you can act on in one tap.",
         colors: [
-          { name: "Charcoal", hex: "#1C1C1C", role: "Primary text" },
-          { name: "Cream", hex: "#FAF6F1", role: "App background" },
-          { name: "Coral", hex: "#E86A4A", role: "Primary actions" },
-          { name: "Sage", hex: "#6B9B7A", role: "Verified & success states" },
-          { name: "Stone", hex: "#9A9188", role: "Secondary text" },
+          { name: "Netflix Black", hex: "#141414", role: "App background" },
+          { name: "Surface", hex: "#1F1F1F", role: "Cards and composer" },
+          { name: "Netflix Red", hex: "#E50914", role: "Brand, selected tab" },
+          { name: "Match Green", hex: "#46D369", role: "Safety and match states" },
+          { name: "Muted", hex: "#A7A7A7", role: "Secondary labels" },
         ],
         typefaces: [
           {
-            name: "Plus Jakarta Sans",
-            role: "UI, body, and navigation",
-            weights: "Regular, Medium, Bold",
-          },
-          {
-            name: "Fraunces",
-            role: "Section titles & empty states",
-            weights: "Medium",
+            name: "Netflix Sans / Arial",
+            role: "UI, titles, and discussion",
+            weights: "Regular, Bold, ExtraBold",
           },
         ],
         typography:
-          "**Plus Jakarta Sans** carries most of the interface and stays clear at mobile sizes. **Fraunces** appears sparingly on community titles and empty states for softer moments. Names and places remain the priority in the hierarchy.",
+          "Title treatment stays Netflix-large. Community copy is smaller and denser — thoughts, not trailers. The spark mark (✦) is the only new identity cue, used on the Community tab so it can sit next to Home and New & Hot without looking like a social network.",
         palette:
-          "Cream backgrounds and coral actions create an approachable foundation. **Sage** marks verified and success states for consistency. Charcoal on cream keeps discovery cards and profiles readable.",
+          "Near-black keeps watching mode intact. **Red** is reserved for the wordmark and the selected Community tab. Green is only for safety and match — never for likes or ranks — so the product does not start scoring people.",
+        messaging:
+          "“Keep the story going.” “What stayed with you?” “Be kind. Be curious. No spoilers.” The product speaks like a living room, not a feed.",
+      },
+      visuals: {
+        layout: "full",
+        tone: "dark",
+        images: [
+          {
+            src: "/images/projects/netflix-community/hifi-board.jpg",
+            alt: "Netflix Community high-fidelity screens for title community, hubs, threads, collections, and posting",
+            caption: "High-fidelity system: title Community tab, hubs, threads, collections, and composer",
+            width: 1024,
+            height: 520,
+          },
+        ],
+      },
+      solution: {
+        intro:
+          "MVP is three P0 pillars. Everything else — context cards, mood filters, badges — waits until discussion is **safe and useful** without them.",
+        features: [
+          {
+            title: "Public Community Hub",
+            description:
+              "Moderated, spoiler-gated, episode-sorted threads for people **without** an active circle — a safe room, not a timeline.",
+          },
+          {
+            title: "Friend Circle discussions",
+            description:
+              "Private threads with people you already watch with, sitting beside the public hub so trust is the default, not the exception.",
+          },
+          {
+            title: "Trusted collections",
+            description:
+              "Must-watch lists with personal notes and one-tap **Add to My List** or Play — word of mouth that does not leave the app.",
+          },
+          {
+            title: "Post-watch prompt",
+            description:
+              "A short composer after a title — “What stayed with you?” — so the first comment is a thought, not a recap dump.",
+          },
+        ],
       },
       outcomes: [
-        { stat: "12k", label: "waitlist signups pre-launch" },
-        { stat: "4.9★", label: "beta community rating" },
-        { stat: "+63%", label: "D30 retention vs. benchmark" },
+        { stat: "3", label: "P0 pillars for the MVP" },
+        { stat: "4", label: "flows covering circle, public, and collections" },
+        { stat: "2", label: "surfaces: title page and Netflix nav" },
       ],
       reflection:
-        "This project kept returning to **trust** — verification, tone, and local context. Those details proved as important as the primary product flows.",
+        "The constraint that mattered most was **not building a social network**. Netflix already has attention. What it is missing is a trusted room after the story. Spoilers, circle privacy, and one-tap collections were the product. Virality was the thing to keep out.",
+      conclusion: {
+        challenges: [
+          "Serving people with a circle and people without one in the same hub.",
+          "Making discussion safe on a TV, where typing and spoiler risk are both worse.",
+          "Using Netflix’s visual system without the feature disappearing into the title page.",
+        ],
+        learnings: [
+          "Trust is a layout decision: spoilers hidden, no public scores, circles first.",
+          "Collections only work if a rec is actionable in one tap.",
+          "A post-watch prompt beats an empty comments tab.",
+        ],
+        nextSteps: [
+          "Verified context cards so plot questions do not send people to IMDb.",
+          "Category and mood filters for the public hub.",
+          "Optional sync alerts when a circle shares a list — quiet, not a notification firehose.",
+        ],
+        proud:
+          "Designing a social layer that still feels like Netflix — a living room after the credits, not a feed competing with the story.",
+      },
     },
   },
 ];

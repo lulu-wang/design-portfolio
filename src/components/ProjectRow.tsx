@@ -4,12 +4,9 @@ import ProjectCover from "./ProjectCover";
 import type { Project } from "@/data/site";
 
 const tagClass: Record<Project["tags"][number]["variant"], string> = {
-  outline:
-    "border-[1.5px] border-black/90 bg-transparent text-foreground group-hover:border-white/80 group-hover:text-white",
-  solid:
-    "border-[1.5px] border-foreground bg-foreground text-background group-hover:border-white group-hover:bg-white group-hover:text-foreground",
-  lavender:
-    "border-[1.5px] border-lavender bg-lavender text-foreground group-hover:border-lavender",
+  outline: "border-[1.5px] border-black/90 bg-transparent text-foreground",
+  solid: "border-[1.5px] border-foreground bg-foreground text-background",
+  lavender: "border-[1.5px] border-lavender bg-lavender text-foreground",
 };
 
 function plainText(text: string) {
@@ -28,7 +25,7 @@ export default function ProjectRow({
   return (
     <Link
       href={`/projects/${project.slug}`}
-      className="animate-rise group -mx-7 block rounded-xl px-7 transition-colors duration-300 hover:bg-foreground sm:-mx-9 sm:px-9"
+      className="animate-rise group -mx-7 block rounded-xl border-2 border-transparent px-7 transition-colors duration-300 hover:border-foreground sm:-mx-9 sm:px-9"
       style={{ animationDelay: `${index * 100}ms` }}
     >
       <article className="grid grid-cols-1 items-start gap-6 py-8 sm:gap-10 sm:py-10 md:grid-cols-[minmax(0,260px)_1fr] md:gap-14 lg:grid-cols-[minmax(0,300px)_1fr]">
@@ -44,17 +41,17 @@ export default function ProjectRow({
 
         <div className="min-w-0 pt-0.5">
           <div className="flex items-baseline justify-between gap-4">
-            <h3 className="text-lg font-bold tracking-tight transition-colors duration-300 group-hover:text-white sm:text-xl md:text-[22px]">
+            <h3 className="text-lg font-bold tracking-tight sm:text-xl md:text-[22px]">
               {project.name}
             </h3>
             {showView && (
-              <span className="arrow-link flex shrink-0 items-center gap-1.5 text-sm text-foreground transition-colors duration-300 group-hover:text-white md:text-base">
+              <span className="arrow-link flex shrink-0 items-center gap-1.5 text-sm text-foreground md:text-base">
                 View <Arrow className="h-2.5" />
               </span>
             )}
           </div>
 
-          <p className="font-secondary mt-4 max-w-2xl text-base leading-[1.55] text-muted transition-colors duration-300 group-hover:text-white/70 md:max-w-3xl md:text-lg md:leading-[1.55]">
+          <p className="font-secondary mt-4 max-w-2xl text-base leading-[1.55] text-muted md:max-w-3xl md:text-lg md:leading-[1.55]">
             {plainText(project.description)}
           </p>
 

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!-- saved from url=(0069)file:///Users/luluw/Documents/Codex/2026-08-06/bas/outputs/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#141414">
+    <title>Netflix Community</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <main class="phone" aria-label="Netflix Community mobile feature">
+      <header class="topbar">
+        <button class="back" aria-label="Go back">‹</button>
+        <span class="wordmark">NETFLIX</span>
+        <button class="cast" aria-label="Cast to a device"><i></i></button>
+      </header>
+
+      <section class="title-hero">
+        <div class="art" aria-hidden="true"><span class="sun"></span><span class="ridge ridge-one"></span><span class="ridge ridge-two"></span><span class="figure"></span></div>
+        <div class="scrim"></div>
+        <div class="title-info">
+          <p class="match"><b>98% Match</b> &nbsp; 2025 &nbsp; 16+ &nbsp; 1h 58m</p>
+          <h1>AFTER THE STORM</h1>
+          <p class="genres">Drama · Intimate · Award-winning</p>
+          <div class="title-actions"><button class="play">▶ &nbsp; Play</button><button class="icon-action" aria-label="Add to My List">＋<small>My List</small></button><button class="icon-action" aria-label="Rate title">♧<small>Rate</small></button></div>
+        </div>
+      </section>
+
+      <nav class="feature-tabs" aria-label="Title sections">
+        <button>Episodes</button><button>Trailers &amp; More</button><button class="selected">Community</button>
+      </nav>
+
+      <section class="community-intro">
+        <div class="community-lockup"><span class="spark">✦</span><div><p>NETFLIX COMMUNITY</p><h2>Keep the story going.</h2></div></div>
+        <p class="intro-copy">A space for the moments you want to sit with - made for your thoughts, not the algorithm.</p>
+        <div class="safety"><span>✓</span> Spoilers stay hidden until you choose to see them.</div>
+      </section>
+
+      <section class="conversation" id="conversation">
+        <div class="section-label"><h3>What people are saying</h3><span>1.2K members</span></div>
+        <div class="chips"><button class="chip selected">All</button><button class="chip">The ending</button><button class="chip">Details</button><button class="chip">Cast</button></div>
+        <button class="new-thought" id="open-composer"><span class="mini-avatar">M</span> Add to the conversation <b>＋</b></button>
+        <article class="thought"><div class="avatar coral">J</div><div><div class="byline"><strong>Jules K.</strong><span>18m</span></div><p>The quiet at the lighthouse was everything. It trusted us to feel the weight of that moment without explaining it away.</p><div class="thought-actions"><button>♡ <span>42</span></button><button>Reply</button><button>Save</button></div></div></article>
+        <article class="thought spoiler"><div class="avatar purple">N</div><div><div class="byline"><strong>Noor R.</strong><span>31m</span><em>Spoiler</em></div><p>The final reveal changed how I saw every scene with her father.</p><button class="reveal">Tap to reveal spoiler</button><div class="thought-actions"><button>♡ <span>27</span></button><button>Reply</button><button>Save</button></div></div></article>
+        <button class="see-all">See all discussion <span>›</span></button>
+      </section>
+
+      <section class="collection-section">
+        <div class="section-label"><div><p class="kicker">FROM YOUR CIRCLE</p><h3>Collections you’ll love</h3></div><button class="chevron" aria-label="See collections">›</button></div>
+        <article class="collection-card"><div class="covers"><span class="cover one">ECHOES</span><span class="cover two">HOLLOW</span><span class="cover three">NORTH</span></div><div class="collection-copy"><p>Jules K. made a collection</p><h3>Stories that stay<br>with you</h3><span>12 titles · 4 new for you</span></div><button class="round-add" aria-label="Add collection">＋</button></article>
+      </section>
+
+      <nav class="bottom-nav" aria-label="Netflix navigation"><button><i class="home-icon"></i><span>Home</span></button><button><i class="search-icon"></i><span>Search</span></button><button class="active"><i class="community-icon">✦</i><span>Community</span></button><button><i class="new-icon">N</i><span>New &amp; Hot</span></button><button><i class="profile-icon">M</i><span>My Netflix</span></button></nav>
+    </main>
+    <dialog id="composer"><form method="dialog"><header><button value="cancel" class="close" aria-label="Close composer">×</button><strong>New thought</strong><button id="post" value="default">Post</button></header><div class="composer-title"><span class="mini-poster"></span><div><b>After the Storm</b><small>Community discussion</small></div></div><textarea id="thought-input" maxlength="280" placeholder="What stayed with you?"></textarea><footer><span id="count">0 / 280</span><span>✦ Be kind. Be curious. No spoilers.</span></footer></form></dialog>
+    <div class="toast" id="toast">Your thought has been shared.</div>
+    <script src="./app.js"></script>
+  
+
+</body></html>

@@ -20,7 +20,7 @@ export default function ProjectsPage() {
           style={{ animationDelay: "120ms" }}
         >
           Product design, UX, and research across health, learning, and
-          community.
+          streaming.
         </p>
       </section>
 
