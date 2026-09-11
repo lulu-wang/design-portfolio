@@ -1,12 +1,67 @@
-import type { ReactNode } from "react";
+"use client";
+
+import { useRef, useState, type MouseEvent, type ReactNode } from "react";
 import {
+  isJoinableMeeting,
+  meetingParticipantIds,
   personById,
   priorityLabel,
   statusLabel,
+  type AppMeeting,
+  type MeetingFile,
   type DecisionStatus,
   type Person,
+  type ProjectKind,
   type TaskPriority,
 } from "@/data/meeting-extractor";
+
+export const cardRadius = "rounded-[22px]";
+export const cardSurface =
+  `min-w-0 break-words ${cardRadius} border border-[#eceef2] bg-white`;
+export const cardMuted = `min-w-0 break-words ${cardRadius} bg-[#f4f5f8]`;
+export const cardSelected =
+  "border-[#7c5cf6] shadow-[0_0_0_1.5px_#7c5cf6]";
+export const cardInteractive =
+  "transition-colors hover:border-[#7c5cf6] hover:shadow-[0_0_0_1.5px_#7c5cf6] active:border-[#7c5cf6] active:shadow-[0_0_0_1.5px_#7c5cf6] focus-visible:border-[#7c5cf6] focus-visible:shadow-[0_0_0_1.5px_#7c5cf6] focus-visible:outline-none";
+export const rowInteractive =
+  `border border-transparent ${cardRadius} ${cardInteractive}`;
+
+export const typeScale = {
+  pageTitle:
+    "text-[26px] font-semibold tracking-[-0.03em] text-[#111827]",
+  section: "text-[17px] font-semibold tracking-[-0.02em] text-[#111827]",
+  card: "text-[15px] font-semibold text-[#111827]",
+  body: "text-sm leading-5 text-[#374151]",
+  subtitle: "text-[15px] leading-6 text-[#8b919c]",
+  meta: "text-[12px] leading-5 text-[#8b919c]",
+  label: "text-[11px] font-medium leading-4 text-[#8b919c]",
+  button: "text-[13px] font-medium",
+  stat: "text-[30px] font-semibold leading-none tracking-[-0.04em] text-[#111827]",
+};
+export const textWrap = "min-w-0 max-w-full break-words";
+
+export function PageHeader({
+  title,
+  subtitle,
+}: {
+  title: string;
+  subtitle?: string;
+}) {
+  return (
+    <div className="mb-7 min-w-0">
+      <h1 className={`${typeScale.pageTitle} break-words`}>{title}</h1>
+      {subtitle ? (
+        <p className={`mt-2 max-w-full break-words ${typeScale.subtitle}`}>{subtitle}</p>
+      ) : null}
+    </div>
+  );
+}
+
+export function ProjectKindGlyph({ kind }: { kind: ProjectKind }) {
+  if (kind === "design") return <SwatchIcon />;
+  if (kind === "marketing") return <MegaphoneIcon />;
+  return <FlagIcon />;
+}
 
 export function Avatar({
   person,
@@ -44,30 +99,154 @@ export function AvatarStack({
   ids,
   extra = 0,
   size = "sm",
+  compact = false,
+  onExtraClick,
 }: {
   ids: string[];
   extra?: number;
   size?: "xs" | "sm";
+  compact?: boolean;
+  onExtraClick?: () => void;
 }) {
+  const face = compact ? "xs" : size;
+  const overlap = compact
+    ? "-ml-1.5 sm:-ml-1"
+    : face === "xs"
+      ? "-ml-1.5 sm:-ml-1"
+      : "-ml-1";
+  const extraClass = `inline-flex ${face === "xs" ? "h-6 w-6 text-[9px]" : "h-7 w-7 text-[10px]"} items-center justify-center rounded-full bg-[#eef0f4] font-semibold text-[#5b6573] ring-2 ring-white ${overlap}`;
   return (
-    <span className="inline-flex items-center">
+    <span className="inline-flex shrink-0 items-center">
       {ids.map((id, i) => (
         <span
           key={id}
-          className="rounded-full ring-2 ring-white"
-          style={{ marginLeft: i === 0 ? 0 : -8, zIndex: ids.length - i }}
+          className={`rounded-full ring-2 ring-white ${i === 0 ? "" : overlap}`}
+          style={{ zIndex: ids.length - i }}
         >
-          <Avatar person={personById(id)} size={size} />
+          <Avatar person={personById(id)} size={face} />
         </span>
       ))}
-      {extra > 0 && (
-        <span
-          className={`ml-[-8px] inline-flex ${size === "xs" ? "h-6 w-6 text-[9px]" : "h-7 w-7 text-[10px]"} items-center justify-center rounded-full bg-[#eef0f4] font-semibold text-[#5b6573] ring-2 ring-white`}
+      {extra > 0 &&
+        (onExtraClick ? (
+          <button
+            type="button"
+            onClick={(event) => {
+              event.preventDefault();
+              event.stopPropagation();
+              onExtraClick();
+            }}
+            className={`${extraClass} hover:bg-[#e4e7ee]`}
+            aria-label={`Show all ${ids.length + extra} participants`}
+          >
+            +{extra}
+          </button>
+        ) : (
+          <span className={extraClass}>+{extra}</span>
+        ))}
+    </span>
+  );
+}
+
+export function ParticipantsPopover({
+  meeting,
+  shown = 3,
+  size = "xs",
+  compact = false,
+}: {
+  meeting: AppMeeting;
+  shown?: number;
+  size?: "xs" | "sm";
+  compact?: boolean;
+}) {
+  const ids = meetingParticipantIds(meeting);
+  const visible = ids.slice(0, shown);
+  const extra = Math.max(ids.length - visible.length, 0);
+  return (
+    <ParticipantsMenu meeting={meeting} ids={ids}>
+      {(open, toggle) => (
+        <AvatarStack
+          ids={visible}
+          extra={extra}
+          size={size}
+          compact={compact}
+          onExtraClick={extra > 0 ? toggle : undefined}
+        />
+      )}
+    </ParticipantsMenu>
+  );
+}
+
+export function ParticipantsOverflow({
+  meeting,
+  shown = 4,
+}: {
+  meeting: AppMeeting;
+  shown?: number;
+}) {
+  const ids = meetingParticipantIds(meeting);
+  const extra = Math.max(ids.length - shown, 0);
+  if (extra <= 0) return null;
+  return (
+    <ParticipantsMenu meeting={meeting} ids={ids}>
+      {(open, toggle) => (
+        <button
+          type="button"
+          onClick={toggle}
+          aria-expanded={open}
+          aria-label={`Show all ${ids.length} participants`}
+          className="flex h-8 w-8 items-center justify-center rounded-full bg-[#eef0f4] text-[11px] font-semibold text-[#5b6573] hover:bg-[#e4e7ee]"
         >
           +{extra}
-        </span>
+        </button>
       )}
-    </span>
+    </ParticipantsMenu>
+  );
+}
+
+function ParticipantsMenu({
+  meeting,
+  ids,
+  children,
+}: {
+  meeting: AppMeeting;
+  ids: string[];
+  children: (open: boolean, toggle: () => void) => ReactNode;
+}) {
+  const [open, setOpen] = useState(false);
+  return (
+    <>
+      <span className="relative inline-flex shrink-0">
+        {children(open, () => setOpen((value) => !value))}
+      </span>
+      {open ? (
+        <Modal
+          title={`${ids.length} ${ids.length === 1 ? "participant" : "participants"}`}
+          onClose={() => setOpen(false)}
+        >
+          <ul className="-mx-1">
+            {ids.map((id) => {
+              const person = personById(id);
+              return (
+                <li
+                  key={id}
+                  className="flex min-w-0 items-center gap-3 rounded-xl px-1 py-2"
+                >
+                  <Avatar person={person} />
+                  <span className="min-w-0">
+                    <span className={`block min-w-0 break-words ${typeScale.card}`}>
+                      {person.name}
+                    </span>
+                    <span className={`mt-0.5 block min-w-0 break-words ${typeScale.meta}`}>
+                      {id === meeting.hostId ? `Host · ${person.role}` : person.role}
+                    </span>
+                  </span>
+                </li>
+              );
+            })}
+          </ul>
+        </Modal>
+      ) : null}
+    </>
   );
 }
 
@@ -130,9 +309,131 @@ export function BrandMark({ className = "" }: { className?: string }) {
   );
 }
 
-export function FieldLabel({ children }: { children: ReactNode }) {
+export function MeetingCallLink({
+  meeting,
+  variant = "inline",
+}: {
+  meeting: Pick<
+    AppMeeting,
+    "callUrl" | "locationType" | "location" | "date" | "upcoming"
+  >;
+  variant?: "inline" | "button";
+}) {
+  const meet = meeting.locationType === "google-meet";
+  const app = meet ? "Google Meet" : "Zoom";
+  const canJoin = isJoinableMeeting(meeting);
+
+  const join = (event: MouseEvent) => {
+    event.preventDefault();
+    event.stopPropagation();
+    window.dispatchEvent(
+      new CustomEvent("opal-toast", {
+        detail: `This is a prototype — ${app} would open here`,
+      }),
+    );
+  };
+
+  if (variant === "button") {
+    if (!canJoin) return null;
+    return (
+      <span className="relative inline-flex shrink-0">
+        <button
+          type="button"
+          onClick={join}
+          className="inline-flex h-9 items-center gap-1.5 whitespace-nowrap rounded-xl bg-[#111827] px-3 text-[12.5px] font-medium text-white hover:bg-black sm:h-10 sm:gap-2 sm:px-4 sm:text-[13px]"
+        >
+          <VideoIcon />
+          Join meeting
+        </button>
+      </span>
+    );
+  }
   return (
-    <p className="text-[13px] font-medium text-[#6b7280]">{children}</p>
+    <span className="relative inline-flex min-w-0 shrink-0">
+      <button
+        type="button"
+        onClick={join}
+        className="inline-flex items-center justify-start gap-1.5 text-left text-[13px] font-semibold leading-4 text-[#6d4aff] hover:underline"
+      >
+        <VideoIcon />
+        {meet ? "Google Meet" : "Zoom"}
+      </button>
+    </span>
+  );
+}
+
+export function FieldLabel({ children }: { children: ReactNode }) {
+  return <p className={typeScale.label}>{children}</p>;
+}
+
+export function FileRow({
+  file,
+  extra,
+}: {
+  file: MeetingFile;
+  extra?: ReactNode;
+}) {
+  return (
+    <a
+      href={file.url}
+      download={file.name}
+      target="_blank"
+      rel="noreferrer"
+      className={`flex min-w-0 items-center gap-3 ${cardRadius} border border-[#eceef2] bg-white px-3 py-2.5 ${cardInteractive}`}
+    >
+      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[#f4f5f8] text-[#6b7280]">
+        <FilesIcon />
+      </span>
+      <span className="min-w-0 flex-1">
+        <span className={`block ${textWrap} ${typeScale.card}`}>{file.name}</span>
+        <span className={`mt-0.5 block ${typeScale.meta}`}>
+          {file.sizeLabel}
+          {file.type ? ` · ${file.type}` : ""}
+        </span>
+      </span>
+      {extra ? <span className="shrink-0">{extra}</span> : null}
+    </a>
+  );
+}
+
+export function FileUploadButton({
+  onUpload,
+  label = "Upload file",
+  variant = "primary",
+}: {
+  onUpload: (file: File) => void;
+  label?: string;
+  variant?: "primary" | "ghost";
+}) {
+  const fileRef = useRef<HTMLInputElement>(null);
+  const classes =
+    variant === "primary"
+      ? "inline-flex h-9 items-center gap-1.5 rounded-xl bg-[#111827] px-3.5 text-[13px] font-medium text-white hover:bg-black"
+      : "inline-flex h-8 items-center gap-1 rounded-lg px-2 text-[12px] font-medium text-[#6d4aff] hover:bg-[#f4f1ff]";
+  return (
+    <>
+      <button
+        type="button"
+        onClick={() => fileRef.current?.click()}
+        className={classes}
+      >
+        <UploadIcon />
+        {label}
+      </button>
+      <input
+        ref={fileRef}
+        type="file"
+        multiple
+        className="hidden"
+        onChange={() => {
+          const list = fileRef.current?.files;
+          if (list && list.length > 0) {
+            Array.from(list).forEach(onUpload);
+          }
+          if (fileRef.current) fileRef.current.value = "";
+        }}
+      />
+    </>
   );
 }
 
@@ -172,8 +473,8 @@ export function Modal({
         onClick={onClose}
       />
       <div className="relative z-10 w-full max-w-md rounded-2xl bg-white p-5 shadow-2xl">
-        <div className="mb-3 flex items-center justify-between">
-          <h3 className="text-[16px] font-semibold">{title}</h3>
+        <div className="mb-3 flex min-w-0 items-start justify-between gap-3">
+          <h3 className={`min-w-0 break-words pr-3 ${typeScale.section}`}>{title}</h3>
           <button
             type="button"
             onClick={onClose}
@@ -363,6 +664,17 @@ export function MoreIcon() {
   );
 }
 
+export function LinkIcon() {
+  return (
+    <Icon size={16}>
+      <path
+        d="M9.5 14.5 14.5 9.5M10.2 8.2l1.1-1.1a3.2 3.2 0 0 1 4.5 4.5l-1.1 1.1M13.8 15.8l-1.1 1.1a3.2 3.2 0 0 1-4.5-4.5l1.1-1.1"
+        {...stroke()}
+      />
+    </Icon>
+  );
+}
+
 export function ChevronIcon() {
   return (
     <Icon size={16}>
@@ -396,10 +708,50 @@ export function SidebarToggleIcon() {
   );
 }
 
+export function MenuIcon() {
+  return (
+    <Icon size={16}>
+      <path d="M5 7h14" {...stroke()} />
+      <path d="M5 12h14" {...stroke()} />
+      <path d="M5 17h14" {...stroke()} />
+    </Icon>
+  );
+}
+
 export function ChevronDownIcon() {
   return (
     <Icon size={16}>
       <path d="M6 9l6 6 6-6" {...stroke()} />
+    </Icon>
+  );
+}
+
+export function FlagIcon() {
+  return (
+    <Icon size={16}>
+      <path d="M6 20V4.5" {...stroke()} />
+      <path d="M6 5h10.5l-2.2 3.6 2.2 3.6H6" {...stroke()} />
+    </Icon>
+  );
+}
+
+export function SwatchIcon() {
+  return (
+    <Icon size={16}>
+      <rect x="4" y="5" width="7" height="7" rx="1.6" {...stroke()} />
+      <rect x="13" y="5" width="7" height="7" rx="1.6" {...stroke()} />
+      <rect x="4" y="14" width="7" height="5.5" rx="1.6" {...stroke()} />
+      <rect x="13" y="14" width="7" height="5.5" rx="1.6" {...stroke()} />
+    </Icon>
+  );
+}
+
+export function MegaphoneIcon() {
+  return (
+    <Icon size={16}>
+      <path d="M4.5 10v4h2.2l7.8 3.6V6.4L6.7 10H4.5Z" {...stroke()} />
+      <path d="M16.7 9.4c1.1.7 1.1 4.5 0 5.2" {...stroke()} />
+      <path d="M7.2 14.2 8 18.5" {...stroke()} />
     </Icon>
   );
 }
@@ -434,7 +786,7 @@ export function UploadIcon() {
 
 export function MeetIcon() {
   return (
-    <Icon size={16}>
+    <Icon size={15}>
       <rect x="3.5" y="6.5" width="11" height="11" rx="2.2" {...stroke()} />
       <path d="M14.5 10.2 20 8v8l-5.5-2.2v-3.6Z" {...stroke()} />
     </Icon>
@@ -540,7 +892,7 @@ export function FilesIcon() {
 
 export function ZoomIcon() {
   return (
-    <Icon size={16}>
+    <Icon size={15}>
       <rect x="3.5" y="7" width="17" height="10" rx="2.5" {...stroke()} />
       <circle cx="10" cy="12" r="2.2" {...stroke()} />
       <path d="M14.5 10.5 18 9v6l-3.5-1.5v-3Z" {...stroke()} />

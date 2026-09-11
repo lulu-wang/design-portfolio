@@ -5,25 +5,25 @@ import {
   columnLabel,
   formatDueDate,
   meetingById,
-  meetings,
   people,
   personById,
   projects,
+  type AppMeeting,
   type BoardColumn,
   type Decision,
+  type MeetingFile,
   type TaskDraft,
   type TaskPriority,
 } from "@/data/meeting-extractor";
 import {
   Avatar,
   CalendarIcon,
-  CheckCircleIcon,
   ChevronDownIcon,
   CloseIcon,
   FolderIcon,
-  MoreIcon,
+  FileRow,
+  FileUploadButton,
   PriorityPill,
-  SparkleIcon,
   TrashIcon,
 } from "./ui";
 
@@ -31,19 +31,25 @@ export default function CreateTaskPanel({
   mode = "create",
   decision,
   draft,
+  meetings,
+  files = [],
   onChange,
   onClose,
   onSubmit,
   onDelete,
+  onUploadFile,
 }: {
   mode?: "create" | "edit";
   decision: Decision | null;
   draft: TaskDraft;
+  meetings: AppMeeting[];
+  files?: MeetingFile[];
   overlay?: boolean;
   onChange: (patch: Partial<TaskDraft>) => void;
   onClose: () => void;
   onSubmit: () => void;
   onDelete?: () => void;
+  onUploadFile?: (file: File) => void;
 }) {
   const [openField, setOpenField] = useState<
     null | "assignee" | "status" | "priority" | "project" | "meeting" | "decision"
@@ -63,55 +69,34 @@ export default function CreateTaskPanel({
   const assignee = personById(draft.assigneeId);
   const project =
     projects.find((p) => p.id === draft.projectId) ?? projects[0];
-  const meeting = meetingById(draft.meetingId);
+  const meeting = meetingById(draft.meetingId, meetings);
   const statuses: BoardColumn[] = ["todo", "in-progress", "done"];
   const priorities: TaskPriority[] = ["high", "medium", "low"];
-  const fromLabel = decision
-    ? `From ${meetingById(decision.meetingId).title}`
-    : draft.meetingId
-      ? `From ${meeting.title}`
-      : "From meeting";
+  const relatedFiles = files.filter((file) => file.meetingId === draft.meetingId);
 
   return (
     <aside
       ref={panelRef}
-      className="relative z-20 flex h-full w-[min(100%,380px)] shrink-0 flex-col overflow-hidden border-l border-[#eceef2] bg-white"
+      className="absolute inset-y-0 right-0 z-40 flex h-full w-[min(100%,320px)] flex-col overflow-hidden border-l border-[#eceef2] bg-white shadow-[-16px_0_40px_rgba(15,23,42,0.18)]"
     >
-        <div className="flex items-center justify-between px-5 pb-3 pt-5">
-          <div className="flex items-center gap-2 text-[13.5px] font-medium text-[#6b7280]">
-            <CheckCircleIcon />
-            {mode === "edit" ? "Task" : "New task"}
-          </div>
-          <div className="flex items-center gap-1">
-            <span className="text-[#c5cad3]">
-              <MoreIcon />
-            </span>
+        <div className="min-h-0 flex-1 overflow-y-auto px-5 pb-5 pt-10">
+          <div className="flex items-start gap-3">
+            <input
+              value={draft.title}
+              onChange={(e) => onChange({ title: e.target.value })}
+              placeholder="Task title"
+              className="min-w-0 flex-1 overflow-hidden bg-transparent text-[18px] font-semibold leading-snug tracking-[-0.02em] outline-none"
+            />
             <button
               type="button"
               onClick={onClose}
-              className="flex h-8 w-8 items-center justify-center rounded-lg text-[#6b7280] hover:bg-[#f7f8fa]"
+              className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-[#6b7280] hover:bg-[#f7f8fa]"
               aria-label="Close"
             >
               <CloseIcon />
             </button>
           </div>
-        </div>
-
-        <div className="min-h-0 flex-1 overflow-y-auto px-5 pb-5">
-          <textarea
-            value={draft.title}
-            onChange={(e) => onChange({ title: e.target.value })}
-            rows={2}
-            placeholder="Task title"
-            className="w-full resize-none bg-transparent text-[22px] font-semibold leading-snug tracking-[-0.03em] outline-none"
-          />
-          {(decision || draft.meetingId) && (
-            <span className="mt-2 inline-flex items-center gap-1 rounded-full bg-[#eee8ff] px-2.5 py-0.5 text-[12px] font-medium text-[#6d4aff]">
-              <SparkleIcon />
-              {fromLabel}
-            </span>
-          )}
-          <p className="mt-3 text-[13.5px] leading-relaxed text-[#6b7280]">
+          <p className="mt-2 text-[13.5px] leading-relaxed text-[#6b7280]">
             {draft.description || "Add a description for this task."}
           </p>
 
@@ -126,7 +111,7 @@ export default function CreateTaskPanel({
                   className="flex w-full items-center justify-end gap-2"
                 >
                   <Avatar person={assignee} size="xs" />
-                  <span className="text-[13.5px] font-medium">
+                  <span className="min-w-0 truncate text-[13.5px] font-medium">
                     {assignee.name}
                   </span>
                   <ChevronDownIcon />
@@ -249,60 +234,46 @@ export default function CreateTaskPanel({
               </div>
             </FieldRow>
 
-            {mode === "create" && (
-              <FieldRow label="Project">
-                <div className="relative" data-menu>
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setOpenField((v) => (v === "project" ? null : "project"))
-                    }
-                    className="flex w-full items-center justify-end gap-2"
-                  >
-                    <FolderIcon />
-                    <span className="text-[13.5px] font-medium">
-                      {project.name}
-                    </span>
-                    <ChevronDownIcon />
-                  </button>
-                  {openField === "project" && (
-                    <Dropdown>
-                      {projects.map((item) => (
-                        <button
-                          key={item.id}
-                          type="button"
-                          onClick={() => {
-                            onChange({ projectId: item.id });
-                            setOpenField(null);
-                          }}
-                          className="block w-full px-3 py-2 text-left text-[13px] hover:bg-[#f7f8fa]"
-                        >
-                          {item.name}
-                        </button>
-                      ))}
-                    </Dropdown>
-                  )}
-                </div>
-              </FieldRow>
-            )}
+            <FieldRow label="Project">
+              <div className="relative" data-menu>
+                <button
+                  type="button"
+                  onClick={() =>
+                    setOpenField((v) => (v === "project" ? null : "project"))
+                  }
+                  className="flex w-full items-center justify-end gap-2"
+                >
+                  <FolderIcon />
+                  <span className="text-[13.5px] font-medium">
+                    {project.name}
+                  </span>
+                  <ChevronDownIcon />
+                </button>
+                {openField === "project" && (
+                  <Dropdown>
+                    {projects.map((item) => (
+                      <button
+                        key={item.id}
+                        type="button"
+                        onClick={() => {
+                          onChange({ projectId: item.id });
+                          setOpenField(null);
+                        }}
+                        className="block w-full px-3 py-2 text-left text-[13px] hover:bg-[#f7f8fa]"
+                      >
+                        {item.name}
+                      </button>
+                    ))}
+                  </Dropdown>
+                )}
+              </div>
+            </FieldRow>
 
-            {mode === "create" ? (
+            {decision || draft.decisionId ? (
               <FieldRow label="Linked decision">
-                <div className="relative" data-menu>
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setOpenField((v) => (v === "decision" ? null : "decision"))
-                    }
-                    className="flex w-full items-center justify-end gap-2"
-                  >
-                    <FolderIcon />
-                    <span className="truncate text-[13.5px] font-medium">
-                      {decision?.title ?? "None"}
-                    </span>
-                    <ChevronDownIcon />
-                  </button>
-                </div>
+                <span className="block truncate text-right text-[13.5px] font-medium">
+                  {decision?.title ?? "None"}
+                </span>
               </FieldRow>
             ) : (
               <FieldRow label="Linked meeting">
@@ -316,18 +287,31 @@ export default function CreateTaskPanel({
                   >
                     <CalendarIcon />
                     <span className="text-[13.5px] font-medium">
-                      {meeting.title}
+                      {draft.meetingId ? meeting.title : "None"}
                     </span>
                     <ChevronDownIcon />
                   </button>
                   {openField === "meeting" && (
                     <Dropdown>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          onChange({ meetingId: "" });
+                          setOpenField(null);
+                        }}
+                        className="block w-full px-3 py-2 text-left text-[13px] hover:bg-[#f7f8fa]"
+                      >
+                        None
+                      </button>
                       {meetings.map((item) => (
                         <button
                           key={item.id}
                           type="button"
                           onClick={() => {
-                            onChange({ meetingId: item.id });
+                            onChange({
+                              meetingId: item.id,
+                              projectId: item.projectId,
+                            });
                             setOpenField(null);
                           }}
                           className="block w-full px-3 py-2 text-left text-[13px] hover:bg-[#f7f8fa]"
@@ -343,7 +327,7 @@ export default function CreateTaskPanel({
           </div>
 
           <label className="mt-5 block">
-            <p className="mb-2 text-[13px] font-medium text-[#6b7280]">
+            <p className="mb-2 text-[11px] font-medium text-[#8b919c]">
               Description
             </p>
             <textarea
@@ -353,6 +337,37 @@ export default function CreateTaskPanel({
               className="w-full resize-none rounded-xl border border-[#eceef2] px-3 py-2.5 text-[13.5px] leading-relaxed outline-none focus:border-[#ddd6fe] focus:ring-4 focus:ring-[#eee8ff]"
             />
           </label>
+
+          {draft.meetingId ? (
+            <div className="mt-5">
+              <div className="mb-2 flex items-center justify-between gap-2">
+                <p className="text-[11px] font-medium text-[#8b919c]">
+                  Files from {meeting.title}
+                </p>
+                {onUploadFile && (
+                  <FileUploadButton
+                    onUpload={onUploadFile}
+                    label="Upload"
+                    variant="ghost"
+                  />
+                )}
+              </div>
+              {relatedFiles.length === 0 ? (
+                <p className="rounded-xl border border-[#eceef2] bg-[#fbfcfd] px-3 py-3 text-[13px] leading-5 text-[#8b919c]">
+                  No files yet. Upload one to share it with every task from this
+                  meeting.
+                </p>
+              ) : (
+                <ul className="space-y-2">
+                  {relatedFiles.map((file) => (
+                    <li key={file.id}>
+                      <FileRow file={file} />
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          ) : null}
         </div>
 
         <div className="flex shrink-0 items-center justify-between gap-2 border-t border-[#eef0f4] bg-white px-5 py-4">
@@ -395,7 +410,7 @@ function FieldRow({
 }) {
   return (
     <div className="grid grid-cols-[108px_minmax(0,1fr)] items-center gap-3 py-3.5">
-      <span className="text-[13px] text-[#6b7280]">{label}</span>
+      <span className="text-[11px] font-medium text-[#8b919c]">{label}</span>
       <div className="min-w-0 text-[#111827]">{children}</div>
     </div>
   );
