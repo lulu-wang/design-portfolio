@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import {
+  columnLabel,
   currentUser,
   draftFromDecision,
   draftFromGrep,
