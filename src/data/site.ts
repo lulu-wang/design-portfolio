@@ -85,6 +85,8 @@ export type CaseStudy = {
     images: CaseMediaItem[];
     layout?: "masonry" | "phones" | "full" | "pair" | "stack";
     tone?: "muted" | "dark" | "plain";
+    /** Smaller phones with more space between frames */
+    roomy?: boolean;
   };
   solution: {
     intro: string;
@@ -1144,15 +1146,49 @@ export const projects: Project[] = [
           "“Keep the story going.” “What stayed with you?” “Be kind. Be curious. No spoilers.” The product speaks like a living room, not a feed.",
       },
       visuals: {
-        layout: "full",
+        layout: "phones",
         tone: "dark",
+        roomy: true,
         images: [
           {
-            src: "/images/projects/netflix-community/hifi-board.jpg",
-            alt: "Netflix Community high-fidelity screens for title community, hubs, threads, collections, and posting",
-            caption: "High-fidelity system: title Community tab, hubs, threads, collections, and composer",
-            width: 1024,
-            height: 520,
+            src: "/images/projects/netflix-community/screens/01-title.jpg",
+            alt: "Netflix title page with a Community tab on Stranger Things",
+            caption: "Title · Community",
+            width: 472,
+            height: 1076,
+            statusBar: "dark",
+          },
+          {
+            src: "/images/projects/netflix-community/screens/03-hub.jpg",
+            alt: "Private circle discussion hub for Stranger Things with spoiler-gated threads",
+            caption: "Discussion hub",
+            width: 473,
+            height: 966,
+            statusBar: "dark",
+          },
+          {
+            src: "/images/projects/netflix-community/screens/02-thread.jpg",
+            alt: "Episode thread with replies and spoiler-hidden comments",
+            caption: "Thread",
+            width: 473,
+            height: 966,
+            statusBar: "dark",
+          },
+          {
+            src: "/images/projects/netflix-community/screens/04-collection.jpg",
+            alt: "Fantasy Favorites collection shared with a circle, with Play and My List actions",
+            caption: "Collection",
+            width: 472,
+            height: 966,
+            statusBar: "dark",
+          },
+          {
+            src: "/images/projects/netflix-community/screens/05-prompt.jpg",
+            alt: "Post-watch prompt asking what stayed with you after an episode",
+            caption: "Post-watch prompt",
+            width: 471,
+            height: 1076,
+            statusBar: "dark",
           },
         ],
       },

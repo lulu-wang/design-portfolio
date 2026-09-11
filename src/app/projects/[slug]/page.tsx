@@ -394,6 +394,7 @@ export default async function ProjectDetail({
             items={cs.visuals.images}
             layout={cs.visuals.layout ?? "phones"}
             tone={cs.visuals.tone ?? "dark"}
+            roomy={cs.visuals.roomy}
           />
         ) : (
           <div className="mt-12 overflow-hidden bg-[#ececec]">

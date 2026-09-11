@@ -29,6 +29,9 @@ function statusBarStyle(item: CaseMediaItem): {
   if (src.includes("path-learning")) {
     return { bg: "#FDFCFA", bottomBg: "#FDFCFA", theme: "light" };
   }
+  if (src.includes("netflix-community")) {
+    return { bg: "#0A0A0A", bottomBg: "#0A0A0A", theme: "dark" };
+  }
   if (src.includes("pulsefit/final/22.png")) {
     return { bg: "#1D1F1F", bottomBg: "#2B3537", theme: "dark" };
   }
@@ -108,17 +111,20 @@ function StatusBar({
 
 function PhoneFrame({
   item,
+  roomy = false,
 }: {
   item: CaseMediaItem;
+  roomy?: boolean;
 }) {
   const { bg, bottomBg, theme } = statusBarStyle(item);
   const dark = theme === "dark";
   // PulseFit exports mix 864 and 1076-tall crops; pin them to one iPhone
   // viewport so shorter screens don't sit above a black gap in the grid.
-  const fillFrame = item.src.includes("pulsefit");
+  const fillFrame =
+    item.src.includes("pulsefit") || item.src.includes("netflix-community");
 
   return (
-    <figure className="mx-auto w-full">
+    <figure className={`mx-auto w-full ${roomy ? "max-w-[220px] sm:max-w-[240px] md:max-w-[260px]" : ""}`}>
       {/* Onur-style device shell — thin dark bezel, soft lift */}
       <div className="rounded-[2.6rem] bg-[#111] p-[10px] shadow-[0_28px_56px_rgba(0,0,0,0.45)] ring-1 ring-white/[0.08] sm:rounded-[2.85rem] sm:p-[11px]">
         <div
@@ -176,10 +182,12 @@ export default function CaseGallery({
   items,
   layout = "masonry",
   tone = "muted",
+  roomy = false,
 }: {
   items: CaseMediaItem[];
   layout?: Layout;
   tone?: "muted" | "dark" | "plain";
+  roomy?: boolean;
 }) {
   if (!items.length) return null;
 
@@ -242,10 +250,22 @@ export default function CaseGallery({
 
   if (layout === "phones") {
     return (
-      <div className={`mt-12 sm:mt-16 ${surface} px-5 py-16 sm:px-8 sm:py-24 md:px-10 md:py-28 lg:px-14`}>
-        <div className="mx-auto grid grid-cols-2 items-start justify-items-stretch gap-x-6 gap-y-14 sm:gap-x-10 sm:gap-y-16 md:grid-cols-3 md:gap-x-12 md:gap-y-20 2xl:grid-cols-4 2xl:gap-x-14 2xl:gap-y-24">
+      <div
+        className={`${surface} ${
+          roomy
+            ? "mt-12 px-8 py-20 sm:mt-16 sm:px-14 sm:py-28 md:px-20 md:py-32 lg:px-28"
+            : "mt-12 px-5 py-16 sm:mt-16 sm:px-8 sm:py-24 md:px-10 md:py-28 lg:px-14"
+        }`}
+      >
+        <div
+          className={`mx-auto grid items-start ${
+            roomy
+              ? "grid-cols-1 justify-items-center gap-x-12 gap-y-16 sm:grid-cols-2 sm:gap-x-16 sm:gap-y-20 md:grid-cols-3 md:gap-x-20 md:gap-y-24"
+              : "grid-cols-2 justify-items-stretch gap-x-6 gap-y-14 sm:gap-x-10 sm:gap-y-16 md:grid-cols-3 md:gap-x-12 md:gap-y-20 2xl:grid-cols-4 2xl:gap-x-14 2xl:gap-y-24"
+          }`}
+        >
           {items.map((item) => (
-            <PhoneFrame key={item.src} item={item} />
+            <PhoneFrame key={item.src} item={item} roomy={roomy} />
           ))}
         </div>
       </div>
