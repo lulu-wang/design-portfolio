@@ -118,10 +118,13 @@ export default function IllustrationsView() {
   };
 
   return (
-    <main className="mx-auto max-w-6xl px-5 sm:px-6 md:px-10">
+    <main className="page-wrap pt-28 sm:pt-32">
       {/* Hero */}
-      <section className="pt-12 sm:pt-14 md:pt-20">
-        <h1 className="animate-rise text-[2.75rem] font-bold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
+      <section className="pt-6">
+        <p className="animate-rise text-[13px] font-medium uppercase tracking-[0.18em] text-foreground/40">
+          /Gallery
+        </p>
+        <h1 className="animate-rise mt-4 text-[clamp(3rem,10vw,6rem)] font-extrabold uppercase leading-[0.9] tracking-[-0.04em]">
           Gallery
         </h1>
         <p
@@ -145,7 +148,7 @@ export default function IllustrationsView() {
                 onClick={() => setTab(t.id)}
                 className={`min-h-11 shrink-0 border-b-2 pb-3 pt-2 text-left text-lg transition-colors sm:min-h-0 sm:pt-0 md:text-xl ${
                   selected
-                    ? "border-foreground font-bold text-foreground"
+                    ? "border-foreground font-extrabold text-foreground"
                     : "border-transparent text-muted hover:text-foreground"
                 }`}
                 aria-pressed={selected}

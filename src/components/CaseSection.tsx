@@ -30,8 +30,8 @@ export default function CaseSection({
               </span>
             )}
             {label && (
-              <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-muted">
-                {label}
+              <span className="text-[11px] font-medium tracking-[0.16em] text-muted">
+                /{label}
               </span>
             )}
           </div>
@@ -40,7 +40,7 @@ export default function CaseSection({
 
       <div className="min-w-0">
         {title && (
-          <h2 className="max-w-3xl text-[1.45rem] font-bold leading-[1.2] tracking-tight sm:text-[1.75rem] sm:leading-[1.15] md:text-[2rem] md:leading-[1.12] [&_strong]:font-extrabold [&_em]:font-medium [&_em]:italic">
+          <h2 className="max-w-3xl text-[1.45rem] font-extrabold leading-[1.2] tracking-tight sm:text-[1.75rem] sm:leading-[1.15] md:text-[2rem] md:leading-[1.12] [&_strong]:font-extrabold [&_em]:font-medium [&_em]:italic">
             <RichText>{title}</RichText>
           </h2>
         )}

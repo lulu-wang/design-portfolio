@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import ProjectRow from "@/components/ProjectRow";
+import ProjectCard from "@/components/ProjectCard";
+import PrototypeButton from "@/components/PrototypeButton";
 import Footer from "@/components/Footer";
 import { projects } from "@/data/site";
 
@@ -10,13 +11,16 @@ export const metadata: Metadata = {
 
 export default function ProjectsPage() {
   return (
-    <main className="mx-auto max-w-6xl px-5 sm:px-6 md:px-10">
-      <section className="pt-12 pb-12 sm:pt-14 sm:pb-16 md:pt-20 md:pb-24">
-        <h1 className="animate-rise text-[2.75rem] font-bold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
+    <main className="page-wrap pt-28 sm:pt-32">
+      <section className="pt-6 pb-12 sm:pb-16 md:pb-20">
+        <p className="animate-rise text-[13px] font-medium uppercase tracking-[0.18em] text-foreground/40">
+          /Work
+        </p>
+        <h1 className="animate-rise mt-4 text-[clamp(3rem,10vw,6rem)] font-extrabold uppercase leading-[0.9] tracking-[-0.04em]">
           Projects
         </h1>
         <p
-          className="page-subtitle animate-rise mt-8 max-w-3xl sm:mt-10 md:max-w-4xl lg:max-w-5xl"
+          className="page-subtitle animate-rise mt-8 max-w-3xl"
           style={{ animationDelay: "120ms" }}
         >
           Product design, UX, and research across health, learning, and
@@ -24,9 +28,11 @@ export default function ProjectsPage() {
         </p>
       </section>
 
-      <section className="pb-10">
+      <PrototypeButton className="mb-12 sm:mb-14" />
+
+      <section className="grid gap-12 pb-10 sm:grid-cols-2 sm:gap-8 lg:gap-10">
         {projects.map((project, i) => (
-          <ProjectRow key={project.slug} project={project} index={i} showView />
+          <ProjectCard key={project.slug} project={project} index={i} />
         ))}
       </section>
 

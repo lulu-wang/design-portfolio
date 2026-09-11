@@ -7,9 +7,10 @@ import { createPortal } from "react-dom";
 
 const nav = [
   { label: "Home", href: "/" },
+  { label: "About Me", href: "/about" },
   { label: "Projects", href: "/projects" },
   { label: "Gallery", href: "/illustrations" },
-  { label: "About", href: "/about" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export default function Header() {
@@ -17,8 +18,11 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
-  const isActive = (href: string) =>
-    href === "/" ? pathname === "/" : pathname.startsWith(href);
+  const isActive = (href: string) => {
+    if (href.includes("#")) return false;
+    if (href === "/") return pathname === "/";
+    return pathname.startsWith(href);
+  };
 
   useEffect(() => {
     setMounted(true);
@@ -45,98 +49,69 @@ export default function Header() {
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
+  if (pathname.startsWith("/prototypes")) return null;
+
   return (
     <>
-      <header className="relative z-50 bg-background">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-5 sm:px-6 md:px-10 md:py-8">
+      <header className="pointer-events-none fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-5 sm:pt-6">
+        <div className="pointer-events-auto flex h-12 w-[min(92vw,268px)] items-center justify-between rounded-full bg-ink pl-5 pr-1.5 text-background shadow-[0_10px_30px_rgba(0,0,0,0.12)]">
           <Link
             href="/"
-            className="font-display text-2xl font-bold tracking-tight text-foreground"
+            className="font-display text-[17px] font-semibold tracking-tight text-background"
+            onClick={() => setOpen(false)}
           >
-            LW.
+            Lulu
           </Link>
-
-          <nav
-            className="hidden items-center gap-6 md:flex md:gap-10 lg:gap-12"
-            aria-label="Primary"
-          >
-            {nav.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`font-display text-base transition-colors md:text-lg ${
-                  isActive(item.href)
-                    ? "font-bold text-foreground"
-                    : "font-medium text-muted hover:text-foreground"
-                }`}
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
-
           <button
             type="button"
-            className="relative -mr-2 flex h-11 w-11 items-center justify-center md:hidden"
-            aria-label="Open menu"
+            className="flex h-9 w-9 items-center justify-center rounded-full bg-background text-foreground"
+            aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
-            onClick={() => setOpen(true)}
+            onClick={() => setOpen((v) => !v)}
           >
-            <span className="flex h-[14px] w-[22px] flex-col justify-between" aria-hidden>
-              <span className="block h-[1.5px] w-full bg-black" />
-              <span className="block h-[1.5px] w-full bg-black" />
-              <span className="block h-[1.5px] w-full bg-black" />
-            </span>
+            {open ? (
+              <span className="relative block h-3 w-3" aria-hidden>
+                <span className="absolute left-0 top-1/2 block h-[1.5px] w-full -translate-y-1/2 rotate-45 bg-foreground" />
+                <span className="absolute left-0 top-1/2 block h-[1.5px] w-full -translate-y-1/2 -rotate-45 bg-foreground" />
+              </span>
+            ) : (
+              <span className="flex flex-col items-center gap-[3px]" aria-hidden>
+                <span className="block h-[3px] w-[3px] rounded-full bg-foreground" />
+                <span className="block h-[3px] w-[3px] rounded-full bg-foreground" />
+                <span className="block h-[3px] w-[3px] rounded-full bg-foreground" />
+              </span>
+            )}
           </button>
         </div>
       </header>
 
       {mounted &&
-        open &&
         createPortal(
           <div
             role="dialog"
-            aria-modal="true"
+            aria-modal={open}
             aria-label="Navigation menu"
-            className="fixed inset-0 z-[9999] flex min-h-dvh w-screen flex-col md:hidden"
-            style={{ backgroundColor: "#f9f9f9" }}
+            inert={!open ? true : undefined}
+            className={`fixed inset-0 z-40 flex min-h-dvh w-screen flex-col bg-background transition-[opacity,visibility] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+              open ? "visible opacity-100" : "invisible opacity-0"
+            }`}
           >
-            <div className="flex items-center justify-between px-5 py-5">
-              <Link
-                href="/"
-                className="font-display text-2xl font-bold tracking-tight text-black"
-                onClick={() => setOpen(false)}
-              >
-                LW.
-              </Link>
-              <button
-                type="button"
-                className="relative -mr-2 flex h-11 w-11 items-center justify-center"
-                aria-label="Close menu"
-                onClick={() => setOpen(false)}
-              >
-                <span className="relative block h-[14px] w-[22px]" aria-hidden>
-                  <span className="absolute left-0 top-1/2 block h-[1.5px] w-full -translate-y-1/2 rotate-45 bg-black" />
-                  <span className="absolute left-0 top-1/2 block h-[1.5px] w-full -translate-y-1/2 -rotate-45 bg-black" />
-                </span>
-              </button>
-            </div>
-
             <nav
-              className="flex flex-1 flex-col justify-center gap-8 px-8 pb-24"
-              aria-label="Mobile"
+              className="flex flex-1 flex-col justify-center gap-7 px-8 pb-24 pt-24 sm:gap-9"
+              aria-label="Primary"
             >
               {nav.map((item, i) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`animate-rise font-display text-4xl tracking-tight sm:text-5xl ${
+                  className={`font-display text-4xl font-extrabold uppercase tracking-tight transition-[opacity,transform] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] sm:text-6xl ${
                     isActive(item.href)
-                      ? "font-bold text-black"
-                      : "font-medium text-black/45"
-                  }`}
-                  style={{ animationDelay: `${80 + i * 60}ms` }}
+                      ? "text-foreground"
+                      : "text-foreground/35 hover:text-foreground"
+                  } ${open ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"}`}
+                  style={{ transitionDelay: open ? `${80 + i * 60}ms` : "0ms" }}
                   onClick={() => setOpen(false)}
+                  tabIndex={open ? 0 : -1}
                 >
                   {item.label}
                 </Link>

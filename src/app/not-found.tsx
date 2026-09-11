@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <main className="mx-auto max-w-6xl px-5 sm:px-6 md:px-10">
+    <main className="page-wrap pt-28 sm:pt-32">
       <EmptyState
         title="404"
         description="This page doesn’t exist — or it’s been moved somewhere quieter."

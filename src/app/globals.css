@@ -1,30 +1,36 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f9f9f9;
-  --foreground: #050505;
-  --muted: #6b6b6b;
+  --background: #fdfcfb;
+  --foreground: #0a0a0a;
+  --muted: #6a6762;
+  --ink: #111111;
   --lavender: #e2dcf4;
-  --font-helvetica: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
+  --color-ink: var(--ink);
   --color-lavender: var(--lavender);
-  --font-sans: var(--font-helvetica);
-  --font-display: var(--font-helvetica);
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-archivo);
 }
 
 html {
-  scroll-behavior: smooth;
+  background: var(--background);
+}
+
+html.lenis,
+html.lenis-smooth {
+  scroll-behavior: auto;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: "Helvetica Neue", Helvetica, Arial, var(--font-inter), sans-serif;
+  font-family: var(--font-inter), "Inter", sans-serif;
   font-weight: 400;
   letter-spacing: -0.01em;
   -webkit-font-smoothing: antialiased;
@@ -35,39 +41,44 @@ h1,
 h2,
 h3,
 .font-display {
-  font-family: "Helvetica Neue", Helvetica, Arial, var(--font-inter), sans-serif;
+  font-family: var(--font-archivo), "Archivo", sans-serif;
   letter-spacing: -0.03em;
 }
 
 .font-secondary {
-  font-family: var(--font-inter), "Inter", "Helvetica Neue", Helvetica, sans-serif;
+  font-family: var(--font-inter), "Inter", sans-serif;
 }
 
-.font-cursive {
-  font-family: var(--font-cursive), "Caveat", cursive;
-  letter-spacing: 0;
-  text-transform: none;
+.page-wrap {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 1120px;
+  padding-inline: 1.25rem;
 }
 
-/* Shared page intro under H1 — slightly above luluwang.design baseline */
+@media (min-width: 640px) {
+  .page-wrap {
+    padding-inline: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .page-wrap {
+    padding-inline: 2.5rem;
+  }
+}
+
 .page-subtitle {
-  font-family: var(--font-inter), "Inter", "Helvetica Neue", Helvetica, sans-serif;
+  font-family: var(--font-inter), "Inter", sans-serif;
   font-size: 17px;
   line-height: 30px;
-  color: #5c5c5c;
+  color: var(--muted);
 }
 
 @media (min-width: 640px) {
   .page-subtitle {
     font-size: 18px;
     line-height: 29px;
-  }
-}
-
-@media (min-width: 768px) {
-  .page-subtitle {
-    font-size: 18px;
-    line-height: 30px;
   }
 }
 
@@ -78,11 +89,33 @@ h3,
   }
 }
 
-.hl {
-  border-radius: 3px;
-  padding: 0.05em 0.28em;
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
+.site-grain {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  opacity: 0.12;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.08  0 0 0 0 0.07  0 0 0 0 0.05  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+.pill-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: var(--ink);
+  color: var(--background);
+  padding: 0.9rem 1.35rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition: opacity 0.2s ease;
+}
+
+.pill-btn:hover {
+  opacity: 0.82;
 }
 
 @keyframes riseIn {
@@ -106,4 +139,49 @@ h3,
 
 .arrow {
   transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-rise {
+    animation: none;
+  }
+
+  html.lenis,
+  html.lenis-smooth {
+    scroll-behavior: auto;
+  }
+}
+
+.mde-app,
+.mde-app h1,
+.mde-app h2,
+.mde-app h3,
+.mde-app button,
+.mde-app input,
+.mde-app textarea {
+  font-family: var(--font-inter), Inter, sans-serif;
+  letter-spacing: -0.015em;
+}
+
+.opal-wave {
+  transform-origin: center bottom;
+  animation: opalWave 1.1s ease-in-out infinite;
+}
+
+@keyframes opalWave {
+  0%,
+  100% {
+    transform: scaleY(0.55);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .opal-wave {
+    animation: none;
+  }
 }
