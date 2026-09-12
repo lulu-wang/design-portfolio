@@ -43,51 +43,42 @@ export default function HomeHero() {
       </section>
 
       <section className="relative flex min-h-[100svh] items-center">
-        <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-5 sm:px-8 md:flex-row md:items-center md:gap-12 md:px-12 lg:gap-16">
-          <div className="flex min-w-0 flex-1 justify-end">
-            <div className="max-w-sm md:text-right">
-              <p className="text-[12px] font-medium tracking-[0.16em] text-foreground/40">
-                /Intro
-              </p>
-              <h2 className="mt-3 text-[1.05rem] font-medium leading-[1.55] tracking-tight text-foreground sm:text-[1.125rem] sm:leading-[1.55]">
-                I&rsquo;m Lulu, a product designer based in the Bay Area,
-                previously building at Meta and Xbox.
-              </h2>
-            </div>
+        <div className="mx-auto grid w-full max-w-6xl gap-12 px-5 sm:px-8 md:grid-cols-2 md:items-start md:gap-x-16 md:gap-y-0 md:px-12 lg:gap-x-24">
+          <div className="md:pt-6 md:text-right lg:pt-10">
+            <p className="text-[12px] font-medium tracking-[0.16em] text-foreground/40">
+              /Intro
+            </p>
+            <h2 className="mt-3 text-[1.15rem] font-medium leading-[1.55] tracking-tight text-foreground sm:text-[1.35rem] sm:leading-[1.5] md:text-[1.5rem] md:leading-[1.45]">
+              I&rsquo;m Lulu, a product designer based in the Bay Area,
+              previously building at Meta and Xbox.
+            </h2>
           </div>
 
-          <div
-            className="hidden w-[min(42vw,248px)] shrink-0 sm:w-[260px] md:block"
-            aria-hidden
-          />
-
-          <div className="flex min-w-0 flex-1 justify-start">
-            <div className="max-w-sm">
-              <p className="text-[12px] font-medium tracking-[0.16em] text-foreground/40">
-                /About
+          <div className="md:mt-36 lg:mt-52">
+            <p className="text-[12px] font-medium tracking-[0.16em] text-foreground/40">
+              /About
+            </p>
+            <div className="mt-3 space-y-4 text-[1rem] leading-[1.65] text-foreground/70 sm:text-[1.0625rem] sm:leading-[1.65]">
+              <p>
+                I&rsquo;m a product designer and developer with a focus on
+                clear systems, careful interaction, and experiences that
+                still feel human.
               </p>
-              <div className="mt-3 space-y-4 text-[0.95rem] leading-[1.65] text-foreground/70">
-                <p>
-                  I&rsquo;m a product designer and developer with a focus on
-                  clear systems, careful interaction, and experiences that
-                  still feel human.
-                </p>
-                <p>
-                  Over the years I&rsquo;ve shipped products used by millions,
-                  then moved into design to work closer to the problem —
-                  research, interface, and the craft in between.
-                </p>
-                <p>
-                  Product design, research, visual systems, and engineering.
-                </p>
-                <Link
-                  href="/projects"
-                  className="inline-flex items-center gap-3 pt-1 text-sm font-medium text-foreground transition-opacity hover:opacity-60"
-                >
-                  Get Started
-                  <ArrowOut />
-                </Link>
-              </div>
+              <p>
+                Over the years I&rsquo;ve shipped products used by millions,
+                then moved into design to work closer to the problem —
+                research, interface, and the craft in between.
+              </p>
+              <p>
+                Product design, research, visual systems, and engineering.
+              </p>
+              <Link
+                href="/projects"
+                className="inline-flex items-center gap-3 pt-1 text-sm font-medium text-foreground transition-opacity hover:opacity-60"
+              >
+                Get Started
+                <ArrowOut />
+              </Link>
             </div>
           </div>
         </div>
