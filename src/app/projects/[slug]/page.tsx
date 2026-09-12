@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
 import Arrow from "@/components/Arrow";
 import Footer from "@/components/Footer";
@@ -11,10 +12,12 @@ import ProjectCover from "@/components/ProjectCover";
 import Wireframe from "@/components/Wireframe";
 import RichText from "@/components/RichText";
 import BrandStyle from "@/components/BrandStyle";
+import UnlockForm from "@/app/prototypes/opal/UnlockForm";
+import { OPAL_COOKIE, isValidToken } from "@/app/prototypes/opal/auth";
 import { projects } from "@/data/site";
 
 export function generateStaticParams() {
-  return projects.map((p) => ({ slug: p.slug }));
+  return projects.filter((p) => p.slug !== "opal").map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({
@@ -40,6 +43,13 @@ export default async function ProjectDetail({
   const project = projects.find((p) => p.slug === slug);
   if (!project) notFound();
 
+  if (project.slug === "opal") {
+    const token = (await cookies()).get(OPAL_COOKIE)?.value;
+    if (!isValidToken(token)) {
+      return <UnlockForm redirectTo="/projects/opal" />;
+    }
+  }
+
   const cs = project.caseStudy;
   const currentIndex = projects.findIndex((p) => p.slug === slug);
   const nextProject = projects[(currentIndex + 1) % projects.length];
@@ -50,6 +60,9 @@ export default async function ProjectDetail({
     .join("  ·  ");
   const toolsLine =
     cs.meta.tools.length > 0 ? cs.meta.tools.join("  ·  ") : null;
+  const presentationExternal = Boolean(
+    cs.presentation && /^https?:\/\//.test(cs.presentation.href),
+  );
 
   const body = "font-secondary text-[15px] leading-[1.55] text-foreground/65 md:text-base md:leading-[1.6]";
   const bodyMuted = "font-secondary text-[15px] leading-[1.55] text-foreground/50 md:text-base md:leading-[1.6]";
@@ -96,11 +109,12 @@ export default async function ProjectDetail({
                   {" "}
                   <a
                     href={cs.presentation.href}
-                    target="_blank"
-                    rel="noreferrer"
+                    {...(presentationExternal
+                      ? { target: "_blank", rel: "noreferrer" }
+                      : {})}
                     className="text-foreground underline decoration-foreground/25 underline-offset-4 transition-colors hover:decoration-foreground"
                   >
-                    View case study presentation
+                    View {cs.presentation.label}
                   </a>
                 </>
               )}
@@ -121,6 +135,23 @@ export default async function ProjectDetail({
                 <span className="mx-2.5 text-foreground/20">·</span>
                 {toolsLine}
               </p>
+            )}
+            {cs.presentation && (
+              <div
+                className="animate-rise mt-8 mb-10 sm:mb-14 md:mb-16"
+                style={{ animationDelay: `${360 + project.tags.length * 70}ms` }}
+              >
+                <a
+                  href={cs.presentation.href}
+                  {...(presentationExternal
+                    ? { target: "_blank", rel: "noreferrer" }
+                    : {})}
+                  className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-medium text-background transition-opacity hover:opacity-90"
+                >
+                  View {cs.presentation.label}
+                  <Arrow className="h-2.5" />
+                </a>
+              </div>
             )}
           </div>
         </section>

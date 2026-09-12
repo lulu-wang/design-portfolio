@@ -83,18 +83,18 @@ export default function HomeView({
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
         <StatCard
-          label="My open tasks"
-          value={openMine.length}
-          hint="Assigned to you"
-          tone="mint"
-          onClick={onOpenTasks}
-        />
-        <StatCard
           label="Meetings today"
           value={todayMeetings.length}
           hint="Sep 9, 2024"
-          tone="lavender"
+          tone="blue"
           onClick={onOpenMeetings}
+        />
+        <StatCard
+          label="My open tasks"
+          value={openMine.length}
+          hint="Assigned to you"
+          tone="green"
+          onClick={onOpenTasks}
         />
         <StatCard
           label="Needs review"
@@ -110,8 +110,8 @@ export default function HomeView({
       </div>
 
       <div className="mt-6 grid grid-cols-1 items-start gap-4 lg:grid-cols-2">
-        <section className={`${cardMuted} border border-[#eceef2] p-5 text-left sm:p-6`}>
-          <div className="mb-4 flex items-center justify-between gap-2 sm:mb-5">
+        <section className={`${cardMuted} border border-[#eceef2] p-6 text-left sm:p-7`}>
+          <div className="mb-5 flex items-center justify-between gap-2">
             <h2 className={typeScale.section}>Upcoming meetings</h2>
             <button
               type="button"
@@ -122,9 +122,9 @@ export default function HomeView({
               <ChevronIcon />
             </button>
           </div>
-          <ul className="space-y-1 sm:space-y-2">
+          <ul className="space-y-2">
             {upcoming.length === 0 && (
-              <li className={`rounded-2xl px-1 py-5 ${typeScale.subtitle}`}>
+              <li className={`rounded-2xl px-5 py-6 ${typeScale.subtitle}`}>
                 No upcoming meetings on the calendar.
               </li>
             )}
@@ -135,7 +135,7 @@ export default function HomeView({
               return (
                 <li key={meeting.id}>
                   <div
-                    className={`flex w-full items-start justify-between gap-3 px-1 py-4 text-left sm:gap-4 sm:px-3 sm:py-5 ${rowInteractive}`}
+                    className={`flex w-full items-start justify-between gap-4 px-5 py-5 text-left ${rowInteractive}`}
                   >
                     <div className="flex min-w-0 flex-1 flex-col items-start gap-1 text-left">
                       <button
@@ -293,18 +293,18 @@ function StatCard({
   label: string;
   value: number;
   hint: string;
-  tone: "mint" | "lavender" | "peach";
+  tone: "green" | "blue" | "peach";
   onClick: () => void;
 }) {
   const surfaces: Record<typeof tone, string> = {
-    mint: `${cardRadius} border border-[#d5eadc] bg-[#eaf6f0]`,
-    lavender: `${cardRadius} border border-[#e0d8f6] bg-[#efeafb]`,
-    peach: `${cardRadius} border border-[#f3ddd0] bg-[#fef3ec]`,
+    green: `${cardRadius} border border-[#e6f6e8] bg-[#e6f6e8]`,
+    blue: `${cardRadius} border border-[#ecf4fb] bg-[#ecf4fb]`,
+    peach: `${cardRadius} border border-[#fcf6f0] bg-[#fcf6f0]`,
   };
   const labels: Record<typeof tone, string> = {
-    mint: "text-[#5c7d6c]",
-    lavender: "text-[#6d62a6]",
-    peach: "text-[#9a6d55]",
+    green: "text-[#5f8f72]",
+    blue: "text-[#6e9acd]",
+    peach: "text-[#c48a62]",
   };
 
   return (
@@ -315,7 +315,7 @@ function StatCard({
     >
       <p className={`text-[13px] font-medium leading-5 ${labels[tone]}`}>{label}</p>
       <p className={`mt-3 ${typeScale.stat}`}>{value}</p>
-      <p className={`mt-2 ${typeScale.meta}`}>{hint}</p>
+      <p className={`mt-2 text-[12px] leading-5 ${labels[tone]} opacity-80`}>{hint}</p>
     </button>
   );
 }

@@ -4,22 +4,26 @@ import Link from "next/link";
 import { useActionState } from "react";
 import { unlockOpalPrototype } from "./actions";
 
-export default function UnlockForm() {
+export default function UnlockForm({
+  redirectTo = "/prototypes/opal",
+}: {
+  redirectTo?: string;
+}) {
   const [state, formAction, pending] = useActionState(unlockOpalPrototype, null);
 
   return (
     <main className="flex min-h-dvh items-center justify-center bg-[#fdfcfb] px-5">
       <form action={formAction} className="w-full max-w-sm">
         <p className="text-[13px] font-medium uppercase tracking-[0.18em] text-foreground/40">
-          Protected prototype
+          Protected project
         </p>
         <h1 className="mt-4 font-display text-4xl font-extrabold tracking-tight">
           Opal
         </h1>
         <p className="mt-3 text-[15px] leading-relaxed text-muted">
-          This web app is password protected. Enter the password to open the
-          prototype.
+          This project is password protected. Enter the password to continue.
         </p>
+        <input type="hidden" name="next" value={redirectTo} />
         <label className="mt-8 block">
           <span className="text-[13px] font-medium text-foreground/50">
             Password
@@ -43,7 +47,7 @@ export default function UnlockForm() {
           disabled={pending}
           className="mt-5 inline-flex h-12 w-full items-center justify-center rounded-full bg-ink text-[15px] font-medium text-background disabled:opacity-60"
         >
-          {pending ? "Opening…" : "Open prototype"}
+          {pending ? "Opening…" : "Continue"}
         </button>
         <Link
           href="/projects"

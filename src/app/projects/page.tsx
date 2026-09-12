@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import ProjectCard from "@/components/ProjectCard";
-import PrototypeButton from "@/components/PrototypeButton";
 import Footer from "@/components/Footer";
 import { projects } from "@/data/site";
 
@@ -23,12 +22,10 @@ export default function ProjectsPage() {
           className="page-subtitle animate-rise mt-8 max-w-3xl"
           style={{ animationDelay: "120ms" }}
         >
-          Product design, UX, and research across health, learning, and
-          streaming.
+          Product design, UX, and research across meetings, health, learning,
+          and streaming.
         </p>
       </section>
-
-      <PrototypeButton className="mb-12 sm:mb-14" />
 
       <section className="grid gap-12 pb-10 sm:grid-cols-2 sm:gap-8 lg:gap-10">
         {projects.map((project, i) => (

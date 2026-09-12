@@ -10,10 +10,12 @@ export const metadata: Metadata = {
     "Interactive prototype: meeting notes, transcription, task extraction, and a task board.",
 };
 
-export default async function MeetingDecisionExtractorPage() {
+export const dynamic = "force-dynamic";
+
+export default async function OpalPage() {
   const token = (await cookies()).get(OPAL_COOKIE)?.value;
   if (!isValidToken(token)) {
-    return <UnlockForm />;
+    return <UnlockForm redirectTo="/prototypes/opal" />;
   }
 
   return <MeetingExtractorLoader />;

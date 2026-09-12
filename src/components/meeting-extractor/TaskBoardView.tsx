@@ -3,7 +3,9 @@
 import { useEffect, useMemo, useRef, useState, type DragEvent } from "react";
 import {
   columnLabel,
+  currentUser,
   formatDueDate,
+  people,
   personById,
   projectById,
   projects,
@@ -16,6 +18,7 @@ import {
 } from "@/data/meeting-extractor";
 import {
   Avatar,
+  AvatarStack,
   BoardIcon,
   CalendarIcon,
   CheckIcon,
@@ -31,7 +34,7 @@ import {
 } from "./ui";
 
 const listGrid =
-  "grid grid-cols-[minmax(180px,1.4fr)_minmax(118px,0.7fr)_minmax(132px,0.8fr)_minmax(118px,0.75fr)_minmax(140px,0.9fr)] items-center gap-3";
+  "grid grid-cols-[minmax(180px,1.4fr)_minmax(118px,0.7fr)_minmax(132px,0.8fr)_minmax(118px,0.75fr)_minmax(148px,0.9fr)_minmax(140px,0.9fr)] items-center gap-3";
 
 const columns: BoardColumn[] = ["todo", "in-progress", "done"];
 const priorityRank: Record<TaskPriority, number> = {
@@ -203,8 +206,9 @@ export default function TaskBoardView({
 type PriorityFilter = "all" | TaskPriority;
 type StatusFilter = "all" | BoardColumn;
 type ProjectFilter = "all" | string;
+type AssigneeFilter = "all" | string;
 type DeadlineSort = "oldest" | "newest";
-type FilterMenu = "priority" | "deadline" | "status" | "project" | null;
+type FilterMenu = "priority" | "deadline" | "status" | "project" | "assignee" | null;
 
 type TaskFilters = ReturnType<typeof useTaskFilters>;
 
@@ -212,6 +216,7 @@ function useTaskFilters(tasks: BoardTask[]) {
   const [priority, setPriority] = useState<PriorityFilter>("all");
   const [status, setStatus] = useState<StatusFilter>("all");
   const [project, setProject] = useState<ProjectFilter>("all");
+  const [assignee, setAssignee] = useState<AssigneeFilter>("all");
   const [deadline, setDeadline] = useState<DeadlineSort>("oldest");
   const [menu, setMenu] = useState<FilterMenu>(null);
 
@@ -227,9 +232,19 @@ function useTaskFilters(tasks: BoardTask[]) {
   const projectOptions = projects.filter((item) =>
     tasks.some((task) => task.projectId === item.id),
   );
+  const assigneeOptions = people.filter((person) =>
+    tasks.some((task) => task.assigneeIds.includes(person.id)),
+  ).sort((a, b) => {
+    if (a.id === currentUser.id) return -1;
+    if (b.id === currentUser.id) return 1;
+    return a.name.localeCompare(b.name);
+  });
 
   const rows = useMemo(() => {
     const next = tasks.filter((task) => {
+      if (assignee !== "all" && !task.assigneeIds.includes(assignee)) {
+        return false;
+      }
       if (priority !== "all" && task.priority !== priority) return false;
       if (project !== "all" && task.projectId !== project) return false;
       return true;
@@ -240,7 +255,7 @@ function useTaskFilters(tasks: BoardTask[]) {
         : a.dueDate.localeCompare(b.dueDate) || a.title.localeCompare(b.title),
     );
     return next;
-  }, [tasks, priority, project, deadline]);
+  }, [tasks, assignee, priority, project, deadline]);
 
   const listRows = useMemo(
     () =>
@@ -250,10 +265,11 @@ function useTaskFilters(tasks: BoardTask[]) {
     [rows, status],
   );
 
-  const hasFilters = priority !== "all" || project !== "all";
+  const hasFilters = assignee !== "all" || priority !== "all" || project !== "all";
   const hasListFilters = hasFilters || status !== "all";
 
   const clearFilters = () => {
+    setAssignee("all");
     setPriority("all");
     setStatus("all");
     setProject("all");
@@ -265,6 +281,8 @@ function useTaskFilters(tasks: BoardTask[]) {
     setMenu((current) => (current === id ? null : id));
 
   return {
+    assignee,
+    setAssignee,
     priority,
     setPriority,
     status,
@@ -277,6 +295,7 @@ function useTaskFilters(tasks: BoardTask[]) {
     toggle,
     closeMenu: () => setMenu(null),
     projectOptions,
+    assigneeOptions,
     rows,
     listRows,
     hasFilters,
@@ -351,6 +370,28 @@ function TaskFilterControls({
         />
       )}
       <ListFilter
+        label="Assignee"
+        open={filters.menu === "assignee"}
+        active={filters.assignee !== "all"}
+        align={menuAlign}
+        onToggle={() => filters.toggle("assignee")}
+        options={[
+          { id: "all", label: "All assignees" },
+          ...filters.assigneeOptions.map((person) => ({
+            id: person.id,
+            label:
+              person.id === currentUser.id
+                ? `${person.name.split(" ")[0]} (me)`
+                : person.name,
+          })),
+        ]}
+        value={filters.assignee}
+        onChange={(value) => {
+          filters.setAssignee(value);
+          filters.closeMenu();
+        }}
+      />
+      <ListFilter
         label="Project"
         open={filters.menu === "project"}
         active={filters.project !== "all"}
@@ -384,7 +425,7 @@ function TaskListView({
 }) {
   return (
     <div className="min-h-0 min-w-0 flex-1 overflow-auto rounded-[22px] border border-[#eceef2] bg-white">
-      <div className="min-w-[820px]">
+      <div className="min-w-[960px]">
         <div className={`${listGrid} items-center px-5 py-3`}>
           <span className={typeScale.label}>Task</span>
           <TaskFilterControls filters={filters} showStatusFilter />
@@ -431,6 +472,14 @@ function TaskListView({
               <span className="text-right text-[13px] leading-5 text-[#8b919c]">
                 {columnLabel(task.status)}
               </span>
+              <span className="flex min-w-0 items-center justify-end gap-2">
+                <AvatarStack ids={task.assigneeIds.slice(0, 2)} size="xs" compact />
+                <span className="min-w-0 truncate text-[13px] leading-5 text-[#374151]">
+                  {task.assigneeIds
+                    .map((id) => personById(id).name.split(" ")[0])
+                    .join(", ")}
+                </span>
+              </span>
               <span className="min-w-0 truncate text-right text-[13px] leading-5 text-[#374151]">
                 {projectById(task.projectId).name}
               </span>
@@ -468,7 +517,7 @@ function ListFilter({
 
   return (
     <div
-      className={`relative flex ${align === "left" ? "justify-start" : "justify-end"}`}
+      className={`relative flex min-w-0 ${align === "left" ? "justify-start" : "justify-end"}`}
       data-list-filter
     >
       <button
@@ -476,13 +525,13 @@ function ListFilter({
         onClick={onToggle}
         aria-haspopup="listbox"
         aria-expanded={open}
-        className={`inline-flex h-9 items-center gap-1 rounded-full px-3.5 text-[13px] font-medium shadow-[0_1px_2px_rgba(16,24,40,0.04)] ${
+        className={`inline-flex h-9 max-w-full min-w-0 items-center gap-1 rounded-full px-3.5 text-[13px] font-medium shadow-[0_1px_2px_rgba(16,24,40,0.04)] ${
           emphasized
             ? "bg-[#efeafb] text-[#6d4ef0] ring-1 ring-[#e0d8f6]"
             : "bg-white text-[#374151] ring-1 ring-[#eceef2] hover:bg-[#f7f4ff] hover:text-[#111827]"
         }`}
       >
-        {display}
+        <span className="min-w-0 truncate">{display}</span>
         <ChevronDownIcon />
       </button>
       {open && (

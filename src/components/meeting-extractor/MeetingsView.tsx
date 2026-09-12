@@ -195,7 +195,7 @@ export default function MeetingsView({
 
         <section className="@container flex h-full min-w-0 flex-col rounded-[22px] border border-[#eceef2] bg-white p-5">
           <div className="mb-3 flex items-center gap-2 px-1">
-            <div className="flex min-w-0 items-center gap-2.5">
+            <div className="flex min-w-0 flex-1 items-center gap-2 overflow-hidden">
               <div className="relative shrink-0" data-calendar-menu>
                 <button
                   type="button"
@@ -282,7 +282,7 @@ export default function MeetingsView({
               <button
                 type="button"
                 onClick={goToday}
-                className={`mr-1 hidden rounded-lg px-2 py-1 text-[12px] font-medium @[380px]:inline ${
+                className={`mr-1 hidden rounded-lg px-2 py-1 text-[12px] font-medium @[560px]:inline ${
                   onToday
                     ? "text-[#c5cad3]"
                     : "text-[#7c5cf6] hover:bg-[#f7f4ff] hover:text-[#6d4ef0]"

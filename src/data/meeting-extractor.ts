@@ -153,11 +153,11 @@ export function callLinkFor(id: string, type: RecordingSource) {
 export const people: Person[] = [
   {
     id: "alex",
-    name: "Lulu Wang",
-    initials: "LW",
+    name: "Alex Rivera",
+    initials: "AR",
     role: "Product",
-    email: "lulu.wang@opal.app",
-    photo: "/images/portrait.png",
+    email: "alex.rivera@opal.app",
+    photo: "https://randomuser.me/api/portraits/men/32.jpg",
     avatarBg: "#EDE9FE",
     avatarFg: "#6D28D9",
   },
@@ -316,7 +316,7 @@ export const people: Person[] = [
 export const currentUser = people[0];
 
 export const currentUserProfile = {
-  email: "lulu.wang@opal.app",
+  email: "alex.rivera@opal.app",
   title: "Product Manager",
   department: "Product",
   managerId: "maya",

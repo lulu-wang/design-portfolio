@@ -2,7 +2,6 @@ import Link from "next/link";
 import Arrow from "@/components/Arrow";
 import Footer from "@/components/Footer";
 import ProjectCard from "@/components/ProjectCard";
-import PrototypeButton from "@/components/PrototypeButton";
 import ContactForm from "@/components/ContactForm";
 import HomeHero from "@/components/HomeHero";
 import ScrollFillText from "@/components/ScrollFillText";
@@ -31,7 +30,6 @@ export default function Home() {
             <ProjectCard key={project.slug} project={project} index={i} />
           ))}
         </div>
-        <PrototypeButton className="mt-10" />
         <Link
           href="/projects"
           className="arrow-link mt-10 inline-flex items-center gap-2 text-sm text-foreground/50 sm:hidden"
