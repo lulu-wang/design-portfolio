@@ -209,7 +209,7 @@ export const projects: Project[] = [
           "Moodboard + ChatGPT for visual direction, then hi-fi and a Cursor prototype",
         ],
         timeline: [
-          "Figma lo-fi: meetings desktop, sidebar jobs, Jira-like board",
+          "Figma lo-fi: meetings desktop, decisions list, Jira-like task board",
           "Moodboard with ChatGPT: purple brand, pastel glance cards, work-tool rail",
           "Cursor prototype, then a second pass for People, Home, projects, files, search",
         ],
@@ -234,7 +234,7 @@ export const projects: Project[] = [
       },
       wireframes: {
         lowFi:
-          "I sketched **low-fidelity wireframes in Figma** before any color: a dark sidebar for the jobs, a three-up meetings canvas (next event, calendar, today’s counts), and a table of the day underneath. That layout was the contract for “scan today, join what’s next, open notes.” The task board was modeled on **Jira** so the destination for a decision would feel familiar. Hi-fi kept this skeleton and filled it — real calendar, people, Join meeting as the one solid action.",
+          "I sketched **low-fidelity wireframes in Figma** before any color: a dark sidebar for the jobs, a three-up meetings canvas (next event, calendar, today’s counts), and a table of the day underneath. That layout was the contract for “scan today, join what’s next, open notes.” **Decisions** sat on the meeting itself — owner, status, create task — so a call could become work without leaving the room. The **task board** was modeled on **Jira** so the destination for a decision would feel familiar. Hi-fi kept this skeleton and filled it — real calendar, people, Join meeting as the one solid action.",
         layout: "full",
         images: [
           {
@@ -242,6 +242,22 @@ export const projects: Project[] = [
             alt: "Low-fidelity desktop wireframe of Opal’s meetings home, with a dark sidebar, up-next meeting card, calendar, today stats, and a table of today’s meetings",
             caption:
               "Figma lo-fi — meetings as the day’s home: up next, calendar, today, then the table",
+            width: 1024,
+            height: 728,
+          },
+          {
+            src: "/images/projects/opal/wireframe-decisions.png",
+            alt: "Low-fidelity desktop wireframe of Opal meeting decisions, with a dark sidebar, a list of decisions, status chips, create-task actions, and meeting context on the right",
+            caption:
+              "Figma lo-fi — decisions on the meeting: owner, status, and create task in one list",
+            width: 1024,
+            height: 728,
+          },
+          {
+            src: "/images/projects/opal/wireframe-tasks.png",
+            alt: "Low-fidelity desktop wireframe of Opal’s all-tasks board, with to-do, in-progress, and completed columns and status buttons on each card",
+            caption:
+              "Figma lo-fi — Jira-like board: to do, in progress, completed, with status on the card",
             width: 1024,
             height: 728,
           },
