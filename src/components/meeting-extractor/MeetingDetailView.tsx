@@ -3,14 +3,18 @@
 import { useEffect, useMemo, useRef, useState, type ChangeEvent } from "react";
 import {
   columnLabel,
+  currentUser,
   formatDueDate,
   grepTranscript,
   meetingParticipantIds,
+  people,
   personById,
   projectById,
+  statusLabel,
   type AppMeeting,
   type BoardTask,
   type Decision,
+  type DecisionStatus,
   type GrepHit,
   type MeetingFile,
   type MeetingRecording,
@@ -74,6 +78,7 @@ export default function MeetingDetailView({
   onViewTask,
   onCreateFromGrep,
   onAddDecision,
+  onUpdateDecisionStatus,
   onAddNote,
   onRemoveNote,
   onUploadRecording,
@@ -95,7 +100,14 @@ export default function MeetingDetailView({
   onCreateTask: (decision: Decision) => void;
   onViewTask: (task: BoardTask) => void;
   onCreateFromGrep: (hit: GrepHit) => void;
-  onAddDecision: () => void;
+  onAddDecision: (input: {
+    title: string;
+    summary: string;
+    ownerId: string;
+    dueDate: string | null;
+    status: DecisionStatus;
+  }) => void;
+  onUpdateDecisionStatus: (id: string, status: DecisionStatus) => void;
   onAddNote: (heading: string, text: string) => void;
   onRemoveNote: (noteId: string) => void;
   onUploadRecording: (file: File, source: RecordingSource) => void;
@@ -246,11 +258,13 @@ export default function MeetingDetailView({
         )}
         {tab === "decisions" && (
           <DecisionsTab
+            meeting={meeting}
             decisions={meetingDecisions}
             tasks={tasks}
             onCreateTask={onCreateTask}
             onViewTask={onViewTask}
             onAddDecision={onAddDecision}
+            onUpdateDecisionStatus={onUpdateDecisionStatus}
           />
         )}
         {tab === "tasks" && (
@@ -888,19 +902,98 @@ function TranscriptMessage({
   );
 }
 
+function emptyDecisionDraft(meeting: AppMeeting): {
+  title: string;
+  summary: string;
+  ownerId: string;
+  dueDate: string;
+  status: DecisionStatus;
+} {
+  const attendees = meetingParticipantIds(meeting);
+  const ownerId = attendees.includes(currentUser.id)
+    ? currentUser.id
+    : (attendees[0] ?? currentUser.id);
+  return {
+    title: "",
+    summary: "",
+    ownerId,
+    dueDate: "",
+    status: "open",
+  };
+}
+
 function DecisionsTab({
+  meeting,
   decisions,
   tasks,
   onCreateTask,
   onViewTask,
   onAddDecision,
+  onUpdateDecisionStatus,
 }: {
+  meeting: AppMeeting;
   decisions: Decision[];
   tasks: BoardTask[];
   onCreateTask: (decision: Decision) => void;
   onViewTask: (task: BoardTask) => void;
-  onAddDecision: () => void;
+  onAddDecision: (input: {
+    title: string;
+    summary: string;
+    ownerId: string;
+    dueDate: string | null;
+    status: DecisionStatus;
+  }) => void;
+  onUpdateDecisionStatus: (id: string, status: DecisionStatus) => void;
 }) {
+  const [drafting, setDrafting] = useState(false);
+  const [draft, setDraft] = useState(() => emptyDecisionDraft(meeting));
+  const [statusMenuId, setStatusMenuId] = useState<string | null>(null);
+  const titleRef = useRef<HTMLInputElement>(null);
+  const owners = people.filter((person) =>
+    meetingParticipantIds(meeting).includes(person.id),
+  );
+  if (owners.length === 0) owners.push(currentUser);
+  const statuses: DecisionStatus[] = ["open", "needs-review", "confirmed"];
+
+  useEffect(() => {
+    setDrafting(false);
+    setDraft(emptyDecisionDraft(meeting));
+  }, [meeting.id]);
+
+  useEffect(() => {
+    if (drafting) titleRef.current?.focus();
+  }, [drafting]);
+
+  useEffect(() => {
+    const onPointer = (event: MouseEvent) => {
+      const target = event.target as HTMLElement;
+      if (!target.closest("[data-decision-status]")) setStatusMenuId(null);
+    };
+    document.addEventListener("mousedown", onPointer);
+    return () => document.removeEventListener("mousedown", onPointer);
+  }, []);
+
+  const closeDraft = () => {
+    setDrafting(false);
+    setDraft(emptyDecisionDraft(meeting));
+  };
+
+  const saveDraft = () => {
+    const title = draft.title.trim();
+    if (!title) {
+      titleRef.current?.focus();
+      return;
+    }
+    onAddDecision({
+      title,
+      summary: draft.summary.trim(),
+      ownerId: draft.ownerId,
+      dueDate: draft.dueDate || null,
+      status: draft.status,
+    });
+    closeDraft();
+  };
+
   return (
     <div>
       <div className="mb-6 flex flex-wrap items-start justify-between gap-3">
@@ -912,16 +1005,122 @@ function DecisionsTab({
             Review, confirm, and turn decisions into work.
           </p>
         </div>
-        <button
-          type="button"
-          onClick={onAddDecision}
-          className={`inline-flex h-9 shrink-0 items-center gap-1.5 rounded-xl border border-[#eceef2] bg-white px-3 text-[13px] font-medium text-[#374151] ${cardInteractive}`}
-        >
-          <PlusIcon />
-          Add decision
-        </button>
+        {!drafting && (
+          <button
+            type="button"
+            onClick={() => setDrafting(true)}
+            className={`inline-flex h-9 shrink-0 items-center gap-1.5 rounded-xl border border-[#eceef2] bg-white px-3 text-[13px] font-medium text-[#374151] ${cardInteractive}`}
+          >
+            <PlusIcon />
+            Add decision
+          </button>
+        )}
       </div>
       <ul className="space-y-3">
+        {drafting && (
+          <li className="rounded-2xl border border-dashed border-[#d7dbe3] bg-[#fbfbfd] p-5">
+            <form
+              onSubmit={(event) => {
+                event.preventDefault();
+                saveDraft();
+              }}
+            >
+              <div className="flex items-center justify-between gap-3">
+                <span className="inline-flex h-[22px] items-center rounded-full bg-[#eef0f3] px-2.5 text-[11.5px] font-medium text-[#5b6573]">
+                  Draft
+                </span>
+                <button
+                  type="button"
+                  onClick={closeDraft}
+                  className="text-[13px] font-medium text-[#8b919c] hover:text-[#111827]"
+                >
+                  Cancel
+                </button>
+              </div>
+              <input
+                ref={titleRef}
+                value={draft.title}
+                onChange={(e) => setDraft((prev) => ({ ...prev, title: e.target.value }))}
+                placeholder="Decision title"
+                className={`mt-3 w-full bg-transparent outline-none placeholder:text-[#c5cad3] ${typeScale.card}`}
+              />
+              <textarea
+                value={draft.summary}
+                onChange={(e) =>
+                  setDraft((prev) => ({ ...prev, summary: e.target.value }))
+                }
+                rows={2}
+                placeholder="Add a short summary…"
+                className="mt-2 w-full resize-none bg-transparent text-[13.5px] leading-relaxed text-[#6b7280] outline-none placeholder:text-[#c5cad3]"
+              />
+              <div className="mt-3 flex flex-wrap items-center gap-2">
+                <label className="relative inline-flex min-w-[148px] items-center">
+                  <span className="sr-only">Owner</span>
+                  <select
+                    value={draft.ownerId}
+                    onChange={(e) =>
+                      setDraft((prev) => ({ ...prev, ownerId: e.target.value }))
+                    }
+                    className="h-9 w-full appearance-none rounded-xl border border-[#eceef2] bg-white py-0 pl-3 pr-9 text-[13px] font-medium text-[#111827] outline-none focus:border-[#ddd6fe] focus:ring-4 focus:ring-[#eee8ff]"
+                  >
+                    {owners.map((person) => (
+                      <option key={person.id} value={person.id}>
+                        {person.name}
+                      </option>
+                    ))}
+                  </select>
+                  <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[#8b919c]">
+                    <ChevronDownIcon />
+                  </span>
+                </label>
+                <label className="relative inline-flex h-9 items-center gap-1.5 rounded-xl border border-[#eceef2] bg-white px-3 text-[13px] font-medium text-[#374151]">
+                  <CalendarIcon />
+                  <span className={draft.dueDate ? "text-[#111827]" : "text-[#8b919c]"}>
+                    {draft.dueDate ? formatDueDate(draft.dueDate, true) : "Due date"}
+                  </span>
+                  <input
+                    type="date"
+                    value={draft.dueDate}
+                    onChange={(e) =>
+                      setDraft((prev) => ({ ...prev, dueDate: e.target.value }))
+                    }
+                    className="absolute inset-0 cursor-pointer opacity-0"
+                    aria-label="Due date"
+                  />
+                </label>
+                <label className="relative inline-flex min-w-[132px] items-center">
+                  <span className="sr-only">Status</span>
+                  <select
+                    value={draft.status}
+                    onChange={(e) =>
+                      setDraft((prev) => ({
+                        ...prev,
+                        status: e.target.value as DecisionStatus,
+                      }))
+                    }
+                    className="h-9 w-full appearance-none rounded-xl border border-[#eceef2] bg-white py-0 pl-3 pr-9 text-[13px] font-medium text-[#111827] outline-none focus:border-[#ddd6fe] focus:ring-4 focus:ring-[#eee8ff]"
+                  >
+                    {statuses.map((status) => (
+                      <option key={status} value={status}>
+                        {statusLabel(status)}
+                      </option>
+                    ))}
+                  </select>
+                  <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[#8b919c]">
+                    <ChevronDownIcon />
+                  </span>
+                </label>
+                <button
+                  type="submit"
+                  disabled={!draft.title.trim()}
+                  className="ml-auto inline-flex h-9 items-center rounded-xl bg-[#111827] px-3.5 text-[13px] font-medium text-white hover:bg-black disabled:cursor-not-allowed disabled:opacity-40"
+                >
+                  Add decision
+                </button>
+              </div>
+            </form>
+          </li>
+        )}
         {decisions.map((decision) => {
           const owner = personById(decision.ownerId);
           const linkedTask = tasks.find((t) => t.decisionId === decision.id);
@@ -940,9 +1139,24 @@ function DecisionsTab({
                 </button>
               )}
               <div className={`flex min-w-0 items-start gap-3 ${linkedTask ? "" : "pr-[7.75rem]"}`}>
-                <span className="mt-0.5 text-[#7c5cf6]">
+                <button
+                  type="button"
+                  onClick={() =>
+                    onUpdateDecisionStatus(
+                      decision.id,
+                      decision.status === "confirmed" ? "needs-review" : "confirmed",
+                    )
+                  }
+                  className="mt-0.5 text-[#7c5cf6] hover:opacity-80"
+                  aria-pressed={decision.status === "confirmed"}
+                  aria-label={
+                    decision.status === "confirmed"
+                      ? "Send back to review"
+                      : "Confirm decision"
+                  }
+                >
                   <CheckCircleIcon filled={decision.status === "confirmed"} />
-                </span>
+                </button>
                 <div className="min-w-0">
                   <p className={`min-w-0 break-words ${typeScale.card}`}>{decision.title}</p>
                   <p className="mt-1 min-w-0 break-words text-[13.5px] leading-relaxed text-[#6b7280]">
@@ -959,7 +1173,43 @@ function DecisionsTab({
                         {formatDueDate(decision.dueDate, true)}
                       </span>
                     )}
-                    <StatusPill status={decision.status} />
+                    <div className="relative" data-decision-status>
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setStatusMenuId((id) =>
+                            id === decision.id ? null : decision.id,
+                          )
+                        }
+                        className="rounded-full hover:opacity-80"
+                        aria-expanded={statusMenuId === decision.id}
+                        aria-haspopup="listbox"
+                        aria-label="Change decision status"
+                      >
+                        <StatusPill status={decision.status} />
+                      </button>
+                      {statusMenuId === decision.id && (
+                        <div className="absolute left-0 z-20 mt-1 w-40 overflow-hidden rounded-xl border border-[#e6e9ef] bg-white py-1 shadow-lg">
+                          {statuses.map((status) => (
+                            <button
+                              key={status}
+                              type="button"
+                              onClick={() => {
+                                onUpdateDecisionStatus(decision.id, status);
+                                setStatusMenuId(null);
+                              }}
+                              className={`block w-full px-3 py-2 text-left text-[13px] hover:bg-[#f7f8fa] ${
+                                decision.status === status
+                                  ? "font-medium text-[#111827]"
+                                  : "text-[#374151]"
+                              }`}
+                            >
+                              {statusLabel(status)}
+                            </button>
+                          ))}
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>

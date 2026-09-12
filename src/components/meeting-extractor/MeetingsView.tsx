@@ -12,6 +12,7 @@ import {
   shiftMonth,
   type AppMeeting,
   type BoardTask,
+  type Decision,
   type MeetingTab,
 } from "@/data/meeting-extractor";
 import {
@@ -34,6 +35,7 @@ import {
 export default function MeetingsView({
   meetings,
   tasks,
+  decisions,
   selectedDate,
   onSelectDate,
   onOpenMeeting,
@@ -42,6 +44,7 @@ export default function MeetingsView({
 }: {
   meetings: AppMeeting[];
   tasks: BoardTask[];
+  decisions: Decision[];
   selectedDate: string;
   onSelectDate: (iso: string) => void;
   onOpenMeeting: (
@@ -93,7 +96,12 @@ export default function MeetingsView({
     [view.year, view.month],
   );
   const markedDays = new Set(meetings.map((m) => m.date));
-  const awaiting = selectedDate === prototypeToday ? 2 : 0;
+  const dayUnconfirmed = decisions.filter((decision) => {
+    const meeting = meetings.find((item) => item.id === decision.meetingId);
+    return meeting?.date === selectedDate && decision.status !== "confirmed";
+  });
+  const awaiting = dayUnconfirmed.length;
+  const reviewMeetingId = dayUnconfirmed[0]?.meetingId;
   const goToday = () => {
     const { year, month } = parseIsoDate(prototypeToday);
     setView({ year, month });
@@ -367,10 +375,21 @@ export default function MeetingsView({
               </p>
             </div>
             <div className="border-l border-[#eceef2] pl-4">
-              <p className={typeScale.stat}>
-                {awaiting}
-              </p>
-              <p className={`mt-2 ${typeScale.label}`}>awaiting review</p>
+              {reviewMeetingId ? (
+                <button
+                  type="button"
+                  onClick={() => onOpenMeeting(reviewMeetingId, "decisions")}
+                  className="text-left hover:text-[#7c5cf6]"
+                >
+                  <p className={typeScale.stat}>{awaiting}</p>
+                  <p className={`mt-2 ${typeScale.label}`}>awaiting review</p>
+                </button>
+              ) : (
+                <>
+                  <p className={typeScale.stat}>{awaiting}</p>
+                  <p className={`mt-2 ${typeScale.label}`}>awaiting review</p>
+                </>
+              )}
             </div>
           </div>
           <div className="mt-auto pt-6">

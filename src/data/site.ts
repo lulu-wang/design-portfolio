@@ -121,7 +121,7 @@ export const projects: Project[] = [
     slug: "opal",
     name: "Opal",
     description:
-      "A desktop workspace that transcribes meetings with AI and turns decisions into tasks — so notes, follow-ups, and tickets stop living in three different tools.",
+      "A desktop workspace that transcribes meetings, captures decisions, and turns them into assigned work for product, design, and engineering.",
     image: "/images/project-opal-cover.png",
     tags: [
       { label: "UX Design", variant: "outline" },
@@ -130,7 +130,7 @@ export const projects: Project[] = [
     ],
     caseStudy: {
       tagline:
-        "A desktop meeting workspace, designed from firsthand engineering work, that uses AI to transcribe recordings and turn what was decided into tasks on one board.",
+        "A desktop workspace for product teams that turns meeting recordings into a shared transcript, captured decisions, and assigned tasks.",
       presentation: {
         label: "live prototype",
         href: "/prototypes/opal",

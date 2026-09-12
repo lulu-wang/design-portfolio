@@ -10,6 +10,7 @@ import {
   type AppMeeting,
   type BoardTask,
   type Decision,
+  type MeetingTab,
 } from "@/data/meeting-extractor";
 import {
   CalendarIcon,
@@ -42,7 +43,7 @@ export default function HomeView({
   meetings: AppMeeting[];
   tasks: BoardTask[];
   decisions: Decision[];
-  onOpenMeeting: (id: string) => void;
+  onOpenMeeting: (id: string, tab?: MeetingTab) => void;
   onOpenTask: (task: BoardTask) => void;
   onOpenProject: (id: string) => void;
   onOpenProjects: () => void;
@@ -58,6 +59,11 @@ export default function HomeView({
   const reviewCount = decisions.filter(
     (decision) => decision.status !== "confirmed",
   ).length;
+  const reviewMeetingId =
+    decisions.find((decision) => decision.status !== "confirmed")?.meetingId ??
+    todayMeetings[0]?.id ??
+    meetings[0]?.id ??
+    "product-weekly";
   const upcoming = [...meetings]
     .filter((meeting) => meeting.date >= today)
     .sort(
@@ -101,11 +107,7 @@ export default function HomeView({
           value={reviewCount}
           hint="Open decisions"
           tone="peach"
-          onClick={() =>
-            onOpenMeeting(
-              todayMeetings[0]?.id ?? meetings[0]?.id ?? "product-weekly",
-            )
-          }
+          onClick={() => onOpenMeeting(reviewMeetingId, "decisions")}
         />
       </div>
 

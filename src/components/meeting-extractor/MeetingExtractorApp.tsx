@@ -26,6 +26,7 @@ import {
   type BoardTask,
   type BoardView,
   type Decision,
+  type DecisionStatus,
   type GrepHit,
   type MeetingFile,
   type MeetingRecording,
@@ -283,18 +284,21 @@ export default function MeetingExtractorApp() {
       ...fields,
     };
     setTasks((prev) => [next, ...prev]);
-    closePanel();
+    const from = meetingById(fields.meetingId ?? meetingId, meetingList).title;
     if (screen === "people") {
-      toast(`Task added from ${meetingById(fields.meetingId ?? meetingId, meetingList).title}`);
+      closePanel();
+      toast(`Task added from ${from}`);
       return;
     }
-    if (screen !== "meeting") {
-      setNav("tasks");
-      setScreen("tasks");
-    } else {
-      setMeetingTab("tasks");
+    if (fields.decisionId || screen === "meeting") {
+      showTaskOnBoard(next);
+      toast(`Task added from ${from}`);
+      return;
     }
-    toast(`Task added from ${meetingById(fields.meetingId ?? meetingId, meetingList).title}`);
+    closePanel();
+    setNav("tasks");
+    setScreen("tasks");
+    toast(`Task added from ${from}`);
   };
 
   const deleteTask = () => {
@@ -316,21 +320,48 @@ export default function MeetingExtractorApp() {
     toast(`Moved to ${columnLabel(status)}`);
   };
 
-  const addDecision = () => {
-    const id = `d${Date.now()}`;
+  const addDecision = (input: {
+    title: string;
+    summary: string;
+    ownerId: string;
+    dueDate: string | null;
+    status: DecisionStatus;
+  }) => {
+    const title = input.title.trim();
+    if (!title) {
+      toast("Decision title can’t be empty");
+      return;
+    }
     const next: Decision = {
-      id,
+      id: `d${Date.now()}`,
       meetingId,
-      title: "New decision",
-      summary: "Add a short summary, then turn it into a task.",
-      ownerId: currentUser.id,
-      dueDate: "2024-10-14",
-      status: "open",
+      title,
+      summary: input.summary.trim(),
+      ownerId: input.ownerId,
+      dueDate: input.dueDate,
+      status: input.status,
       sourceMessageId: "",
       sourceQuote: "",
     };
     setDecisions((prev) => [...prev, next]);
     toast("Decision added");
+  };
+
+  const updateDecisionStatus = (id: string, status: DecisionStatus) => {
+    const current = decisions.find((decision) => decision.id === id);
+    if (!current || current.status === status) return;
+    setDecisions((prev) =>
+      prev.map((decision) =>
+        decision.id === id ? { ...decision, status } : decision,
+      ),
+    );
+    toast(
+      status === "confirmed"
+        ? "Decision confirmed"
+        : status === "needs-review"
+          ? "Sent back to review"
+          : "Marked as open",
+    );
   };
 
   const addNote = (heading: string, text: string) => {
@@ -680,7 +711,7 @@ export default function MeetingExtractorApp() {
                 meetings={meetingList}
                 tasks={tasks}
                 decisions={decisions}
-                onOpenMeeting={(id) => openMeeting(id)}
+                onOpenMeeting={(id, tab) => openMeeting(id, tab ?? "decisions")}
                 onOpenTask={showTaskOnBoard}
                 onOpenProject={openProject}
                 onOpenProjects={goProjects}
@@ -692,6 +723,7 @@ export default function MeetingExtractorApp() {
               <MeetingsView
                 meetings={meetingList}
                 tasks={tasks}
+                decisions={decisions}
                 selectedDate={selectedDate}
                 onSelectDate={setSelectedDate}
                 onOpenMeeting={(id, tab, options) =>
@@ -745,6 +777,7 @@ export default function MeetingExtractorApp() {
                   })
                 }
                 onAddDecision={addDecision}
+                onUpdateDecisionStatus={updateDecisionStatus}
                 onAddNote={addNote}
                 onRemoveNote={removeNote}
                 files={files.filter((file) => file.meetingId === meeting.id)}

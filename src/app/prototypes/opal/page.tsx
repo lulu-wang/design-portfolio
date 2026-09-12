@@ -15,7 +15,7 @@ export const dynamic = "force-dynamic";
 export default async function OpalPage() {
   const token = (await cookies()).get(OPAL_COOKIE)?.value;
   if (!isValidToken(token)) {
-    return <UnlockForm redirectTo="/prototypes/opal" />;
+    return <UnlockForm />;
   }
 
   return <MeetingExtractorLoader />;

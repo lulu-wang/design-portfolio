@@ -28,7 +28,7 @@ export default async function ProjectDetail({
 }) {
   const { slug } = await params;
   const project = projects.find((p) => p.slug === slug);
-  if (!project || project.slug === "opal") notFound();
+  if (!project) notFound();
 
   return <ProjectCaseStudy project={project} />;
 }
