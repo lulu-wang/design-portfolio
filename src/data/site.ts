@@ -255,7 +255,7 @@ export const projects: Project[] = [
           },
           {
             src: "/images/projects/opal/wireframe-tasks.png",
-            alt: "Low-fidelity desktop wireframe of Opal’s all-tasks board, with to-do, in-progress, and completed columns and status buttons on each card",
+            alt: "Low-fidelity desktop wireframe of Opal’s all-tasks board, with to-do, in-progress, and completed columns, an assignee on each card, and status buttons",
             caption:
               "Figma lo-fi — Jira-like board: to do, in progress, completed, with status on the card",
             width: 1024,
