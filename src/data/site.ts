@@ -247,7 +247,7 @@ export const projects: Project[] = [
           },
           {
             src: "/images/projects/opal/wireframe-decisions.png",
-            alt: "Low-fidelity desktop wireframe of Opal meeting decisions, with a dark sidebar, a list of decisions, status chips, create-task actions, and meeting context on the right",
+            alt: "Low-fidelity desktop wireframe of Opal meeting decisions, with a dark sidebar, a list of decisions with status chips and create-task actions, and a labeled meeting-context rail for attendees, linked project, files, and meeting details",
             caption:
               "Figma lo-fi — decisions on the meeting: owner, status, and create task in one list",
             width: 1024,
