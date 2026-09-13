@@ -98,22 +98,22 @@ export default function Header() {
         <div className="pointer-events-none mx-auto hidden max-w-[1120px] items-center justify-between md:flex">
           <Link
             href="/"
-            className="pointer-events-auto flex h-14 items-center rounded-full bg-ink px-6 font-display text-[20px] font-semibold tracking-tight text-background shadow-[0_10px_30px_rgba(0,0,0,0.12)]"
+            className="pointer-events-auto font-display text-[22px] font-extrabold tracking-tight text-foreground"
           >
             Lulu
           </Link>
           <nav
-            className="pointer-events-auto flex h-14 items-center gap-1 rounded-full bg-ink px-2 shadow-[0_10px_30px_rgba(0,0,0,0.12)]"
+            className="pointer-events-auto flex items-center gap-8"
             aria-label="Primary"
           >
             {desktopNav.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`rounded-full px-5 py-2 text-[16px] font-medium tracking-tight transition-colors ${
+                className={`font-display text-[15px] font-extrabold uppercase tracking-tight transition-colors ${
                   isActive(item.href)
-                    ? "bg-background text-foreground"
-                    : "text-background/70 hover:text-background"
+                    ? "text-foreground"
+                    : "text-foreground/35 hover:text-foreground"
                 }`}
               >
                 {item.label}

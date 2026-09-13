@@ -288,7 +288,7 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
                   <div className="rounded-full bg-white px-4 py-2 text-sm font-medium md:text-[15px]">
                     {step}
                   </div>
-                  {i < cs.ia.flow.length - 1 && (
+                  {i < (cs.ia?.flow.length ?? 0) - 1 && (
                     <Arrow className="hidden h-2.5 text-muted sm:block" />
                   )}
                 </div>
