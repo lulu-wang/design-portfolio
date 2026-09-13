@@ -13,6 +13,8 @@ const nav = [
   { label: "Contact", href: "/#contact" },
 ];
 
+const desktopNav = nav.filter((item) => item.href !== "/");
+
 export default function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
@@ -31,6 +33,15 @@ export default function Header() {
   useEffect(() => {
     setOpen(false);
   }, [pathname]);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 768px)");
+    const onChange = () => {
+      if (mq.matches) setOpen(false);
+    };
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, []);
 
   useEffect(() => {
     if (!open) return;
@@ -53,8 +64,8 @@ export default function Header() {
 
   return (
     <>
-      <header className="pointer-events-none fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-5 sm:pt-6">
-        <div className="pointer-events-auto flex h-12 w-[min(92vw,268px)] items-center justify-between rounded-full bg-ink pl-5 pr-1.5 text-background shadow-[0_10px_30px_rgba(0,0,0,0.12)]">
+      <header className="pointer-events-none fixed inset-x-0 top-0 z-50 px-4 pt-5 sm:pt-6 md:px-8 lg:px-12">
+        <div className="pointer-events-auto mx-auto flex h-12 w-[min(92vw,268px)] items-center justify-between rounded-full bg-ink pl-5 pr-1.5 text-background shadow-[0_10px_30px_rgba(0,0,0,0.12)] md:hidden">
           <Link
             href="/"
             className="font-display text-[17px] font-semibold tracking-tight text-background"
@@ -83,6 +94,33 @@ export default function Header() {
             )}
           </button>
         </div>
+
+        <div className="pointer-events-none mx-auto hidden max-w-[1120px] items-center justify-between md:flex">
+          <Link
+            href="/"
+            className="pointer-events-auto flex h-14 items-center rounded-full bg-ink px-6 font-display text-[20px] font-semibold tracking-tight text-background shadow-[0_10px_30px_rgba(0,0,0,0.12)]"
+          >
+            Lulu
+          </Link>
+          <nav
+            className="pointer-events-auto flex h-14 items-center gap-1 rounded-full bg-ink px-2 shadow-[0_10px_30px_rgba(0,0,0,0.12)]"
+            aria-label="Primary"
+          >
+            {desktopNav.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`rounded-full px-5 py-2 text-[16px] font-medium tracking-tight transition-colors ${
+                  isActive(item.href)
+                    ? "bg-background text-foreground"
+                    : "text-background/70 hover:text-background"
+                }`}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+        </div>
       </header>
 
       {mounted &&
@@ -92,7 +130,7 @@ export default function Header() {
             aria-modal={open}
             aria-label="Navigation menu"
             inert={!open ? true : undefined}
-            className={`fixed inset-0 z-40 flex min-h-dvh w-screen flex-col bg-background transition-[opacity,visibility] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+            className={`fixed inset-0 z-40 flex min-h-dvh w-screen flex-col bg-background md:hidden transition-[opacity,visibility] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
               open ? "visible opacity-100" : "invisible opacity-0"
             }`}
           >
