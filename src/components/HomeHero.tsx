@@ -60,17 +60,18 @@ export default function HomeHero() {
             </p>
             <div className="mt-3 space-y-4 text-[1rem] leading-[1.65] text-foreground/70 sm:text-[1.0625rem] sm:leading-[1.65]">
               <p>
-                I&rsquo;m a product designer and developer with a focus on
-                clear systems, careful interaction, and experiences that
-                still feel human.
+                I design products that feel considered in use and coherent
+                as systems — lucid structure, unforced interaction, and a
+                little humanity in the details.
               </p>
               <p>
-                Over the years I&rsquo;ve shipped products used by millions,
-                then moved into design to work closer to the problem —
-                research, interface, and the craft in between.
+                After shipping work used by millions at Meta and Xbox, I
+                moved into design to sit closer to the question itself:
+                research, visual language, and the craft between them.
               </p>
               <p>
-                Product design, research, visual systems, and engineering.
+                Product design, illustration, research, visual systems, and
+                engineering.
               </p>
               <Link
                 href="/projects"

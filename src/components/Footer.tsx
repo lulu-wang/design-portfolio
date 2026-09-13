@@ -12,10 +12,15 @@ const links = [
 export default function Footer() {
   return (
     <footer className="border-t border-black/[0.06] pb-10 pt-16 sm:pb-12 sm:pt-24">
-      <div className="grid gap-12 md:grid-cols-[1.2fr_0.7fr_0.7fr] md:gap-16">
-        <h2 className="font-display max-w-sm text-3xl font-extrabold leading-[1.05] tracking-tight sm:text-4xl">
-          Building products with craft.
-        </h2>
+      <div className="grid gap-12 md:grid-cols-[1.2fr_0.7fr_0.7fr] md:items-start md:gap-16">
+        <div>
+          <h2 className="font-display max-w-sm text-xl font-extrabold leading-[1.15] tracking-tight sm:text-2xl">
+            Building products with craft.
+          </h2>
+          <p className="font-display mt-8 select-none text-[clamp(2.5rem,9vw,5.5rem)] font-extrabold leading-[0.85] tracking-[-0.05em] text-foreground">
+            LULU
+          </p>
+        </div>
 
         <div>
           <h3 className="text-[13px] font-medium tracking-wide text-foreground/40">
@@ -55,10 +60,6 @@ export default function Footer() {
           </ul>
         </div>
       </div>
-
-      <p className="font-display mt-16 select-none text-[clamp(4.5rem,18vw,11rem)] font-extrabold leading-[0.8] tracking-[-0.06em] text-foreground">
-        LULU
-      </p>
     </footer>
   );
 }

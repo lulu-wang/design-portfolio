@@ -32,16 +32,16 @@ export type CaseStudy = {
     tools: string[];
   };
   overview: string;
-  problem: {
+  problem?: {
     statement: string;
     points: string[];
   };
-  goals: string;
-  research: {
+  goals?: string;
+  research?: {
     intro: string;
     methods: { title: string; description: string }[];
     insights: { stat: string; label: string }[];
-    persona: Persona;
+    persona?: Persona;
     personas?: Persona[];
     quotes?: string[];
   };
@@ -50,12 +50,12 @@ export type CaseStudy = {
     steps: string[];
     timeline: string[];
   };
-  ia: {
+  ia?: {
     intro: string;
     flow: string[];
     sitemap?: string[];
   };
-  wireframes: {
+  wireframes?: {
     lowFi: string;
     /** @deprecated Prefer `images` for real wireframe exports */
     lowFiVariants?: ("list" | "detail" | "dashboard")[];
@@ -87,8 +87,12 @@ export type CaseStudy = {
     tone?: "muted" | "dark" | "plain";
     /** Smaller phones with more space between frames */
     roomy?: boolean;
+    title?: string;
+    intro?: string;
+    label?: string;
+    banner?: CaseMediaItem;
   };
-  solution: {
+  solution?: {
     intro: string;
     features: { title: string; description: string }[];
   };
@@ -97,8 +101,8 @@ export type CaseStudy = {
     findings: string[];
     iterations: string[];
   };
-  outcomes: { stat: string; label: string }[];
-  reflection: string;
+  outcomes?: { stat: string; label: string }[];
+  reflection?: string;
   conclusion?: {
     challenges: string[];
     learnings: string[];
@@ -1518,6 +1522,683 @@ export const projects: Project[] = [
         ],
         proud:
           "Designing a social layer that still feels like Netflix — a living room after the credits, not a feed competing with the story.",
+      },
+    },
+  },
+  {
+    slug: "yuugen",
+    name: "Yuugen",
+    description:
+      "An artist-owned Japanese streetwear brand of original anime- and cyberpunk-inspired graphics, built from illustration through launch.",
+    image: "/images/project-yuugen-cover.jpg",
+    tags: [
+      { label: "Brand Identity", variant: "outline" },
+      { label: "Illustration", variant: "solid" },
+      { label: "Fashion", variant: "lavender" },
+    ],
+    caseStudy: {
+      tagline:
+        "An artist-owned streetwear brand named for a Japanese sense of subtle, mysterious beauty — original graphics, from Procreate to print.",
+      presentation: {
+        label: "the shop",
+        href: "https://yuugenapparel.co/",
+      },
+      meta: {
+        role: "Founder, designer, and illustrator",
+        timeline: "2020–2023",
+        team: "Solo, with artist collaborations",
+        platform: "Shopify, Instagram, Etsy, conventions",
+        tools: ["Procreate", "Illustrator", "Shopify", "Instagram"],
+      },
+      overview:
+        "**Yuugen** (n.) — a profound, mysterious sense of subtle beauty in the universe. I started Yuugen Apparel in 2020 to get my art off the screen and onto clothing. Original work was drawn in **Procreate**, mocked up in **Illustrator**, and printed with local suppliers after weeks of sample shipping and trial and error. I ran user and market research, then launched as an online fashion brand. Over a year of operating primarily online I designed the Instagram presence, learned ads in the Facebook / Instagram ecosystem, posted drops and collections, and made **over 1,000 sales** through Instagram, Shopify, and Etsy. People wrote in during an uncertain period to say the brand meant something to them. I began collaborating with artists in the US and overseas, worked with fashion influencers, and pivoted to selling in person at anime conventions — where I met the communities the work was actually for.",
+      problem: {
+        statement:
+          "The art lived on a screen. There was no path from illustration to a brand people could wear.",
+        points: [
+          "**Illustration had nowhere to land.** I wanted the work to exist as something physical — not only a file on Procreate.",
+          "**Production was unproven.** Printing original graphics on apparel meant suppliers, samples, and a lot of getting it wrong before a drop could ship.",
+          "**Selling had to be learned.** Ads, Instagram, Shopify, and later conventions were the distribution — not a studio handoff.",
+        ],
+      },
+      goals:
+        "Build an **artist-owned Japanese streetwear brand** from original graphics: research the market, lock a visual identity, produce with local manufacturers, and launch drops people could actually buy — online first, then in person.",
+      define: {
+        intro:
+          "The process was the whole business: draw, mock up, sample, listen, drop. I stayed with it from the first illustration through ads, collaborations, and convention floors.",
+        steps: [
+          "Draw original graphics in **Procreate**",
+          "Mock up garments in **Illustrator**",
+          "Print with local suppliers; iterate on samples",
+          "Research the market, then launch online",
+          "Run Instagram, ads, and regular drops",
+          "Collaborate with artists and sell at conventions",
+        ],
+        timeline: [
+          "2020 — first samples, brand identity, online launch",
+          "Year one — Instagram, Shopify, Etsy, 1,000+ sales",
+          "Artist collaborations in the US and overseas",
+          "Pivot to anime conventions and in-person community",
+          "2020–2023 — Yuugen as a living streetwear practice",
+        ],
+      },
+      branding: {
+        intro:
+          "The name is the brief. **Yuugen** is a Japanese idea of subtle, mysterious beauty — the same feeling as **mono no aware**, the ephemerality the first collection was titled after. The brand had to feel like Japanese streetwear, not a merch stall: black and white as the canvas, anime- and cyberpunk-inspired graphics as the tribute to the media that shaped the work, and a wordmark quiet enough to sit on a hoodie.",
+        colors: [
+          { name: "Ink", hex: "#111111", role: "Garments, wordmark, ads" },
+          { name: "Paper", hex: "#F4F1EC", role: "Light tees, lookbook ground" },
+          { name: "Ash", hex: "#8A8680", role: "Captions, secondary type" },
+          { name: "Rose", hex: "#C45C6A", role: "Bloom graphics, accent drops" },
+        ],
+        typefaces: [
+          {
+            name: "Inter",
+            role: "Shop, captions, and product names — dense enough for a drop list",
+            weights: "400, 600",
+          },
+        ],
+        typography:
+          "The **custom Yuugen wordmark** carries the Japanese streetwear read. Body type stays small and cool so a collection page can hold names, prices, and sold-out states without shouting.",
+        palette:
+          "**Black and off-white** do the garment work. Color lives in the graphics — rose, bloom, devil — not as a wash over the brand. The lookbook stays desaturated so the illustration, not the photography lighting, is the product.",
+        messaging:
+          "“Subtle beauty of the ephemeral.” “幽玄 Streetwear.” The voice is a tribute, not a slogan — anime-inspired graphics for overlooked beauty, produced in North America.",
+      },
+      visuals: {
+        label: "Collection",
+        title: "Graphics, garments, and the lookbook",
+        intro:
+          "Original art on apparel, Instagram drops, and photographed wear — the brand as it actually shipped.",
+        layout: "masonry",
+        tone: "muted",
+        banner: {
+          src: "/images/projects/yuugen/logo-banner.jpg",
+          alt: "Yuugen wordmark — YŪGEN 幽玄",
+          width: 1600,
+          height: 800,
+        },
+        images: [
+          {
+            src: "/images/projects/yuugen/g01.jpg",
+            alt: "Yuugen wordmark — 幽玄 YŪGEN with blossom",
+            width: 1359,
+            height: 1600,
+          },
+          {
+            src: "/images/projects/yuugen/g02.jpg",
+            alt: "Yuugen brand identity board with wordmark, palette, and apparel mockups",
+            width: 1174,
+            height: 1600,
+          },
+          {
+            src: "/images/projects/yuugen/g03.jpg",
+            alt: "Bloom 02 hoodie, back graphic",
+            width: 1500,
+            height: 1500,
+          },
+          {
+            src: "/images/projects/yuugen/g04.jpg",
+            alt: "Bloom 02 hoodie, front graphic",
+            width: 1500,
+            height: 1500,
+          },
+          {
+            src: "/images/projects/yuugen/g05.jpg",
+            alt: "Yuugen drop 1 longsleeve mockup",
+            width: 1500,
+            height: 1500,
+          },
+          {
+            src: "/images/projects/yuugen/g06.jpg",
+            alt: "Awake tee mockup from Yuugen drop 1",
+            width: 1500,
+            height: 1500,
+          },
+          {
+            src: "/images/projects/yuugen/g07.jpg",
+            alt: "Yuugen drop 1 white tee mockup",
+            width: 1500,
+            height: 1500,
+          },
+          {
+            src: "/images/projects/yuugen/g08.jpg",
+            alt: "Yuugen drop 1 hoodie mockup",
+            width: 1500,
+            height: 1500,
+          },
+          {
+            src: "/images/projects/yuugen/g09.jpg",
+            alt: "Gaze graphic tee mockup from Yuugen drop 1",
+            width: 1500,
+            height: 1500,
+          },
+          {
+            src: "/images/projects/yuugen/g10.jpg",
+            alt: "Yuugen basic hoodie mockup in white",
+            width: 1500,
+            height: 1500,
+          },
+          {
+            src: "/images/projects/yuugen/g11.jpg",
+            alt: "Yuugen drop 1 face mask mockup",
+            width: 1500,
+            height: 1500,
+          },
+          {
+            src: "/images/projects/yuugen/g12.jpg",
+            alt: "Yuugen reminder Instagram post",
+            width: 900,
+            height: 1600,
+          },
+          {
+            src: "/images/projects/yuugen/g13.jpg",
+            alt: "Yuugen reminder Instagram post, alternate",
+            width: 900,
+            height: 1600,
+          },
+          {
+            src: "/images/projects/yuugen/g14.jpg",
+            alt: "Yuugen Collection I Bloom hoodie campaign",
+            width: 1500,
+            height: 1500,
+          },
+          {
+            src: "/images/projects/yuugen/g15.jpg",
+            alt: "Yuugen Drop 1 sale campaign",
+            width: 1500,
+            height: 1500,
+          },
+          {
+            src: "/images/projects/yuugen/g16.jpg",
+            alt: "Yuugen Collection I — Mono no Aware campaign",
+            width: 1500,
+            height: 1500,
+          },
+          {
+            src: "/images/projects/yuugen/g17.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1233,
+            height: 1600,
+          },
+          {
+            src: "/images/projects/yuugen/g18.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 895,
+            height: 895,
+          },
+          {
+            src: "/images/projects/yuugen/g19.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 895,
+            height: 895,
+          },
+          {
+            src: "/images/projects/yuugen/g20.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1227,
+            height: 1600,
+          },
+          {
+            src: "/images/projects/yuugen/g21.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1067,
+            height: 1600,
+          },
+          {
+            src: "/images/projects/yuugen/g22.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1067,
+            height: 1600,
+          },
+          {
+            src: "/images/projects/yuugen/g23.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1303,
+            height: 1600,
+          },
+          {
+            src: "/images/projects/yuugen/g24.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1280,
+            height: 1600,
+          },
+          {
+            src: "/images/projects/yuugen/g25.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1280,
+            height: 1600,
+          },
+          {
+            src: "/images/projects/yuugen/g26.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1067,
+            height: 1600,
+          },
+          {
+            src: "/images/projects/yuugen/g27.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1067,
+            height: 1600,
+          },
+          {
+            src: "/images/projects/yuugen/g28.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1067,
+            height: 1600,
+          },
+          {
+            src: "/images/projects/yuugen/g29.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1067,
+            height: 1600,
+          },
+          {
+            src: "/images/projects/yuugen/g30.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1500,
+            height: 1000,
+          },
+          {
+            src: "/images/projects/yuugen/g31.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1067,
+            height: 1600,
+          },
+          {
+            src: "/images/projects/yuugen/g32.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1500,
+            height: 1000,
+          },
+          {
+            src: "/images/projects/yuugen/g33.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1500,
+            height: 1000,
+          },
+          {
+            src: "/images/projects/yuugen/g34.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1500,
+            height: 1122,
+          },
+          {
+            src: "/images/projects/yuugen/g35.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1067,
+            height: 1600,
+          },
+          {
+            src: "/images/projects/yuugen/g36.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1067,
+            height: 1600,
+          },
+          {
+            src: "/images/projects/yuugen/g37.jpg",
+            alt: "Yuugen Collection I graphic tee, still life",
+            width: 1500,
+            height: 1038,
+          },
+          {
+            src: "/images/projects/yuugen/g38.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1200,
+            height: 1600,
+          },
+          {
+            src: "/images/projects/yuugen/g39.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1067,
+            height: 1600,
+          },
+          {
+            src: "/images/projects/yuugen/g40.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 750,
+            height: 1000,
+          },
+          {
+            src: "/images/projects/yuugen/g41.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1067,
+            height: 1600,
+          },
+          {
+            src: "/images/projects/yuugen/g42.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1500,
+            height: 1000,
+          },
+          {
+            src: "/images/projects/yuugen/g43.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1300,
+            height: 1600,
+          },
+          {
+            src: "/images/projects/yuugen/g44.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1066,
+            height: 1600,
+          },
+          {
+            src: "/images/projects/yuugen/g45.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1067,
+            height: 1600,
+          },
+          {
+            src: "/images/projects/yuugen/g46.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1067,
+            height: 1600,
+          },
+          {
+            src: "/images/projects/yuugen/g47.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1265,
+            height: 1600,
+          },
+          {
+            src: "/images/projects/yuugen/g48.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1066,
+            height: 1600,
+          },
+          {
+            src: "/images/projects/yuugen/g49.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1067,
+            height: 1600,
+          },
+          {
+            src: "/images/projects/yuugen/g50.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1067,
+            height: 1600,
+          },
+          {
+            src: "/images/projects/yuugen/g51.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1067,
+            height: 1600,
+          },
+          {
+            src: "/images/projects/yuugen/g52.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1440,
+            height: 1264,
+          },
+          {
+            src: "/images/projects/yuugen/g53.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1430,
+            height: 1600,
+          },
+          {
+            src: "/images/projects/yuugen/g54.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1067,
+            height: 1600,
+          },
+          {
+            src: "/images/projects/yuugen/g55.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1067,
+            height: 1600,
+          },
+          {
+            src: "/images/projects/yuugen/g56.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1067,
+            height: 1600,
+          },
+          {
+            src: "/images/projects/yuugen/g57.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1500,
+            height: 1000,
+          },
+          {
+            src: "/images/projects/yuugen/g58.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1064,
+            height: 1600,
+          },
+          {
+            src: "/images/projects/yuugen/g59.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 900,
+            height: 1600,
+          },
+          {
+            src: "/images/projects/yuugen/g60.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 750,
+            height: 1000,
+          },
+          {
+            src: "/images/projects/yuugen/g61.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1067,
+            height: 1600,
+          },
+          {
+            src: "/images/projects/yuugen/g62.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1067,
+            height: 1600,
+          },
+          {
+            src: "/images/projects/yuugen/g63.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1067,
+            height: 1600,
+          },
+          {
+            src: "/images/projects/yuugen/g64.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1500,
+            height: 1000,
+          },
+          {
+            src: "/images/projects/yuugen/g65.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1067,
+            height: 1600,
+          },
+          {
+            src: "/images/projects/yuugen/g66.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1067,
+            height: 1600,
+          },
+          {
+            src: "/images/projects/yuugen/g67.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1066,
+            height: 1600,
+          },
+          {
+            src: "/images/projects/yuugen/g68.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1088,
+            height: 1600,
+          },
+          {
+            src: "/images/projects/yuugen/g69.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1066,
+            height: 1600,
+          },
+          {
+            src: "/images/projects/yuugen/g70.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1066,
+            height: 1600,
+          },
+          {
+            src: "/images/projects/yuugen/g71.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1067,
+            height: 1600,
+          },
+          {
+            src: "/images/projects/yuugen/g72.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1067,
+            height: 1600,
+          },
+          {
+            src: "/images/projects/yuugen/g73.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1500,
+            height: 1000,
+          },
+          {
+            src: "/images/projects/yuugen/g74.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1500,
+            height: 1000,
+          },
+          {
+            src: "/images/projects/yuugen/g75.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1257,
+            height: 1600,
+          },
+          {
+            src: "/images/projects/yuugen/g76.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1500,
+            height: 1017,
+          },
+          {
+            src: "/images/projects/yuugen/g77.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 562,
+            height: 1000,
+          },
+          {
+            src: "/images/projects/yuugen/g78.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 562,
+            height: 1000,
+          },
+          {
+            src: "/images/projects/yuugen/g79.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1500,
+            height: 1000,
+          },
+          {
+            src: "/images/projects/yuugen/g80.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1500,
+            height: 1216,
+          },
+          {
+            src: "/images/projects/yuugen/g81.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1500,
+            height: 1000,
+          },
+          {
+            src: "/images/projects/yuugen/g82.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1500,
+            height: 1000,
+          },
+          {
+            src: "/images/projects/yuugen/g83.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1249,
+            height: 1600,
+          },
+          {
+            src: "/images/projects/yuugen/g84.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1067,
+            height: 1600,
+          },
+          {
+            src: "/images/projects/yuugen/g85.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1500,
+            height: 1000,
+          },
+          {
+            src: "/images/projects/yuugen/g86.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1500,
+            height: 844,
+          },
+          {
+            src: "/images/projects/yuugen/g87.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1500,
+            height: 844,
+          },
+          {
+            src: "/images/projects/yuugen/g88.jpg",
+            alt: "Yuugen lookbook photograph",
+            width: 1500,
+            height: 844,
+          },
+        ],
+      },
+      solution: {
+        intro:
+          "The brand was the system: original art, a drop cadence, a shop, and a community that eventually wanted to meet in person.",
+        features: [
+          {
+            title: "Art as the product",
+            description:
+              "Every graphic started as original illustration — anime- and cyberpunk-inspired, printed on tees, hoodies, longsleeves, and small goods.",
+          },
+          {
+            title: "Drops, not a catalog",
+            description:
+              "Collections posted on a cadence. Instagram and the shop moved together so a drop felt like an event, not restock.",
+          },
+          {
+            title: "Shopify, Etsy, Instagram",
+            description:
+              "Online first: storefront, marketplace, and the account I designed and ran, including ads in the Facebook / Instagram ecosystem.",
+          },
+          {
+            title: "Collaborations and conventions",
+            description:
+              "Work with artists in the US and overseas, fashion influencers, then in-person selling at anime conventions — the community the graphics were for.",
+          },
+        ],
+      },
+      outcomes: [
+        { stat: "1,000+", label: "sales across Instagram, Shopify, and Etsy" },
+        { stat: "2020–23", label: "years running the brand end to end" },
+        { stat: "IRL", label: "pivot to anime conventions and artist collabs" },
+      ],
+      reflection:
+        "This was my first solo project. I’m grateful to everyone who helped sell, photograph, and show up for the brand. Thank you for letting me make something that told my story and reached people along the way.",
+      conclusion: {
+        challenges: [
+          "Learning production by shipping samples until the print matched the drawing.",
+          "Running ads, a shop, and a social account as one person.",
+          "Taking a screen-native art practice into a physical brand without losing the feeling.",
+        ],
+        learnings: [
+          "The name was the identity — yuugen as a feeling, not a logo exercise.",
+          "Community showed up in DMs first, then in person at conventions.",
+          "Drops work when the graphic is the product, not decoration on a blank.",
+        ],
+        nextSteps: [
+          "The shop remains a record of the collections at yuugenapparel.co.",
+          "Illustration and brand work continue in the gallery and in product design.",
+        ],
+        proud:
+          "Building a brand people wrote to during an uncertain year — and then getting to meet them.",
       },
     },
   },

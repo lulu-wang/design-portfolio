@@ -48,7 +48,7 @@ const skills = [
 export default function AboutPage() {
   return (
     <main className="page-wrap pt-28 sm:pt-32">
-      <section className="relative grid gap-12 overflow-hidden pb-20 pt-6 sm:gap-14 sm:pb-24 md:grid-cols-[minmax(0,280px)_1fr] md:items-start md:gap-16 md:pb-28 lg:grid-cols-[minmax(0,320px)_1fr] lg:gap-20">
+      <section className="relative grid gap-12 overflow-hidden pb-20 pt-6 sm:gap-14 sm:pb-24 md:grid-cols-[minmax(0,380px)_1fr] md:items-start md:gap-16 md:pb-28 lg:grid-cols-[minmax(0,420px)_1fr] lg:gap-20">
         <p
           aria-hidden
           className="pointer-events-none absolute -left-6 top-0 select-none font-display text-[clamp(5rem,16vw,10rem)] font-extrabold leading-none tracking-[-0.06em] text-foreground/[0.07] blur-[2px]"
@@ -56,15 +56,26 @@ export default function AboutPage() {
           Hey!
         </p>
 
-        <div className="animate-rise relative z-10 mx-auto w-full max-w-[280px] md:mx-0 md:max-w-none">
+        <div className="animate-rise relative z-10 grid gap-3">
           <div className="overflow-hidden rounded-[20px]">
             <Image
-              src="/images/portrait.png"
-              alt="Illustrated portrait of Lulu Wang"
-              width={640}
-              height={800}
-              className="aspect-[4/5] w-full object-cover"
+              src="/images/about-01.jpg"
+              alt="Lulu Wang photographing in San Francisco"
+              width={2000}
+              height={1334}
+              className="h-auto w-full object-cover"
+              sizes="(max-width: 768px) 100vw, 420px"
               priority
+            />
+          </div>
+          <div className="overflow-hidden rounded-[20px]">
+            <Image
+              src="/images/about-02.jpg"
+              alt="Lulu Wang with cherry blossoms"
+              width={920}
+              height={1150}
+              className="h-auto w-full object-cover"
+              sizes="(max-width: 768px) 100vw, 420px"
             />
           </div>
         </div>

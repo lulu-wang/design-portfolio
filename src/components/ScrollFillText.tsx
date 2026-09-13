@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { useLenis } from "lenis/react";
 
 const COPY =
-  "I came to product design from software engineering. I still work from research through launch, so what I ship stays simple, considered, and reliable in real use.";
+  "I came to product design from software engineering. I work across digital product design, extended and virtual reality, and illustrative graphic design — pushing the boundaries of creative experience from research through launch.";
 
 export default function ScrollFillText() {
   const pin = useRef<HTMLElement>(null);

@@ -17,9 +17,9 @@ export default function SmoothScroll({
     <ReactLenis
       root
       options={{
-        lerp: 0.08,
-        wheelMultiplier: 0.85,
-        touchMultiplier: 1.1,
+        lerp: 0.25,
+        wheelMultiplier: 1,
+        touchMultiplier: 1,
         autoRaf: true,
       }}
     >

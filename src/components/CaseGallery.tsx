@@ -183,11 +183,13 @@ export default function CaseGallery({
   layout = "masonry",
   tone = "muted",
   roomy = false,
+  flush = false,
 }: {
   items: CaseMediaItem[];
   layout?: Layout;
   tone?: "muted" | "dark" | "plain";
   roomy?: boolean;
+  flush?: boolean;
 }) {
   if (!items.length) return null;
 
@@ -274,7 +276,9 @@ export default function CaseGallery({
 
   // masonry — mass presentation of wireframes / screens
   return (
-    <div className={`mt-12 px-4 py-8 sm:mt-16 sm:px-6 sm:py-12 md:px-10 ${surface}`}>
+    <div
+      className={`${flush ? "mt-0" : "mt-12 sm:mt-16"} px-4 py-8 sm:px-6 sm:py-12 md:px-10 ${surface}`}
+    >
       <div className="columns-2 gap-3 sm:columns-3 sm:gap-4 lg:columns-4 lg:gap-5">
         {items.map((item) => (
           <figure key={item.src} className="mb-3 break-inside-avoid sm:mb-4 lg:mb-5">

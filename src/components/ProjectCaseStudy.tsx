@@ -16,7 +16,9 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
   const cs = project.caseStudy;
   const currentIndex = projects.findIndex((p) => p.slug === slug);
   const nextProject = projects[(currentIndex + 1) % projects.length];
-  const personas = cs.research.personas ?? [cs.research.persona];
+  const personas = cs.research
+    ? (cs.research.personas ?? (cs.research.persona ? [cs.research.persona] : []))
+    : [];
 
   const metaLine = [cs.meta.role, cs.meta.timeline, cs.meta.team, cs.meta.platform]
     .filter(Boolean)
@@ -144,25 +146,30 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
           first
         />
 
-        <CaseSection
-          label="Problem"
-          title={cs.problem.statement}
-        >
-          <div className="mt-8 grid gap-6 sm:grid-cols-3 sm:gap-6">
-            {cs.problem.points.slice(0, 3).map((point) => (
-              <p key={point} className={`${body} [&_strong]:text-foreground`}>
-                <RichText>{point}</RichText>
-              </p>
-            ))}
-          </div>
-        </CaseSection>
+        {cs.problem && (
+          <CaseSection
+            label="Problem"
+            title={cs.problem.statement}
+          >
+            <div className="mt-8 grid gap-6 sm:grid-cols-3 sm:gap-6">
+              {cs.problem.points.slice(0, 3).map((point) => (
+                <p key={point} className={`${body} [&_strong]:text-foreground`}>
+                  <RichText>{point}</RichText>
+                </p>
+              ))}
+            </div>
+          </CaseSection>
+        )}
 
-        <CaseSection
-          label="Goals"
-          title="Goals"
-          intro={cs.goals}
-        />
+        {cs.goals && (
+          <CaseSection
+            label="Goals"
+            title="Goals"
+            intro={cs.goals}
+          />
+        )}
 
+        {cs.research && (
         <CaseSection
           label="Research"
           title="Research"
@@ -230,6 +237,7 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
             ))}
           </div>
         </CaseSection>
+        )}
 
         {cs.define && (
           <CaseSection
@@ -259,52 +267,56 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
           </CaseSection>
         )}
 
-        <CaseSection
-          label="Architecture"
-          title="Architecture"
-          intro={cs.ia.intro}
-        >
-          {cs.ia.sitemap && cs.ia.sitemap.length > 0 && (
-            <ul className="mt-8 max-w-xl space-y-2">
-              {cs.ia.sitemap.map((item) => (
-                <li key={item} className={body}>
-                  {item}
-                </li>
-              ))}
-            </ul>
-          )}
-          <div className="mt-8 flex flex-col gap-2.5 sm:flex-row sm:flex-wrap sm:items-center">
-            {cs.ia.flow.map((step, i) => (
-              <div key={step} className="flex items-center gap-2.5">
-                <div className="rounded-full bg-white px-4 py-2 text-sm font-medium md:text-[15px]">
-                  {step}
+        {cs.ia && (
+          <CaseSection
+            label="Architecture"
+            title="Architecture"
+            intro={cs.ia.intro}
+          >
+            {cs.ia.sitemap && cs.ia.sitemap.length > 0 && (
+              <ul className="mt-8 max-w-xl space-y-2">
+                {cs.ia.sitemap.map((item) => (
+                  <li key={item} className={body}>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            )}
+            <div className="mt-8 flex flex-col gap-2.5 sm:flex-row sm:flex-wrap sm:items-center">
+              {cs.ia.flow.map((step, i) => (
+                <div key={step} className="flex items-center gap-2.5">
+                  <div className="rounded-full bg-white px-4 py-2 text-sm font-medium md:text-[15px]">
+                    {step}
+                  </div>
+                  {i < cs.ia.flow.length - 1 && (
+                    <Arrow className="hidden h-2.5 text-muted sm:block" />
+                  )}
                 </div>
-                {i < cs.ia.flow.length - 1 && (
-                  <Arrow className="hidden h-2.5 text-muted sm:block" />
+              ))}
+            </div>
+          </CaseSection>
+        )}
+
+        {cs.wireframes?.lowFi && (
+          <CaseSection
+            label="Wireframes"
+            title="Wireframes"
+            intro={cs.wireframes.lowFi}
+          >
+            {!cs.wireframes.images?.length && (
+              <div className="mt-10 grid grid-cols-2 gap-5 sm:grid-cols-3 sm:gap-6">
+                {(cs.wireframes.lowFiVariants ?? ["dashboard", "list", "detail"]).map(
+                  (variant, i) => (
+                    <Wireframe key={i} variant={variant} />
+                  ),
                 )}
               </div>
-            ))}
-          </div>
-        </CaseSection>
-
-        <CaseSection
-          label="Wireframes"
-          title="Wireframes"
-          intro={cs.wireframes.lowFi}
-        >
-          {!cs.wireframes.images?.length && (
-            <div className="mt-10 grid grid-cols-2 gap-5 sm:grid-cols-3 sm:gap-6">
-              {(cs.wireframes.lowFiVariants ?? ["dashboard", "list", "detail"]).map(
-                (variant, i) => (
-                  <Wireframe key={i} variant={variant} />
-                ),
-              )}
-            </div>
-          )}
-        </CaseSection>
+            )}
+          </CaseSection>
+        )}
       </main>
 
-      {cs.wireframes.images && cs.wireframes.images.length > 0 && (
+      {cs.wireframes?.images && cs.wireframes.images.length > 0 && (
         <CaseBleed>
           <CaseGallery
             items={cs.wireframes.images}
@@ -374,52 +386,78 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
           </CaseSection>
         )}
 
-        <CaseSection
-          label="Hi-Fidelity"
-          title="Hi-fidelity prototypes"
-          intro={cs.wireframes.hiFi}
-        />
+        {cs.wireframes?.hiFi && (
+          <CaseSection
+            label="Hi-Fidelity"
+            title="Hi-fidelity prototypes"
+            intro={cs.wireframes.hiFi}
+          />
+        )}
+        {cs.visuals && (cs.visuals.title || cs.visuals.intro) && (
+          <CaseSection
+            label={cs.visuals.label ?? "Collection"}
+            title={cs.visuals.title ?? "Collection"}
+            intro={cs.visuals.intro}
+          />
+        )}
       </div>
 
-      <CaseBleed>
-        {cs.visuals && cs.visuals.images.length > 0 ? (
-          <CaseGallery
-            items={cs.visuals.images}
-            layout={cs.visuals.layout ?? "phones"}
-            tone={cs.visuals.tone ?? "dark"}
-            roomy={cs.visuals.roomy}
-          />
-        ) : (
-          <div className="mt-12 overflow-hidden rounded-[20px] bg-[#ebe6de]">
-            <Image
-              src={project.image}
-              alt={`${project.name} high fidelity designs`}
-              width={2390}
-              height={1580}
-              className="h-auto w-full object-contain"
-              sizes="100vw"
+      {(cs.visuals?.banner || cs.visuals?.images.length || cs.wireframes?.hiFi) && (
+        <CaseBleed>
+          {cs.visuals?.banner && (
+            <figure className="bg-white px-5 py-10 sm:px-8 sm:py-14 md:px-12">
+              <Image
+                src={cs.visuals.banner.src}
+                alt={cs.visuals.banner.alt}
+                width={cs.visuals.banner.width ?? 1600}
+                height={cs.visuals.banner.height ?? 800}
+                className="mx-auto h-auto w-full max-w-5xl object-contain"
+                sizes="(max-width: 1024px) 100vw, 1024px"
+              />
+            </figure>
+          )}
+          {cs.visuals && cs.visuals.images.length > 0 ? (
+            <CaseGallery
+              items={cs.visuals.images}
+              layout={cs.visuals.layout ?? "phones"}
+              tone={cs.visuals.tone ?? "dark"}
+              roomy={cs.visuals.roomy}
+              flush={Boolean(cs.visuals.banner)}
             />
-          </div>
-        )}
-      </CaseBleed>
+          ) : (
+            <div className="mt-12 overflow-hidden rounded-[20px] bg-[#ebe6de]">
+              <Image
+                src={project.image}
+                alt={`${project.name} high fidelity designs`}
+                width={2390}
+                height={1580}
+                className="h-auto w-full object-contain"
+                sizes="100vw"
+              />
+            </div>
+          )}
+        </CaseBleed>
+      )}
 
       <main className="page-wrap">
-        <CaseSection
-          label="Solution"
-          title="Solution"
-          intro={cs.solution.intro}
-        >
-          <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {cs.solution.features.map((feature) => (
-              <div key={feature.title}>
-                <h3 className={subhead}>{feature.title}</h3>
-                <p className={`mt-2 ${bodyMuted} [&_strong]:text-foreground`}>
-                  <RichText>{feature.description}</RichText>
-                </p>
-              </div>
-            ))}
-          </div>
-        </CaseSection>
+        {cs.solution && (
+          <CaseSection
+            label="Solution"
+            title="Solution"
+            intro={cs.solution.intro}
+          >
+            <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+              {cs.solution.features.map((feature) => (
+                <div key={feature.title}>
+                  <h3 className={subhead}>{feature.title}</h3>
+                  <p className={`mt-2 ${bodyMuted} [&_strong]:text-foreground`}>
+                    <RichText>{feature.description}</RichText>
+                  </p>
+                </div>
+              ))}
+            </div>
+          </CaseSection>
+        )}
 
         {cs.testing && (
           <CaseSection
@@ -449,29 +487,32 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
           </CaseSection>
         )}
 
-        <CaseSection
-          label="Impact"
-          title="Impact"
-        >
-          <div className="mt-8 grid gap-8 sm:grid-cols-3">
-            {cs.outcomes.map((outcome) => (
-              <div key={outcome.label}>
-                <div className="text-4xl font-bold tracking-tight sm:text-5xl">
-                  {outcome.stat}
+        {cs.outcomes && cs.outcomes.length > 0 && (
+          <CaseSection
+            label="Impact"
+            title="Impact"
+          >
+            <div className="mt-8 grid gap-8 sm:grid-cols-3">
+              {cs.outcomes.map((outcome) => (
+                <div key={outcome.label}>
+                  <div className="text-4xl font-bold tracking-tight sm:text-5xl">
+                    {outcome.stat}
+                  </div>
+                  <p className="mt-2 text-sm text-foreground/50 md:text-[15px]">
+                    {outcome.label}
+                  </p>
                 </div>
-                <p className="mt-2 text-sm text-foreground/50 md:text-[15px]">
-                  {outcome.label}
-                </p>
-              </div>
-            ))}
-          </div>
-        </CaseSection>
+              ))}
+            </div>
+          </CaseSection>
+        )}
 
-        <CaseSection
-          label="Conclusion"
-          title="Reflection"
-          intro={cs.reflection}
-        >
+        {cs.reflection && (
+          <CaseSection
+            label="Conclusion"
+            title="Reflection"
+            intro={cs.reflection}
+          >
           {cs.conclusion && (
             <div className="mt-10 grid gap-8 sm:grid-cols-2">
               <ul className="space-y-2.5">
@@ -504,6 +545,7 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
             </div>
           )}
         </CaseSection>
+        )}
 
         <section className="border-t border-black/[0.07] py-14 sm:py-16">
           <Link href={`/projects/${nextProject.slug}`} className="group block">
