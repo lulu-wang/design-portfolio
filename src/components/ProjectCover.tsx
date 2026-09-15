@@ -41,7 +41,7 @@ export default function ProjectCover({
         }`}
       >
         <span
-          className={`font-display select-none font-extrabold uppercase tracking-[-0.07em] text-black/[0.18] transition-colors duration-300 group-hover:text-black/[0.24] ${
+          className={`font-display select-none font-bold uppercase tracking-[-0.06em] text-foreground/[0.16] transition-colors duration-300 group-hover:text-foreground/[0.22] ${
             stacked
               ? `text-left ${
                   hero

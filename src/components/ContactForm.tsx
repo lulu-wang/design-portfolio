@@ -31,7 +31,7 @@ export default function ContactForm() {
             required
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="mt-2 w-full border-b border-black/15 bg-transparent py-3 text-base outline-none transition-colors placeholder:text-muted/50 focus:border-foreground"
+            className="mt-2 w-full border-b border-foreground/15 bg-transparent py-3 text-base outline-none transition-colors placeholder:text-muted/50 focus:border-foreground"
             placeholder="Enter your name"
             autoComplete="name"
           />
@@ -44,7 +44,7 @@ export default function ContactForm() {
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="mt-2 w-full border-b border-black/15 bg-transparent py-3 text-base outline-none transition-colors placeholder:text-muted/50 focus:border-foreground"
+            className="mt-2 w-full border-b border-foreground/15 bg-transparent py-3 text-base outline-none transition-colors placeholder:text-muted/50 focus:border-foreground"
             placeholder="Enter your email"
             autoComplete="email"
           />
@@ -59,7 +59,7 @@ export default function ContactForm() {
           rows={4}
           value={message}
           onChange={(e) => setMessage(e.target.value)}
-          className="mt-2 w-full resize-y border-b border-black/15 bg-transparent py-3 text-base outline-none transition-colors placeholder:text-muted/50 focus:border-foreground"
+          className="mt-2 w-full resize-y border-b border-foreground/15 bg-transparent py-3 text-base outline-none transition-colors placeholder:text-muted/50 focus:border-foreground"
           placeholder="Tell me about your project"
         />
       </label>

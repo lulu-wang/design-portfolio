@@ -15,7 +15,7 @@ export default function Home() {
 
       <section className="page-wrap py-24 sm:py-32">
         <div className="flex items-end justify-between gap-4">
-          <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
             Featured Projects
           </h2>
           <Link
@@ -39,7 +39,7 @@ export default function Home() {
       </section>
 
       <section id="contact" className="page-wrap scroll-mt-28 pb-8">
-        <h2 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl">
+        <h2 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
           Let&rsquo;s talk.
         </h2>
         <p className="page-subtitle mt-5 max-w-xl">

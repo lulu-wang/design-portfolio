@@ -48,7 +48,7 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
           <p className="animate-rise text-[13px] font-medium tracking-[0.18em] text-foreground/40">
             /Project
           </p>
-          <h1 className="animate-rise mt-3 text-[2.1rem] font-extrabold leading-[1.02] tracking-tight sm:text-5xl md:text-6xl md:leading-[0.98]">
+          <h1 className="animate-rise mt-3 text-[2.1rem] font-bold leading-[1.08] tracking-tight sm:text-5xl md:text-6xl md:leading-[1.05]">
             {project.name}
           </h1>
 
@@ -56,7 +56,7 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
             {project.tags.map((tag, i) => (
               <span
                 key={tag.label}
-                className="animate-rise rounded-full border border-black/15 px-3.5 py-1.5 text-xs font-medium text-foreground/70 sm:text-[13px]"
+                className="animate-rise rounded-full border border-foreground/15 px-3.5 py-1.5 text-xs font-medium text-foreground/70 sm:text-[13px]"
                 style={{ animationDelay: `${140 + i * 70}ms` }}
               >
                 {tag.label}
@@ -568,11 +568,11 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
         </CaseSection>
         )}
 
-        <section className="border-t border-black/[0.07] py-14 sm:py-16">
+        <section className="border-t border-foreground/[0.08] py-14 sm:py-16">
           <Link href={`/projects/${nextProject.slug}`} className="group block">
             <p className="text-sm text-foreground/40">Next</p>
             <div className="mt-2 flex items-center justify-between gap-6">
-              <h2 className="text-2xl font-extrabold tracking-tight transition-opacity group-hover:opacity-60 sm:text-3xl md:text-4xl">
+              <h2 className="text-2xl font-bold tracking-tight transition-opacity group-hover:opacity-60 sm:text-3xl md:text-4xl">
                 {nextProject.name}
               </h2>
               <Arrow className="h-3.5 shrink-0 transition-transform group-hover:translate-x-2 sm:h-4" />

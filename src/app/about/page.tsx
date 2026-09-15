@@ -33,14 +33,32 @@ const skills = [
     ],
   },
   {
-    category: "Tools & Engineering",
+    category: "Tools",
     items: [
       "Figma",
       "ProtoPie",
       "Framer",
+      "Adobe Photoshop",
+      "Adobe Illustrator",
+      "Adobe After Effects",
+      "Procreate",
+    ],
+  },
+  {
+    category: "Engineering",
+    items: [
       "HTML / CSS",
       "JavaScript / TypeScript",
       "React / Next.js",
+      "Python",
+      "Java",
+      "C++",
+      "C#",
+      "PHP/Hack",
+      "Swift/Objective-C",
+      "Unity",
+      "Firebase",
+      "Fullstack mobile and web development",
     ],
   },
 ];
@@ -84,7 +102,7 @@ export default function AboutPage() {
           <p className="text-[13px] font-medium uppercase tracking-[0.18em] text-foreground/40">
             /About me
           </p>
-          <h1 className="mt-4 text-[2.4rem] font-extrabold leading-[1.02] tracking-tight sm:text-5xl md:text-6xl">
+          <h1 className="mt-4 text-[2.4rem] font-bold leading-[1.08] tracking-tight sm:text-5xl md:text-6xl">
             I&rsquo;m Lulu Wang.
           </h1>
 
@@ -110,14 +128,14 @@ export default function AboutPage() {
       </section>
 
       <section className="pb-20 sm:pb-28">
-        <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
+        <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
           Capabilities
         </h2>
 
-        <div className="mt-12 grid grid-cols-2 gap-x-6 gap-y-12 sm:grid-cols-3 sm:gap-10">
+        <div className="mt-12 grid grid-cols-2 gap-x-6 gap-y-12 sm:gap-10 lg:grid-cols-4">
           {skills.map((group) => (
             <div key={group.category}>
-              <h3 className="text-xl font-extrabold tracking-tight md:text-2xl">
+              <h3 className="text-xl font-semibold tracking-tight md:text-2xl">
                 {group.category}
               </h3>
               <ul className="mt-5 space-y-2.5">
@@ -136,7 +154,7 @@ export default function AboutPage() {
       </section>
 
       <section id="contact" className="scroll-mt-28 pb-4">
-        <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl md:text-5xl">
+        <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
           Let&rsquo;s talk.
         </h2>
         <p className="page-subtitle mt-6 max-w-2xl md:max-w-3xl">

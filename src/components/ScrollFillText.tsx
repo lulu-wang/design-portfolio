@@ -47,7 +47,7 @@ export default function ScrollFillText() {
               <span
                 key={`${word}-${i}`}
                 className="transition-colors duration-150"
-                style={{ color: `rgba(10, 10, 10, ${opacity})` }}
+                style={{ color: `rgba(50, 47, 44, ${opacity})` }}
               >
                 {word}
                 {i < words.length - 1 ? " " : ""}

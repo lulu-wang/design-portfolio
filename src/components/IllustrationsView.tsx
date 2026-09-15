@@ -124,7 +124,7 @@ export default function IllustrationsView() {
         <p className="animate-rise text-[13px] font-medium uppercase tracking-[0.18em] text-foreground/40">
           /Gallery
         </p>
-        <h1 className="animate-rise mt-4 text-[clamp(3rem,10vw,6rem)] font-extrabold uppercase leading-[0.9] tracking-[-0.04em]">
+        <h1 className="animate-rise mt-4 text-[clamp(3rem,10vw,6rem)] font-bold uppercase leading-[0.92] tracking-[-0.035em]">
           Gallery
         </h1>
         <p
@@ -148,7 +148,7 @@ export default function IllustrationsView() {
                 onClick={() => setTab(t.id)}
                 className={`min-h-11 shrink-0 border-b-2 pb-3 pt-2 text-left text-lg transition-colors sm:min-h-0 sm:pt-0 md:text-xl ${
                   selected
-                    ? "border-foreground font-extrabold text-foreground"
+                    ? "border-foreground font-semibold text-foreground"
                     : "border-transparent text-muted hover:text-foreground"
                 }`}
                 aria-pressed={selected}

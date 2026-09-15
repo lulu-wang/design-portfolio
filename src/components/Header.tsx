@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useLenis } from "lenis/react";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
@@ -10,13 +11,15 @@ const nav = [
   { label: "About Me", href: "/about" },
   { label: "Projects", href: "/projects" },
   { label: "Gallery", href: "/illustrations" },
-  { label: "Contact", href: "/#contact" },
+  { label: "Blog", href: "/blog" },
+  { label: "Contact", href: "/about#contact" },
 ];
 
 const desktopNav = nav.filter((item) => item.href !== "/");
 
 export default function Header() {
   const pathname = usePathname();
+  const lenis = useLenis();
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
@@ -24,6 +27,19 @@ export default function Header() {
     if (href.includes("#")) return false;
     if (href === "/") return pathname === "/";
     return pathname.startsWith(href);
+  };
+
+  const onNavClick = (href: string) => {
+    setOpen(false);
+    if (!href.includes("#")) return;
+    const [path, hash] = href.split("#");
+    if (pathname !== path) return;
+    window.setTimeout(() => {
+      const el = document.getElementById(hash);
+      if (!el) return;
+      lenis?.resize();
+      lenis?.scrollTo(el, { offset: -96 });
+    }, 50);
   };
 
   useEffect(() => {
@@ -65,7 +81,7 @@ export default function Header() {
   return (
     <>
       <header className="pointer-events-none fixed inset-x-0 top-0 z-50 px-4 pt-5 sm:pt-6 md:px-8 lg:px-12">
-        <div className="pointer-events-auto mx-auto flex h-12 w-[min(92vw,268px)] items-center justify-between rounded-full bg-ink pl-5 pr-1.5 text-background shadow-[0_10px_30px_rgba(0,0,0,0.12)] md:hidden">
+        <div className="pointer-events-auto mx-auto flex h-12 w-[min(92vw,268px)] items-center justify-between rounded-full bg-ink pl-5 pr-1.5 text-background shadow-[0_10px_30px_rgba(80,60,40,0.1)] md:hidden">
           <Link
             href="/"
             className="font-display text-[17px] font-semibold tracking-tight text-background"
@@ -98,23 +114,25 @@ export default function Header() {
         <div className="pointer-events-none mx-auto hidden max-w-[1120px] items-center justify-between md:flex">
           <Link
             href="/"
-            className="pointer-events-auto font-display text-[22px] font-extrabold tracking-tight text-foreground"
+            className="pointer-events-auto font-display text-[22px] font-semibold tracking-tight text-foreground"
           >
             Lulu
           </Link>
           <nav
-            className="pointer-events-auto flex items-center gap-8"
+            className="pointer-events-auto flex items-center gap-5 lg:gap-8"
             aria-label="Primary"
           >
             {desktopNav.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`font-display text-[15px] font-extrabold uppercase tracking-tight transition-colors ${
+                scroll={!item.href.includes("#")}
+                className={`font-display text-[15px] font-semibold uppercase tracking-[0.04em] transition-colors ${
                   isActive(item.href)
                     ? "text-foreground"
                     : "text-foreground/35 hover:text-foreground"
                 }`}
+                onClick={() => onNavClick(item.href)}
               >
                 {item.label}
               </Link>
@@ -142,13 +160,14 @@ export default function Header() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`font-display text-4xl font-extrabold uppercase tracking-tight transition-[opacity,transform] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] sm:text-6xl ${
+                  className={`font-display text-4xl font-semibold uppercase tracking-[0.02em] transition-[opacity,transform] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] sm:text-6xl ${
                     isActive(item.href)
                       ? "text-foreground"
                       : "text-foreground/35 hover:text-foreground"
                   } ${open ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"}`}
                   style={{ transitionDelay: open ? `${80 + i * 60}ms` : "0ms" }}
-                  onClick={() => setOpen(false)}
+                  scroll={!item.href.includes("#")}
+                  onClick={() => onNavClick(item.href)}
                   tabIndex={open ? 0 : -1}
                 >
                   {item.label}

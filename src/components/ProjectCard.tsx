@@ -30,7 +30,7 @@ export default function ProjectCard({
         className="aspect-[239/158] rounded-[20px] transition duration-500 group-hover:opacity-90"
         sizes="(max-width: 768px) 100vw, 50vw"
       />
-      <h3 className="mt-5 text-2xl font-extrabold tracking-tight sm:text-[1.75rem]">
+      <h3 className="mt-5 text-2xl font-semibold tracking-tight sm:text-[1.75rem]">
         {project.name}
       </h3>
       <p className="mt-1.5 max-w-md text-[15px] leading-relaxed text-muted">

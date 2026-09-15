@@ -15,7 +15,7 @@ export default function ProjectsPage() {
         <p className="animate-rise text-[13px] font-medium uppercase tracking-[0.18em] text-foreground/40">
           /Work
         </p>
-        <h1 className="animate-rise mt-4 text-[clamp(3rem,10vw,6rem)] font-extrabold uppercase leading-[0.9] tracking-[-0.04em]">
+        <h1 className="animate-rise mt-4 text-[clamp(3rem,10vw,6rem)] font-bold uppercase leading-[0.92] tracking-[-0.035em]">
           Projects
         </h1>
         <p

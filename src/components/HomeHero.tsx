@@ -7,7 +7,7 @@ export default function HomeHero() {
     <div className="relative">
       <section className="relative flex min-h-[100svh] flex-col justify-between px-5 pb-8 pt-24 sm:px-8 sm:pb-10 md:px-12">
         <div className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center">
-          <div className="w-[min(42vw,248px)] overflow-hidden rounded-[20px] shadow-[0_18px_50px_rgba(0,0,0,0.12)] mix-blend-multiply sm:w-[260px]">
+          <div className="w-[min(42vw,248px)] overflow-hidden rounded-[20px] shadow-[0_18px_50px_rgba(80,60,40,0.1)] mix-blend-multiply sm:w-[260px]">
             <Image
               src="/images/portrait.png"
               alt="Portrait of Lulu Wang"
@@ -20,7 +20,7 @@ export default function HomeHero() {
         </div>
 
         <div className="relative z-10 flex flex-1 flex-col items-center justify-center">
-          <h1 className="animate-rise text-center font-display text-[clamp(3.15rem,13vw,8.25rem)] font-extrabold uppercase leading-[0.88] tracking-[-0.035em]">
+          <h1 className="animate-rise text-center font-display text-[clamp(3.15rem,13vw,8.25rem)] font-bold uppercase leading-[0.9] tracking-[-0.03em]">
             <span className="relative inline-block">
               Product
               <Sparkle className="absolute -left-[0.7em] top-[0.08em] w-[0.42em] sm:-left-[0.55em]" />
@@ -33,7 +33,7 @@ export default function HomeHero() {
         </div>
 
         <div className="relative z-30 flex items-end justify-between gap-4 pt-6">
-          <p className="font-display text-3xl font-extrabold tracking-tight sm:text-5xl md:text-6xl">
+          <p className="font-display text-3xl font-semibold tracking-tight text-foreground/70 sm:text-5xl md:text-6xl">
             ©2026
           </p>
           <p className="pb-1 text-[11px] font-medium uppercase tracking-[0.18em] text-foreground/45 sm:text-xs">
