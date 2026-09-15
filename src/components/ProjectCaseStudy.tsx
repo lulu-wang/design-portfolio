@@ -402,7 +402,10 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
         )}
       </div>
 
-      {(cs.visuals?.banner || cs.visuals?.images.length || cs.wireframes?.hiFi) && (
+      {(cs.visuals?.banner ||
+        (cs.visuals?.images.length ?? 0) > 0 ||
+        (cs.visuals?.galleries?.length ?? 0) > 0 ||
+        cs.wireframes?.hiFi) && (
         <CaseBleed>
           {cs.visuals?.banner && (
             <figure className="bg-white px-5 py-10 sm:px-8 sm:py-14 md:px-12">
@@ -416,14 +419,32 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
               />
             </figure>
           )}
-          {cs.visuals && cs.visuals.images.length > 0 ? (
-            <CaseGallery
-              items={cs.visuals.images}
-              layout={cs.visuals.layout ?? "phones"}
-              tone={cs.visuals.tone ?? "dark"}
-              roomy={cs.visuals.roomy}
-              flush={Boolean(cs.visuals.banner)}
-            />
+          {cs.visuals &&
+          ((cs.visuals.images.length ?? 0) > 0 ||
+            (cs.visuals.galleries?.length ?? 0) > 0) ? (
+            <>
+              {cs.visuals.images.length > 0 && (
+                <CaseGallery
+                  items={cs.visuals.images}
+                  layout={cs.visuals.layout ?? "phones"}
+                  tone={cs.visuals.tone ?? "dark"}
+                  roomy={cs.visuals.roomy}
+                  flush={Boolean(cs.visuals.banner)}
+                  heading={cs.visuals.heading}
+                />
+              )}
+              {cs.visuals.galleries?.map((gallery, index) => (
+                <CaseGallery
+                  key={gallery.heading ?? gallery.images[0]?.src ?? index}
+                  items={gallery.images}
+                  layout={gallery.layout ?? "full"}
+                  tone={gallery.tone ?? cs.visuals?.tone ?? "dark"}
+                  roomy={gallery.roomy}
+                  flush
+                  heading={gallery.heading}
+                />
+              ))}
+            </>
           ) : (
             <div className="mt-12 overflow-hidden rounded-[20px] bg-[#ebe6de]">
               <Image

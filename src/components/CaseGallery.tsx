@@ -121,7 +121,8 @@ function PhoneFrame({
   // PulseFit exports mix 864 and 1076-tall crops; pin them to one iPhone
   // viewport so shorter screens don't sit above a black gap in the grid.
   const fillFrame =
-    item.src.includes("pulsefit") || item.src.includes("netflix-community");
+    item.src.includes("pulsefit") ||
+    item.src.includes("netflix-community/phone");
 
   return (
     <figure className={`mx-auto w-full ${roomy ? "max-w-[220px] sm:max-w-[240px] md:max-w-[260px]" : ""}`}>
@@ -174,6 +175,25 @@ function PhoneFrame({
   );
 }
 
+function GalleryHeading({
+  heading,
+  onDark,
+}: {
+  heading?: string;
+  onDark: boolean;
+}) {
+  if (!heading) return null;
+  return (
+    <p
+      className={`mb-10 text-center text-[13px] font-medium tracking-[0.18em] sm:mb-12 ${
+        onDark ? "text-white/45" : "text-foreground/40"
+      }`}
+    >
+      {heading}
+    </p>
+  );
+}
+
 /**
  * Large visual gallery for case studies — Onur-style breakout imagery.
  * Escapes the text column so wireframes and final designs can breathe.
@@ -184,43 +204,58 @@ export default function CaseGallery({
   tone = "muted",
   roomy = false,
   flush = false,
+  heading,
 }: {
   items: CaseMediaItem[];
   layout?: Layout;
   tone?: "muted" | "dark" | "plain";
   roomy?: boolean;
   flush?: boolean;
+  heading?: string;
 }) {
   if (!items.length) return null;
 
+  const dark = tone === "dark";
   const surface =
     tone === "dark"
       ? "bg-[#111]"
       : tone === "plain"
         ? "bg-transparent"
         : "bg-[#ececec]";
+  const captionClass = dark ? "text-white/45" : "text-muted";
 
   if (layout === "full" || layout === "stack") {
     return (
-      <div className="mt-10 flex justify-center px-5 sm:mt-12 sm:px-8">
-        <div className="w-full max-w-5xl space-y-4 sm:max-w-6xl">
-          {items.map((item) => (
-            <figure key={item.src} className={`overflow-hidden ${surface}`}>
-              <Image
-                src={item.src}
-                alt={item.alt}
-                width={item.width ?? 1600}
-                height={item.height ?? 1000}
-                className="mx-auto h-auto w-full max-w-full object-contain"
-                sizes="(max-width: 768px) 100vw, 896px"
-              />
-              {item.caption && (
-                <figcaption className="px-4 py-3 text-center text-xs tracking-wide text-muted sm:px-6">
-                  {item.caption}
-                </figcaption>
-              )}
-            </figure>
-          ))}
+      <div
+        className={`${flush ? "mt-0" : "mt-10 sm:mt-12"} ${
+          dark
+            ? `${surface} px-5 py-12 sm:px-8 sm:py-16 md:px-10`
+            : "flex justify-center px-5 sm:px-8"
+        }`}
+      >
+        <div className="mx-auto w-full max-w-5xl sm:max-w-6xl">
+          <GalleryHeading heading={heading} onDark={dark} />
+          <div className="space-y-4 sm:space-y-5">
+            {items.map((item) => (
+              <figure key={item.src} className={`overflow-hidden ${dark ? "" : surface}`}>
+                <Image
+                  src={item.src}
+                  alt={item.alt}
+                  width={item.width ?? 1600}
+                  height={item.height ?? 1000}
+                  className="mx-auto h-auto w-full max-w-full object-contain"
+                  sizes="(max-width: 768px) 100vw, 1024px"
+                />
+                {item.caption && (
+                  <figcaption
+                    className={`px-4 py-3 text-center text-xs tracking-wide sm:px-6 ${captionClass}`}
+                  >
+                    {item.caption}
+                  </figcaption>
+                )}
+              </figure>
+            ))}
+          </div>
         </div>
       </div>
     );
@@ -255,10 +290,11 @@ export default function CaseGallery({
       <div
         className={`${surface} ${
           roomy
-            ? "mt-12 px-8 py-20 sm:mt-16 sm:px-14 sm:py-28 md:px-20 md:py-32 lg:px-28"
-            : "mt-12 px-5 py-16 sm:mt-16 sm:px-8 sm:py-24 md:px-10 md:py-28 lg:px-14"
+            ? `${flush ? "mt-0" : "mt-12 sm:mt-16"} px-8 py-20 sm:px-14 sm:py-28 md:px-20 md:py-32 lg:px-28`
+            : `${flush ? "mt-0" : "mt-12 sm:mt-16"} px-5 py-16 sm:px-8 sm:py-24 md:px-10 md:py-28 lg:px-14`
         }`}
       >
+        <GalleryHeading heading={heading} onDark={dark} />
         <div
           className={`mx-auto grid items-start ${
             roomy

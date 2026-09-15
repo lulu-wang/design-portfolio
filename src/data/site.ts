@@ -87,10 +87,19 @@ export type CaseStudy = {
     tone?: "muted" | "dark" | "plain";
     /** Smaller phones with more space between frames */
     roomy?: boolean;
+    heading?: string;
     title?: string;
     intro?: string;
     label?: string;
     banner?: CaseMediaItem;
+    /** Extra galleries after the primary set (e.g. TV after phone) */
+    galleries?: {
+      heading?: string;
+      images: CaseMediaItem[];
+      layout?: "masonry" | "phones" | "full" | "pair" | "stack";
+      tone?: "muted" | "dark" | "plain";
+      roomy?: boolean;
+    }[];
   };
   solution?: {
     intro: string;
@@ -1247,19 +1256,20 @@ export const projects: Project[] = [
       { label: "UX Design", variant: "outline" },
       { label: "Product Research", variant: "solid" },
       { label: "Mobile", variant: "lavender" },
+      { label: "TV", variant: "outline" },
     ],
     caseStudy: {
       tagline:
         "A private social layer for Netflix — spoiler-safe discussion, friend circles, and collections that keep the story going in-app.",
       presentation: {
         label: "interactive prototype",
-        href: "/prototypes/netflix-community/index.html",
+        href: "https://www.figma.com/proto/OFEilBtkAjdJsDBRhMeZiz/Netflix-Community---Capstone-1--Add-a-Feature?node-id=151-6&p=f&t=D65iIEoLP9ghQYY2-1&scaling=min-zoom&content-scaling=fixed&page-id=151%3A5&starting-point-node-id=151%3A6&show-proto-sidebar=1",
       },
       meta: {
         role: "Product Designer",
         timeline: "Feature concept · 2026",
         team: "Solo designer",
-        platform: "Mobile",
+        platform: "Mobile and TV",
         tools: ["Figma", "FigJam"],
       },
       overview:
@@ -1398,7 +1408,7 @@ export const projects: Project[] = [
           },
         ],
         hiFi:
-          "High-fidelity stays inside Netflix’s own system — near-black surfaces, the red wordmark, and a Community tab on the title. Copy is quiet on purpose: **Keep the story going.** Spoilers stay hidden until you choose to see them. A post-watch prompt (**What stayed with you?**) starts the thread without turning the credits into a comments section.",
+          "High-fidelity stays inside Netflix’s own system — near-black surfaces, the red wordmark, and a Community tab on the title. **Phone and TV share the same jobs** with different input: a remote never becomes a keyboard, so living-room posting hands off to the phone. Copy is quiet on purpose: **Keep the story going.** Spoilers stay hidden until you choose to see them. A post-watch prompt (**What stayed with you?**) starts the thread without turning the credits into a comments section.",
       },
       branding: {
         intro:
@@ -1425,49 +1435,119 @@ export const projects: Project[] = [
           "“Keep the story going.” “What stayed with you?” “Be kind. Be curious. No spoilers.” The product speaks like a living room, not a feed.",
       },
       visuals: {
+        heading: "Phone",
         layout: "phones",
         tone: "dark",
         roomy: true,
         images: [
           {
-            src: "/images/projects/netflix-community/screens/01-title.jpg",
+            src: "/images/projects/netflix-community/phone/01-title.png",
             alt: "Netflix title page with a Community tab on Stranger Things",
             caption: "Title · Community",
-            width: 472,
-            height: 1076,
+            width: 362,
+            height: 1024,
             statusBar: "dark",
           },
           {
-            src: "/images/projects/netflix-community/screens/03-hub.jpg",
-            alt: "Private circle discussion hub for Stranger Things with spoiler-gated threads",
+            src: "/images/projects/netflix-community/phone/02-hub.png",
+            alt: "Public Community Discussion Hub for Stranger Things with spoiler-gated threads",
             caption: "Discussion hub",
-            width: 473,
-            height: 966,
+            width: 393,
+            height: 852,
             statusBar: "dark",
           },
           {
-            src: "/images/projects/netflix-community/screens/02-thread.jpg",
-            alt: "Episode thread with replies and spoiler-hidden comments",
+            src: "/images/projects/netflix-community/phone/04-thread.png",
+            alt: "Episode thread with replies and a spoiler-hidden comment",
             caption: "Thread",
-            width: 473,
-            height: 966,
+            width: 393,
+            height: 852,
             statusBar: "dark",
           },
           {
-            src: "/images/projects/netflix-community/screens/04-collection.jpg",
-            alt: "Fantasy Favorites collection shared with a circle, with Play and My List actions",
-            caption: "Collection",
-            width: 472,
-            height: 966,
+            src: "/images/projects/netflix-community/phone/05-compose.png",
+            alt: "New thought composer with season and episode pickers",
+            caption: "New thought",
+            width: 393,
+            height: 852,
             statusBar: "dark",
           },
           {
-            src: "/images/projects/netflix-community/screens/05-prompt.jpg",
+            src: "/images/projects/netflix-community/phone/03-circle.png",
+            alt: "Private circle discussion hub for Stranger Things",
+            caption: "Circle hub",
+            width: 393,
+            height: 852,
+            statusBar: "dark",
+          },
+          {
+            src: "/images/projects/netflix-community/phone/06-prompt.png",
             alt: "Post-watch prompt asking what stayed with you after an episode",
             caption: "Post-watch prompt",
-            width: 471,
-            height: 1076,
+            width: 393,
+            height: 852,
             statusBar: "dark",
+          },
+          {
+            src: "/images/projects/netflix-community/phone/09-collections.png",
+            alt: "Recommended collections from a circle, filterable by mood",
+            caption: "Recommended collections",
+            width: 393,
+            height: 852,
+            statusBar: "dark",
+          },
+          {
+            src: "/images/projects/netflix-community/phone/08-collection.png",
+            alt: "Fantasy Favorites collection with Play and My List actions",
+            caption: "Collection",
+            width: 393,
+            height: 852,
+            statusBar: "dark",
+          },
+          {
+            src: "/images/projects/netflix-community/phone/07-share.png",
+            alt: "Maya shared a collection with a personal note",
+            caption: "Shared collection",
+            width: 393,
+            height: 852,
+            statusBar: "dark",
+          },
+        ],
+        galleries: [
+          {
+            heading: "TV",
+            layout: "full",
+            tone: "dark",
+            images: [
+              {
+                src: "/images/projects/netflix-community/tv/01-hub.png",
+                alt: "TV Community Discussion Hub for Stranger Things",
+                caption: "Discussion hub",
+                width: 1024,
+                height: 576,
+              },
+              {
+                src: "/images/projects/netflix-community/tv/02-thread.png",
+                alt: "TV episode thread with replies, report, and spoiler reveal",
+                caption: "Thread",
+                width: 1024,
+                height: 576,
+              },
+              {
+                src: "/images/projects/netflix-community/tv/04-prompt.png",
+                alt: "TV post-watch overlay asking what stayed with you",
+                caption: "Post-watch prompt",
+                width: 1024,
+                height: 576,
+              },
+              {
+                src: "/images/projects/netflix-community/tv/03-pairing.png",
+                alt: "TV sign-in overlay with a code to post from a phone",
+                caption: "Post from your phone",
+                width: 1024,
+                height: 576,
+              },
+            ],
           },
         ],
       },
