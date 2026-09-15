@@ -1615,13 +1615,15 @@ export const projects: Project[] = [
       { label: "Brand Identity", variant: "outline" },
       { label: "Illustration", variant: "solid" },
       { label: "Fashion", variant: "lavender" },
+      { label: "Creative Direction", variant: "outline" },
+      { label: "Marketing & Ops", variant: "solid" },
     ],
     caseStudy: {
       tagline:
         "An artist-owned streetwear brand named for a Japanese sense of subtle, mysterious beauty — original graphics, from Procreate to print.",
       presentation: {
         label: "the shop",
-        href: "https://yuugenapparel.co/",
+        href: "https://www.instagram.com/yuugenapparel",
       },
       meta: {
         role: "Founder, designer, and illustrator",
@@ -1631,25 +1633,16 @@ export const projects: Project[] = [
         tools: ["Procreate", "Illustrator", "Shopify", "Instagram"],
       },
       overview:
-        "**Yuugen** (n.) — a profound, mysterious sense of subtle beauty in the universe. I started Yuugen Apparel in 2020 to get my art off the screen and onto clothing. Original work was drawn in **Procreate**, mocked up in **Illustrator**, and printed with local suppliers after weeks of sample shipping and trial and error. I ran user and market research, then launched as an online fashion brand. Over a year of operating primarily online I designed the Instagram presence, learned ads in the Facebook / Instagram ecosystem, posted drops and collections, and made **over 1,000 sales** through Instagram, Shopify, and Etsy. People wrote in during an uncertain period to say the brand meant something to them. I began collaborating with artists in the US and overseas, worked with fashion influencers, and pivoted to selling in person at anime conventions — where I met the communities the work was actually for.",
-      problem: {
-        statement:
-          "The art lived on a screen. There was no path from illustration to a brand people could wear.",
-        points: [
-          "**Illustration had nowhere to land.** I wanted the work to exist as something physical — not only a file on Procreate.",
-          "**Production was unproven.** Printing original graphics on apparel meant suppliers, samples, and a lot of getting it wrong before a drop could ship.",
-          "**Selling had to be learned.** Ads, Instagram, Shopify, and later conventions were the distribution — not a studio handoff.",
-        ],
-      },
+        "**Yuugen** (n.) — a profound, mysterious sense of subtle beauty in the universe. I started Yuugen Apparel to get my art off the screen and onto clothing. Original work was drawn in **Procreate**, mocked up in **Illustrator**, and printed with local suppliers after weeks of sample shipping and trial and error. I ran user and market research, then launched as an online fashion brand in 2020. Over a year of operating primarily online I designed the Instagram presence, learned ads in the Facebook / Instagram ecosystem, posted drops and collections, and made **over 1,000 sales** through Instagram, Shopify, and Etsy. People wrote in during an uncertain period of time to say the brand meant something to them. I began collaborating with artists in the US and overseas, worked with fashion influencers, and pivoted to selling in person at anime conventions — where I met the communities the work was actually for.",
       goals:
-        "Build an **artist-owned Japanese streetwear brand** from original graphics: research the market, lock a visual identity, produce with local manufacturers, and launch drops people could actually buy — online first, then in person.",
+        "My art lived on a screen — a Procreate file with no path to something people could wear. I wanted to **build an artist-owned Japanese streetwear brand** from my own graphics: get my drawings onto garments, communicate with vendors locally and overseas, prove production through samples, and learn how to sell it myself — market research, visual identity, Instagram and ads, Shopify and Etsy, then conventions.",
       define: {
         intro:
           "The process was the whole business: draw, mock up, sample, listen, drop. I stayed with it from the first illustration through ads, collaborations, and convention floors.",
         steps: [
           "Draw original graphics in **Procreate**",
           "Mock up garments in **Illustrator**",
-          "Print with local suppliers; iterate on samples",
+          "Communicate with vendors locally and overseas; iterate on samples",
           "Research the market, then launch online",
           "Run Instagram, ads, and regular drops",
           "Collaborate with artists and sell at conventions",
