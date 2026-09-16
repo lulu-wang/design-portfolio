@@ -44,10 +44,7 @@ export default async function BlogPostPage({
         </Link>
 
         <div className="mt-10 max-w-3xl sm:mt-12">
-          <p className="animate-rise text-[13px] font-medium tracking-[0.18em] text-foreground/40">
-            /Blog
-          </p>
-          <h1 className="animate-rise mt-3 font-secondary text-[2.1rem] font-normal leading-[1.15] tracking-[-0.02em] sm:text-5xl md:text-[3.25rem] md:leading-[1.12]">
+          <h1 className="animate-rise font-title text-[clamp(2.35rem,5vw,4.15rem)] font-bold leading-[1.12] tracking-[-0.045em]">
             {post.title}
           </h1>
           <p className="animate-rise mt-5 text-sm text-foreground/45 sm:mt-6">

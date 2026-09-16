@@ -30,11 +30,14 @@ export default function ProjectCard({
         className="aspect-[239/158] rounded-[20px] transition duration-500 group-hover:opacity-90"
         sizes="(max-width: 768px) 100vw, 50vw"
       />
-      <h3 className="mt-5 text-2xl font-semibold tracking-tight sm:text-[1.75rem]">
+      <h3 className="mt-5 font-title text-[1.2rem] font-bold tracking-[-0.03em] sm:text-[1.3rem]">
         {project.name}
       </h3>
       <p className="mt-1.5 max-w-md text-[15px] leading-relaxed text-muted">
         {subtitle}
+      </p>
+      <p className="mt-2.5 text-[13px] leading-relaxed text-foreground/35">
+        {project.tags.map((tag) => tag.label).join(" · ")}
       </p>
     </Link>
   );

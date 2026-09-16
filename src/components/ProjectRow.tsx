@@ -41,7 +41,7 @@ export default function ProjectRow({
 
         <div className="min-w-0 pt-0.5">
           <div className="flex items-baseline justify-between gap-4">
-            <h3 className="text-lg font-bold tracking-tight sm:text-xl md:text-[22px]">
+            <h3 className="font-title text-lg font-bold tracking-[-0.03em] sm:text-xl md:text-[22px]">
               {project.name}
             </h3>
             {showView && (

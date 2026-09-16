@@ -12,7 +12,7 @@ export default function Error({
   return (
     <main className="page-wrap pt-28 sm:pt-32">
       <section className="flex min-h-[50vh] flex-col items-start justify-center py-16 sm:min-h-[55vh] sm:py-24">
-        <h1 className="max-w-xl text-4xl font-extrabold uppercase leading-[0.9] tracking-[-0.04em] sm:text-6xl">
+        <h1 className="font-title max-w-xl text-[clamp(2.35rem,5vw,4.15rem)] font-bold leading-[1.12] tracking-[-0.045em]">
           Something went wrong
         </h1>
         <p className="font-secondary mt-6 max-w-md text-base leading-[29px] text-muted sm:mt-8">
@@ -24,7 +24,7 @@ export default function Error({
           </button>
           <Link
             href="/"
-            className="text-sm font-semibold tracking-widest uppercase transition-opacity hover:opacity-60"
+            className="text-sm text-foreground/50 transition-opacity hover:opacity-70"
           >
             Back home →
           </Link>

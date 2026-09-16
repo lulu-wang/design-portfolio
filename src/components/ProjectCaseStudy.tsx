@@ -31,7 +31,7 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
 
   const body = "font-secondary text-[15px] leading-[1.55] text-foreground/65 md:text-base md:leading-[1.6]";
   const bodyMuted = "font-secondary text-[15px] leading-[1.55] text-foreground/50 md:text-base md:leading-[1.6]";
-  const subhead = "text-base font-bold tracking-tight md:text-lg";
+  const subhead = "font-title text-base font-bold tracking-[-0.03em] md:text-lg";
 
   return (
     <>
@@ -45,10 +45,7 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
         </Link>
 
         <div className="mt-10 max-w-3xl sm:mt-12">
-          <p className="animate-rise text-[13px] font-medium tracking-[0.18em] text-foreground/40">
-            /Project
-          </p>
-          <h1 className="animate-rise mt-3 text-[2.1rem] font-bold leading-[1.08] tracking-tight sm:text-5xl md:text-6xl md:leading-[1.05]">
+          <h1 className="animate-rise font-title text-[clamp(2.35rem,5vw,4.15rem)] font-bold leading-[1.12] tracking-[-0.045em]">
             {project.name}
           </h1>
 
@@ -572,7 +569,7 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
           <Link href={`/projects/${nextProject.slug}`} className="group block">
             <p className="text-sm text-foreground/40">Next</p>
             <div className="mt-2 flex items-center justify-between gap-6">
-              <h2 className="text-2xl font-bold tracking-tight transition-opacity group-hover:opacity-60 sm:text-3xl md:text-4xl">
+              <h2 className="font-title text-2xl font-bold tracking-[-0.03em] transition-opacity group-hover:opacity-60 sm:text-3xl md:text-4xl">
                 {nextProject.name}
               </h2>
               <Arrow className="h-3.5 shrink-0 transition-transform group-hover:translate-x-2 sm:h-4" />

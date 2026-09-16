@@ -29,7 +29,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${archivo.variable} antialiased`}>
+      <body
+        className={`${inter.variable} ${archivo.variable} antialiased`}
+      >
         <SiteGrain />
         <SmoothScroll>
           <Header />

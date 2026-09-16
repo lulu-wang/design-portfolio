@@ -12,15 +12,12 @@ export default function ProjectsPage() {
   return (
     <main className="page-wrap pt-28 sm:pt-32">
       <section className="pt-6 pb-12 sm:pb-16 md:pb-20">
-        <p className="animate-rise text-[13px] font-medium uppercase tracking-[0.18em] text-foreground/40">
-          /Work
-        </p>
-        <h1 className="animate-rise mt-4 text-[clamp(3rem,10vw,6rem)] font-bold uppercase leading-[0.92] tracking-[-0.035em]">
+        <h1 className="animate-rise font-title text-[clamp(2.35rem,5vw,4.15rem)] font-bold leading-[1.12] tracking-[-0.045em]">
           Projects
         </h1>
         <p
-          className="page-subtitle animate-rise mt-8 max-w-3xl"
-          style={{ animationDelay: "120ms" }}
+          className="page-subtitle animate-rise mt-6 max-w-3xl sm:mt-8"
+          style={{ animationDelay: "80ms" }}
         >
           Product design, brand, and research across meetings, health, learning,
           streaming, and apparel.

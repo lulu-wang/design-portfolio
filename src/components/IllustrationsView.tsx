@@ -121,15 +121,12 @@ export default function IllustrationsView() {
     <main className="page-wrap pt-28 sm:pt-32">
       {/* Hero */}
       <section className="pt-6">
-        <p className="animate-rise text-[13px] font-medium uppercase tracking-[0.18em] text-foreground/40">
-          /Gallery
-        </p>
-        <h1 className="animate-rise mt-4 text-[clamp(3rem,10vw,6rem)] font-bold uppercase leading-[0.92] tracking-[-0.035em]">
+        <h1 className="animate-rise font-title text-[clamp(2.35rem,5vw,4.15rem)] font-bold leading-[1.12] tracking-[-0.045em]">
           Gallery
         </h1>
         <p
-          className="page-subtitle animate-rise mt-8 max-w-2xl sm:mt-10 md:max-w-3xl"
-          style={{ animationDelay: "120ms" }}
+          className="page-subtitle animate-rise mt-6 max-w-2xl sm:mt-8 md:max-w-3xl"
+          style={{ animationDelay: "80ms" }}
         >
           Studies, editorial work, and visual experiments across illustration,
           photography, and design.
@@ -146,10 +143,10 @@ export default function IllustrationsView() {
                 key={t.id}
                 type="button"
                 onClick={() => setTab(t.id)}
-                className={`min-h-11 shrink-0 border-b-2 pb-3 pt-2 text-left text-lg transition-colors sm:min-h-0 sm:pt-0 md:text-xl ${
+                className={`min-h-11 shrink-0 border-b-2 pb-3 pt-2 text-left font-title text-[15px] font-bold tracking-[-0.02em] transition-colors sm:min-h-0 sm:pt-0 sm:text-base ${
                   selected
-                    ? "border-foreground font-semibold text-foreground"
-                    : "border-transparent text-muted hover:text-foreground"
+                    ? "border-foreground text-foreground"
+                    : "border-transparent font-medium text-muted hover:text-foreground"
                 }`}
                 aria-pressed={selected}
               >
@@ -164,10 +161,10 @@ export default function IllustrationsView() {
       <section className="pb-10 pt-8 sm:pt-10">
         {filtered.length === 0 ? (
           <div className="py-20 sm:py-24">
-            <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
+            <h2 className="font-title text-2xl font-bold tracking-[-0.03em] sm:text-3xl">
               Nothing here yet
             </h2>
-            <p className="font-secondary mt-4 max-w-md text-lg leading-[1.55] text-[#5c5c5c]">
+            <p className="mt-4 max-w-md text-[15px] leading-relaxed text-muted">
               This collection is empty for now. Check back soon, or explore the
               Illustrations tab.
             </p>

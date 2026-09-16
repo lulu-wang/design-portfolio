@@ -66,14 +66,7 @@ const skills = [
 export default function AboutPage() {
   return (
     <main className="page-wrap pt-28 sm:pt-32">
-      <section className="relative grid gap-12 overflow-hidden pb-20 pt-6 sm:gap-14 sm:pb-24 md:grid-cols-[minmax(0,380px)_1fr] md:items-start md:gap-16 md:pb-28 lg:grid-cols-[minmax(0,420px)_1fr] lg:gap-20">
-        <p
-          aria-hidden
-          className="pointer-events-none absolute -left-6 top-0 select-none font-display text-[clamp(5rem,16vw,10rem)] font-extrabold leading-none tracking-[-0.06em] text-foreground/[0.07] blur-[2px]"
-        >
-          Hey!
-        </p>
-
+      <section className="relative grid gap-12 pb-20 pt-6 sm:gap-14 sm:pb-24 md:grid-cols-[minmax(0,380px)_1fr] md:items-start md:gap-16 md:pb-28 lg:grid-cols-[minmax(0,420px)_1fr] lg:gap-20">
         <div className="animate-rise relative z-10 grid gap-3">
           <div className="overflow-hidden rounded-[20px]">
             <Image
@@ -99,10 +92,7 @@ export default function AboutPage() {
         </div>
 
         <div className="animate-rise relative z-10 md:pt-4" style={{ animationDelay: "120ms" }}>
-          <p className="text-[13px] font-medium uppercase tracking-[0.18em] text-foreground/40">
-            /About me
-          </p>
-          <h1 className="mt-4 text-[2.4rem] font-bold leading-[1.08] tracking-tight sm:text-5xl md:text-6xl">
+          <h1 className="mt-0 font-title text-[clamp(2.35rem,5vw,4.15rem)] font-bold leading-[1.12] tracking-[-0.045em]">
             I&rsquo;m Lulu Wang.
           </h1>
 
@@ -115,27 +105,30 @@ export default function AboutPage() {
             <p>
               Before transitioning into product design, I spent more than four
               years as a software engineer creating user-centered products and
-              features for Meta and Xbox.
+              features for Meta (Monetization, Messenger) and Microsoft (Azure,
+              Xbox).
             </p>
             <p>
               I&rsquo;m interested in building products that challenge the
               boundaries of digital experiences and bridge technology with
-              creativity. Outside work, I&rsquo;m an avid traveler, maker of
-              art, and enjoy skiing and volleyball.
+              creativity. My interests include learning from different cultures
+              while traveling, exploring different art styles, discovering
+              beautiful new animations and films, and trying new sports like
+              skiing, and recently, tennis and golf :)
             </p>
           </div>
         </div>
       </section>
 
       <section className="pb-20 sm:pb-28">
-        <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+        <h2 className="font-title text-[1.45rem] font-bold tracking-[-0.03em] sm:text-[1.65rem]">
           Capabilities
         </h2>
 
         <div className="mt-12 grid grid-cols-2 gap-x-6 gap-y-12 sm:gap-10 lg:grid-cols-4">
           {skills.map((group) => (
             <div key={group.category}>
-              <h3 className="text-xl font-semibold tracking-tight md:text-2xl">
+              <h3 className="font-title text-[1.15rem] font-bold tracking-[-0.03em] md:text-[1.25rem]">
                 {group.category}
               </h3>
               <ul className="mt-5 space-y-2.5">
@@ -154,8 +147,8 @@ export default function AboutPage() {
       </section>
 
       <section id="contact" className="scroll-mt-28 pb-4">
-        <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
-          Let&rsquo;s talk.
+        <h2 className="font-title text-[1.45rem] font-bold tracking-[-0.03em] sm:text-[1.65rem]">
+          Let&rsquo;s talk
         </h2>
         <p className="page-subtitle mt-6 max-w-2xl md:max-w-3xl">
           Have a project in mind, a role to discuss, or simply want to say hello?

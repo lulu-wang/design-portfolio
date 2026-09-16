@@ -40,7 +40,7 @@ export default function CaseSection({
 
       <div className="min-w-0">
         {title && (
-          <h2 className="max-w-3xl text-[1.45rem] font-bold leading-[1.25] tracking-tight sm:text-[1.75rem] sm:leading-[1.2] md:text-[2rem] md:leading-[1.18] [&_strong]:font-bold [&_em]:font-medium [&_em]:italic">
+          <h2 className="font-title max-w-3xl text-[1.45rem] font-bold leading-[1.25] tracking-[-0.03em] sm:text-[1.75rem] sm:leading-[1.2] md:text-[2rem] md:leading-[1.18] [&_strong]:font-bold [&_em]:font-medium [&_em]:italic">
             <RichText>{title}</RichText>
           </h2>
         )}

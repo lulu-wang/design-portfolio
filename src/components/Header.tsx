@@ -80,11 +80,11 @@ export default function Header() {
 
   return (
     <>
-      <header className="pointer-events-none fixed inset-x-0 top-0 z-50 px-4 pt-5 sm:pt-6 md:px-8 lg:px-12">
+      <header className="pointer-events-none fixed inset-x-0 top-0 z-50 bg-background px-4 pt-5 sm:pt-6 md:px-0 md:pt-0">
         <div className="pointer-events-auto mx-auto flex h-12 w-[min(92vw,268px)] items-center justify-between rounded-full bg-ink pl-5 pr-1.5 text-background shadow-[0_10px_30px_rgba(80,60,40,0.1)] md:hidden">
           <Link
             href="/"
-            className="font-display text-[17px] font-semibold tracking-tight text-background"
+            className="font-title text-[17px] font-bold tracking-[-0.03em] text-background"
             onClick={() => setOpen(false)}
           >
             Lulu
@@ -111,15 +111,15 @@ export default function Header() {
           </button>
         </div>
 
-        <div className="pointer-events-none mx-auto hidden max-w-[1120px] items-center justify-between md:flex">
+        <div className="page-wrap pointer-events-none hidden items-center justify-between md:flex md:h-[4.75rem]">
           <Link
             href="/"
-            className="pointer-events-auto font-display text-[22px] font-semibold tracking-tight text-foreground"
+            className="pointer-events-auto font-title text-[17px] font-bold tracking-[-0.03em] text-foreground"
           >
-            Lulu
+            Lulu Wang
           </Link>
           <nav
-            className="pointer-events-auto flex items-center gap-5 lg:gap-8"
+            className="pointer-events-auto flex items-center gap-6 lg:gap-8"
             aria-label="Primary"
           >
             {desktopNav.map((item) => (
@@ -127,10 +127,10 @@ export default function Header() {
                 key={item.href}
                 href={item.href}
                 scroll={!item.href.includes("#")}
-                className={`font-display text-[15px] font-semibold uppercase tracking-[0.04em] transition-colors ${
+                className={`font-title text-[14px] font-medium tracking-[-0.02em] transition-colors ${
                   isActive(item.href)
                     ? "text-foreground"
-                    : "text-foreground/35 hover:text-foreground"
+                    : "text-foreground/40 hover:text-foreground"
                 }`}
                 onClick={() => onNavClick(item.href)}
               >
@@ -160,7 +160,7 @@ export default function Header() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`font-display text-4xl font-semibold uppercase tracking-[0.02em] transition-[opacity,transform] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] sm:text-6xl ${
+                  className={`font-title text-3xl font-bold tracking-[-0.03em] transition-[opacity,transform] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] sm:text-5xl ${
                     isActive(item.href)
                       ? "text-foreground"
                       : "text-foreground/35 hover:text-foreground"

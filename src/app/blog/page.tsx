@@ -13,15 +13,12 @@ export default function BlogPage() {
   return (
     <main className="page-wrap pt-28 sm:pt-32">
       <section className="pt-6 pb-12 sm:pb-16 md:pb-20">
-        <p className="animate-rise text-[13px] font-medium uppercase tracking-[0.18em] text-foreground/40">
-          /Notes
-        </p>
-        <h1 className="animate-rise mt-4 text-[clamp(3rem,10vw,6rem)] font-bold uppercase leading-[0.92] tracking-[-0.035em]">
+        <h1 className="animate-rise font-title text-[clamp(2.35rem,5vw,4.15rem)] font-bold leading-[1.12] tracking-[-0.045em]">
           Blog
         </h1>
         <p
-          className="page-subtitle animate-rise mt-8 max-w-3xl"
-          style={{ animationDelay: "120ms" }}
+          className="page-subtitle animate-rise mt-6 max-w-3xl sm:mt-8"
+          style={{ animationDelay: "80ms" }}
         >
           My thoughts, happenings and observations while living life
         </p>
@@ -39,7 +36,7 @@ export default function BlogPage() {
                 href={`/blog/${post.slug}`}
                 className="group flex items-baseline justify-between gap-6 py-5 sm:py-6"
               >
-                <span className="font-secondary text-lg font-normal tracking-[-0.01em] text-foreground transition-opacity group-hover:opacity-50 sm:text-xl md:text-[22px]">
+                <span className="font-title text-lg font-bold tracking-[-0.03em] text-foreground transition-opacity group-hover:opacity-50 sm:text-xl md:text-[22px]">
                   {post.title}
                 </span>
                 <span className="shrink-0 text-sm text-foreground/40">
