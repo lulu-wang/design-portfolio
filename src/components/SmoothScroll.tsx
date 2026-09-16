@@ -17,7 +17,7 @@ function ScrollToHash() {
       if (cancelled) return;
       const hash = window.location.hash;
       if (!hash) return;
-      const el = document.querySelector(hash);
+      const el = document.getElementById(hash.slice(1));
       if (!el || !lenis) {
         attempts += 1;
         if (attempts < 30) timers.push(window.setTimeout(go, 50));
