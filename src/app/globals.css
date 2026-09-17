@@ -72,15 +72,27 @@ h3 {
   padding-inline: 1.25rem;
 }
 
+.page-start {
+  padding-left: 1.25rem;
+}
+
 @media (min-width: 640px) {
   .page-wrap {
     padding-inline: 1.5rem;
+  }
+
+  .page-start {
+    padding-left: 1.5rem;
   }
 }
 
 @media (min-width: 768px) {
   .page-wrap {
     padding-inline: 2.5rem;
+  }
+
+  .page-start {
+    padding-left: max(2.5rem, calc((100vw - 1120px) / 2 + 2.5rem));
   }
 }
 
