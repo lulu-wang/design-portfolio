@@ -443,7 +443,7 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
               ))}
             </>
           ) : (
-            <div className="mt-12 overflow-hidden rounded-[20px] bg-[#ebe6de]">
+            <div className="mt-12 overflow-hidden rounded-[20px] bg-[#f2f3f5]">
               <Image
                 src={project.image}
                 alt={`${project.name} high fidelity designs`}

@@ -4,7 +4,7 @@ export default function HomeHero() {
   return (
     <section className="flex min-h-svh w-full flex-col lg:h-svh">
       <div className="flex flex-1 items-center py-28 sm:py-32">
-        <div className="box-border w-2/3 min-w-0 pl-5 pr-4 sm:pl-6 md:pl-10">
+        <div className="box-border w-full min-w-0 px-5 sm:px-6 md:w-2/3 md:pl-10 md:pr-4">
           <h1 className="animate-rise font-title text-[clamp(2.15rem,3.4vw,3.05rem)] font-bold leading-[1.14] tracking-[-0.04em] text-muted">
             <span className="text-foreground">Lulu Wang</span> is a product
             designer based in the Bay Area, previously at{" "}

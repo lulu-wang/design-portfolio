@@ -11,10 +11,10 @@ export default function Home() {
     <main>
       <HomeHero />
 
-      <section className="page-wrap pb-24 sm:pb-32">
+      <section className="mx-auto w-full max-w-[90rem] px-5 pb-24 sm:px-6 sm:pb-32 md:px-10">
         <div className="flex items-baseline justify-between gap-6">
-          <h2 className="font-title text-[1.45rem] font-bold tracking-[-0.03em] sm:text-[1.65rem]">
-            Selected work
+          <h2 className="font-title text-[1.85rem] font-bold tracking-[-0.03em] sm:text-[2.2rem]">
+            Projects
           </h2>
           <Link
             href="/projects"
@@ -27,7 +27,7 @@ export default function Home() {
           Product design, brand, and research across meetings, health,
           learning, streaming, and apparel.
         </p>
-        <div className="mt-10 grid gap-12 sm:grid-cols-2 sm:gap-8 lg:mt-12 lg:gap-10">
+        <div className="mt-8 grid gap-6 sm:grid-cols-2 sm:gap-5 lg:mt-10 lg:gap-6">
           {projects.map((project, i) => (
             <ProjectCard key={project.slug} project={project} index={i} />
           ))}

@@ -8,11 +8,10 @@ import { createPortal } from "react-dom";
 
 const nav = [
   { label: "Home", href: "/" },
-  { label: "About Me", href: "/about" },
+  { label: "About", href: "/about" },
   { label: "Projects", href: "/projects" },
   { label: "Gallery", href: "/illustrations" },
   { label: "Blog", href: "/blog" },
-  { label: "Contact", href: "/about#contact" },
 ];
 
 const desktopNav = nav.filter((item) => item.href !== "/");
