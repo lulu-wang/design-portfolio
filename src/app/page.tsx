@@ -11,7 +11,7 @@ export default function Home() {
     <main>
       <HomeHero />
 
-      <section className="mx-auto w-full max-w-[90rem] px-5 pb-24 sm:px-6 sm:pb-32 md:px-10">
+      <section className="page-wrap pb-24 sm:pb-32">
         <div className="flex items-baseline justify-between gap-6">
           <h2 className="font-title text-[1.85rem] font-bold tracking-[-0.03em] sm:text-[2.2rem]">
             Projects

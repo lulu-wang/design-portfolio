@@ -14,8 +14,8 @@ export default function HomeHero() {
             style={{ animationDelay: "80ms" }}
           >
             I design products that expand the possibilities of creative
-            design, translating complex challenges into simple, intuitive
-            experiences that solve meaningful problems for people.
+            design, translating complex challenges into intuitive
+            experiences that solve meaningful problems.
           </p>
           <p
             className="page-subtitle animate-rise mt-5"
