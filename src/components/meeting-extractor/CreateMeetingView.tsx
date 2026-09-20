@@ -69,12 +69,12 @@ export default function CreateMeetingView({
 
   return (
     <div className="min-h-0 min-w-0 flex-1 overflow-y-auto px-4 pb-10 pt-5 sm:px-6 lg:px-8">
-      <p className="mb-3 flex items-center gap-2 text-[13px] text-[#8b919c]">
-        <button type="button" onClick={onCancel} className="hover:text-[#111827]">
+      <p className="mb-3 flex items-center gap-2 text-[13px] text-[#6a7383]">
+        <button type="button" onClick={onCancel} className="hover:text-[#0a2540]">
           Meetings
         </button>
         <span>›</span>
-        <span className="text-[#374151]">New meeting</span>
+        <span className="text-[#425466]">New meeting</span>
       </p>
       <PageHeader
         title="Create meeting"
@@ -98,23 +98,23 @@ export default function CreateMeetingView({
         }}
       >
         <label className="block">
-          <span className="mb-2 block text-[13px] font-medium text-[#6b7280]">
+          <span className="mb-2 block text-[13px] font-medium text-[#6a7383]">
             Title
           </span>
           <input
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             placeholder="Product Weekly"
-            className="h-11 w-full rounded-xl border border-[#eceef2] bg-white px-3.5 text-[14px] outline-none focus:border-[#ddd6fe] focus:ring-4 focus:ring-[#eee8ff]"
+            className="h-11 w-full rounded-md border border-[#e3e8ee] bg-white px-3.5 text-[14px] outline-none focus:border-[#635bff] focus:ring-2 focus:ring-[#eeedfe]"
           />
         </label>
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-[1.2fr_0.9fr_0.9fr]">
           <label className="block">
-            <span className="mb-2 block text-[13px] font-medium text-[#6b7280]">
+            <span className="mb-2 block text-[13px] font-medium text-[#6a7383]">
               Date
             </span>
-            <span className="relative flex h-11 items-center gap-2 rounded-xl border border-[#eceef2] bg-white px-3.5">
+            <span className="relative flex h-11 items-center gap-2 rounded-md border border-[#e3e8ee] bg-white px-3.5">
               <CalendarIcon />
               <input
                 type="date"
@@ -125,39 +125,39 @@ export default function CreateMeetingView({
             </span>
           </label>
           <label className="block">
-            <span className="mb-2 block text-[13px] font-medium text-[#6b7280]">
+            <span className="mb-2 block text-[13px] font-medium text-[#6a7383]">
               Start
             </span>
             <input
               type="time"
               value={startTime}
               onChange={(e) => setStartTime(e.target.value)}
-              className="h-11 w-full rounded-xl border border-[#eceef2] bg-white px-3.5 text-[14px] outline-none focus:border-[#ddd6fe] focus:ring-4 focus:ring-[#eee8ff]"
+              className="h-11 w-full rounded-md border border-[#e3e8ee] bg-white px-3.5 text-[14px] outline-none focus:border-[#635bff] focus:ring-2 focus:ring-[#eeedfe]"
             />
           </label>
           <label className="block">
-            <span className="mb-2 block text-[13px] font-medium text-[#6b7280]">
+            <span className="mb-2 block text-[13px] font-medium text-[#6a7383]">
               End
             </span>
             <input
               type="time"
               value={endTime}
               onChange={(e) => setEndTime(e.target.value)}
-              className="h-11 w-full rounded-xl border border-[#eceef2] bg-white px-3.5 text-[14px] outline-none focus:border-[#ddd6fe] focus:ring-4 focus:ring-[#eee8ff]"
+              className="h-11 w-full rounded-md border border-[#e3e8ee] bg-white px-3.5 text-[14px] outline-none focus:border-[#635bff] focus:ring-2 focus:ring-[#eeedfe]"
             />
           </label>
         </div>
 
         <div>
-          <p className="mb-2 text-[13px] font-medium text-[#6b7280]">Call link</p>
+          <p className="mb-2 text-[13px] font-medium text-[#6a7383]">Call link</p>
           <div className="flex flex-wrap gap-2">
             <button
               type="button"
               onClick={() => setLocationType("zoom")}
-              className={`inline-flex h-10 items-center gap-1.5 rounded-xl border px-3.5 text-[13.5px] font-medium ${
+              className={`inline-flex h-10 items-center gap-1.5 rounded-md border px-3.5 text-[13.5px] font-medium ${
                 locationType === "zoom"
-                  ? "border-[#ddd6fe] bg-[#f7f4ff] text-[#111827]"
-                  : "border-[#eceef2] bg-white text-[#6b7280]"
+                  ? "border-[#635bff] bg-[#f0efff] text-[#0a2540]"
+                  : "border-[#e3e8ee] bg-white text-[#6a7383]"
               }`}
             >
               <ZoomIcon />
@@ -166,27 +166,27 @@ export default function CreateMeetingView({
             <button
               type="button"
               onClick={() => setLocationType("google-meet")}
-              className={`inline-flex h-10 items-center gap-1.5 rounded-xl border px-3.5 text-[13.5px] font-medium ${
+              className={`inline-flex h-10 items-center gap-1.5 rounded-md border px-3.5 text-[13.5px] font-medium ${
                 locationType === "google-meet"
-                  ? "border-[#ddd6fe] bg-[#f7f4ff] text-[#111827]"
-                  : "border-[#eceef2] bg-white text-[#6b7280]"
+                  ? "border-[#635bff] bg-[#f0efff] text-[#0a2540]"
+                  : "border-[#e3e8ee] bg-white text-[#6a7383]"
               }`}
             >
               <MeetIcon />
               Google Meet
             </button>
           </div>
-          <p className="mt-2 text-[12.5px] text-[#8b919c]">
+          <p className="mt-2 text-[12.5px] text-[#6a7383]">
             A {locationType === "google-meet" ? "Google Meet" : "Zoom"} link will be
             generated when you create the meeting.
           </p>
         </div>
 
         <label className="block">
-          <span className="mb-2 block text-[13px] font-medium text-[#6b7280]">
+          <span className="mb-2 block text-[13px] font-medium text-[#6a7383]">
             Project
           </span>
-          <span className="relative flex h-11 items-center gap-2 rounded-xl border border-[#eceef2] bg-white px-3.5">
+          <span className="relative flex h-11 items-center gap-2 rounded-md border border-[#e3e8ee] bg-white px-3.5">
             <FolderIcon />
             <select
               value={projectId}
@@ -203,10 +203,10 @@ export default function CreateMeetingView({
         </label>
 
         <div>
-          <p className="mb-2 text-[13px] font-medium text-[#6b7280]">
+          <p className="mb-2 text-[13px] font-medium text-[#6a7383]">
             Invite people
           </p>
-          <div className="rounded-2xl border border-[#eceef2] bg-white p-3">
+          <div className="rounded-2xl border border-[#e3e8ee] bg-white p-3">
             <div className="mb-2 flex flex-wrap gap-1.5">
               {attendeeIds.map((id) => {
                 const person = personById(id);
@@ -214,7 +214,7 @@ export default function CreateMeetingView({
                 return (
                   <span
                     key={id}
-                    className="inline-flex items-center gap-1.5 rounded-full bg-[#f3f1fb] py-1 pl-1 pr-2 text-[12.5px] font-medium"
+                    className="inline-flex items-center gap-1.5 rounded-md bg-[#f6f9fc] py-1 pl-1 pr-2 text-[12.5px] font-medium"
                   >
                     <Avatar person={person} size="xs" />
                     {person.name}
@@ -223,7 +223,7 @@ export default function CreateMeetingView({
                       <button
                         type="button"
                         onClick={() => removeAttendee(id)}
-                        className="text-[#8b919c] hover:text-[#111827]"
+                        className="text-[#6a7383] hover:text-[#0a2540]"
                         aria-label={`Remove ${person.name}`}
                       >
                         <CloseIcon />
@@ -234,26 +234,26 @@ export default function CreateMeetingView({
               })}
             </div>
             <label className="relative block">
-              <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-[#98a0ab]">
+              <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-[#8898aa]">
                 <SearchIcon />
               </span>
               <input
                 value={inviteQuery}
                 onChange={(e) => setInviteQuery(e.target.value)}
                 placeholder={`Search ${people.length} people in Opal…`}
-                className="h-10 w-full rounded-xl border border-[#eceef2] bg-[#fbfcfd] py-2 pl-10 pr-3 text-[13.5px] outline-none placeholder:text-[#b0b6bf] focus:border-[#ddd6fe] focus:ring-4 focus:ring-[#eee8ff]"
+                className="h-10 w-full rounded-md border border-[#e3e8ee] bg-[#f6f9fc] py-2 pl-10 pr-3 text-[13.5px] outline-none placeholder:text-[#8898aa] focus:border-[#635bff] focus:ring-2 focus:ring-[#eeedfe]"
               />
             </label>
             {inviteQuery.trim() && matches.length === 0 ? (
-              <p className="mt-2 px-1 py-2 text-[13px] text-[#8b919c]">
+              <p className="mt-2 px-1 py-2 text-[13px] text-[#6a7383]">
                 No one matches “{inviteQuery.trim()}”.
               </p>
             ) : matches.length === 0 ? (
-              <p className="mt-2 px-1 py-2 text-[13px] text-[#8b919c]">
+              <p className="mt-2 px-1 py-2 text-[13px] text-[#6a7383]">
                 Everyone in the org is already invited.
               </p>
             ) : (
-              <ul className="mt-2 max-h-56 overflow-y-auto rounded-xl border border-[#eceef2]">
+              <ul className="mt-2 max-h-56 overflow-y-auto rounded-md border border-[#e3e8ee]">
                 {matches.map((person) => (
                   <li key={person.id}>
                     <button
@@ -266,7 +266,7 @@ export default function CreateMeetingView({
                         <span className="block min-w-0 break-words text-[13.5px] font-medium">
                           {person.name}
                         </span>
-                        <span className="block min-w-0 break-words text-[12px] text-[#8b919c]">
+                        <span className="block min-w-0 break-words text-[12px] text-[#6a7383]">
                           {person.role} · {person.email}
                         </span>
                       </span>
@@ -282,14 +282,14 @@ export default function CreateMeetingView({
           <button
             type="button"
             onClick={onCancel}
-            className="inline-flex h-10 items-center rounded-xl border border-[#e6e9ef] px-4 text-[13px] font-medium text-[#374151] hover:bg-[#f7f8fa]"
+            className="inline-flex h-10 items-center rounded-md border border-[#e3e8ee] px-4 text-[13px] font-medium text-[#425466] hover:bg-[#f6f9fc]"
           >
             Cancel
           </button>
           <button
             type="submit"
             disabled={!title.trim()}
-            className="inline-flex h-10 items-center rounded-xl bg-[#111827] px-4 text-[13px] font-medium text-white hover:bg-black disabled:cursor-not-allowed disabled:opacity-40"
+            className="inline-flex h-10 items-center rounded-md bg-[#635bff] px-4 text-[13px] font-medium text-white hover:bg-[#5851ea] disabled:cursor-not-allowed disabled:opacity-40"
           >
             Create meeting
           </button>

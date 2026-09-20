@@ -57,7 +57,7 @@ export default function ProjectsView({
             >
               <span className="flex items-start justify-between gap-3">
                 <span
-                  className="flex h-10 w-10 items-center justify-center rounded-xl"
+                  className="flex h-10 w-10 items-center justify-center rounded-md"
                   style={{ background: theme.iconBg, color: theme.fg }}
                 >
                   <ProjectKindGlyph kind={project.kind} />
@@ -77,7 +77,7 @@ export default function ProjectsView({
                 <span>Created {project.createdOn}</span>
                 <span>Led by {owner.name.split(" ")[0]}</span>
               </span>
-              <span className="mt-4 h-1.5 overflow-hidden rounded-full bg-[#f0f1f4]">
+              <span className="mt-4 h-1.5 overflow-hidden rounded-full bg-[#e6ebf1]">
                 <span
                   className="block h-full rounded-full"
                   style={{ width: `${progress}%`, background: theme.fg }}
@@ -100,7 +100,7 @@ export default function ProjectsView({
                     extra={Math.max(people.length - 3, 0)}
                     size="xs"
                   />
-                  <span className="text-[#c5cad3]">
+                  <span className="text-[#a3acb9]">
                     <ChevronIcon />
                   </span>
                 </span>

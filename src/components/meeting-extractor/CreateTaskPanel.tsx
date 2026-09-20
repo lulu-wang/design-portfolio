@@ -77,7 +77,7 @@ export default function CreateTaskPanel({
   return (
     <aside
       ref={panelRef}
-      className="absolute inset-y-0 right-0 z-40 flex h-full w-[min(100%,320px)] flex-col overflow-hidden border-l border-[#eceef2] bg-white shadow-[-16px_0_40px_rgba(15,23,42,0.18)]"
+      className="absolute inset-y-0 right-0 z-40 flex h-full w-[min(100%,320px)] flex-col overflow-hidden border-l border-[#e3e8ee] bg-white shadow-[-16px_0_40px_rgba(15,23,42,0.18)]"
     >
         <div className="min-h-0 flex-1 overflow-y-auto px-5 pb-5 pt-10">
           <div className="flex items-start gap-3">
@@ -90,17 +90,17 @@ export default function CreateTaskPanel({
             <button
               type="button"
               onClick={onClose}
-              className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-[#6b7280] hover:bg-[#f7f8fa]"
+              className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-[#6a7383] hover:bg-[#f6f9fc]"
               aria-label="Close"
             >
               <CloseIcon />
             </button>
           </div>
-          <p className="mt-2 text-[13.5px] leading-relaxed text-[#6b7280]">
+          <p className="mt-2 text-[13.5px] leading-relaxed text-[#6a7383]">
             {draft.description || "Add a description for this task."}
           </p>
 
-          <div className="mt-5 divide-y divide-[#f0f1f4] border-y border-[#f0f1f4]">
+          <div className="mt-5 divide-y divide-[#e6ebf1] border-y border-[#e6ebf1]">
             <FieldRow label="Assignee">
               <div className="relative" data-menu>
                 <button
@@ -126,7 +126,7 @@ export default function CreateTaskPanel({
                           onChange({ assigneeId: person.id });
                           setOpenField(null);
                         }}
-                        className="flex w-full items-center gap-2 px-3 py-2 text-left hover:bg-[#f7f8fa]"
+                        className="flex w-full items-center gap-2 px-3 py-2 text-left hover:bg-[#f6f9fc]"
                       >
                         <Avatar person={person} size="xs" />
                         <span className="text-[13px]">{person.name}</span>
@@ -189,7 +189,7 @@ export default function CreateTaskPanel({
                           onChange({ priority });
                           setOpenField(null);
                         }}
-                        className="flex w-full items-center px-3 py-2 hover:bg-[#f7f8fa]"
+                        className="flex w-full items-center px-3 py-2 hover:bg-[#f6f9fc]"
                       >
                         <PriorityPill priority={priority} />
                       </button>
@@ -224,7 +224,7 @@ export default function CreateTaskPanel({
                           onChange({ status });
                           setOpenField(null);
                         }}
-                        className="block w-full px-3 py-2 text-left text-[13px] hover:bg-[#f7f8fa]"
+                        className="block w-full px-3 py-2 text-left text-[13px] hover:bg-[#f6f9fc]"
                       >
                         {columnLabel(status)}
                       </button>
@@ -259,7 +259,7 @@ export default function CreateTaskPanel({
                           onChange({ projectId: item.id });
                           setOpenField(null);
                         }}
-                        className="block w-full px-3 py-2 text-left text-[13px] hover:bg-[#f7f8fa]"
+                        className="block w-full px-3 py-2 text-left text-[13px] hover:bg-[#f6f9fc]"
                       >
                         {item.name}
                       </button>
@@ -299,7 +299,7 @@ export default function CreateTaskPanel({
                           onChange({ meetingId: "" });
                           setOpenField(null);
                         }}
-                        className="block w-full px-3 py-2 text-left text-[13px] hover:bg-[#f7f8fa]"
+                        className="block w-full px-3 py-2 text-left text-[13px] hover:bg-[#f6f9fc]"
                       >
                         None
                       </button>
@@ -314,7 +314,7 @@ export default function CreateTaskPanel({
                             });
                             setOpenField(null);
                           }}
-                          className="block w-full px-3 py-2 text-left text-[13px] hover:bg-[#f7f8fa]"
+                          className="block w-full px-3 py-2 text-left text-[13px] hover:bg-[#f6f9fc]"
                         >
                           {item.title}
                         </button>
@@ -327,21 +327,21 @@ export default function CreateTaskPanel({
           </div>
 
           <label className="mt-5 block">
-            <p className="mb-2 text-[11px] font-medium text-[#8b919c]">
+            <p className="mb-2 text-[11px] font-medium text-[#6a7383]">
               Description
             </p>
             <textarea
               value={draft.description}
               onChange={(e) => onChange({ description: e.target.value })}
               rows={4}
-              className="w-full resize-none rounded-xl border border-[#eceef2] px-3 py-2.5 text-[13.5px] leading-relaxed outline-none focus:border-[#ddd6fe] focus:ring-4 focus:ring-[#eee8ff]"
+              className="w-full resize-none rounded-md border border-[#e3e8ee] px-3 py-2.5 text-[13.5px] leading-relaxed outline-none focus:border-[#635bff] focus:ring-2 focus:ring-[#eeedfe]"
             />
           </label>
 
           {draft.meetingId ? (
             <div className="mt-5">
               <div className="mb-2 flex items-center justify-between gap-2">
-                <p className="text-[11px] font-medium text-[#8b919c]">
+                <p className="text-[11px] font-medium text-[#6a7383]">
                   Files from {meeting.title}
                 </p>
                 {onUploadFile && (
@@ -353,7 +353,7 @@ export default function CreateTaskPanel({
                 )}
               </div>
               {relatedFiles.length === 0 ? (
-                <p className="rounded-xl border border-[#eceef2] bg-[#fbfcfd] px-3 py-3 text-[13px] leading-5 text-[#8b919c]">
+                <p className="rounded-md border border-[#e3e8ee] bg-[#f6f9fc] px-3 py-3 text-[13px] leading-5 text-[#6a7383]">
                   No files yet. Upload one to share it with every task from this
                   meeting.
                 </p>
@@ -370,12 +370,12 @@ export default function CreateTaskPanel({
           ) : null}
         </div>
 
-        <div className="flex shrink-0 items-center justify-between gap-2 border-t border-[#eef0f4] bg-white px-5 py-4">
+        <div className="flex shrink-0 items-center justify-between gap-2 border-t border-[#e3e8ee] bg-white px-5 py-4">
           {mode === "edit" && onDelete ? (
             <button
               type="button"
               onClick={onDelete}
-              className="inline-flex h-10 items-center gap-1.5 rounded-xl px-3 text-[13px] font-medium text-[#6b7280] hover:bg-[#f7f8fa]"
+              className="inline-flex h-10 items-center gap-1.5 rounded-md px-3 text-[13px] font-medium text-[#6a7383] hover:bg-[#f6f9fc]"
             >
               <TrashIcon />
               Delete task
@@ -384,7 +384,7 @@ export default function CreateTaskPanel({
             <button
               type="button"
               onClick={onClose}
-              className="inline-flex h-10 items-center rounded-xl border border-[#e6e9ef] px-4 text-[13px] font-medium text-[#374151] hover:bg-[#f7f8fa]"
+              className="inline-flex h-10 items-center rounded-md border border-[#e3e8ee] px-4 text-[13px] font-medium text-[#425466] hover:bg-[#f6f9fc]"
             >
               Cancel
             </button>
@@ -392,7 +392,7 @@ export default function CreateTaskPanel({
           <button
             type="button"
             onClick={onSubmit}
-            className="inline-flex h-10 items-center rounded-xl bg-[#111827] px-4 text-[13px] font-medium text-white hover:bg-black"
+            className="inline-flex h-10 items-center rounded-md bg-[#635bff] px-4 text-[13px] font-medium text-white hover:bg-[#5851ea]"
           >
             {mode === "edit" ? "Save changes" : "Create task"}
           </button>
@@ -410,15 +410,15 @@ function FieldRow({
 }) {
   return (
     <div className="grid grid-cols-[108px_minmax(0,1fr)] items-center gap-3 py-3.5">
-      <span className="text-[11px] font-medium text-[#8b919c]">{label}</span>
-      <div className="min-w-0 text-[#111827]">{children}</div>
+      <span className="text-[11px] font-medium text-[#6a7383]">{label}</span>
+      <div className="min-w-0 text-[#0a2540]">{children}</div>
     </div>
   );
 }
 
 function Dropdown({ children }: { children: ReactNode }) {
   return (
-    <div className="absolute right-0 z-20 mt-2 w-56 overflow-hidden rounded-xl border border-[#e6e9ef] bg-white py-1 shadow-lg">
+    <div className="absolute right-0 z-20 mt-2 w-56 overflow-hidden rounded-md border border-[#e3e8ee] bg-white py-1 shadow-lg">
       {children}
     </div>
   );

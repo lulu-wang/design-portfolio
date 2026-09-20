@@ -1250,7 +1250,7 @@ export const projects: Project[] = [
     slug: "netflix-community",
     name: "Netflix Community",
     description:
-      "A social layer for Netflix that keeps post-watch conversation, spoiler-safe discussion, and trusted recommendations inside the app.",
+      "A private-by-default social layer for Netflix that keeps post-watch conversation, spoiler-safe discussion, and trusted recommendations inside the app.",
     image: "/images/project-netflix-community.png",
     tags: [
       { label: "UX Design", variant: "outline" },
@@ -1260,55 +1260,55 @@ export const projects: Project[] = [
     ],
     caseStudy: {
       tagline:
-        "A private social layer for Netflix — spoiler-safe discussion, friend circles, and collections that keep the story going in-app.",
+        "A private-by-default social layer for Netflix — friend circles, spoiler-safe discussion, and trusted collections that keep the story going in-app.",
       presentation: {
         label: "interactive prototype",
         href: "https://www.figma.com/proto/OFEilBtkAjdJsDBRhMeZiz/Netflix-Community---Capstone-1--Add-a-Feature?node-id=151-6&p=f&t=D65iIEoLP9ghQYY2-1&scaling=min-zoom&content-scaling=fixed&page-id=151%3A5&starting-point-node-id=151%3A6&show-proto-sidebar=1",
       },
       meta: {
-        role: "Product Designer",
-        timeline: "Feature concept · 2026",
+        role: "UX/UI lead",
+        timeline: "4 weeks · 2026",
         team: "Solo designer",
         platform: "Mobile and TV",
         tools: ["Figma", "FigJam"],
       },
       overview:
-        "Netflix Community is a proposed feature set that turns Netflix from a **utility for watching** into a place to sit with a story afterward. As sole designer I framed the problem, prioritized a hybrid social model — private Circles plus a moderated public hub — and designed the flows, wireframes, and high-fidelity prototype. The work targets **platform leakage**: the moment people leave for Reddit, group chats, or IMDb because the app has nothing to say once the credits roll.",
+        "Netflix Community is a four-week feature concept that turns Netflix from a **utility for watching** into a place to sit with a story afterward — without making consumption secondary. As UX/UI lead I owned the end-to-end process: research, IA, wireframes, and a high-fidelity prototype. The work targets **platform leakage**: people leave for Reddit, YouTube, WhatsApp, and IMDb because the app has nothing to say once the credits roll. Netflix already wins at algorithmic discovery. It is missing an integrated social loop.",
       problem: {
         statement:
           "After a title ends, people leave Netflix to talk, search, and decide what to watch next — and the app gives them **no trusted place to stay**.",
         points: [
-          "**Fragmented post-viewing insights.** Viewers hunt for analysis off-platform, so the social loop never comes back.",
-          "**Isolation and toxic forums.** Public internet discussion feels unsafe or spoiler-heavy, especially for people without an active watch circle.",
+          "**Platform leakage.** Viewers fragment the experience across Reddit, YouTube recaps, and group chats, so the social loop never comes back.",
+          "**Public-by-default is the wrong model.** Forums feel noisy, spoiler-heavy, and unsafe. People want intimacy — discussion inside private circles, not a bid for viral metrics.",
           "**Discovery paralysis.** A huge catalog plus untrusted recs makes choosing the next title tiring, so sessions end at the credits.",
         ],
       },
       goals:
-        "Internalize the post-watch loop: **spoiler-protected discussion** at high-emotion moments, **private circles** for people you actually trust, and **actionable collections** that turn a friend’s note into Play or Add to My List.",
+        "Internalize the post-watch loop: **private-by-default circles**, **spoiler-gated discussion** at high-intent moments (including TV → phone), and **trusted collections** that turn a friend’s note into Play or Add to My List.",
       research: {
         intro:
-          "I started from three clustered pains — leakage, isolation, and choice fatigue — and mapped where Netflix currently loses the conversation. The pattern was consistent: people already share through texts and group chats, and they already search elsewhere for plot context. The product opportunity was to bring that behavior **in-app** without turning Netflix into a public forum.",
+          "I audited where social discovery currently lives, then interviewed people who already talk about shows constantly — just not on Netflix. Competitors solve **what to watch**, but they all sit **outside the viewing moment**. Interviews made the product constraint obvious: social features fail when they are public-by-default.",
         methods: [
           {
-            title: "Problem framing",
+            title: "Competitive audit",
             description:
-              "Wrote problem / business-goal / **How Might We** pairs for leakage, isolation, and discovery paralysis so every feature had to serve a named user pain.",
+              "Mapped Letterboxd, Trakt, IMDb, and Reddit. Each solves discovery or discussion **off-platform**, so the moment after the credits still leaks out of Netflix.",
           },
           {
-            title: "Behavior mapping",
+            title: "User interviews",
             description:
-              "Traced the post-credits path to group chats, Reddit, Discord, YouTube recaps, and IMDb — then asked what a **closed-loop** version of each behavior would look like on a title page.",
+              "Five semi-structured sessions with **power users aged 25–34**. The dominant frustrations were spoiler risk and the noise of public forums; the desire was safety and intimacy inside a trusted circle.",
           },
           {
-            title: "Flow design",
+            title: "Synthesis",
             description:
-              "Split the system into four jobs: private circle discussion, public hub, curated collections, and a shared-collection prompt — then designed for **mobile and living-room** posting.",
+              "The design insight was **private-by-default**. People do not want to compete for attention. They want to share trusted recs and talk immediately after the credits, with spoilers gated until they choose otherwise.",
           },
         ],
         insights: [
-          { stat: "3", label: "problem clusters from the framework" },
-          { stat: "4", label: "primary user flows" },
-          { stat: "3", label: "P0 pillars for MVP" },
+          { stat: "5", label: "power-user interviews, ages 25–34" },
+          { stat: "4", label: "products in the competitive audit" },
+          { stat: "7", label: "task flows in usability testing" },
         ],
         persona: {
           name: "Jordan Hale",
@@ -1317,7 +1317,7 @@ export const projects: Project[] = [
             "I finish a finale and have no one to talk to. Reddit is a spoiler minefield. I just want a room that waited with me.",
           goals: [
             "Talk about a title without being spoiled",
-            "Find people who are at the same episode",
+            "A recap at the moment they need it — not a YouTube hunt",
           ],
           frustrations: [
             "Public forums feel toxic or too loud",
@@ -1332,7 +1332,7 @@ export const projects: Project[] = [
               "I finish a finale and have no one to talk to. Reddit is a spoiler minefield. I just want a room that waited with me.",
             goals: [
               "Episode-gated discussion that matches progress",
-              "A public hub that still feels safe",
+              "Plot context without leaving for YouTube",
             ],
             frustrations: [
               "Isolation after watching",
@@ -1357,27 +1357,27 @@ export const projects: Project[] = [
       },
       define: {
         intro:
-          "The strategy is a **private social layer** first — Circles as digital living rooms — with a moderated public hub so people without an active circle are not locked out. I prioritized by whether a feature reduced leakage, protected trust, or shortened the path to the next title.",
+          "The strategy is **private-by-default** — Friend Circles as digital living rooms, Trusted Collections so people can be tastemakers for their circle, and a moderated public hub so people without an active circle are not locked out. Intimacy over virality. I prioritized by whether a feature reduced leakage, protected trust, or shortened the path to the next title.",
         steps: [
-          "Frame pains as HMW questions tied to platform outcomes",
-          "Prioritize P0 Circles, public hub, and trusted collections",
-          "Design four flows, then lo-fi through a hi-fi prototype",
+          "Audit competitors and interview power users",
+          "Commit to private-by-default: Circles, spoiler gates, trusted collections",
+          "Sketch, wireframe, then test a hi-fi prototype across mobile and TV",
         ],
         timeline: [
-          "P0: Public hub, friend-circle threads, trusted collections",
-          "P1: Verified context cards, category and mood filters",
-          "P2: Sync alerts and curator badges — only after trust holds",
+          "Week 1: Competitive audit, interviews, private-by-default insight",
+          "Week 2: Ideation, lo-fi, Community Hub and collection entry points",
+          "Week 3–4: Hi-fi, remote usability testing, moderation and trigger refinements",
         ],
       },
       ia: {
         intro:
-          "Community lives on the **title page** as a third tab beside Episodes and Trailers, and as a tab in Netflix navigation. Discussion is grouped by season, episode, and topic, with spoilers hidden by default. Collections sit in the circle, not in a public popularity contest — no follower counts, no trending ranks.",
+          "Community lives on the **title page** as a third tab beside Episodes and Trailers, and as a tab in Netflix navigation. Discussion is grouped by season, episode, and topic, with spoilers **blurred until you have reached that episode**. Collections sit in the circle, not in a public popularity contest — no follower counts, no trending ranks.",
         sitemap: [
           "Title page → Episodes · Trailers · Community",
           "Community hub → Episode-sorted threads, spoiler gates, topic chips",
           "Your circle → Private threads, shared collections, notes",
           "Collections → Must-watch lists with Add to My List / Play",
-          "Safety → Report, mute, automated spoiler detection",
+          "Safety → Report, mute, spoiler gates that stay quiet on the dark UI",
         ],
         flow: [
           "Finish a title",
@@ -1389,7 +1389,7 @@ export const projects: Project[] = [
       },
       wireframes: {
         lowFi:
-          "Lo-fi mapped the four jobs before visual design: a **private circle hub**, a **public community hub**, **recommended collections**, and a prompt when someone shares a list. Device splits (TV vs mobile) showed up early — posting from the living room needed a connect-to-phone path so the remote never became a keyboard.",
+          "Before visual design I explored structure through rapid sketching and lo-fi — especially the **Community Hub** layout and **Trusted Collections** entry points — so information hierarchy could change cheaply. Device splits showed up early: TV is the primary viewing surface, so posting from the living room needed a **connect-to-phone** path. The remote never becomes a keyboard.",
         layout: "full",
         images: [
           {
@@ -1408,7 +1408,7 @@ export const projects: Project[] = [
           },
         ],
         hiFi:
-          "High-fidelity stays inside Netflix’s own system — near-black surfaces, the red wordmark, and a Community tab on the title. **Phone and TV share the same jobs** with different input: a remote never becomes a keyboard, so living-room posting hands off to the phone. Copy is quiet on purpose: **Keep the story going.** Spoilers stay hidden until you choose to see them. A post-watch prompt (**What stayed with you?**) starts the thread without turning the credits into a comments section.",
+          "High-fidelity stays inside Netflix’s own system — near-black surfaces, the red wordmark, and a Community tab on the title. **Phone and TV share the same jobs** with different input. A TV post-watch prompt uses the remote to hand off to the phone, so comments stay frictionless. Copy is quiet on purpose: **Keep the story going.** Spoilers stay hidden until you choose to see them. A post-watch prompt (**What stayed with you?**) starts the thread without turning the credits into a comments section.",
       },
       branding: {
         intro:
@@ -1553,52 +1553,67 @@ export const projects: Project[] = [
       },
       solution: {
         intro:
-          "MVP is three P0 pillars. Everything else — context cards, mood filters, badges — waits until discussion is **safe and useful** without them.",
+          "The product balances **session length** — capturing the high-intent moment after a title — with **user psychology**: a safe harbor, not a feed. MVP is private-by-default. Virality stays out.",
         features: [
           {
-            title: "Public Community Hub",
+            title: "Friend Circles",
             description:
-              "Moderated, spoiler-gated, episode-sorted threads for people **without** an active circle — a safe room, not a timeline.",
-          },
-          {
-            title: "Friend Circle discussions",
-            description:
-              "Private threads with people you already watch with, sitting beside the public hub so trust is the default, not the exception.",
+              "Private threads with people you already watch with. Trust is the default. Public discussion exists beside it so people without a circle are not locked out — but it is never the first posture.",
           },
           {
             title: "Trusted collections",
             description:
-              "Must-watch lists with personal notes and one-tap **Add to My List** or Play — word of mouth that does not leave the app.",
+              "Must-watch lists so friends can be tastemakers for their circle. Testers called this a direct answer to **choice paralysis**: a rec from someone they trust, saved or played in one tap.",
           },
           {
             title: "Post-watch prompt",
             description:
-              "A short composer after a title — “What stayed with you?” — so the first comment is a thought, not a recap dump.",
+              "A context-aware composer after a title — “What stayed with you?” — designed first for **TV**, then handed to the phone so the remote never becomes a keyboard. The alternative to idle googling for a recap.",
+          },
+          {
+            title: "Context cards",
+            description:
+              "Episode and movie recaps at the moment people usually switch to YouTube. Testers wanted them badly — and needed **precise triggers** so a recap never spoils an episode they have not reached.",
           },
         ],
       },
+      testing: {
+        intro:
+          "I ran remote usability sessions on the high-fidelity prototype across **seven core task flows** — posting a thought, private-circle posting, receiving a shared collection, and the rest of the loop. Completion was complete; the work was in _how_ people felt while doing it.",
+        findings: [
+          "**100% task completion**, with **1.2 navigation errors** per session on average.",
+          "**Context cards ended app-switching** for one participant: the recap they usually hunt on YouTube was already in Netflix.",
+          "Spoiler gates were a **prerequisite, not a nice-to-have**. People relaxed when unread episodes stayed blurred.",
+          "**4.8 / 5** trust and safety perception — testers felt safer here than on public social platforms.",
+        ],
+        iterations: [
+          "Tightened **when** a context card appears so plot summaries cannot fire accidentally.",
+          "Kept Report and Spoiler controls **present but quiet** after early notes that the icons felt like policing on the dark UI.",
+          "Made spoiler gates more visible in the hub — navigation only felt safe once people could see what was hidden.",
+        ],
+      },
       outcomes: [
-        { stat: "3", label: "P0 pillars for the MVP" },
-        { stat: "4", label: "flows covering circle, public, and collections" },
-        { stat: "2", label: "surfaces: title page and Netflix nav" },
+        { stat: "100%", label: "task completion in usability testing" },
+        { stat: "4.8/5", label: "trust and safety perception" },
+        { stat: "4 wks", label: "research through a tested prototype" },
       ],
       reflection:
-        "The constraint that mattered most was **not building a social network**. Netflix already has attention. What it is missing is a trusted room after the story. Spoilers, circle privacy, and one-tap collections were the product. Virality was the thing to keep out.",
+        "The constraint that mattered most was **not building a social network**. Netflix already has attention. What it is missing is a trusted room after the story. Users were skeptical of anything that felt broadcastable, and eager once they understood private-by-default. Spoilers, circle privacy, and one-tap collections were the product. Virality was the thing to keep out.",
       conclusion: {
         challenges: [
-          "Serving people with a circle and people without one in the same hub.",
           "Making discussion safe on a TV, where typing and spoiler risk are both worse.",
-          "Using Netflix’s visual system without the feature disappearing into the title page.",
+          "Giving recaps at the exact moment of friction without accidental spoilers.",
+          "Keeping moderation visible without making people feel policed.",
         ],
         learnings: [
-          "Trust is a layout decision: spoilers hidden, no public scores, circles first.",
-          "Collections only work if a rec is actionable in one tap.",
-          "A post-watch prompt beats an empty comments tab.",
+          "**Trust is the currency.** Private-by-default changed whether people would even try the feature.",
+          "**Immediacy matters.** Context cards and post-watch prompts work because they sit at the friction — not in a buried tab.",
+          "**Refinement over novelty.** The job was to tailor sharing a list or talking about a twist to the emotional context of watching — not to invent a new social network.",
         ],
         nextSteps: [
-          "Verified context cards so plot questions do not send people to IMDb.",
           "Category and mood filters for the public hub.",
           "Optional sync alerts when a circle shares a list — quiet, not a notification firehose.",
+          "A broader pass on spoiler-trigger timing across more title types.",
         ],
         proud:
           "Designing a social layer that still feels like Netflix — a living room after the credits, not a feed competing with the story.",

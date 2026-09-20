@@ -136,12 +136,12 @@ export default function MeetingDetailView({
 
   return (
     <div className="min-h-0 min-w-0 flex-1 overflow-y-auto px-4 pb-10 pt-4 sm:px-6 lg:px-8">
-        <p className="mb-5 flex items-center gap-2 text-[13px] text-[#8b919c]">
-          <button type="button" onClick={onBack} className="hover:text-[#111827]">
+        <p className="mb-5 flex items-center gap-2 text-[13px] text-[#6a7383]">
+          <button type="button" onClick={onBack} className="hover:text-[#0a2540]">
             Meetings
           </button>
           <span>›</span>
-          <span className="min-w-0 truncate text-[#374151]">{meeting.title}</span>
+          <span className="min-w-0 truncate text-[#425466]">{meeting.title}</span>
         </p>
 
         <div className="mb-8 flex w-full min-w-0 flex-col">
@@ -153,7 +153,7 @@ export default function MeetingDetailView({
             <button
               type="button"
               onClick={onCopyLink}
-              className={`inline-flex h-9 items-center gap-1.5 rounded-xl border border-[#eceef2] bg-white px-3 text-[13px] font-medium text-[#374151] sm:h-10 sm:px-3.5 ${cardInteractive}`}
+              className={`inline-flex h-9 items-center gap-1.5 rounded-md border border-[#e3e8ee] bg-white px-3 text-[13px] font-medium text-[#425466] sm:h-10 sm:px-3.5 ${cardInteractive}`}
             >
               <LinkIcon />
               <span className="hidden sm:inline">Copy meeting link</span>
@@ -162,13 +162,13 @@ export default function MeetingDetailView({
             <button
               type="button"
               onClick={onBack}
-              className="inline-flex h-9 items-center gap-1.5 rounded-xl border border-[#fecaca] bg-white px-3 text-[13px] font-medium text-[#ef4444] sm:h-10 sm:px-3.5"
+              className="inline-flex h-9 items-center gap-1.5 rounded-md border border-[#fecaca] bg-white px-3 text-[13px] font-medium text-[#ef4444] sm:h-10 sm:px-3.5"
             >
               <LeaveIcon />
               Leave
             </button>
           </div>
-          <p className="mt-3 flex w-full flex-wrap items-center gap-x-4 gap-y-2 text-[13px] text-[#6b7280]">
+          <p className="mt-3 flex w-full flex-wrap items-center gap-x-4 gap-y-2 text-[13px] text-[#6a7383]">
             <span className="inline-flex items-center gap-1.5">
               <CalendarIcon />
               {meeting.when}
@@ -189,7 +189,7 @@ export default function MeetingDetailView({
                     <span className={`block min-w-0 break-words leading-snug ${typeScale.card}`}>
                       {person.name}
                     </span>
-                    <span className="mt-0.5 block min-w-0 break-words text-[11.5px] text-[#8b919c]">
+                    <span className="mt-0.5 block min-w-0 break-words text-[11.5px] text-[#6a7383]">
                       {id === meeting.hostId ? "Host" : person.role}
                     </span>
                   </span>
@@ -209,7 +209,7 @@ export default function MeetingDetailView({
           onUpload={onUploadRecording}
         />
 
-        <div className="mb-7 flex gap-5 overflow-x-auto border-b border-[#eceef2] sm:gap-6">
+        <div className="mb-7 flex gap-5 overflow-x-auto border-b border-[#e3e8ee] sm:gap-6">
           {tabs.map((item) => {
             const active = tab === item.id;
             return (
@@ -219,8 +219,8 @@ export default function MeetingDetailView({
                 onClick={() => onTab(item.id)}
                 className={`-mb-px inline-flex shrink-0 items-center gap-2 border-b-2 pb-3 text-[14px] font-medium ${
                   active
-                    ? "border-[#7c5cf6] text-[#7c5cf6]"
-                    : "border-transparent text-[#8b919c] hover:text-[#374151]"
+                    ? "border-[#635bff] text-[#635bff]"
+                    : "border-transparent text-[#6a7383] hover:text-[#425466]"
                 }`}
               >
                 {item.id === "notes" && <DocIcon />}
@@ -232,7 +232,7 @@ export default function MeetingDetailView({
                 {item.id === "files" && <FilesIcon />}
                 {item.label}
                 {item.count != null && (
-                  <span className="text-[#8b919c]"> {item.count}</span>
+                  <span className="text-[#6a7383]"> {item.count}</span>
                 )}
               </button>
             );
@@ -336,7 +336,7 @@ function RecordingBar({
         <div className="flex w-full items-center gap-4 overflow-hidden rounded-2xl bg-[#3a3d46] px-4 py-3 text-white">
           <span className="inline-flex shrink-0 items-center gap-2 text-[13px] font-medium">
             <span
-              className={`h-2 w-2 rounded-full ${live ? "bg-[#f43f5e]" : "bg-[#a78bfa]"}`}
+              className={`h-2 w-2 rounded-full ${live ? "bg-[#df1b41]" : "bg-[#635bff]"}`}
             />
             {live ? "Recording" : recording ? `${sourceLabel} recording` : "No recording yet"}
           </span>
@@ -380,8 +380,8 @@ function RecordingBar({
         ref={cardRef}
         className={`rounded-2xl border border-dashed p-4 ${
           promptUpload && !recording
-            ? "border-[#7c5cf6] bg-[#f7f4ff] ring-4 ring-[#eee8ff]"
-            : "border-[#ddd6fe] bg-[#faf8ff]"
+            ? "border-[#635bff] bg-[#f0efff] ring-4 ring-[#eeedfe]"
+            : "border-[#635bff] bg-[#faf8ff]"
         }`}
       >
         <div className="flex flex-wrap items-start justify-between gap-3">
@@ -390,7 +390,7 @@ function RecordingBar({
               <UploadIcon />
               {recording ? "Replace recording" : "Upload a recording"}
             </p>
-            <p className="mt-1 text-[13px] leading-relaxed text-[#8b919c]">
+            <p className="mt-1 text-[13px] leading-relaxed text-[#6a7383]">
               Import a Zoom or Google Meet video or audio file that was already
               recorded.
             </p>
@@ -400,7 +400,7 @@ function RecordingBar({
           <button
             type="button"
             onClick={() => pickFile("zoom")}
-            className={`inline-flex h-9 items-center gap-1.5 rounded-xl border border-[#eceef2] bg-white px-3 text-[13px] font-medium text-[#111827] ${cardInteractive}`}
+            className={`inline-flex h-9 items-center gap-1.5 rounded-md border border-[#e3e8ee] bg-white px-3 text-[13px] font-medium text-[#0a2540] ${cardInteractive}`}
           >
             <ZoomIcon />
             Upload from Zoom
@@ -408,14 +408,14 @@ function RecordingBar({
           <button
             type="button"
             onClick={() => pickFile("google-meet")}
-            className={`inline-flex h-9 items-center gap-1.5 rounded-xl border border-[#eceef2] bg-white px-3 text-[13px] font-medium text-[#111827] ${cardInteractive}`}
+            className={`inline-flex h-9 items-center gap-1.5 rounded-md border border-[#e3e8ee] bg-white px-3 text-[13px] font-medium text-[#0a2540] ${cardInteractive}`}
           >
             <MeetIcon />
             Upload from Google Meet
           </button>
         </div>
           {recording && (
-          <p className="mt-3 min-w-0 break-words text-[12.5px] text-[#6b7280]">
+          <p className="mt-3 min-w-0 break-words text-[12.5px] text-[#6a7383]">
             Attached: {recording.name} · {sourceLabel} · {recording.kind}
             {recording.duration ? ` · ${recording.duration}` : ""}
           </p>
@@ -449,7 +449,7 @@ export function MeetingContext({
 }) {
   const meetingTasks = tasks.filter((task) => task.meetingId === meeting.id);
   return (
-    <aside className="hidden h-full w-[320px] shrink-0 flex-col overflow-y-auto border-l border-[#eceef2] bg-white px-5 py-5 lg:flex">
+    <aside className="hidden h-full w-[320px] shrink-0 flex-col overflow-y-auto border-l border-[#e3e8ee] bg-white px-5 py-5 lg:flex">
       <div className="mb-6">
           <div>
         <h2 className={`${typeScale.section} break-words`}>Meeting context</h2>
@@ -472,7 +472,7 @@ export function MeetingContext({
                   <span className={`block min-w-0 break-words leading-snug ${typeScale.card}`}>
                     {person.name}
                   </span>
-                  <span className="mt-0.5 block text-[12px] text-[#8b919c]">
+                  <span className="mt-0.5 block text-[12px] text-[#6a7383]">
                     {id === meeting.hostId ? `Host · ${person.role}` : person.role}
                   </span>
                 </span>
@@ -481,35 +481,35 @@ export function MeetingContext({
           })}
         </ul>
 
-        <div className="my-5 border-t border-[#f0f1f4]" />
+        <div className="my-5 border-t border-[#e6ebf1]" />
         <p className={`mb-2 ${typeScale.card}`}>Linked project</p>
         <button
           type="button"
           onClick={onOpenBoard}
-          className={`flex w-full min-w-0 items-center gap-3 ${cardRadius} border border-[#eceef2] px-3.5 py-3 text-left ${cardInteractive}`}
+          className={`flex w-full min-w-0 items-center gap-3 ${cardRadius} border border-[#e3e8ee] px-3.5 py-3 text-left ${cardInteractive}`}
         >
-          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#eef0ff] text-[#6d4aff]">
+          <span className="flex h-9 w-9 items-center justify-center rounded-md bg-[#eeedfe] text-[#635bff]">
             <FolderIcon />
           </span>
           <span className="min-w-0 flex-1">
             <span className={`block min-w-0 break-words ${typeScale.card}`}>
               {projectById(meeting.projectId).name}
             </span>
-            <span className="mt-0.5 block min-w-0 break-words text-[12px] text-[#8b919c]">
+            <span className="mt-0.5 block min-w-0 break-words text-[12px] text-[#6a7383]">
               {projectById(meeting.projectId).subtitle}
             </span>
           </span>
-          <span className="text-[#c5cad3]">
+          <span className="text-[#a3acb9]">
             <ChevronIcon />
           </span>
         </button>
 
-        <div className="my-5 border-t border-[#f0f1f4]" />
+        <div className="my-5 border-t border-[#e6ebf1]" />
         <p className={`mb-2 ${typeScale.card}`}>
           Tasks from this meeting ({meetingTasks.length})
         </p>
         {meetingTasks.length === 0 ? (
-          <p className="text-[13px] leading-relaxed text-[#8b919c]">
+          <p className="text-[13px] leading-relaxed text-[#6a7383]">
             Tasks created from decisions will show up here.
           </p>
         ) : (
@@ -526,7 +526,7 @@ export function MeetingContext({
           </ul>
         )}
 
-        <div className="my-5 border-t border-[#f0f1f4]" />
+        <div className="my-5 border-t border-[#e6ebf1]" />
         <div className="mb-3 flex items-center justify-between gap-2">
           <p className={typeScale.card}>
             Files ({files.length})
@@ -538,7 +538,7 @@ export function MeetingContext({
           />
         </div>
         {files.length === 0 ? (
-          <p className="text-[13px] leading-relaxed text-[#8b919c]">
+          <p className="text-[13px] leading-relaxed text-[#6a7383]">
             Upload a file to attach it to this meeting and every task created from it.
           </p>
         ) : (
@@ -551,9 +551,9 @@ export function MeetingContext({
           </ul>
         )}
 
-        <div className="my-5 border-t border-[#f0f1f4]" />
+        <div className="my-5 border-t border-[#e6ebf1]" />
         <p className={`mb-3 ${typeScale.card}`}>Meeting details</p>
-        <ul className="space-y-2.5 text-[13px] text-[#6b7280]">
+        <ul className="space-y-2.5 text-[13px] text-[#6a7383]">
           <li className="flex items-center gap-2.5">
             <CalendarIcon />
             {meeting.id === "product-weekly"
@@ -618,7 +618,7 @@ function NotesTab({
       </p>
 
       <form
-        className="mt-6 rounded-2xl border border-[#eceef2] bg-white p-4"
+        className="mt-6 rounded-2xl border border-[#e3e8ee] bg-white p-4"
         onSubmit={(event) => {
           event.preventDefault();
           submit();
@@ -640,17 +640,17 @@ function NotesTab({
             }}
             rows={3}
             placeholder="Write what you want to remember from this meeting…"
-            className="w-full resize-none rounded-xl border border-[#eceef2] px-3.5 py-2.5 text-sm leading-6 text-[#111827] outline-none placeholder:text-[#b0b6bf] focus:border-[#ddd6fe] focus:ring-4 focus:ring-[#eee8ff]"
+            className="w-full resize-none rounded-md border border-[#e3e8ee] px-3.5 py-2.5 text-sm leading-6 text-[#0a2540] outline-none placeholder:text-[#8898aa] focus:border-[#635bff] focus:ring-2 focus:ring-[#eeedfe]"
           />
         </label>
         <div className="mt-3 flex flex-wrap items-center justify-between gap-2">
-          <label className="inline-flex min-w-[180px] items-center gap-2 text-[11px] font-medium text-[#8b919c]">
+          <label className="inline-flex min-w-[180px] items-center gap-2 text-[11px] font-medium text-[#6a7383]">
             <span className="shrink-0">Section</span>
             <span className="relative flex-1">
               <select
                 value={heading}
                 onChange={(e) => setHeading(e.target.value)}
-                className="h-9 w-full appearance-none rounded-xl border border-[#eceef2] bg-white py-0 pl-3.5 pr-10 text-[13px] font-medium text-[#111827] outline-none focus:border-[#ddd6fe] focus:ring-4 focus:ring-[#eee8ff]"
+                className="h-9 w-full appearance-none rounded-md border border-[#e3e8ee] bg-white py-0 pl-3.5 pr-10 text-[13px] font-medium text-[#0a2540] outline-none focus:border-[#635bff] focus:ring-2 focus:ring-[#eeedfe]"
               >
                 {sections.map((name) => (
                   <option key={name} value={name}>
@@ -658,7 +658,7 @@ function NotesTab({
                   </option>
                 ))}
               </select>
-              <span className="pointer-events-none absolute right-3.5 top-1/2 -translate-y-1/2 text-[#8b919c]">
+              <span className="pointer-events-none absolute right-3.5 top-1/2 -translate-y-1/2 text-[#6a7383]">
                 <ChevronDownIcon />
               </span>
             </span>
@@ -666,20 +666,20 @@ function NotesTab({
           <button
             type="submit"
             disabled={!draft.trim()}
-            className="inline-flex h-9 items-center gap-1.5 rounded-xl bg-[#111827] px-3.5 text-[13px] font-medium text-white hover:bg-black disabled:cursor-not-allowed disabled:opacity-40"
+            className="inline-flex h-9 items-center gap-1.5 rounded-md bg-[#635bff] px-3.5 text-[13px] font-medium text-white hover:bg-[#5851ea] disabled:cursor-not-allowed disabled:opacity-40"
           >
             <PlusIcon />
             Add note
           </button>
         </div>
-        <p className="mt-2 text-[12px] text-[#8b919c]">⌘ Enter to add</p>
+        <p className="mt-2 text-[12px] text-[#6a7383]">⌘ Enter to add</p>
       </form>
 
       <div className="mt-6 space-y-5">
         {meeting.notes.map((block) => (
           <section
             key={block.heading}
-            className="rounded-2xl border border-[#eceef2] bg-white p-5"
+            className="rounded-2xl border border-[#e3e8ee] bg-white p-5"
           >
             <h3 className={`min-w-0 break-words ${typeScale.card}`}>
               {block.heading}
@@ -688,15 +688,15 @@ function NotesTab({
               {block.items.map((item) => (
                 <li
                   key={item.id}
-                  className="flex items-start gap-2 text-sm leading-6 text-[#374151]"
+                  className="flex items-start gap-2 text-sm leading-6 text-[#425466]"
                 >
-                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#7c5cf6]" />
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#635bff]" />
                   <span className="min-w-0 flex-1 break-words">{item.text}</span>
                   {item.added && (
                     <button
                       type="button"
                       onClick={() => onRemoveNote(item.id)}
-                      className="mt-0.5 shrink-0 rounded-lg p-1 text-[#8b919c] hover:bg-[#f7f8fa] hover:text-[#111827]"
+                      className="mt-0.5 shrink-0 rounded-lg p-1 text-[#6a7383] hover:bg-[#f6f9fc] hover:text-[#0a2540]"
                       aria-label="Remove note"
                     >
                       <TrashIcon />
@@ -740,7 +740,7 @@ function MeetingFilesTab({
         <FileUploadButton onUpload={onUploadFile} />
       </div>
       {files.length === 0 ? (
-        <p className="rounded-2xl border border-[#eceef2] bg-white px-4 py-8 text-center text-[13.5px] text-[#8b919c]">
+        <p className="rounded-2xl border border-[#e3e8ee] bg-white px-4 py-8 text-center text-[13.5px] text-[#6a7383]">
           No files yet. Upload a file to attach it to this meeting and its tasks.
         </p>
       ) : (
@@ -757,7 +757,7 @@ function MeetingFilesTab({
           <h3 className={typeScale.card}>
             Available on these tasks
           </h3>
-          <p className="mt-2 text-[13px] leading-5 text-[#8b919c]">
+          <p className="mt-2 text-[13px] leading-5 text-[#6a7383]">
             Open a task to download the same files.
           </p>
           <ul className="mt-4 space-y-2">
@@ -795,7 +795,7 @@ function TranscriptTab({
           Meeting transcript
         </h2>
         <label className="relative mt-4 block w-full">
-          <span className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-[#98a0ab]">
+          <span className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-[#8898aa]">
             <SearchIcon />
           </span>
           <input
@@ -803,14 +803,14 @@ function TranscriptTab({
             value={query}
             onChange={(e) => onQuery(e.target.value)}
             placeholder="Grep tasks, owners, dates…"
-            className="h-10 w-full rounded-full border border-[#e6e9ef] bg-[#fbfcfd] py-2 pl-10 pr-4 text-[13px] outline-none placeholder:text-[#b0b6bf] focus:border-[#c9d4ea] focus:ring-4 focus:ring-[#eee8ff]"
+            className="h-9 w-full rounded-md border border-[#e3e8ee] bg-[#f6f9fc] py-2 pl-10 pr-4 text-[13px] outline-none placeholder:text-[#8898aa] focus:border-[#635bff] focus:ring-2 focus:ring-[#eeedfe]"
           />
         </label>
       </div>
 
       {hits.length > 0 && (
-        <div className="mb-5 rounded-2xl border border-[#ece8ff] bg-[#f7f4ff] p-4">
-          <p className="mb-3 flex min-w-0 flex-wrap items-center gap-1.5 break-words text-[13px] font-semibold text-[#6d4aff]">
+        <div className="mb-5 rounded-2xl border border-[#eeedfe] bg-[#f0efff] p-4">
+          <p className="mb-3 flex min-w-0 flex-wrap items-center gap-1.5 break-words text-[13px] font-semibold text-[#635bff]">
             <SparkleIcon />
             {hits.length} action item{hits.length === 1 ? "" : "s"} grepped from
             this transcript
@@ -819,13 +819,13 @@ function TranscriptTab({
             {hits.map((hit) => (
               <li
                 key={hit.id}
-            className="flex min-w-0 flex-wrap items-center justify-between gap-2 rounded-xl bg-white px-3.5 py-2.5"
+            className="flex min-w-0 flex-wrap items-center justify-between gap-2 rounded-md bg-white px-3.5 py-2.5"
               >
                 <div className="min-w-0">
                   <p className={`min-w-0 break-words ${typeScale.card}`}>
                     {hit.suggestedTitle}
                   </p>
-                  <p className="mt-0.5 min-w-0 break-words text-[12px] text-[#8b919c]">
+                  <p className="mt-0.5 min-w-0 break-words text-[12px] text-[#6a7383]">
                     {personById(hit.speakerId).name}
                     {hit.dueDate ? ` · ${formatDueDate(hit.dueDate)}` : ""}
                   </p>
@@ -833,7 +833,7 @@ function TranscriptTab({
                 <button
                   type="button"
                   onClick={() => onCreateFromGrep(hit)}
-                  className="inline-flex h-8 items-center rounded-lg bg-[#111827] px-3 text-[12px] font-medium text-white"
+                  className="inline-flex h-8 items-center rounded-lg bg-[#635bff] px-3 text-[12px] font-medium text-white"
                 >
                   Create task
                 </button>
@@ -843,7 +843,7 @@ function TranscriptTab({
         </div>
       )}
 
-      <div className="rounded-[22px] border border-[#eceef2] bg-white px-5">
+      <div className="rounded-[8px] border border-[#e3e8ee] bg-white px-5">
         {meeting.messages.map((message) => (
           <TranscriptMessage
             key={message.id}
@@ -869,20 +869,20 @@ function TranscriptMessage({
   const speaker = personById(message.speakerId);
   const linked = decisions.find((d) => d.sourceMessageId === message.id);
   return (
-    <article className="border-t border-[#f0f1f4] py-4 first:border-t-0">
+    <article className="border-t border-[#e6ebf1] py-4 first:border-t-0">
       <div className="flex items-start gap-3">
         <Avatar person={speaker} />
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-baseline gap-x-2">
             <span className={`min-w-0 break-words ${typeScale.card}`}>{speaker.name}</span>
-            <span className="text-[12px] text-[#9aa1ab]">{message.time}</span>
+            <span className="text-[12px] text-[#8898aa]">{message.time}</span>
             {linked && (
-              <span className="rounded-full bg-[#eee8ff] px-2 py-0.5 text-[11px] font-medium text-[#6d4aff]">
+              <span className="rounded-full bg-[#eeedfe] px-2 py-0.5 text-[11px] font-medium text-[#635bff]">
                 Decision
               </span>
             )}
           </div>
-          <p className="mt-1 min-w-0 break-words text-[14px] leading-[1.55] text-[#374151]">
+          <p className="mt-1 min-w-0 break-words text-[14px] leading-[1.55] text-[#425466]">
             {message.segments.map((segment, i) =>
               segment.type === "quote" ? (
                 <mark
@@ -1009,7 +1009,7 @@ function DecisionsTab({
           <button
             type="button"
             onClick={() => setDrafting(true)}
-            className={`inline-flex h-9 shrink-0 items-center gap-1.5 rounded-xl border border-[#eceef2] bg-white px-3 text-[13px] font-medium text-[#374151] ${cardInteractive}`}
+            className={`inline-flex h-9 shrink-0 items-center gap-1.5 rounded-md border border-[#e3e8ee] bg-white px-3 text-[13px] font-medium text-[#425466] ${cardInteractive}`}
           >
             <PlusIcon />
             Add decision
@@ -1032,7 +1032,7 @@ function DecisionsTab({
                 <button
                   type="button"
                   onClick={closeDraft}
-                  className="text-[13px] font-medium text-[#8b919c] hover:text-[#111827]"
+                  className="text-[13px] font-medium text-[#6a7383] hover:text-[#0a2540]"
                 >
                   Cancel
                 </button>
@@ -1042,7 +1042,7 @@ function DecisionsTab({
                 value={draft.title}
                 onChange={(e) => setDraft((prev) => ({ ...prev, title: e.target.value }))}
                 placeholder="Decision title"
-                className={`mt-3 w-full bg-transparent outline-none placeholder:text-[#c5cad3] ${typeScale.card}`}
+                className={`mt-3 w-full bg-transparent outline-none placeholder:text-[#a3acb9] ${typeScale.card}`}
               />
               <textarea
                 value={draft.summary}
@@ -1051,7 +1051,7 @@ function DecisionsTab({
                 }
                 rows={2}
                 placeholder="Add a short summary…"
-                className="mt-2 w-full resize-none bg-transparent text-[13.5px] leading-relaxed text-[#6b7280] outline-none placeholder:text-[#c5cad3]"
+                className="mt-2 w-full resize-none bg-transparent text-[13.5px] leading-relaxed text-[#6a7383] outline-none placeholder:text-[#a3acb9]"
               />
               <div className="mt-3 flex flex-wrap items-center gap-2">
                 <label className="relative inline-flex min-w-[148px] items-center">
@@ -1061,7 +1061,7 @@ function DecisionsTab({
                     onChange={(e) =>
                       setDraft((prev) => ({ ...prev, ownerId: e.target.value }))
                     }
-                    className="h-9 w-full appearance-none rounded-xl border border-[#eceef2] bg-white py-0 pl-3 pr-9 text-[13px] font-medium text-[#111827] outline-none focus:border-[#ddd6fe] focus:ring-4 focus:ring-[#eee8ff]"
+                    className="h-9 w-full appearance-none rounded-md border border-[#e3e8ee] bg-white py-0 pl-3 pr-9 text-[13px] font-medium text-[#0a2540] outline-none focus:border-[#635bff] focus:ring-2 focus:ring-[#eeedfe]"
                   >
                     {owners.map((person) => (
                       <option key={person.id} value={person.id}>
@@ -1069,13 +1069,13 @@ function DecisionsTab({
                       </option>
                     ))}
                   </select>
-                  <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[#8b919c]">
+                  <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[#6a7383]">
                     <ChevronDownIcon />
                   </span>
                 </label>
-                <label className="relative inline-flex h-9 items-center gap-1.5 rounded-xl border border-[#eceef2] bg-white px-3 text-[13px] font-medium text-[#374151]">
+                <label className="relative inline-flex h-9 items-center gap-1.5 rounded-md border border-[#e3e8ee] bg-white px-3 text-[13px] font-medium text-[#425466]">
                   <CalendarIcon />
-                  <span className={draft.dueDate ? "text-[#111827]" : "text-[#8b919c]"}>
+                  <span className={draft.dueDate ? "text-[#0a2540]" : "text-[#6a7383]"}>
                     {draft.dueDate ? formatDueDate(draft.dueDate, true) : "Due date"}
                   </span>
                   <input
@@ -1098,7 +1098,7 @@ function DecisionsTab({
                         status: e.target.value as DecisionStatus,
                       }))
                     }
-                    className="h-9 w-full appearance-none rounded-xl border border-[#eceef2] bg-white py-0 pl-3 pr-9 text-[13px] font-medium text-[#111827] outline-none focus:border-[#ddd6fe] focus:ring-4 focus:ring-[#eee8ff]"
+                    className="h-9 w-full appearance-none rounded-md border border-[#e3e8ee] bg-white py-0 pl-3 pr-9 text-[13px] font-medium text-[#0a2540] outline-none focus:border-[#635bff] focus:ring-2 focus:ring-[#eeedfe]"
                   >
                     {statuses.map((status) => (
                       <option key={status} value={status}>
@@ -1106,14 +1106,14 @@ function DecisionsTab({
                       </option>
                     ))}
                   </select>
-                  <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[#8b919c]">
+                  <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[#6a7383]">
                     <ChevronDownIcon />
                   </span>
                 </label>
                 <button
                   type="submit"
                   disabled={!draft.title.trim()}
-                  className="ml-auto inline-flex h-9 items-center rounded-xl bg-[#111827] px-3.5 text-[13px] font-medium text-white hover:bg-black disabled:cursor-not-allowed disabled:opacity-40"
+                  className="ml-auto inline-flex h-9 items-center rounded-md bg-[#635bff] px-3.5 text-[13px] font-medium text-white hover:bg-[#5851ea] disabled:cursor-not-allowed disabled:opacity-40"
                 >
                   Add decision
                 </button>
@@ -1127,13 +1127,13 @@ function DecisionsTab({
           return (
             <li
               key={decision.id}
-              className="relative rounded-2xl border border-[#eceef2] bg-white p-5"
+              className="relative rounded-2xl border border-[#e3e8ee] bg-white p-5"
             >
               {!linkedTask && (
                 <button
                   type="button"
                   onClick={() => onCreateTask(decision)}
-                  className="absolute right-4 top-4 z-10 inline-flex h-9 shrink-0 items-center rounded-xl bg-[#111827] px-3.5 text-[13px] font-medium text-white hover:bg-black"
+                  className="absolute right-4 top-4 z-10 inline-flex h-9 shrink-0 items-center rounded-md bg-[#635bff] px-3.5 text-[13px] font-medium text-white hover:bg-[#5851ea]"
                 >
                   Create task
                 </button>
@@ -1147,7 +1147,7 @@ function DecisionsTab({
                       decision.status === "confirmed" ? "needs-review" : "confirmed",
                     )
                   }
-                  className="mt-0.5 text-[#7c5cf6] hover:opacity-80"
+                  className="mt-0.5 text-[#635bff] hover:opacity-80"
                   aria-pressed={decision.status === "confirmed"}
                   aria-label={
                     decision.status === "confirmed"
@@ -1159,10 +1159,10 @@ function DecisionsTab({
                 </button>
                 <div className="min-w-0">
                   <p className={`min-w-0 break-words ${typeScale.card}`}>{decision.title}</p>
-                  <p className="mt-1 min-w-0 break-words text-[13.5px] leading-relaxed text-[#6b7280]">
+                  <p className="mt-1 min-w-0 break-words text-[13.5px] leading-relaxed text-[#6a7383]">
                     {decision.summary}
                   </p>
-                  <div className="mt-2.5 flex flex-wrap items-center gap-3 text-[12.5px] text-[#6b7280]">
+                  <div className="mt-2.5 flex flex-wrap items-center gap-3 text-[12.5px] text-[#6a7383]">
                     <span className="inline-flex items-center gap-1.5">
                       <Avatar person={owner} size="xs" />
                       {owner.name}
@@ -1189,7 +1189,7 @@ function DecisionsTab({
                         <StatusPill status={decision.status} />
                       </button>
                       {statusMenuId === decision.id && (
-                        <div className="absolute left-0 z-20 mt-1 w-40 overflow-hidden rounded-xl border border-[#e6e9ef] bg-white py-1 shadow-lg">
+                        <div className="absolute left-0 z-20 mt-1 w-40 overflow-hidden rounded-md border border-[#e3e8ee] bg-white py-1 shadow-lg">
                           {statuses.map((status) => (
                             <button
                               key={status}
@@ -1198,10 +1198,10 @@ function DecisionsTab({
                                 onUpdateDecisionStatus(decision.id, status);
                                 setStatusMenuId(null);
                               }}
-                              className={`block w-full px-3 py-2 text-left text-[13px] hover:bg-[#f7f8fa] ${
+                              className={`block w-full px-3 py-2 text-left text-[13px] hover:bg-[#f6f9fc] ${
                                 decision.status === status
-                                  ? "font-medium text-[#111827]"
-                                  : "text-[#374151]"
+                                  ? "font-medium text-[#0a2540]"
+                                  : "text-[#425466]"
                               }`}
                             >
                               {statusLabel(status)}
@@ -1245,7 +1245,7 @@ function MeetingTasksTab({
         Work created from decisions and the transcript. Open a card to jump to the board.
       </p>
       {tasks.length === 0 ? (
-        <p className="mt-6 rounded-2xl border border-[#eceef2] bg-white px-4 py-8 text-center text-[13.5px] text-[#8b919c]">
+        <p className="mt-6 rounded-2xl border border-[#e3e8ee] bg-white px-4 py-8 text-center text-[13.5px] text-[#6a7383]">
           No tasks yet. Turn a decision into a task to add it here.
         </p>
       ) : (
@@ -1274,7 +1274,7 @@ function MeetingTaskCard({
     <button
       type="button"
       onClick={onOpen}
-      className={`flex w-full items-start gap-3 ${cardRadius} border border-[#eceef2] bg-[#fbfcfd] text-left ${cardInteractive} ${
+      className={`flex w-full items-start gap-3 ${cardRadius} border border-[#e3e8ee] bg-[#f6f9fc] text-left ${cardInteractive} ${
         compact ? "px-3 py-2.5" : "px-3.5 py-3"
       }`}
     >
@@ -1285,7 +1285,7 @@ function MeetingTaskCard({
         <span className={`block min-w-0 break-words ${typeScale.card}`}>
           {task.title}
         </span>
-        <span className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-[12px] text-[#8b919c]">
+        <span className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-[12px] text-[#6a7383]">
           <span>{columnLabel(task.status)}</span>
           <span>·</span>
           <span>{formatDueDate(task.dueDate)}</span>
@@ -1296,7 +1296,7 @@ function MeetingTaskCard({
           </span>
         </span>
       </span>
-      <span className="mt-1 shrink-0 text-[#c5cad3]">
+      <span className="mt-1 shrink-0 text-[#a3acb9]">
         <ChevronIcon />
       </span>
     </button>

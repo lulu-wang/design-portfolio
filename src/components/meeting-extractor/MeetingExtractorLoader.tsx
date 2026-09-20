@@ -6,7 +6,7 @@ const MeetingExtractorApp = dynamic(
   () => import("./MeetingExtractorApp"),
   {
     ssr: false,
-    loading: () => <div className="min-h-dvh bg-[#f3f5f8]" />,
+    loading: () => <div className="min-h-dvh bg-[#f6f9fc]" />,
   },
 );
 

@@ -95,16 +95,16 @@ export default function TaskBoardView({
   return (
     <div className={`flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden px-4 pb-8 sm:px-6 lg:px-8 ${showProjectOnCards ? "pt-5" : "pt-4"}`}>
       {!showProjectOnCards && (
-        <p className="mb-3 text-[13px] text-[#8b919c]">
+        <p className="mb-3 text-[13px] text-[#6a7383]">
           <button
             type="button"
             onClick={onBackToProjects}
-            className="hover:text-[#111827]"
+            className="hover:text-[#0a2540]"
           >
             Projects
           </button>
           <span className="mx-1">›</span>
-          <span className="text-[#374151]">{projectName}</span>
+          <span className="text-[#425466]">{projectName}</span>
         </p>
       )}
       <div className="mb-5 flex flex-wrap items-start justify-between gap-3">
@@ -120,7 +120,7 @@ export default function TaskBoardView({
           <button
             type="button"
             onClick={onAddTask}
-            className="inline-flex h-10 items-center gap-1.5 rounded-xl bg-[#7c5cf6] px-4 text-[13px] font-medium text-white hover:bg-[#6d4ef0]"
+            className="inline-flex h-10 items-center gap-1.5 rounded-md bg-[#635bff] px-4 text-[13px] font-medium text-white hover:bg-[#5851ea]"
           >
             <PlusIcon />
             Add task
@@ -128,7 +128,7 @@ export default function TaskBoardView({
         </div>
       </div>
 
-      <div className="mb-5 flex gap-5 overflow-x-auto border-b border-[#eceef2]">
+      <div className="mb-5 flex gap-5 overflow-x-auto border-b border-[#e3e8ee]">
         {tabs.map((item) => {
           const active = boardView === item.id;
           const Icon = item.icon;
@@ -139,8 +139,8 @@ export default function TaskBoardView({
               onClick={() => onBoardView(item.id)}
               className={`-mb-px inline-flex shrink-0 items-center gap-1.5 border-b-2 pb-3 text-[13px] font-medium ${
                 active
-                  ? "border-[#7c5cf6] text-[#111827]"
-                  : "border-transparent text-[#8b919c] hover:text-[#374151]"
+                  ? "border-[#635bff] text-[#0a2540]"
+                  : "border-transparent text-[#6a7383] hover:text-[#425466]"
               }`}
             >
               <Icon />
@@ -158,15 +158,15 @@ export default function TaskBoardView({
               <button
                 type="button"
                 onClick={filters.clearFilters}
-                className="inline-flex h-9 items-center rounded-full px-3.5 text-[13px] font-medium text-[#7c5cf6] hover:bg-[#f7f4ff] hover:text-[#6d4ef0]"
+                className="inline-flex h-9 items-center rounded-full px-3.5 text-[13px] font-medium text-[#635bff] hover:bg-[#f0efff] hover:text-[#5851ea]"
               >
                 Clear filters
               </button>
             )}
           </div>
           {filters.rows.length === 0 ? (
-            <div className="rounded-[22px] border border-[#eceef2] bg-white px-5 py-10 text-center">
-              <p className="text-[14px] text-[#6b7280]">
+            <div className="rounded-[8px] border border-[#e3e8ee] bg-white px-5 py-10 text-center">
+              <p className="text-[14px] text-[#6a7383]">
                 {filters.hasFilters
                   ? "No tasks match these filters."
                   : "No tasks yet."}
@@ -424,15 +424,15 @@ function TaskListView({
   onEditTask: (task: BoardTask) => void;
 }) {
   return (
-    <div className="min-h-0 min-w-0 flex-1 overflow-auto rounded-[22px] border border-[#eceef2] bg-white">
+    <div className="min-h-0 min-w-0 flex-1 overflow-auto rounded-[8px] border border-[#e3e8ee] bg-white">
       <div className="min-w-[960px]">
         <div className={`${listGrid} items-center px-5 py-3`}>
           <span className={typeScale.label}>Task</span>
           <TaskFilterControls filters={filters} showStatusFilter />
         </div>
         {filters.listRows.length === 0 ? (
-          <div className="border-t border-[#f0f1f4] px-5 py-10 text-center">
-            <p className="text-[14px] text-[#6b7280]">
+          <div className="border-t border-[#e6ebf1] px-5 py-10 text-center">
+            <p className="text-[14px] text-[#6a7383]">
               {filters.hasListFilters
                 ? "No tasks match these filters."
                 : "No tasks yet."}
@@ -441,7 +441,7 @@ function TaskListView({
               <button
                 type="button"
                 onClick={filters.clearFilters}
-                className="mt-3 text-[13px] font-medium text-[#7c5cf6] hover:text-[#6d4ef0]"
+                className="mt-3 text-[13px] font-medium text-[#635bff] hover:text-[#5851ea]"
               >
                 Clear filters
               </button>
@@ -454,10 +454,10 @@ function TaskListView({
               id={`task-card-${task.id}`}
               type="button"
               onClick={() => onEditTask(task)}
-              className={`${listGrid} w-full border-t border-[#f0f1f4] px-5 py-3.5 text-left ${
+              className={`${listGrid} w-full border-t border-[#e6ebf1] px-5 py-3.5 text-left ${
                 task.id === activeTaskId
                   ? "bg-[#f7f5ff]"
-                  : "hover:bg-[#f4f5f8]"
+                  : "hover:bg-[#f6f9fc]"
               }`}
             >
               <span className={`min-w-0 break-words ${typeScale.card}`}>
@@ -466,21 +466,21 @@ function TaskListView({
               <span className="flex justify-end">
                 <PriorityPill priority={task.priority} />
               </span>
-              <span className="text-right text-[13px] leading-5 text-[#8b919c]">
+              <span className="text-right text-[13px] leading-5 text-[#6a7383]">
                 {formatDueDate(task.dueDate)}
               </span>
-              <span className="text-right text-[13px] leading-5 text-[#8b919c]">
+              <span className="text-right text-[13px] leading-5 text-[#6a7383]">
                 {columnLabel(task.status)}
               </span>
               <span className="flex min-w-0 items-center justify-end gap-2">
                 <AvatarStack ids={task.assigneeIds.slice(0, 2)} size="xs" compact />
-                <span className="min-w-0 truncate text-[13px] leading-5 text-[#374151]">
+                <span className="min-w-0 truncate text-[13px] leading-5 text-[#425466]">
                   {task.assigneeIds
                     .map((id) => personById(id).name.split(" ")[0])
                     .join(", ")}
                 </span>
               </span>
-              <span className="min-w-0 truncate text-right text-[13px] leading-5 text-[#374151]">
+              <span className="min-w-0 truncate text-right text-[13px] leading-5 text-[#425466]">
                 {projectById(task.projectId).name}
               </span>
             </button>
@@ -527,8 +527,8 @@ function ListFilter({
         aria-expanded={open}
         className={`inline-flex h-9 max-w-full min-w-0 items-center gap-1 rounded-full px-3.5 text-[13px] font-medium shadow-[0_1px_2px_rgba(16,24,40,0.04)] ${
           emphasized
-            ? "bg-[#efeafb] text-[#6d4ef0] ring-1 ring-[#e0d8f6]"
-            : "bg-white text-[#374151] ring-1 ring-[#eceef2] hover:bg-[#f7f4ff] hover:text-[#111827]"
+            ? "bg-[#efeafb] text-[#5851ea] ring-1 ring-[#e0d8f6]"
+            : "bg-white text-[#425466] ring-1 ring-[#e3e8ee] hover:bg-[#f0efff] hover:text-[#0a2540]"
         }`}
       >
         <span className="min-w-0 truncate">{display}</span>
@@ -536,7 +536,7 @@ function ListFilter({
       </button>
       {open && (
         <div
-          className={`absolute top-full z-30 mt-2 w-48 overflow-hidden rounded-[18px] bg-white py-1.5 shadow-[0_12px_40px_rgba(15,23,42,0.12)] ring-1 ring-[#eceef2] ${
+          className={`absolute top-full z-30 mt-2 w-48 overflow-hidden rounded-[18px] bg-white py-1.5 shadow-[0_12px_40px_rgba(15,23,42,0.12)] ring-1 ring-[#e3e8ee] ${
             align === "left" ? "left-0" : "right-0"
           }`}
         >
@@ -549,13 +549,13 @@ function ListFilter({
                 onClick={() => onChange(option.id)}
                 className={`flex w-full items-center justify-between gap-3 px-3.5 py-2.5 text-left text-[13px] ${
                   isSelected
-                    ? "bg-[#f7f4ff] font-medium text-[#6d4ef0]"
-                    : "text-[#374151] hover:bg-[#f7f8fa]"
+                    ? "bg-[#f0efff] font-medium text-[#5851ea]"
+                    : "text-[#425466] hover:bg-[#f6f9fc]"
                 }`}
               >
                 {option.label}
                 {isSelected && (
-                  <span className="text-[#7c5cf6]">
+                  <span className="text-[#635bff]">
                     <CheckIcon />
                   </span>
                 )}
@@ -596,7 +596,7 @@ function BoardFiles({
 
   if (related.length === 0) {
     return (
-      <p className="rounded-2xl border border-[#eceef2] bg-white p-5 text-sm text-[#6b7280]">
+      <p className="rounded-2xl border border-[#e3e8ee] bg-white p-5 text-sm text-[#6a7383]">
         No files on related meetings yet. Open a meeting and upload a file to
         see it here.
       </p>
@@ -608,10 +608,10 @@ function BoardFiles({
       {grouped.map(({ meeting, items, taskCount }) => (
         <section
           key={meeting.id}
-          className="rounded-[22px] border border-[#eceef2] bg-white p-5"
+          className="rounded-[8px] border border-[#e3e8ee] bg-white p-5"
         >
           <h2 className={`min-w-0 break-words ${typeScale.section}`}>{meeting.title}</h2>
-          <p className="mt-2 text-[12px] leading-5 text-[#8b919c]">
+          <p className="mt-2 text-[12px] leading-5 text-[#6a7383]">
             {meeting.whenShort}
             {" · "}
             available on {taskCount} {taskCount === 1 ? "task" : "tasks"} from
@@ -650,9 +650,9 @@ function BoardCalendar({
 
   return (
     <div className="grid min-h-0 min-w-0 gap-4 lg:grid-cols-[320px_minmax(0,1fr)]">
-      <section className="min-w-0 rounded-[22px] border border-[#eceef2] bg-white p-5">
+      <section className="min-w-0 rounded-[8px] border border-[#e3e8ee] bg-white p-5">
         <p className={`mb-3 ${typeScale.section}`}>October 2024</p>
-        <div className="grid grid-cols-7 text-center text-[11px] font-medium text-[#9aa1ab]">
+        <div className="grid grid-cols-7 text-center text-[11px] font-medium text-[#8898aa]">
           {["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].map((d) => (
             <span key={d} className="py-1">
               {d}
@@ -677,15 +677,15 @@ function BoardCalendar({
                   onClick={() => setDue(iso)}
                   className={`relative mx-auto flex h-8 w-8 items-center justify-center rounded-full ${
                     selectedDay
-                      ? "bg-[#7c5cf6] font-semibold text-white"
+                      ? "bg-[#635bff] font-semibold text-white"
                       : faded
-                        ? "text-[#d0d4dc] hover:bg-[#f7f8fa]"
-                        : "text-[#374151] hover:bg-[#f4f5f8]"
+                        ? "text-[#c1c9d2] hover:bg-[#f6f9fc]"
+                        : "text-[#425466] hover:bg-[#f6f9fc]"
                   }`}
                 >
                   {day}
                   {marked && !selectedDay && (
-                    <span className="absolute bottom-0.5 h-1 w-1 rounded-full bg-[#7c5cf6]" />
+                    <span className="absolute bottom-0.5 h-1 w-1 rounded-full bg-[#635bff]" />
                   )}
                 </button>
               );
@@ -695,7 +695,7 @@ function BoardCalendar({
       </section>
       <ul className="min-h-0 min-w-0 space-y-2 overflow-y-auto p-0.5">
         {dayTasks.length === 0 && (
-          <li className="rounded-2xl border border-[#eceef2] bg-white p-5 text-[14px] text-[#6b7280]">
+          <li className="rounded-2xl border border-[#e3e8ee] bg-white p-5 text-[14px] text-[#6a7383]">
             No tasks due on {formatDueDate(selected)}.
           </li>
         )}
@@ -704,13 +704,13 @@ function BoardCalendar({
             <button
               type="button"
               onClick={() => onEditTask(task)}
-              className={`flex w-full items-center justify-between gap-3 ${cardRadius} border border-[#eceef2] bg-white px-4 py-3 text-left transition-colors hover:border-[#7c5cf6] hover:shadow-[inset_0_0_0_1.5px_#7c5cf6] active:border-[#7c5cf6] active:shadow-[inset_0_0_0_1.5px_#7c5cf6] focus-visible:border-[#7c5cf6] focus-visible:shadow-[inset_0_0_0_1.5px_#7c5cf6] focus-visible:outline-none`}
+              className={`flex w-full items-center justify-between gap-3 ${cardRadius} border border-[#e3e8ee] bg-white px-4 py-3 text-left transition-colors hover:border-[#635bff] hover:shadow-[inset_0_0_0_1.5px_#635bff] active:border-[#635bff] active:shadow-[inset_0_0_0_1.5px_#635bff] focus-visible:border-[#635bff] focus-visible:shadow-[inset_0_0_0_1.5px_#635bff] focus-visible:outline-none`}
             >
               <span className="min-w-0">
                 <span className={`block min-w-0 break-words ${typeScale.card}`}>
                   {task.title}
                 </span>
-                <span className="mt-0.5 block min-w-0 break-words text-[12.5px] text-[#8b919c]">
+                <span className="mt-0.5 block min-w-0 break-words text-[12.5px] text-[#6a7383]">
                 </span>
               </span>
               <PriorityPill priority={task.priority} size="lg" />
@@ -764,13 +764,13 @@ function BoardColumns({
             onDragLeave={() => setOver((current) => (current === column ? null : current))}
             onDrop={(event) => dropOn(column, event)}
             className={`flex min-h-0 w-[320px] shrink-0 flex-col overflow-hidden rounded-2xl p-3.5 pb-2.5 transition-colors xl:w-auto xl:min-w-[320px] xl:flex-1 ${
-              highlighted ? "bg-[#e8eaee]" : "bg-[#f4f5f8]"
+              highlighted ? "bg-[#e8eaee]" : "bg-[#f6f9fc]"
             }`}
           >
             <div className="mb-3">
               <h2 className={`inline-flex min-w-0 flex-wrap items-baseline gap-x-3 ${typeScale.card}`}>
                 {columnLabel(column)}
-                <span className="font-medium text-[#8b919c]">{items.length}</span>
+                <span className="font-medium text-[#6a7383]">{items.length}</span>
               </h2>
             </div>
             <div className="flex min-h-0 min-w-0 flex-1 flex-col overflow-y-auto px-0.5 pt-0.5">
@@ -834,21 +834,21 @@ function TaskCard({
       }}
       className={`cursor-pointer ${cardRadius} border border-l-4 bg-white p-3.5 text-left transition-colors ${
         active
-          ? "border-[#7c5cf6] border-l-[#7c5cf6] shadow-[inset_0_0_0_1.5px_#7c5cf6]"
-          : `shadow-[0_1px_2px_rgba(16,24,40,0.04)] ${accents[task.priority]} border-[#eceef2] hover:border-[#7c5cf6] hover:border-l-[#7c5cf6] hover:shadow-[inset_0_0_0_1.5px_#7c5cf6]`
+          ? "border-[#635bff] border-l-[#635bff] shadow-[inset_0_0_0_1.5px_#635bff]"
+          : `shadow-[0_1px_2px_rgba(16,24,40,0.04)] ${accents[task.priority]} border-[#e3e8ee] hover:border-[#635bff] hover:border-l-[#635bff] hover:shadow-[inset_0_0_0_1.5px_#635bff]`
       }`}
     >
       <div className="mb-2.5 flex items-center justify-between gap-2">
         <PriorityPill priority={task.priority} size="lg" />
         <span
-          className="inline-flex cursor-grab text-[#c5cad3] active:cursor-grabbing"
+          className="inline-flex cursor-grab text-[#a3acb9] active:cursor-grabbing"
           title="Drag to another column"
           aria-hidden
         >
           <GripIcon />
         </span>
       </div>
-      <p className="flex min-w-0 items-start gap-2 break-words text-[15px] font-semibold leading-snug text-[#111827]">
+      <p className="flex min-w-0 items-start gap-2 break-words text-[15px] font-semibold leading-snug text-[#0a2540]">
         {task.status === "done" && (
           <span className="mt-0.5 text-[#16a34a]">
             <CheckIcon />
@@ -857,11 +857,11 @@ function TaskCard({
         {task.title}
       </p>
       {showProject && (
-        <p className="mt-2 min-w-0 break-words text-[12px] font-medium text-[#6b7280]">
+        <p className="mt-2 min-w-0 break-words text-[12px] font-medium text-[#6a7383]">
           {projectById(task.projectId).name}
         </p>
       )}
-      <p className="mt-2 line-clamp-2 text-[13px] leading-relaxed text-[#6b7280]">
+      <p className="mt-2 line-clamp-2 text-[13px] leading-relaxed text-[#6a7383]">
         {task.description}
       </p>
       <div className="mt-3 flex items-center justify-between gap-2">
@@ -876,7 +876,7 @@ function TaskCard({
             </span>
           ))}
         </span>
-        <span className="inline-flex items-center gap-1 text-[12px] text-[#6b7280]">
+        <span className="inline-flex items-center gap-1 text-[12px] text-[#6a7383]">
           <CalendarIcon />
           {formatDueDate(task.dueDate)}
         </span>
@@ -895,8 +895,8 @@ function TaskCard({
               }}
               className={`h-7 rounded-lg px-1 text-[10px] font-semibold ${
                 current
-                  ? "bg-[#111827] text-white"
-                  : "bg-[#f4f5f8] text-[#6b7280] hover:bg-[#ece8ff] hover:text-[#6d4aff]"
+                  ? "bg-[#635bff] text-white"
+                  : "bg-[#f6f9fc] text-[#6a7383] hover:bg-[#eeedfe] hover:text-[#635bff]"
               }`}
             >
               {statusShort[column]}

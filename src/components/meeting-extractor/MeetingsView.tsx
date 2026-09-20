@@ -133,11 +133,11 @@ export default function MeetingsView({
       />
 
       <div className="grid grid-cols-1 items-stretch gap-4 @min-[760px]:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)_minmax(0,0.9fr)] lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)_minmax(0,0.9fr)]">
-        <section className="flex h-full min-w-0 flex-col rounded-[22px] border border-[#eceef2] bg-white p-7">
+        <section className="flex h-full min-w-0 flex-col rounded-[8px] border border-[#e3e8ee] bg-white p-7">
           {upcoming ? (
             <>
               <div className="mb-5 flex min-w-0 items-center justify-between gap-2">
-                <span className="inline-flex h-6 min-w-0 max-w-[70%] items-center truncate rounded-full bg-[#ece8ff] px-2.5 text-[11px] font-medium text-[#6d4aff]">
+                <span className="inline-flex h-6 min-w-0 max-w-[70%] items-center truncate rounded-full bg-[#eeedfe] px-2.5 text-[11px] font-medium text-[#635bff]">
                   {upcoming.upcoming
                     ? `Up next · In ${upcoming.minutesUntil ?? 10} minutes`
                     : upcoming.dayLabel}
@@ -145,16 +145,16 @@ export default function MeetingsView({
                 <button
                   type="button"
                   onClick={() => onOpenMeeting(upcoming.id)}
-                  className={`inline-flex shrink-0 items-center gap-1 text-[#6b7280] hover:text-[#111827] ${typeScale.button}`}
+                  className={`inline-flex shrink-0 items-center gap-1 text-[#6a7383] hover:text-[#0a2540] ${typeScale.button}`}
                 >
                   View details
                   <ChevronIcon />
                 </button>
               </div>
-              <h2 className={`min-w-0 break-words text-[24px] font-semibold tracking-[-0.02em] text-[#111827]`}>
+              <h2 className={`min-w-0 break-words text-[24px] font-semibold tracking-[-0.02em] text-[#0a2540]`}>
                 {upcoming.title}
               </h2>
-              <p className="mt-4 text-sm leading-5 text-[#6b7280]">
+              <p className="mt-4 text-sm leading-5 text-[#6a7383]">
                 <span className="inline-flex items-center gap-1.5">
                   <CalendarIcon />
                   {upcoming.whenShort}
@@ -164,8 +164,8 @@ export default function MeetingsView({
                 <MeetingCallLink meeting={upcoming} />
               </div>
               {upcomingProject && (
-                <p className="mt-3 text-sm leading-5 text-[#6b7280]">
-                  <span className="font-medium text-[#111827]">
+                <p className="mt-3 text-sm leading-5 text-[#6a7383]">
+                  <span className="font-medium text-[#0a2540]">
                     {upcomingProject.name}
                   </span>
                   {upcomingTasks.length > 0
@@ -176,7 +176,7 @@ export default function MeetingsView({
                 </p>
               )}
               {upcomingTasks.length > 0 && (
-                <p className="mt-2 whitespace-normal break-words text-sm leading-5 text-[#6b7280]">
+                <p className="mt-2 whitespace-normal break-words text-sm leading-5 text-[#6a7383]">
                   {upcomingTasks
                     .slice(0, 2)
                     .map((task) => task.title)
@@ -201,7 +201,7 @@ export default function MeetingsView({
           )}
         </section>
 
-        <section className="@container flex h-full min-w-0 flex-col rounded-[22px] border border-[#eceef2] bg-white p-5">
+        <section className="@container flex h-full min-w-0 flex-col rounded-[8px] border border-[#e3e8ee] bg-white p-5">
           <div className="mb-3 flex items-center gap-2 px-1">
             <div className="flex min-w-0 flex-1 items-center gap-2 overflow-hidden">
               <div className="relative shrink-0" data-calendar-menu>
@@ -214,13 +214,13 @@ export default function MeetingsView({
                       current === "month" ? null : "month",
                     )
                   }
-                  className={`inline-flex items-center gap-1 whitespace-nowrap hover:text-[#7c5cf6] ${typeScale.section}`}
+                  className={`inline-flex items-center gap-1 whitespace-nowrap hover:text-[#635bff] ${typeScale.section}`}
                 >
                   {monthNames[view.month - 1]}
                   <ChevronDownIcon />
                 </button>
                 {calendarMenu === "month" && (
-                  <div className="absolute left-0 top-full z-30 mt-2 w-44 overflow-hidden rounded-xl border border-[#e6e9ef] bg-white py-1 shadow-lg">
+                  <div className="absolute left-0 top-full z-30 mt-2 w-44 overflow-hidden rounded-md border border-[#e3e8ee] bg-white py-1 shadow-lg">
                     {monthNames.map((name, index) => {
                       const month = index + 1;
                       const selected = month === view.month;
@@ -232,10 +232,10 @@ export default function MeetingsView({
                             setView((current) => ({ ...current, month }));
                             setCalendarMenu(null);
                           }}
-                          className={`flex w-full px-3 py-2 text-left text-[13px] hover:bg-[#f7f8fa] ${
+                          className={`flex w-full px-3 py-2 text-left text-[13px] hover:bg-[#f6f9fc] ${
                             selected
-                              ? "font-medium text-[#111827]"
-                              : "text-[#374151]"
+                              ? "font-medium text-[#0a2540]"
+                              : "text-[#425466]"
                           }`}
                         >
                           {name}
@@ -255,13 +255,13 @@ export default function MeetingsView({
                       current === "year" ? null : "year",
                     )
                   }
-                  className={`inline-flex items-center gap-1 whitespace-nowrap hover:text-[#7c5cf6] ${typeScale.section}`}
+                  className={`inline-flex items-center gap-1 whitespace-nowrap hover:text-[#635bff] ${typeScale.section}`}
                 >
                   {view.year}
                   <ChevronDownIcon />
                 </button>
                 {calendarMenu === "year" && (
-                  <div className="absolute left-0 top-full z-30 mt-2 max-h-64 w-28 overflow-y-auto rounded-xl border border-[#e6e9ef] bg-white py-1 shadow-lg">
+                  <div className="absolute left-0 top-full z-30 mt-2 max-h-64 w-28 overflow-y-auto rounded-md border border-[#e3e8ee] bg-white py-1 shadow-lg">
                     {years.map((year) => {
                       const selected = year === view.year;
                       return (
@@ -272,10 +272,10 @@ export default function MeetingsView({
                             setView((current) => ({ ...current, year }));
                             setCalendarMenu(null);
                           }}
-                          className={`flex w-full px-3 py-2 text-left text-[13px] hover:bg-[#f7f8fa] ${
+                          className={`flex w-full px-3 py-2 text-left text-[13px] hover:bg-[#f6f9fc] ${
                             selected
-                              ? "font-medium text-[#111827]"
-                              : "text-[#374151]"
+                              ? "font-medium text-[#0a2540]"
+                              : "text-[#425466]"
                           }`}
                         >
                           {year}
@@ -286,14 +286,14 @@ export default function MeetingsView({
                 )}
               </div>
             </div>
-            <div className="ml-auto flex shrink-0 items-center gap-0.5 text-[#8b919c]">
+            <div className="ml-auto flex shrink-0 items-center gap-0.5 text-[#6a7383]">
               <button
                 type="button"
                 onClick={goToday}
                 className={`mr-1 hidden rounded-lg px-2 py-1 text-[12px] font-medium @[560px]:inline ${
                   onToday
-                    ? "text-[#c5cad3]"
-                    : "text-[#7c5cf6] hover:bg-[#f7f4ff] hover:text-[#6d4ef0]"
+                    ? "text-[#a3acb9]"
+                    : "text-[#635bff] hover:bg-[#f0efff] hover:text-[#5851ea]"
                 }`}
               >
                 Today
@@ -301,7 +301,7 @@ export default function MeetingsView({
               <button
                 type="button"
                 aria-label="Previous month"
-                className="flex h-7 w-7 items-center justify-center rounded-lg hover:bg-[#f7f8fa] hover:text-[#111827]"
+                className="flex h-7 w-7 items-center justify-center rounded-lg hover:bg-[#f6f9fc] hover:text-[#0a2540]"
                 onClick={() => setView((current) => shiftMonth(current.year, current.month, -1))}
               >
                 <ChevronLeftIcon />
@@ -309,14 +309,14 @@ export default function MeetingsView({
               <button
                 type="button"
                 aria-label="Next month"
-                className="flex h-7 w-7 items-center justify-center rounded-lg hover:bg-[#f7f8fa] hover:text-[#111827]"
+                className="flex h-7 w-7 items-center justify-center rounded-lg hover:bg-[#f6f9fc] hover:text-[#0a2540]"
                 onClick={() => setView((current) => shiftMonth(current.year, current.month, 1))}
               >
                 <ChevronRightIcon />
               </button>
             </div>
           </div>
-          <div className="grid grid-cols-7 text-center text-[11px] font-medium text-[#9aa1ab]">
+          <div className="grid grid-cols-7 text-center text-[11px] font-medium text-[#8898aa]">
             {["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].map((d) => (
               <span key={d} className="py-1">
                 {d}
@@ -336,17 +336,17 @@ export default function MeetingsView({
                     onClick={() => selectDate(cell.iso)}
                     className={`relative mx-auto flex h-8 w-8 items-center justify-center rounded-full ${
                       selected
-                        ? "bg-[#7c5cf6] font-semibold text-white"
+                        ? "bg-[#635bff] font-semibold text-white"
                         : cell.outside
-                          ? "text-[#d0d4dc] hover:bg-[#f7f8fa]"
+                          ? "text-[#c1c9d2] hover:bg-[#f6f9fc]"
                           : isToday
-                            ? "font-semibold text-[#7c5cf6] hover:bg-[#f7f4ff]"
-                            : "text-[#374151] hover:bg-[#f4f5f8]"
+                            ? "font-semibold text-[#635bff] hover:bg-[#f0efff]"
+                            : "text-[#425466] hover:bg-[#f6f9fc]"
                     }`}
                   >
                     {cell.day}
                     {marked && !selected && (
-                      <span className="absolute bottom-0.5 h-1 w-1 rounded-full bg-[#7c5cf6]" />
+                      <span className="absolute bottom-0.5 h-1 w-1 rounded-full bg-[#635bff]" />
                     )}
                   </button>
                 );
@@ -355,11 +355,11 @@ export default function MeetingsView({
           </div>
         </section>
 
-        <section className="flex h-full min-w-0 flex-col rounded-[22px] border border-[#eceef2] bg-white p-5">
+        <section className="flex h-full min-w-0 flex-col rounded-[8px] border border-[#e3e8ee] bg-white p-5">
           <button
             type="button"
             onClick={goToday}
-            className={`text-left hover:text-[#7c5cf6] ${typeScale.section}`}
+            className={`text-left hover:text-[#635bff] ${typeScale.section}`}
           >
             Today
           </button>
@@ -374,12 +374,12 @@ export default function MeetingsView({
                   : "meetings this day"}
               </p>
             </div>
-            <div className="border-l border-[#eceef2] pl-4">
+            <div className="border-l border-[#e3e8ee] pl-4">
               {reviewMeetingId ? (
                 <button
                   type="button"
                   onClick={() => onOpenMeeting(reviewMeetingId, "decisions")}
-                  className="text-left hover:text-[#7c5cf6]"
+                  className="text-left hover:text-[#635bff]"
                 >
                   <p className={typeScale.stat}>{awaiting}</p>
                   <p className={`mt-2 ${typeScale.label}`}>awaiting review</p>
@@ -396,10 +396,10 @@ export default function MeetingsView({
           <button
             type="button"
             onClick={onOpenTasks}
-            className={`flex w-full items-center justify-between ${cardRadius} border border-transparent bg-[#f4f5f8] px-3.5 py-3 text-left ${cardInteractive}`}
+            className={`flex w-full items-center justify-between ${cardRadius} border border-transparent bg-[#f6f9fc] px-3.5 py-3 text-left ${cardInteractive}`}
           >
             <span className="flex min-w-0 items-center gap-2.5">
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-white text-[#6d4aff] shadow-sm">
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-white text-[#635bff] shadow-sm">
                 <TasksIcon />
               </span>
               <span className="min-w-0">
@@ -411,7 +411,7 @@ export default function MeetingsView({
                 </span>
               </span>
             </span>
-            <span className="shrink-0 text-[#c5cad3]">
+            <span className="shrink-0 text-[#a3acb9]">
               <ChevronIcon />
             </span>
           </button>
@@ -427,7 +427,7 @@ export default function MeetingsView({
               : `Meetings on ${formatDueDate(selectedDate)}`}
           </h2>
         </div>
-        <div className="min-w-0 overflow-x-auto rounded-[22px] border border-[#eceef2] bg-white">
+        <div className="min-w-0 overflow-x-auto rounded-[8px] border border-[#e3e8ee] bg-white">
           <div className="min-w-[760px]">
           <div className={`grid grid-cols-[minmax(220px,1.6fr)_minmax(160px,1fr)_minmax(110px,0.7fr)_minmax(120px,0.55fr)_56px] gap-3 px-6 py-3 font-medium ${typeScale.label}`}>
             <span>Meeting</span>
@@ -437,7 +437,7 @@ export default function MeetingsView({
             <span className="text-right">Actions</span>
           </div>
           {dayMeetings.length === 0 ? (
-            <p className="border-t border-[#f0f1f4] px-6 py-10 text-center text-[14px] text-[#6b7280]">
+            <p className="border-t border-[#e6ebf1] px-6 py-10 text-center text-[14px] text-[#6a7383]">
               No meetings on {formatDueDate(selectedDate)}.
             </p>
           ) : (
@@ -453,18 +453,18 @@ export default function MeetingsView({
                   onOpenMeeting(meeting.id);
                 }
               }}
-              className="relative grid cursor-pointer grid-cols-[minmax(220px,1.6fr)_minmax(160px,1fr)_minmax(110px,0.7fr)_minmax(120px,0.55fr)_56px] items-center gap-3 border-t border-[#f0f1f4] px-6 py-4 hover:bg-[#f4f5f8]"
+              className="relative grid cursor-pointer grid-cols-[minmax(220px,1.6fr)_minmax(160px,1fr)_minmax(110px,0.7fr)_minmax(120px,0.55fr)_56px] items-center gap-3 border-t border-[#e6ebf1] px-6 py-4 hover:bg-[#f6f9fc]"
             >
               <div className="min-w-0 px-1 py-1">
-                <p className="min-w-0 break-words text-[14px] font-semibold leading-5 text-[#111827]">
+                <p className="min-w-0 break-words text-[14px] font-semibold leading-5 text-[#0a2540]">
                   {meeting.title}
                 </p>
-                <p className="mt-1 min-w-0 break-words text-[12px] leading-5 text-[#8b919c]">
+                <p className="mt-1 min-w-0 break-words text-[12px] leading-5 text-[#6a7383]">
                   {meeting.blurb}
                 </p>
               </div>
               <div className="min-w-0">
-                <p className="min-w-0 whitespace-normal break-words text-[13px] leading-5 text-[#8b919c]">
+                <p className="min-w-0 whitespace-normal break-words text-[13px] leading-5 text-[#6a7383]">
                   {meeting.whenShort}
                 </p>
                 <div className="mt-1.5 min-w-0">
@@ -483,12 +483,12 @@ export default function MeetingsView({
                   event.stopPropagation();
                   onOpenMeeting(meeting.id, "notes");
                 }}
-                className={`inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-lg px-2 py-1 text-[#374151] hover:bg-[#eceef2] hover:text-[#111827] ${typeScale.button}`}
+                className={`inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-lg px-2 py-1 text-[#425466] hover:bg-[#e3e8ee] hover:text-[#0a2540] ${typeScale.button}`}
               >
                 <DocIcon />
                 View notes
               </button>
-              <div className="relative flex justify-end text-[#c5cad3]" data-meeting-menu>
+              <div className="relative flex justify-end text-[#a3acb9]" data-meeting-menu>
                 <button
                   type="button"
                   aria-label={`${meeting.title} actions`}
@@ -497,14 +497,14 @@ export default function MeetingsView({
                     event.stopPropagation();
                     setMenuId((id) => (id === meeting.id ? null : meeting.id));
                   }}
-                  className="flex h-8 w-8 items-center justify-center rounded-lg hover:bg-[#eceef2]"
+                  className="flex h-8 w-8 items-center justify-center rounded-lg hover:bg-[#e3e8ee]"
                 >
                   ···
                 </button>
                 {menuId === meeting.id && (
                   <div
                     onClick={(event) => event.stopPropagation()}
-                    className={`absolute right-0 z-30 w-52 overflow-hidden rounded-xl border border-[#e6e9ef] bg-white py-1 shadow-[0_12px_32px_rgba(16,24,40,0.12)] ${
+                    className={`absolute right-0 z-30 w-52 overflow-hidden rounded-md border border-[#e3e8ee] bg-white py-1 shadow-[0_12px_32px_rgba(16,24,40,0.12)] ${
                       index > dayMeetings.length - 3 ? "bottom-9" : "top-9"
                     }`}
                   >

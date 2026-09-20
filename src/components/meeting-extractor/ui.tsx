@@ -15,28 +15,28 @@ import {
   type TaskPriority,
 } from "@/data/meeting-extractor";
 
-export const cardRadius = "rounded-[22px]";
+export const cardRadius = "rounded-[8px]";
 export const cardSurface =
-  `min-w-0 break-words ${cardRadius} border border-[#eceef2] bg-white`;
-export const cardMuted = `min-w-0 break-words ${cardRadius} bg-[#f4f5f8]`;
+  `min-w-0 break-words ${cardRadius} border border-[#e3e8ee] bg-white`;
+export const cardMuted = `min-w-0 break-words ${cardRadius} bg-[#f6f9fc]`;
 export const cardSelected =
-  "border-[#7c5cf6] shadow-[0_0_0_1.5px_#7c5cf6]";
+  "border-[#635bff] shadow-[0_0_0_1px_#635bff]";
 export const cardInteractive =
-  "transition-colors hover:border-[#7c5cf6] hover:shadow-[0_0_0_1.5px_#7c5cf6] active:border-[#7c5cf6] active:shadow-[0_0_0_1.5px_#7c5cf6] focus-visible:border-[#7c5cf6] focus-visible:shadow-[0_0_0_1.5px_#7c5cf6] focus-visible:outline-none";
+  "transition-colors hover:border-[#635bff] hover:shadow-[0_0_0_1px_#635bff] active:border-[#635bff] active:shadow-[0_0_0_1px_#635bff] focus-visible:border-[#635bff] focus-visible:shadow-[0_0_0_1px_#635bff] focus-visible:outline-none";
 export const rowInteractive =
   `border border-transparent ${cardRadius} ${cardInteractive}`;
 
 export const typeScale = {
   pageTitle:
-    "text-[26px] font-semibold tracking-[-0.03em] text-[#111827]",
-  section: "text-[17px] font-semibold tracking-[-0.02em] text-[#111827]",
-  card: "text-[15px] font-semibold text-[#111827]",
-  body: "text-sm leading-5 text-[#374151]",
-  subtitle: "text-[15px] leading-6 text-[#8b919c]",
-  meta: "text-[12px] leading-5 text-[#8b919c]",
-  label: "text-[11px] font-medium leading-4 text-[#8b919c]",
+    "text-[22px] font-medium tracking-[-0.02em] text-[#0a2540]",
+  section: "text-[15px] font-medium tracking-[-0.01em] text-[#0a2540]",
+  card: "text-[14px] font-medium text-[#0a2540]",
+  body: "text-[13px] leading-5 text-[#425466]",
+  subtitle: "text-[14px] leading-5 text-[#6a7383]",
+  meta: "text-[12px] leading-5 text-[#6a7383]",
+  label: "text-[12px] font-medium leading-4 text-[#6a7383]",
   button: "text-[13px] font-medium",
-  stat: "text-[30px] font-semibold leading-none tracking-[-0.04em] text-[#111827]",
+  stat: "text-[28px] font-medium leading-none tracking-[-0.03em] text-[#0a2540]",
 };
 export const textWrap = "min-w-0 max-w-full break-words";
 
@@ -114,7 +114,7 @@ export function AvatarStack({
     : face === "xs"
       ? "-ml-1.5 sm:-ml-1"
       : "-ml-1";
-  const extraClass = `inline-flex ${face === "xs" ? "h-6 w-6 text-[9px]" : "h-7 w-7 text-[10px]"} items-center justify-center rounded-full bg-[#eef0f4] font-semibold text-[#5b6573] ring-2 ring-white ${overlap}`;
+  const extraClass = `inline-flex ${face === "xs" ? "h-6 w-6 text-[9px]" : "h-7 w-7 text-[10px]"} items-center justify-center rounded-full bg-[#e3e8ee] font-semibold text-[#5b6573] ring-2 ring-white ${overlap}`;
   return (
     <span className="inline-flex shrink-0 items-center">
       {ids.map((id, i) => (
@@ -135,7 +135,7 @@ export function AvatarStack({
               event.stopPropagation();
               onExtraClick();
             }}
-            className={`${extraClass} hover:bg-[#e4e7ee]`}
+            className={`${extraClass} hover:bg-[#e3e8ee]`}
             aria-label={`Show all ${ids.length + extra} participants`}
           >
             +{extra}
@@ -194,7 +194,7 @@ export function ParticipantsOverflow({
           onClick={toggle}
           aria-expanded={open}
           aria-label={`Show all ${ids.length} participants`}
-          className="flex h-8 w-8 items-center justify-center rounded-full bg-[#eef0f4] text-[11px] font-semibold text-[#5b6573] hover:bg-[#e4e7ee]"
+          className="flex h-8 w-8 items-center justify-center rounded-full bg-[#e3e8ee] text-[11px] font-semibold text-[#5b6573] hover:bg-[#e3e8ee]"
         >
           +{extra}
         </button>
@@ -229,7 +229,7 @@ function ParticipantsMenu({
               return (
                 <li
                   key={id}
-                  className="flex min-w-0 items-center gap-3 rounded-xl px-1 py-2"
+                  className="flex min-w-0 items-center gap-3 rounded-md px-1 py-2"
                 >
                   <Avatar person={person} />
                   <span className="min-w-0">
@@ -253,12 +253,12 @@ function ParticipantsMenu({
 export function StatusPill({ status }: { status: DecisionStatus }) {
   const styles: Record<DecisionStatus, string> = {
     "needs-review": "bg-[#fdecc8] text-[#9a6b16]",
-    confirmed: "bg-[#eee8ff] text-[#6d4aff]",
+    confirmed: "bg-[#eeedfe] text-[#635bff]",
     open: "bg-[#eef0f3] text-[#5b6573]",
   };
   return (
     <span
-      className={`inline-flex h-[22px] shrink-0 items-center rounded-full px-2.5 text-[11.5px] font-medium ${styles[status]}`}
+      className={`inline-flex h-[22px] shrink-0 items-center rounded-md px-2 text-[11.5px] font-medium ${styles[status]}`}
     >
       {statusLabel(status)}
     </span>
@@ -285,7 +285,7 @@ export function PriorityPill({
   const large = size === "lg";
   return (
     <span
-      className={`inline-flex shrink-0 items-center rounded-full font-semibold ${
+      className={`inline-flex shrink-0 items-center rounded-md font-medium ${
         large
           ? "h-7 gap-1.5 px-2.5 text-[12.5px]"
           : "h-[22px] px-2.5 text-[11.5px] font-medium"
@@ -302,7 +302,7 @@ export function PriorityPill({
 export function BrandMark({ className = "" }: { className?: string }) {
   return (
     <span
-      className={`inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#7c5cf6] text-white ${className}`}
+      className={`inline-flex h-7 w-7 items-center justify-center rounded-[6px] bg-[#635bff] text-white ${className}`}
     >
       <OpalGem />
     </span>
@@ -340,7 +340,7 @@ export function MeetingCallLink({
         <button
           type="button"
           onClick={join}
-          className="inline-flex h-9 items-center gap-1.5 whitespace-nowrap rounded-xl bg-[#111827] px-3 text-[12.5px] font-medium text-white hover:bg-black sm:h-10 sm:gap-2 sm:px-4 sm:text-[13px]"
+          className="inline-flex h-9 items-center gap-1.5 whitespace-nowrap rounded-md bg-[#635bff] px-3 text-[12.5px] font-medium text-white hover:bg-[#5851ea] sm:h-10 sm:gap-2 sm:px-4 sm:text-[13px]"
         >
           <VideoIcon />
           Join meeting
@@ -353,7 +353,7 @@ export function MeetingCallLink({
       <button
         type="button"
         onClick={join}
-        className="inline-flex items-center justify-start gap-1.5 text-left text-[13px] font-semibold leading-4 text-[#6d4aff] hover:underline"
+        className="inline-flex items-center justify-start gap-1.5 text-left text-[13px] font-semibold leading-4 text-[#635bff] hover:underline"
       >
         <VideoIcon />
         {meet ? "Google Meet" : "Zoom"}
@@ -379,9 +379,9 @@ export function FileRow({
       download={file.name}
       target="_blank"
       rel="noreferrer"
-      className={`flex min-w-0 items-center gap-3 ${cardRadius} border border-[#eceef2] bg-white px-3 py-2.5 ${cardInteractive}`}
+      className={`flex min-w-0 items-center gap-3 ${cardRadius} border border-[#e3e8ee] bg-white px-3 py-2.5 ${cardInteractive}`}
     >
-      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[#f4f5f8] text-[#6b7280]">
+      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-[#f6f9fc] text-[#6a7383]">
         <FilesIcon />
       </span>
       <span className="min-w-0 flex-1">
@@ -408,8 +408,8 @@ export function FileUploadButton({
   const fileRef = useRef<HTMLInputElement>(null);
   const classes =
     variant === "primary"
-      ? "inline-flex h-9 items-center gap-1.5 rounded-xl bg-[#111827] px-3.5 text-[13px] font-medium text-white hover:bg-black"
-      : "inline-flex h-8 items-center gap-1 rounded-lg px-2 text-[12px] font-medium text-[#6d4aff] hover:bg-[#f4f1ff]";
+      ? "inline-flex h-9 items-center gap-1.5 rounded-md bg-[#635bff] px-3.5 text-[13px] font-medium text-white hover:bg-[#5851ea]"
+      : "inline-flex h-8 items-center gap-1 rounded-lg px-2 text-[12px] font-medium text-[#635bff] hover:bg-[#f4f1ff]";
   return (
     <>
       <button
@@ -448,7 +448,7 @@ export function MenuItem({
     <button
       type="button"
       onClick={onClick}
-      className="block w-full px-3.5 py-2 text-left text-[13px] text-[#374151] hover:bg-[#f7f8fa]"
+      className="block w-full px-3.5 py-2 text-left text-[13px] text-[#425466] hover:bg-[#f6f9fc]"
     >
       {children}
     </button>
@@ -478,7 +478,7 @@ export function Modal({
           <button
             type="button"
             onClick={onClose}
-            className="flex h-8 w-8 items-center justify-center rounded-lg text-[#6b7280] hover:bg-[#f7f8fa]"
+            className="flex h-8 w-8 items-center justify-center rounded-lg text-[#6a7383] hover:bg-[#f6f9fc]"
             aria-label="Close"
           >
             <CloseIcon />
@@ -928,7 +928,7 @@ export function TrashIcon() {
 
 export function KCommandIcon() {
   return (
-    <span className="inline-flex h-5 min-w-5 items-center justify-center rounded-md border border-[#e6e9ef] bg-white px-1 text-[11px] font-medium text-[#8b919c]">
+    <span className="inline-flex h-5 min-w-5 items-center justify-center rounded-[4px] border border-[#e3e8ee] bg-white px-1 text-[11px] font-medium text-[#6a7383]">
       ⌘K
     </span>
   );
@@ -950,7 +950,7 @@ export function CheckCircleIcon({ filled = false }: { filled?: boolean }) {
     <Icon size={18}>
       {filled ? (
         <>
-          <circle cx="12" cy="12" r="8" fill="#7c5cf6" />
+          <circle cx="12" cy="12" r="8" fill="#635bff" />
           <path d="M8.5 12.2 11 14.7 16 9.5" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
         </>
       ) : (

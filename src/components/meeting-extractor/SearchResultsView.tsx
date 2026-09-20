@@ -55,8 +55,8 @@ export default function SearchResultsView({
       />
 
       {hits.length === 0 ? (
-        <div className="mt-8 rounded-[22px] border border-[#eceef2] bg-white px-5 py-10 text-center">
-          <span className="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-[#f3f1fb] text-[#7c5cf6]">
+        <div className="mt-8 rounded-[8px] border border-[#e3e8ee] bg-white px-5 py-10 text-center">
+          <span className="mx-auto flex h-10 w-10 items-center justify-center rounded-md bg-[#eeedfe] text-[#635bff]">
             <SearchIcon />
           </span>
           <p className={`mt-3 ${typeScale.card}`}>No matches</p>
@@ -68,10 +68,10 @@ export default function SearchResultsView({
         <div className="mt-6 space-y-6">
           {grouped.map((group) => (
             <section key={group.kind}>
-              <h2 className="mb-2 text-[13px] font-semibold uppercase tracking-[0.04em] text-[#8b919c]">
+              <h2 className="mb-2 text-[13px] font-semibold uppercase tracking-[0.04em] text-[#6a7383]">
                 {labels[group.kind]}
               </h2>
-              <ul className="space-y-1 rounded-[22px] border border-[#eceef2] bg-white p-1">
+              <ul className="space-y-1 rounded-[8px] border border-[#e3e8ee] bg-white p-1">
                 {group.items.map((hit) => (
                   <li key={hit.id}>
                     <button
@@ -84,11 +84,11 @@ export default function SearchResultsView({
                         <span className={`block min-w-0 break-words ${typeScale.card}`}>
                           {hit.title}
                         </span>
-                        <span className="mt-0.5 block min-w-0 break-words text-[13px] text-[#8b919c]">
+                        <span className="mt-0.5 block min-w-0 break-words text-[13px] text-[#6a7383]">
                           {hit.subtitle}
                         </span>
                       </span>
-                      <span className="text-[#c5cad3]">
+                      <span className="text-[#a3acb9]">
                         <ChevronIcon />
                       </span>
                     </button>
@@ -108,7 +108,7 @@ function HitIcon({ hit }: { hit: SearchHit }) {
     return <Avatar person={personById(hit.personId)} size="sm" />;
   }
   return (
-    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[#f4f5f8] text-[#6b7280]">
+    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-[#f6f9fc] text-[#6a7383]">
       {hit.kind === "meeting" && <MeetingsIcon />}
       {hit.kind === "task" && <TasksIcon />}
       {hit.kind === "project" && <FolderIcon />}

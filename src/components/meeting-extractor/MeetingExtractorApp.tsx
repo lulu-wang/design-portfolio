@@ -476,7 +476,7 @@ export default function MeetingExtractorApp() {
   }, []);
 
   return (
-    <div className="mde-app flex h-dvh w-full overflow-hidden bg-[#f6f7fb] text-[#111827]">
+    <div className="mde-app flex h-dvh w-full overflow-hidden bg-[#f6f9fc] text-[#0a2540]">
       {sidebarOpen && (
         <button
           type="button"
@@ -486,13 +486,13 @@ export default function MeetingExtractorApp() {
         />
       )}
       <aside
-        className={`flex h-full flex-col bg-[#0e0f13] text-white max-md:fixed max-md:inset-y-0 max-md:left-0 max-md:z-50 max-md:w-[204px] max-md:overflow-hidden max-md:transition-transform max-md:duration-200 ${
+        className={`flex h-full flex-col border-r border-[#e3e8ee] bg-white text-[#0a2540] max-md:fixed max-md:inset-y-0 max-md:left-0 max-md:z-50 max-md:w-[220px] max-md:overflow-hidden max-md:transition-transform max-md:duration-200 ${
           sidebarOpen ? "max-md:translate-x-0" : "max-md:hidden"
         } md:relative md:flex md:shrink-0 md:transition-[width] md:duration-200 ${
-          sidebarOpen ? "md:w-[204px]" : "md:w-[68px]"
+          sidebarOpen ? "md:w-[220px]" : "md:w-[64px]"
         }`}
       >
-        <div className={`flex items-center py-5 ${sidebarOpen ? "justify-between px-3" : "flex-col gap-3 px-1.5"}`}>
+        <div className={`flex items-center py-4 ${sidebarOpen ? "justify-between px-3" : "flex-col gap-3 px-1.5"}`}>
           <button
             type="button"
             onClick={() => {
@@ -504,7 +504,7 @@ export default function MeetingExtractorApp() {
           >
             <BrandMark />
             {sidebarOpen && (
-              <span className="text-[17px] font-semibold tracking-[-0.02em]">
+              <span className="text-[15px] font-medium tracking-[-0.02em] text-[#0a2540]">
                 Opal
               </span>
             )}
@@ -512,7 +512,7 @@ export default function MeetingExtractorApp() {
           <button
             type="button"
             onClick={() => setSidebarOpen((v) => !v)}
-            className="flex h-8 w-8 items-center justify-center rounded-lg text-[#9aa0b3] hover:bg-white/5 hover:text-white"
+            className="flex h-8 w-8 items-center justify-center rounded-md text-[#6a7383] hover:bg-[#f6f9fc] hover:text-[#0a2540]"
             aria-label={sidebarOpen ? "Collapse menu" : "Expand menu"}
             aria-expanded={sidebarOpen}
           >
@@ -590,20 +590,20 @@ export default function MeetingExtractorApp() {
 
         <div className={`px-2.5 pb-3 ${sidebarOpen ? "" : "px-1.5"}`}>
           {sidebarOpen ? (
-            <div className="flex w-full flex-col rounded-[22px] border border-white/[0.08] bg-[#16171c] p-3.5">
-              <p className="flex min-w-0 items-start gap-1.5 text-[14px] font-semibold leading-5 text-white">
-                <span className="mt-0.5 shrink-0 text-[#c4b5fd]">
+            <div className="flex w-full flex-col rounded-[8px] border border-[#e3e8ee] bg-[#f6f9fc] p-3.5">
+              <p className="flex min-w-0 items-start gap-1.5 text-[13px] font-medium leading-5 text-[#0a2540]">
+                <span className="mt-0.5 shrink-0 text-[#635bff]">
                   <SparkleIcon />
                 </span>
                 <span className="min-w-0 break-words">Get more from Opal</span>
               </p>
-              <p className="mt-1.5 min-w-0 break-words text-[12px] leading-[1.45] text-[#9aa0b3]">
+              <p className="mt-1.5 min-w-0 break-words text-[12px] leading-[1.45] text-[#6a7383]">
                 Higher limits, team features and more.
               </p>
               <button
                 type="button"
                 onClick={() => toast("Upgrade would start here")}
-                className="mt-3 flex h-8 w-full cursor-pointer items-center justify-center rounded-xl bg-[#7c5cf6] text-[12.5px] font-medium text-white hover:bg-[#6d4ef0]"
+                className="mt-3 flex h-8 w-full cursor-pointer items-center justify-center rounded-md bg-[#635bff] text-[12.5px] font-medium text-white hover:bg-[#5851ea]"
               >
                 Upgrade
               </button>
@@ -612,7 +612,7 @@ export default function MeetingExtractorApp() {
             <button
               type="button"
               onClick={() => toast("Upgrade would start here")}
-              className="flex h-10 w-full items-center justify-center rounded-xl bg-[#7c5cf6] text-white hover:bg-[#6d4ef0]"
+              className="flex h-9 w-full items-center justify-center rounded-md bg-[#635bff] text-white hover:bg-[#5851ea]"
               title="Upgrade"
             >
               <SparkleIcon />
@@ -626,8 +626,8 @@ export default function MeetingExtractorApp() {
             }}
             className={`mt-3 flex w-full items-center py-1 ${
               sidebarOpen ? "justify-between px-1" : "justify-center"
-            } rounded-xl hover:bg-white/5 ${
-              nav === "profile" ? "bg-white/5" : ""
+            } rounded-md hover:bg-[#f6f9fc] ${
+              nav === "profile" ? "bg-[#f6f9fc]" : ""
             }`}
             title="Profile and account settings"
           >
@@ -644,17 +644,17 @@ export default function MeetingExtractorApp() {
       </aside>
 
       <div className="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden">
-        <header className="flex h-14 shrink-0 items-center gap-2 border-b border-[#eceef2] bg-white px-3 sm:gap-3 sm:px-5">
+        <header className="flex h-14 shrink-0 items-center gap-2 border-b border-[#e3e8ee] bg-white px-3 sm:gap-3 sm:px-5">
           <button
             type="button"
-            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-[#6b7280] hover:bg-[#f7f8fa] md:hidden"
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-[#6a7383] hover:bg-[#f6f9fc] md:hidden"
             aria-label="Open menu"
             onClick={() => setSidebarOpen(true)}
           >
             <MenuIcon />
           </button>
           <label className="relative min-w-0 flex-1">
-            <span className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-[#98a0ab]">
+            <span className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-[#8898aa]">
               <SearchIcon />
             </span>
             <input
@@ -669,7 +669,7 @@ export default function MeetingExtractorApp() {
                 }
               }}
               placeholder="Search meetings, notes, tasks, people…"
-              className="h-10 w-full rounded-full border border-[#eceef2] bg-[#f7f8fb] py-2 pl-10 pr-12 text-[13px] outline-none placeholder:text-[#b0b6bf] focus:border-[#ddd6fe] focus:ring-4 focus:ring-[#eee8ff] sm:pr-16"
+              className="h-9 w-full rounded-md border border-[#e3e8ee] bg-[#f6f9fc] py-2 pl-10 pr-12 text-[13px] text-[#0a2540] outline-none placeholder:text-[#8898aa] focus:border-[#635bff] focus:ring-2 focus:ring-[#eeedfe] sm:pr-16"
             />
             <span className="pointer-events-none absolute right-3 top-1/2 hidden -translate-y-1/2 sm:block">
               <KCommandIcon />
@@ -677,7 +677,7 @@ export default function MeetingExtractorApp() {
           </label>
           <button
             type="button"
-            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-[#6b7280] hover:bg-[#f7f8fa]"
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md text-[#6a7383] hover:bg-[#f6f9fc]"
             aria-label="Notifications"
             onClick={() => toast("You’re all caught up")}
           >
@@ -687,7 +687,7 @@ export default function MeetingExtractorApp() {
             <button
               type="button"
               onClick={goCreateMeeting}
-              className="inline-flex h-9 shrink-0 items-center gap-1.5 rounded-xl bg-[#111827] px-2.5 text-[13px] font-medium text-white sm:px-3"
+              className="inline-flex h-8 shrink-0 items-center gap-1.5 rounded-md bg-[#635bff] px-2.5 text-[13px] font-medium text-white hover:bg-[#5851ea] sm:px-3"
               aria-label="New meeting"
             >
               <PlusIcon />
@@ -899,15 +899,15 @@ export default function MeetingExtractorApp() {
         {toasts.map((item) => (
           <div
             key={item.id}
-            className="pointer-events-auto inline-flex items-center gap-2 rounded-full bg-white px-3.5 py-2 text-[13px] font-medium text-[#111827] shadow-[0_12px_40px_rgba(15,23,42,0.16)] ring-1 ring-[#eceef2]"
+            className="pointer-events-auto inline-flex items-center gap-2 rounded-md bg-white px-3.5 py-2 text-[13px] font-medium text-[#0a2540] shadow-[0_8px_24px_rgba(10,37,64,0.08)] ring-1 ring-[#e3e8ee]"
           >
-            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#dcfce7] text-[#15803d]">
+            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#d6f6e1] text-[#0d9488]">
               ✓
             </span>
             {item.text}
             <button
               type="button"
-              className="ml-1 text-[#9aa1ab]"
+              className="ml-1 text-[#8898aa]"
               onClick={() =>
                 setToasts((prev) => prev.filter((t) => t.id !== item.id))
               }
@@ -942,14 +942,14 @@ function NavButton({
       onClick={onClick}
       disabled={!clickable}
       title={label}
-      className={`flex h-10 min-w-0 items-center gap-3 rounded-xl text-[13.5px] font-medium ${
+      className={`flex h-9 min-w-0 items-center gap-2.5 rounded-md text-[13px] font-medium ${
         collapsed ? "justify-center px-0" : "px-2.5"
       } ${
         active
-          ? "bg-[#2b2540] text-white"
+          ? "bg-[#f6f9fc] text-[#0a2540]"
           : clickable
-            ? "text-[#9aa0b3] hover:bg-white/5 hover:text-white"
-            : "cursor-default text-[#5b6170]"
+            ? "text-[#6a7383] hover:bg-[#f6f9fc] hover:text-[#0a2540]"
+            : "cursor-default text-[#a3acb9]"
       }`}
     >
       {icon}

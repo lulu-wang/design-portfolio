@@ -112,13 +112,13 @@ export default function HomeView({
       </div>
 
       <div className="mt-6 grid grid-cols-1 items-start gap-4 lg:grid-cols-2">
-        <section className={`${cardMuted} border border-[#eceef2] p-6 text-left sm:p-7`}>
+        <section className={`${cardMuted} border border-[#e3e8ee] p-6 text-left sm:p-7`}>
           <div className="mb-5 flex items-center justify-between gap-2">
             <h2 className={typeScale.section}>Upcoming meetings</h2>
             <button
               type="button"
               onClick={onOpenMeetings}
-              className={`inline-flex shrink-0 items-center gap-1 text-[#6b7280] hover:text-[#111827] ${typeScale.button}`}
+              className={`inline-flex shrink-0 items-center gap-1 text-[#6a7383] hover:text-[#0a2540] ${typeScale.button}`}
             >
               Calendar
               <ChevronIcon />
@@ -150,7 +150,7 @@ export default function HomeView({
                       <button
                         type="button"
                         onClick={() => onOpenMeeting(meeting.id)}
-                        className="flex w-full min-w-0 items-start justify-start gap-1.5 text-left text-[13px] leading-4 text-[#8b919c] hover:text-[#111827]"
+                        className="flex w-full min-w-0 items-start justify-start gap-1.5 text-left text-[13px] leading-4 text-[#6a7383] hover:text-[#0a2540]"
                       >
                         <span className="mt-px shrink-0">
                           <CalendarIcon />
@@ -170,7 +170,7 @@ export default function HomeView({
                     <button
                       type="button"
                       onClick={() => onOpenMeeting(meeting.id)}
-                      className="mt-0.5 shrink-0 text-[#c5cad3]"
+                      className="mt-0.5 shrink-0 text-[#a3acb9]"
                       aria-label={`Open ${meeting.title}`}
                     >
                       <ChevronIcon />
@@ -188,7 +188,7 @@ export default function HomeView({
             <button
               type="button"
               onClick={onOpenTasks}
-              className={`inline-flex items-center gap-1 text-[#6b7280] hover:text-[#111827] ${typeScale.button}`}
+              className={`inline-flex items-center gap-1 text-[#6a7383] hover:text-[#0a2540] ${typeScale.button}`}
             >
               All tasks
               <ChevronIcon />
@@ -230,7 +230,7 @@ export default function HomeView({
           <button
             type="button"
             onClick={onOpenProjects}
-            className={`inline-flex items-center gap-1 text-[#6b7280] hover:text-[#111827] ${typeScale.button}`}
+            className={`inline-flex items-center gap-1 text-[#6a7383] hover:text-[#0a2540] ${typeScale.button}`}
           >
             View all
             <ChevronIcon />
@@ -248,7 +248,7 @@ export default function HomeView({
               >
                 <span className="flex items-center justify-between gap-3">
                   <span
-                    className="flex h-7 w-7 items-center justify-center rounded-lg md:h-10 md:w-10 md:rounded-xl"
+                    className="flex h-7 w-7 items-center justify-center rounded-lg md:h-10 md:w-10 md:rounded-md"
                     style={{ background: theme.iconBg, color: theme.fg }}
                   >
                     <ProjectKindGlyph kind={project.kind} />

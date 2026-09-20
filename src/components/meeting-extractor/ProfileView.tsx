@@ -25,7 +25,7 @@ export default function ProfileView({
         subtitle="Your account, personal details, and employee information."
       />
 
-      <section className="mt-6 flex min-w-0 items-center gap-4 rounded-[22px] border border-[#eceef2] bg-white p-5">
+      <section className="mt-6 flex min-w-0 items-center gap-4 rounded-[8px] border border-[#e3e8ee] bg-white p-5">
         <Avatar person={currentUser} size="lg" />
         <div className="min-w-0">
           <p className={`${typeScale.pageTitle} break-words`}>
@@ -40,9 +40,9 @@ export default function ProfileView({
         </div>
       </section>
 
-      <section className="mt-5 rounded-[22px] border border-[#eceef2] bg-white p-5">
+      <section className="mt-5 rounded-[8px] border border-[#e3e8ee] bg-white p-5">
         <h2 className={`${typeScale.section} break-words`}>Personal information</h2>
-        <dl className="mt-3 divide-y divide-[#f0f1f4]">
+        <dl className="mt-3 divide-y divide-[#e6ebf1]">
           <InfoRow label="Full name" value={currentUser.name} />
           <InfoRow label="Email" value={currentUserProfile.email} />
           <InfoRow label="Location" value={currentUserProfile.location} />
@@ -50,9 +50,9 @@ export default function ProfileView({
         </dl>
       </section>
 
-      <section className="mt-5 rounded-[22px] border border-[#eceef2] bg-white p-5">
+      <section className="mt-5 rounded-[8px] border border-[#e3e8ee] bg-white p-5">
         <h2 className={`${typeScale.section} break-words`}>Employee information</h2>
-        <dl className="mt-3 divide-y divide-[#f0f1f4]">
+        <dl className="mt-3 divide-y divide-[#e6ebf1]">
           <InfoRow label="Employee ID" value={currentUserProfile.employeeId} />
           <InfoRow label="Department" value={currentUserProfile.department} />
           <InfoRow label="Title" value={currentUserProfile.title} />
@@ -62,13 +62,13 @@ export default function ProfileView({
         </dl>
       </section>
 
-      <section className="mt-5 rounded-[22px] border border-[#eceef2] bg-white p-5">
+      <section className="mt-5 rounded-[8px] border border-[#e3e8ee] bg-white p-5">
         <h2 className={`${typeScale.section} break-words`}>Account settings</h2>
         <p className={`mt-1.5 ${typeScale.subtitle}`}>
           Choose how Opal notifies you. Calendar is connected to{" "}
           {currentUserProfile.calendar}.
         </p>
-        <div className="mt-4 divide-y divide-[#f0f1f4] border-y border-[#f0f1f4]">
+        <div className="mt-4 divide-y divide-[#e6ebf1] border-y border-[#e6ebf1]">
           <ToggleRow
             label="Email notifications"
             hint="Digest and mention emails"
@@ -92,7 +92,7 @@ export default function ProfileView({
           <button
             type="button"
             onClick={() => onSave("Preferences saved")}
-            className="inline-flex h-10 items-center rounded-xl bg-[#111827] px-4 text-[13px] font-medium text-white hover:bg-black"
+            className="inline-flex h-10 items-center rounded-md bg-[#635bff] px-4 text-[13px] font-medium text-white hover:bg-[#5851ea]"
           >
             Save preferences
           </button>
@@ -106,7 +106,7 @@ function InfoRow({ label, value }: { label: string; value: string }) {
   return (
     <div className="grid grid-cols-1 items-baseline gap-1 py-3 sm:grid-cols-[140px_minmax(0,1fr)] sm:gap-3">
       <dt className={`min-w-0 break-words ${typeScale.meta}`}>{label}</dt>
-      <dd className="min-w-0 break-words text-[13.5px] font-medium text-[#111827]">{value}</dd>
+      <dd className="min-w-0 break-words text-[13.5px] font-medium text-[#0a2540]">{value}</dd>
     </div>
   );
 }
@@ -134,7 +134,7 @@ function ToggleRow({
         aria-checked={on}
         onClick={onToggle}
         className={`relative h-6 w-11 shrink-0 rounded-full transition-colors ${
-          on ? "bg-[#7c5cf6]" : "bg-[#e5e7eb]"
+          on ? "bg-[#635bff]" : "bg-[#e5e7eb]"
         }`}
       >
         <span

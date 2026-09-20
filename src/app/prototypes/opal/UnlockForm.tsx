@@ -8,20 +8,20 @@ export default function UnlockForm() {
   const [state, formAction, pending] = useActionState(unlockOpalPrototype, null);
 
   return (
-    <main className="flex min-h-dvh items-center justify-center bg-[#fdfcfb] px-5">
+    <main className="flex min-h-dvh items-center justify-center bg-[#f6f9fc] px-5">
       <form action={formAction} className="w-full max-w-sm">
-        <p className="text-[13px] font-medium uppercase tracking-[0.18em] text-foreground/40">
+        <p className="text-[12px] font-medium uppercase tracking-[0.12em] text-[#6a7383]">
           Protected prototype
         </p>
-        <h1 className="mt-4 font-display text-4xl font-extrabold tracking-tight">
+        <h1 className="mt-3 text-[28px] font-medium tracking-[-0.03em] text-[#0a2540]">
           Opal
         </h1>
-        <p className="mt-3 text-[15px] leading-relaxed text-muted">
+        <p className="mt-3 text-[14px] leading-relaxed text-[#425466]">
           This web app is password protected. Enter the password to open the
           prototype.
         </p>
         <label className="mt-8 block">
-          <span className="text-[13px] font-medium text-foreground/50">
+          <span className="text-[13px] font-medium text-[#0a2540]">
             Password
           </span>
           <input
@@ -30,24 +30,24 @@ export default function UnlockForm() {
             autoComplete="current-password"
             autoFocus
             required
-            className="mt-2 h-12 w-full rounded-full border border-black/[0.08] bg-white px-4 text-[15px] outline-none focus:border-black/30"
+            className="mt-2 h-10 w-full rounded-md border border-[#e3e8ee] bg-white px-3 text-[14px] text-[#0a2540] outline-none focus:border-[#635bff] focus:ring-2 focus:ring-[#eeedfe]"
           />
         </label>
         {state?.error ? (
-          <p className="mt-3 text-[13px] text-[#b42318]" role="alert">
+          <p className="mt-3 text-[13px] text-[#df1b41]" role="alert">
             {state.error}
           </p>
         ) : null}
         <button
           type="submit"
           disabled={pending}
-          className="mt-5 inline-flex h-12 w-full items-center justify-center rounded-full bg-ink text-[15px] font-medium text-background disabled:opacity-60"
+          className="mt-5 inline-flex h-10 w-full items-center justify-center rounded-md bg-[#635bff] text-[14px] font-medium text-white hover:bg-[#5851ea] disabled:opacity-60"
         >
           {pending ? "Opening…" : "Open prototype"}
         </button>
         <Link
           href="/projects/opal"
-          className="mt-6 inline-block text-[13px] text-foreground/45 transition-opacity hover:opacity-70"
+          className="mt-6 inline-block text-[13px] text-[#6a7383] transition-opacity hover:text-[#0a2540]"
         >
           Back to project
         </Link>

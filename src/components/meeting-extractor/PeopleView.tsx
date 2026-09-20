@@ -84,20 +84,20 @@ function PeopleDirectory({
       <div className="mb-7 min-w-0">
         <h1 className={`${typeScale.pageTitle} inline-flex min-w-0 flex-wrap items-baseline gap-x-3.5 break-words`}>
           People
-          <span className="text-[15px] font-medium leading-none text-[#8b919c]">
+          <span className="text-[15px] font-medium leading-none text-[#6a7383]">
             {people.length} people
           </span>
         </h1>
       </div>
       <label className="relative mb-5 block w-full">
-        <span className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-[#98a0ab]">
+        <span className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-[#8898aa]">
           <SearchIcon />
         </span>
         <input
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search by name, role, or email…"
-          className="h-10 w-full rounded-full border border-[#eceef2] bg-white py-2 pl-10 pr-4 text-[13px] outline-none placeholder:text-[#b0b6bf] focus:border-[#ddd6fe] focus:ring-4 focus:ring-[#eee8ff]"
+          className="h-9 w-full rounded-md border border-[#e3e8ee] bg-white py-2 pl-10 pr-4 text-[13px] outline-none placeholder:text-[#8898aa] focus:border-[#635bff] focus:ring-2 focus:ring-[#eeedfe]"
         />
       </label>
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3">
@@ -122,7 +122,7 @@ function PeopleDirectory({
                   {person.email}
                 </span>
               </span>
-              <span className="text-[#c5cad3]">
+              <span className="text-[#a3acb9]">
                 <ChevronIcon />
               </span>
             </button>
@@ -173,12 +173,12 @@ function PersonDetail({
 
   return (
     <div className="min-h-0 min-w-0 flex-1 overflow-y-auto px-4 pb-10 pt-5 sm:px-6 lg:px-8">
-      <p className="mb-3 flex items-center gap-2 text-[13px] text-[#8b919c]">
-        <button type="button" onClick={onBack} className="hover:text-[#111827]">
+      <p className="mb-3 flex items-center gap-2 text-[13px] text-[#6a7383]">
+        <button type="button" onClick={onBack} className="hover:text-[#0a2540]">
           People
         </button>
         <span>›</span>
-        <span className="text-[#374151]">{person.name}</span>
+        <span className="text-[#425466]">{person.name}</span>
       </p>
       <section className={`${cardSurface} flex items-center gap-4 p-5`}>
         <Avatar person={person} size="lg" />
@@ -194,7 +194,7 @@ function PersonDetail({
       <div className="mt-4 grid grid-cols-1 gap-4 lg:grid-cols-2">
         <section className={`${cardSurface} p-5`}>
           <h2 className={typeScale.section}>Profile</h2>
-          <dl className="mt-3 divide-y divide-[#f0f1f4]">
+          <dl className="mt-3 divide-y divide-[#e6ebf1]">
             <InfoRow label="Full name" value={person.name} />
             <InfoRow label="Email" value={person.email} />
             <InfoRow label="Title" value={details.title} />
@@ -308,7 +308,7 @@ function InfoRow({ label, value }: { label: string; value: string }) {
   return (
     <div className="grid grid-cols-1 items-baseline gap-1 py-3 sm:grid-cols-[140px_minmax(0,1fr)] sm:gap-3">
       <dt className={typeScale.meta}>{label}</dt>
-      <dd className="min-w-0 break-words text-[13px] font-medium text-[#111827]">{value}</dd>
+      <dd className="min-w-0 break-words text-[13px] font-medium text-[#0a2540]">{value}</dd>
     </div>
   );
 }
