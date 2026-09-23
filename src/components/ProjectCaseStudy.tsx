@@ -125,10 +125,11 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
             name={project.name}
             src={project.image}
             alt={`${project.name} preview`}
+            screens={project.previewScreens}
             width={2390}
             height={1580}
             className="animate-rise aspect-[239/158] rounded-[20px]"
-            sizes="100vw"
+            sizes="(max-width: 768px) 50vw, 25vw"
             priority
             size="hero"
           />

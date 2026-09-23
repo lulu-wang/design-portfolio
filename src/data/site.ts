@@ -125,6 +125,8 @@ export type Project = {
   name: string;
   description: string;
   image: string;
+  /** Optional pair of mobile screens shown in iPhone frames on project covers */
+  previewScreens?: { src: string; alt: string }[];
   tags: Tag[];
   caseStudy: CaseStudy;
 };
@@ -872,8 +874,18 @@ export const projects: Project[] = [
     slug: "path-learning",
     name: "Path Learning",
     description:
-      "A mobile learning app that replaces tutorial watching with hands-on quests, an adaptive skill map, and feedback from AI, peers, and mentors.",
+      "A mobile learning app that replaces tutorial watching with illustrated skill paths, hands-on assignments, and feedback from AI and mentors.",
     image: "/images/project-path-learning.png",
+    previewScreens: [
+      {
+        src: "/images/projects/path-learning/screens/01-get-started.png",
+        alt: "Path Learning splash — Explore and Master New Skills, with Get Started",
+      },
+      {
+        src: "/images/projects/path-learning/screens/03-choose-skill.png",
+        alt: "Path Learning home — What do you want to learn, Photography skill selected",
+      },
+    ],
     tags: [
       { label: "UX Design", variant: "outline" },
       { label: "Product Research", variant: "solid" },
@@ -881,7 +893,7 @@ export const projects: Project[] = [
     ],
     caseStudy: {
       tagline:
-        "A practice-first learning app that turns skill-building into quests — with a map for what to do next, and feedback when you get stuck.",
+        "A practice-first learning app that turns skill-building into modules — with a path for what to do next, and feedback when you get stuck.",
       meta: {
         role: "Product Designer",
         timeline: "Capstone · 2026",
@@ -890,7 +902,7 @@ export const projects: Project[] = [
         tools: ["Figma", "FigJam", "Google Meet"],
       },
       overview:
-        "Path Learning is a project-based mobile app for self-directed learners who are tired of **watching** without **doing**. Instead of course catalogs and completion badges, the product is built around quests — short, artifact-producing practice units — on an adaptive skill map, with a feedback ladder from AI to peers to human mentors. I led research, IA, wireframes, visual design, and two rounds of usability testing as sole designer.",
+        "Path Learning is a project-based mobile app for self-directed learners who are tired of **watching** without **doing**. Instead of course catalogs and completion badges, the product is built around illustrated skill paths and modules — a lesson, an assignment that produces an artifact, then AI and mentor feedback. I led research, IA, wireframes, visual design, and two rounds of usability testing as sole designer.",
       problem: {
         statement:
           "Learners get stuck in **tutorial hell**, drowned in content choices, and left without feedback that actually helps them improve.",
@@ -901,7 +913,7 @@ export const projects: Project[] = [
         ],
       },
       goals:
-        "Flip the default EdTech loop from Watch → Read → Quiz to **Try → Struggle → Learn → Feedback → Retry**, so every concept is immediately practiced and every completed quest becomes portfolio evidence.",
+        "Flip the default EdTech loop from Watch → Read → Quiz to **Try → Struggle → Learn → Feedback → Retry**, so every concept is immediately practiced and every completed assignment becomes portfolio evidence.",
       research: {
         intro:
           "The research question was how self-directed learners move from theory to practice — and where they abandon that jump. I interviewed self-taught creatives, mid-career switchers, and hobbyists, and audited **Maven**, **Exercism**, and **MentorCruise** to map gaps in feedback, structure, and mentorship.",
@@ -955,7 +967,7 @@ export const projects: Project[] = [
               "I’ve watched a hundred YouTube tutorials and I still can’t build anything from scratch. I need a path — not more content.",
             goals: [
               "A linear roadmap that removes decision fatigue",
-              "A portfolio of demoable artifacts from every quest",
+              "A portfolio of demoable artifacts from every assignment",
             ],
             frustrations: [
               "Tutorial hell",
@@ -994,10 +1006,10 @@ export const projects: Project[] = [
       },
       define: {
         intro:
-          "Research ran across **four weeks** — planning, interviews, synthesis, then concept testing. Design work followed the same loop the product teaches: try, get feedback, iterate. Two usability rounds (Phase 1 and Phase 2) validated the quest model, then tightened pricing, resources, and mentor booking.",
+          "Research ran across **four weeks** — planning, interviews, synthesis, then concept testing. Design work followed the same loop the product teaches: try, get feedback, iterate. Two usability rounds (Phase 1 and Phase 2) validated the lesson-and-assignment model, then tightened pricing, resources, and mentor booking.",
         steps: [
           "Problem framing: tutorial hell, feedback quality, choice overload",
-          "IA around path selection, quest map, submission, and mentor escalation",
+          "IA around interests, skill choice, modules, assignment, and mentor booking",
           "Hi-fi prototype and two rounds of remote moderated testing",
         ],
         timeline: [
@@ -1009,47 +1021,47 @@ export const projects: Project[] = [
       },
       ia: {
         intro:
-          "The app is organized around a **practice loop**, not a course catalog. Learners pick a path, follow a visual map of quests, submit an artifact, then escalate feedback only when they need it — AI first, then structured peer critique, then a mentor.",
+          "The app is organized around a **practice loop**, not a course catalog. Learners pick interests, choose a skill, follow a module path, then work through **Lesson / Assignment / Feedback** — with a mentor to book when they want a human eye.",
         sitemap: [
-          "Onboarding → Choose a path, optional diagnostic for depth",
-          "My Path → Adaptive roadmap, XP, milestones",
-          "Quests → Mission checklist, snackable resources, submission",
-          "Feedback → AI evaluation, structured peer critique",
+          "Onboarding → Choose your interests, then a skill",
+          "Home → What do you want to learn? For you / Featured / Saved",
+          "Path → Photography · Visual Storytelling modules",
+          "Module → Lesson list (e.g. Module 1: Framing)",
+          "Lesson → Lesson, Assignment, and Feedback tabs",
           "Mentors → Profile, availability, live booking",
-          "Library · Messages · Settings",
         ],
         flow: [
-          "Choose a path",
-          "Follow the map",
-          "Complete a quest",
-          "Get AI & peer feedback",
+          "Choose interests",
+          "Choose a skill",
+          "Start the path",
+          "Lesson → Assignment → Feedback",
           "Book a mentor",
         ],
       },
       wireframes: {
         lowFi:
-          "Early screens locked the core loop before visual design: **path selection**, a photography quest map, a mission with upload, a submission confirmation, and mentor booking. Testing later confirmed the map and quest format; the friction lived in drafts, academic depth, and pricing transparency.",
+          "Early screens locked the core loop before visual design: **skill choice**, a photography path, a lesson with upload, and mentor booking. Testing later confirmed the path-and-assignment format; the friction lived in drafts, academic depth, and pricing transparency.",
         layout: "full",
         images: [
           {
             src: "/images/projects/path-learning/wireframes.jpg",
-            alt: "Path Learning grayscale screens — path selection, quest map, quest detail, submission, and mentor booking",
-            caption: "Core loop in grayscale: choose a path, follow the map, submit work, book a mentor",
+            alt: "Path Learning grayscale screens — skill selection, photography path, lesson, submission, and mentor booking",
+            caption: "Core loop in grayscale: choose a skill, follow the path, submit work, book a mentor",
             width: 2400,
             height: 1218,
           },
         ],
         hiFi:
-          "High-fidelity UI sits on warm cream with forest green progress and charcoal actions. Path cards are color-coded by skill. The photography map makes the **next quest** obvious, and submission opens immediately into AI and peer critique instead of a dead end.",
+          "High-fidelity screens sit on **mint and white**, with charcoal actions and line illustration. Onboarding asks what you want to learn; photography opens as a **Visual Storytelling** path of modules; each lesson splits into Lesson, Assignment, and Feedback — including mentor and AI scores — then a live booking surface.",
       },
       onboarding: {
         intro:
-          "Onboarding asks **what path will you take?** — photography, language, coding, or product design — instead of browsing a catalog. Natural-language search is a P0 for turning a freeform goal into a structured path. Testing found 100% completion and a 1.2 / 5 difficulty rating; structured learners then asked for pricing earlier, which Phase 2 added.",
+          "Onboarding asks **what do you want to learn?** after **Choose Your Interests** — searchable skill chips (Design, Photography, Marketing) instead of a course catalogue. Search on the interests screen is how a freeform goal still becomes a path.",
         insights: [
           {
             title: "Outcome-first phrasing",
             description:
-              "Participants preferred “What path will you take?” over a course catalogue — it felt tailored rather than like shopping.",
+              "Participants preferred a direct “What do you want to learn?” over a course catalogue — it felt tailored rather than like shopping.",
           },
           {
             title: "Snackable over exhaustive",
@@ -1078,7 +1090,7 @@ export const projects: Project[] = [
           {
             src: "/images/projects/path-learning/design-system.jpg",
             alt: "Path Learning design system — type, color, navigation, and path selection",
-            caption: "Visual language: Newsreader wordmark, Inter headings, cream field, charcoal actions",
+            caption: "Earlier type and color exploration, before the mint illustration system",
             width: 1601,
             height: 1140,
           },
@@ -1086,135 +1098,137 @@ export const projects: Project[] = [
       },
       branding: {
         intro:
-          "The brand needed to feel like a studio for practice — calm, a little academic, not another gamified course app. Cream surfaces, forest green for progress, and soft path-card pastels keep the map readable without turning the product into a toy.",
+          "The brand needed to feel like a studio for practice — playful illustration, not another gamified course app. Mint fields, charcoal actions, and a little lavender keep skill cards and completion states distinct without turning the product into a toy.",
         colors: [
-          { name: "Cream", hex: "#FEFCFA", role: "App background" },
-          { name: "Charcoal", hex: "#242527", role: "Primary buttons & text" },
-          { name: "Forest", hex: "#388068", role: "Progress, success, brand" },
-          { name: "Mint", hex: "#BDE2D0", role: "Active switches & highlights" },
-          { name: "Sage", hex: "#E3F5DF", role: "Home / path card fields" },
-          { name: "Purple", hex: "#6F67B5", role: "Accent & quest emphasis" },
-          { name: "Lilac", hex: "#F0D9F7", role: "Skill card — coding" },
-          { name: "Sky", hex: "#B6D8FE", role: "Secondary skill fields" },
+          { name: "Mint", hex: "#D4F0C2", role: "Splash, interests, path fields" },
+          { name: "Charcoal", hex: "#111111", role: "Primary buttons & text" },
+          { name: "Paper", hex: "#FFFFFF", role: "Lesson, assignment, booking" },
+          { name: "Lilac", hex: "#D5C4F5", role: "Complete lesson, skill accents" },
+          { name: "Sage", hex: "#E3F5D0", role: "For you chip, Read All" },
         ],
         typefaces: [
           {
-            name: "Newsreader",
-            role: "Wordmark and brand moments",
-            weights: "Medium",
-          },
-          {
             name: "Inter",
-            role: "Headings and UI",
+            role: "Headlines, buttons, and UI",
             weights: "Regular, Medium, Bold",
-          },
-          {
-            name: "Arial",
-            role: "Body copy",
-            weights: "Regular",
           },
         ],
         typography:
-          "**Newsreader** is reserved for the Path Learning wordmark. **Inter** carries headlines and interface chrome so the map, quests, and booking stay clear at phone size. **Arial** handles body copy — instructions, feedback, and mentor bios — without competing with the display type.",
+          "**Inter** carries the Path Learning wordmark, headlines, and chrome so skill cards, modules, and booking stay clear at phone size. Body copy stays regular weight so camera lessons and mentor notes can run long without competing with the display type.",
         palette:
-          "Cream (#FEFCFA) keeps long practice sessions from feeling sterile. **Charcoal** buttons are the only high-contrast actions. Forest green marks progress and completion. Soft sage, lilac, and sky tint path cards so skills are distinguishable without loud branding.",
+          "Mint (#D4F0C2) holds splash, interests, and the photography path so illustration can sit on a field instead of a white void. **Charcoal** buttons are the only high-contrast actions. White is the working surface for lessons, assignments, and booking. Lilac marks completion and adjacent skills.",
         messaging:
-          "The product speaks like a coach, not a catalog: “Start my journey,” “Next quest,” “Mark as complete.” Peer critique is constrained to **what works** and **one change**, so comments stay useful instead of vague.",
+          "The product speaks in short actions, not catalog copy: “Get Started,” “Choose Skill,” “Next Lesson,” “Complete Lesson.” Feedback is a score plus notes — mentor and AI — instead of a vague “looks good.”",
       },
       visuals: {
         layout: "phones",
         tone: "dark",
+        roomy: true,
         images: [
           {
-            src: "/images/projects/path-learning/screens/01-menu.jpg",
-            alt: "Path Learning navigation drawer",
-            caption: "Menu",
-            width: 780,
-            height: 1733,
+            src: "/images/projects/path-learning/screens/01-get-started.png",
+            alt: "Path Learning splash — Explore and Master New Skills, with Get Started",
+            caption: "Get Started",
+            width: 393,
+            height: 852,
           },
           {
-            src: "/images/projects/path-learning/screens/02-path.jpg",
-            alt: "Path Learning path selection screen",
-            caption: "Choose a path",
-            width: 780,
-            height: 1722,
+            src: "/images/projects/path-learning/screens/02-interests.png",
+            alt: "Path Learning onboarding — Choose Your Interests with searchable skill chips",
+            caption: "Interests",
+            width: 393,
+            height: 852,
           },
           {
-            src: "/images/projects/path-learning/screens/03-map.jpg",
-            alt: "Path Learning photography quest map",
-            caption: "Quest map",
-            width: 780,
-            height: 1722,
+            src: "/images/projects/path-learning/screens/03-choose-skill.png",
+            alt: "Path Learning home — What do you want to learn, Photography skill selected",
+            caption: "Choose a skill",
+            width: 393,
+            height: 852,
           },
           {
-            src: "/images/projects/path-learning/screens/04-quest.jpg",
-            alt: "Path Learning recreate a film still quest",
-            caption: "Quest",
-            width: 780,
-            height: 1979,
+            src: "/images/projects/path-learning/screens/04-path.png",
+            alt: "Path Learning photography path — Visual Storytelling modules",
+            caption: "Photography path",
+            width: 393,
+            height: 852,
           },
           {
-            src: "/images/projects/path-learning/screens/05-submission.jpg",
-            alt: "Path Learning quest submission and AI feedback",
+            src: "/images/projects/path-learning/screens/05-module.png",
+            alt: "Path Learning Module 1 Framing with lesson list",
+            caption: "Module",
+            width: 393,
+            height: 852,
+          },
+          {
+            src: "/images/projects/path-learning/screens/06-lesson.png",
+            alt: "Path Learning lesson — Choosing Your Camera",
+            caption: "Lesson",
+            width: 393,
+            height: 852,
+          },
+          {
+            src: "/images/projects/path-learning/screens/07-assignment.png",
+            alt: "Path Learning assignment — Choose Your Camera with file upload",
+            caption: "Assignment",
+            width: 393,
+            height: 852,
+          },
+          {
+            src: "/images/projects/path-learning/screens/08-feedback.png",
+            alt: "Path Learning feedback — 8.5 overall with mentor and AI notes",
             caption: "Feedback",
-            width: 780,
-            height: 1722,
+            width: 393,
+            height: 852,
           },
           {
-            src: "/images/projects/path-learning/screens/06-mentor.jpg",
+            src: "/images/projects/path-learning/screens/09-mentor.png",
             alt: "Path Learning mentor booking with Sarah Chen",
             caption: "Mentor",
-            width: 780,
-            height: 1722,
-          },
-          {
-            src: "/images/projects/path-learning/screens/07-search.jpg",
-            alt: "Path Learning path selection with skill search",
-            caption: "Search",
-            width: 780,
-            height: 1733,
+            width: 393,
+            height: 852,
           },
         ],
       },
       solution: {
         intro:
-          "Path is a **quest engine** with a map, not a video library with a progress bar. Four P0 systems carry the core loop; mentors and structured peer critique sit one step up the escalation ladder.",
+          "Path is a **practice loop** of modules, assignments, and feedback — not a video library with a progress bar. Four surfaces carry the core loop; the mentor calendar sits one step up when automated notes run out.",
         features: [
           {
-            title: "Quest content system",
+            title: "Lesson + assignment",
             description:
-              "Action-focused units that require an **artifact** — a photo, file, or reflection — instead of finishing a video. Directly targets tutorial hell.",
+              "A short lesson, then an **artifact** — choose a camera, upload a photo — instead of finishing a video and stopping.",
           },
           {
-            title: "Adaptive skill map",
+            title: "Illustrated skill path",
             description:
-              "A visual path of the next practice step (e.g. Recreate a Film Still) so learners stop spending evenings picking a lesson.",
+              "Photography opens as Visual Storytelling: Framing 101 through Recreate a Film Still, so the next module is a list, not a search.",
           },
           {
-            title: "AI-guided feedback",
+            title: "AI and mentor feedback",
             description:
-              "Category-specific evaluation on submitted work — lighting, composition, execution — instead of a compiler-style pass/fail.",
+              "An overall score with separate mentor and AI notes — lighting, composition, color — instead of a pass/fail.",
           },
           {
-            title: "Mentor marketplace",
+            title: "Mentor booking",
             description:
-              "Live booking when automated feedback runs out. Testing made the calendar easy; the remaining request is a lower-cost **quick critique**.",
+              "Live availability on Sarah Chen’s calendar when the assignment needs a human eye. Testing made the calendar easy; the remaining request is a lower-cost **quick critique**.",
           },
         ],
       },
       testing: {
         intro:
-          "Two rounds of remote moderated tests with **5 participants** (career switchers, an active maker, a theoretical learner, a structured learner). Phase 1 proved the quest model. Phase 2 measured iterations on pricing, quest progression, collapsible deep-dives, and mentor booking.",
+          "Two rounds of remote moderated tests with **5 participants** (career switchers, an active maker, a theoretical learner, a structured learner). Phase 1 proved the lesson-and-assignment loop. Phase 2 measured iterations on pricing, module progression, collapsible deep-dives, and mentor booking.",
         findings: [
           "**100%** completed onboarding in both rounds; difficulty moved from 1.2 to **1.1 / 5** after adding pricing.",
-          "Quest map and snackable resources were the strongest engagement drivers — “checking off videos doesn’t feel like real progress.”",
+          "The photography path and snackable lessons were the strongest engagement drivers — “checking off videos doesn’t feel like real progress.”",
           "Mentor booking hit **100%** completion; Phase 2 ease improved from 1.8 to **1.1 / 5**.",
           "AI + structured peer prompts (“what works” / “one change”) reduced isolation; scholars still wanted Socratic depth over a single 8.5 score.",
         ],
         iterations: [
           "Added early pricing transparency for structured learners and career switchers.",
           "Collapsible deep-dive literature and Socratic prompts for theoretical learners.",
-          "Persistent “Mark as complete” bar on quests; draft/sandbox remains a next-step for submission anxiety.",
+          "Persistent **Complete Lesson** on the feedback tab; draft/sandbox remains a next-step for submission anxiety.",
           "Redesigned Sarah Chen booking calendar; planned a $20 asynchronous quick critique beside live sessions.",
         ],
       },
@@ -1224,11 +1238,11 @@ export const projects: Project[] = [
         { stat: "5", label: "archetypes tested across two phases" },
       ],
       reflection:
-        "The product only works if the **first session produces work**, not a watched video. The map, the quest, and the feedback ladder all exist to get someone from a blank page to an artifact they can show. What I’m still holding: a true draft/sandbox, and a cheaper asynchronous mentor option so live calls aren’t the only human door.",
+        "The product only works if the **first session produces work**, not a watched video. The path, the assignment, and the feedback ladder all exist to get someone from a blank page to an artifact they can show. What I’m still holding: a true draft/sandbox, and a cheaper asynchronous mentor option so live calls aren’t the only human door.",
       conclusion: {
         challenges: [
-          "Serving switchers who want a rigid roadmap, makers who want open quests, and scholars who want depth — without three separate apps.",
-          "Submission anxiety: people would complete the quest steps and still hesitate to mark work final.",
+          "Serving switchers who want a rigid roadmap, makers who want open paths, and scholars who want depth — without three separate apps.",
+          "Submission anxiety: people would finish the assignment steps and still hesitate to mark work final.",
           "Pricing trust versus onboarding length — adding a plan step helped, but the questionnaire can’t grow forever.",
         ],
         learnings: [
@@ -1237,7 +1251,7 @@ export const projects: Project[] = [
           "Collapsible depth lets scholars go further without trapping casual learners in literature.",
         ],
         nextSteps: [
-          "Save-draft / sandbox on quest submission.",
+          "Save-draft / sandbox on assignment upload.",
           "Stronger visual affordance on deep-dive toggles.",
           "Asynchronous $20 quick critiques next to live booking.",
         ],

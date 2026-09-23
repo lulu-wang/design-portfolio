@@ -33,10 +33,11 @@ export default function ProjectRow({
           name={project.name}
           src={project.image}
           alt={project.name}
+          screens={project.previewScreens}
           width={720}
           height={480}
           className="aspect-[239/158] rounded-md transition duration-500 group-hover:scale-[1.02] group-hover:opacity-90"
-          sizes="(max-width: 768px) 100vw, 300px"
+          sizes="(max-width: 768px) 50vw, 140px"
         />
 
         <div className="min-w-0 pt-0.5">

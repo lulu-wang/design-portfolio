@@ -1,5 +1,48 @@
 import Image from "next/image";
 
+type PreviewScreen = { src: string; alt: string };
+
+function CoverPhones({
+  screens,
+  sizes,
+  hero,
+  priority,
+}: {
+  screens: PreviewScreen[];
+  sizes: string;
+  hero: boolean;
+  priority: boolean;
+}) {
+  return (
+    <div
+      className={`relative z-10 flex h-full w-full items-center justify-center ${
+        hero ? "gap-[6%] px-[8%]" : "gap-[5%] px-[7%]"
+      }`}
+    >
+      {screens.slice(0, 2).map((screen) => (
+        <div
+          key={screen.src}
+          className={`relative aspect-[393/852] ${hero ? "h-[84%]" : "h-[86%]"}`}
+        >
+          <div className="absolute inset-0 rounded-[18%] bg-[#111] p-[5.5%] shadow-[0_14px_28px_rgba(0,0,0,0.22)] ring-1 ring-white/10">
+            <div className="h-full w-full overflow-hidden rounded-[13%] bg-white">
+              <Image
+                src={screen.src}
+                alt={screen.alt}
+                width={393}
+                height={852}
+                priority={priority}
+                className="block h-full w-full object-cover object-top"
+                sizes={sizes}
+              />
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export default function ProjectCover({
   name,
   src,
@@ -10,6 +53,7 @@ export default function ProjectCover({
   height = 1580,
   className = "",
   size = "card",
+  screens,
 }: {
   name: string;
   src: string;
@@ -20,6 +64,7 @@ export default function ProjectCover({
   height?: number;
   className?: string;
   size?: "card" | "hero";
+  screens?: PreviewScreen[];
 }) {
   const words = name
     .replace(/[^a-zA-Z0-9\s]/g, "")
@@ -28,6 +73,7 @@ export default function ProjectCover({
     .filter(Boolean);
   const stacked = words.length > 1;
   const hero = size === "hero";
+  const pair = Boolean(screens && screens.length >= 2);
 
   return (
     <div
@@ -64,15 +110,24 @@ export default function ProjectCover({
             : words[0]}
         </span>
       </div>
-      <Image
-        src={src}
-        alt={alt ?? name}
-        width={width}
-        height={height}
-        sizes={sizes}
-        priority={priority}
-        className="relative z-10 h-full w-full object-contain"
-      />
+      {pair && screens ? (
+        <CoverPhones
+          screens={screens}
+          sizes={sizes ?? "(max-width: 768px) 50vw, 25vw"}
+          hero={hero}
+          priority={priority}
+        />
+      ) : (
+        <Image
+          src={src}
+          alt={alt ?? name}
+          width={width}
+          height={height}
+          sizes={sizes}
+          priority={priority}
+          className="relative z-10 h-full w-full object-contain"
+        />
+      )}
     </div>
   );
 }

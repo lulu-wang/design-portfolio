@@ -23,11 +23,13 @@ function statusBarStyle(item: CaseMediaItem): {
     return { bg: "#FFFFFF", bottomBg: "#FFFFFF", theme: "light" };
   }
   const src = item.src;
-  if (src.includes("path-learning/screens/03-map")) {
-    return { bg: "#F5F2EB", bottomBg: "#F5F2EB", theme: "light" };
+  if (src.includes("path-learning/screens/01-get-started") ||
+      src.includes("path-learning/screens/02-interests") ||
+      src.includes("path-learning/screens/04-path")) {
+    return { bg: "#D4F0C2", bottomBg: "#D4F0C2", theme: "light" };
   }
   if (src.includes("path-learning")) {
-    return { bg: "#FDFCFA", bottomBg: "#FDFCFA", theme: "light" };
+    return { bg: "#FFFFFF", bottomBg: "#FFFFFF", theme: "light" };
   }
   if (src.includes("netflix-community")) {
     return { bg: "#0A0A0A", bottomBg: "#0A0A0A", theme: "dark" };
@@ -120,9 +122,11 @@ function PhoneFrame({
   const dark = theme === "dark";
   // PulseFit exports mix 864 and 1076-tall crops; pin them to one iPhone
   // viewport so shorter screens don't sit above a black gap in the grid.
+  const nativeChrome = item.src.includes("path-learning/screens");
   const fillFrame =
     item.src.includes("pulsefit") ||
-    item.src.includes("netflix-community/phone");
+    item.src.includes("netflix-community/phone") ||
+    nativeChrome;
 
   return (
     <figure className={`mx-auto w-full ${roomy ? "max-w-[220px] sm:max-w-[240px] md:max-w-[260px]" : ""}`}>
@@ -130,11 +134,15 @@ function PhoneFrame({
       <div className="rounded-[2.6rem] bg-[#111] p-[10px] shadow-[0_28px_56px_rgba(0,0,0,0.45)] ring-1 ring-white/[0.08] sm:rounded-[2.85rem] sm:p-[11px]">
         <div
           className={`relative overflow-hidden rounded-[2.05rem] leading-none sm:rounded-[2.25rem] ${
-            fillFrame ? "aspect-[375/864]" : ""
+            fillFrame
+              ? nativeChrome
+                ? "aspect-[393/852]"
+                : "aspect-[375/864]"
+              : ""
           }`}
           style={{ backgroundColor: bottomBg || bg }}
         >
-          <StatusBar theme={theme} />
+          {nativeChrome ? null : <StatusBar theme={theme} />}
           {fillFrame ? (
             <Image
               src={item.src}
@@ -154,6 +162,7 @@ function PhoneFrame({
               sizes="(max-width: 768px) 50vw, (max-width: 1536px) 33vw, 25vw"
             />
           )}
+          {nativeChrome ? null : (
           <div
             aria-hidden
             className="pointer-events-none absolute inset-x-0 bottom-0 z-10 flex justify-center pb-2.5 pt-1"
@@ -164,6 +173,7 @@ function PhoneFrame({
               }`}
             />
           </div>
+          )}
         </div>
       </div>
       {item.caption && (

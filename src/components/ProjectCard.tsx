@@ -25,10 +25,11 @@ export default function ProjectCard({
         name={project.name}
         src={project.image}
         alt={project.name}
+        screens={project.previewScreens}
         width={720}
         height={480}
         className="aspect-[239/158] rounded-[20px] transition duration-500 group-hover:opacity-90"
-        sizes="(max-width: 768px) 100vw, 50vw"
+        sizes="(max-width: 768px) 50vw, 25vw"
       />
       <h3 className="mt-4 font-title text-[1.3rem] font-bold tracking-[-0.03em] sm:text-[1.45rem]">
         {project.name}
