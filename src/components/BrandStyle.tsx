@@ -3,6 +3,8 @@ import {
   Instrument_Sans,
   Newsreader,
   Plus_Jakarta_Sans,
+  Poppins,
+  Work_Sans,
 } from "next/font/google";
 import RichText from "./RichText";
 
@@ -30,6 +32,18 @@ const newsreader = Newsreader({
   display: "swap",
 });
 
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["600", "700"],
+  display: "swap",
+});
+
+const workSans = Work_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  display: "swap",
+});
+
 const faceClass: Record<string, string> = {
   Inter: "font-[family-name:var(--font-inter)]",
   "SF Pro": "font-[system-ui,-apple-system,BlinkMacSystemFont,'SF_Pro_Text',sans-serif]",
@@ -37,6 +51,8 @@ const faceClass: Record<string, string> = {
   "Instrument Sans": instrumentSans.className,
   "Plus Jakarta Sans": plusJakarta.className,
   Newsreader: newsreader.className,
+  Poppins: poppins.className,
+  "Work Sans": workSans.className,
 };
 
 export type BrandStyleData = {

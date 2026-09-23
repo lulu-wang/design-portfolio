@@ -26,7 +26,7 @@ function statusBarStyle(item: CaseMediaItem): {
   if (src.includes("path-learning/screens/01-get-started") ||
       src.includes("path-learning/screens/02-interests") ||
       src.includes("path-learning/screens/04-path")) {
-    return { bg: "#D4F0C2", bottomBg: "#D4F0C2", theme: "light" };
+    return { bg: "#E3F5DF", bottomBg: "#E3F5DF", theme: "light" };
   }
   if (src.includes("path-learning")) {
     return { bg: "#FFFFFF", bottomBg: "#FFFFFF", theme: "light" };
