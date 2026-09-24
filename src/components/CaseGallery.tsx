@@ -23,10 +23,20 @@ function statusBarStyle(item: CaseMediaItem): {
     return { bg: "#FFFFFF", bottomBg: "#FFFFFF", theme: "light" };
   }
   const src = item.src;
-  if (src.includes("path-learning/screens/01-get-started") ||
-      src.includes("path-learning/screens/02-interests") ||
-      src.includes("path-learning/screens/04-path")) {
+  if (
+    src.includes("path-learning/screens/01-splash") ||
+    src.includes("path-learning/screens/02-signup")
+  ) {
     return { bg: "#E3F5DF", bottomBg: "#E3F5DF", theme: "light" };
+  }
+  if (src.includes("path-learning/screens/03-login")) {
+    return { bg: "#D7CFFE", bottomBg: "#D7CFFE", theme: "light" };
+  }
+  if (
+    src.includes("path-learning/screens/04-interests") ||
+    src.includes("path-learning/screens/06-path")
+  ) {
+    return { bg: "#C3E7BB", bottomBg: "#C3E7BB", theme: "light" };
   }
   if (src.includes("path-learning")) {
     return { bg: "#FFFFFF", bottomBg: "#FFFFFF", theme: "light" };

@@ -415,11 +415,11 @@ export const projects: Project[] = [
     image: "/images/project-path-learning.png",
     previewScreens: [
       {
-        src: "/images/projects/path-learning/screens/02-interests.png",
+        src: "/images/projects/path-learning/screens/04-interests.png",
         alt: "Path Learning onboarding — Choose Your Interests with searchable skill chips",
       },
       {
-        src: "/images/projects/path-learning/screens/03-choose-skill.png",
+        src: "/images/projects/path-learning/screens/05-choose-skill.png",
         alt: "Path Learning home — What do you want to learn, Photography skill selected",
       },
     ],
@@ -545,7 +545,7 @@ export const projects: Project[] = [
           "Research ran across **four weeks** — planning, interviews, synthesis, then concept testing. Design work followed the same loop the product teaches: try, get feedback, iterate. Two usability rounds (Phase 1 and Phase 2) validated the lesson-and-assignment model, then tightened pricing, resources, and mentor booking.",
         steps: [
           "Problem framing: tutorial hell, feedback quality, choice overload",
-          "IA around interests, skill choice, modules, assignment, and mentor booking",
+          "IA around sign-up, interests, skill choice, modules, assignment, and mentor booking",
           "Hi-fi prototype and two rounds of remote moderated testing",
         ],
         timeline: [
@@ -557,16 +557,19 @@ export const projects: Project[] = [
       },
       ia: {
         intro:
-          "The app is organized around a **practice loop**, not a course catalog. Learners pick interests, choose a skill, follow a module path, then work through **Lesson / Assignment / Feedback** — with a mentor to book when they want a human eye.",
+          "The app is organized around a **practice loop**, not a course catalog. After **sign up or login**, learners pick interests, choose a skill, follow a module path, then work through **Lesson / Assignment / Feedback** — with a mentor to book when they want a human eye. Home, Paths, Projects, Mentors, and Settings live in the menu.",
         sitemap: [
+          "Splash → Sign up or login",
           "Onboarding → Choose your interests, then a skill",
           "Home → What do you want to learn? For you / Featured / Saved",
           "Path → Photography · Visual Storytelling modules",
           "Module → Lesson list (e.g. Module 1: Framing)",
           "Lesson → Lesson, Assignment, and Feedback tabs",
           "Mentors → Profile, availability, live booking",
+          "Menu → Home, Paths, Projects, Mentors, Settings",
         ],
         flow: [
+          "Sign up / login",
           "Choose interests",
           "Choose a skill",
           "Start the path",
@@ -588,7 +591,7 @@ export const projects: Project[] = [
           },
         ],
         hiFi:
-          "High-fidelity screens sit on **mint and white**, with charcoal actions and line illustration. Onboarding asks what you want to learn; photography opens as a **Visual Storytelling** path of modules; each lesson splits into Lesson, Assignment, and Feedback — including mentor and AI scores — then a live booking surface.",
+          "High-fidelity screens sit on **mint, lilac, and white**, with charcoal actions and line illustration. Splash offers **Sign Up** and **Login**; onboarding asks what you want to learn; photography opens as a **Visual Storytelling** path of modules; each lesson splits into Lesson, Assignment, and Feedback — including mentor and AI scores — then a live booking surface. A menu of Home, Paths, Projects, Mentors, and Settings holds the rest of the app.",
       },
       onboarding: {
         intro:
@@ -658,9 +661,9 @@ export const projects: Project[] = [
         typography:
           "**Newsreader** is the Path Learning wordmark. **Poppins** carries H1 and H2 so “Choose Your Interests” and skill names stay friendly at phone size. **Work Sans** is the body — search, chips, and long lesson copy — so it doesn’t compete with the display type.",
         palette:
-          "Mint (#E3F5DF) holds splash, interests, and path fields so illustration can sit on a field instead of a white void. **Charcoal** (#242527) is the only high-contrast action. Forest (#388068) is reserved for the wordmark. White is the working surface. Lilac, blush, sage, and sky mark adjacent skills without turning the product into a toy.",
+          "Mint (#E3F5DF) holds splash and sign-up so illustration can sit on a field instead of a white void. **Lilac** is login. **Charcoal** (#242527) is the only high-contrast action. Forest (#388068) is reserved for the wordmark. White is the working surface. Sage, blush, and sky mark adjacent skills without turning the product into a toy.",
         messaging:
-          "The product speaks in short actions, not catalog copy: “Get Started,” “Choose Skills,” “Choose Skill,” “Next Lesson,” “Complete Lesson.” Feedback is a score plus notes — mentor and AI — instead of a vague “looks good.”",
+          "The product speaks in short actions, not catalog copy: “Sign Up,” “Login,” “Choose Skills,” “Choose Skill,” “Next Lesson,” “Complete Lesson.” Feedback is a score plus notes — mentor and AI — instead of a vague “looks good.”",
       },
       visuals: {
         layout: "phones",
@@ -668,65 +671,100 @@ export const projects: Project[] = [
         roomy: true,
         images: [
           {
-            src: "/images/projects/path-learning/screens/01-get-started.png",
-            alt: "Path Learning splash — Explore and Master New Skills, with Get Started",
-            caption: "Get Started",
+            src: "/images/projects/path-learning/screens/01-splash.png",
+            alt: "Path Learning splash — Explore and Master New Skills, with Sign Up and Login",
+            caption: "Splash",
             width: 393,
             height: 852,
           },
           {
-            src: "/images/projects/path-learning/screens/02-interests.png",
+            src: "/images/projects/path-learning/screens/02-signup.png",
+            alt: "Path Learning sign up — Name, Email, and Password",
+            caption: "Sign up",
+            width: 393,
+            height: 852,
+          },
+          {
+            src: "/images/projects/path-learning/screens/03-login.png",
+            alt: "Path Learning login — Email, Password, and Forgot",
+            caption: "Login",
+            width: 393,
+            height: 852,
+          },
+          {
+            src: "/images/projects/path-learning/screens/04-interests.png",
             alt: "Path Learning onboarding — Choose Your Interests with searchable skill chips",
             caption: "Interests",
             width: 393,
             height: 852,
           },
           {
-            src: "/images/projects/path-learning/screens/03-choose-skill.png",
+            src: "/images/projects/path-learning/screens/05-choose-skill.png",
             alt: "Path Learning home — What do you want to learn, Photography skill selected",
             caption: "Choose a skill",
             width: 393,
             height: 852,
           },
           {
-            src: "/images/projects/path-learning/screens/04-path.png",
+            src: "/images/projects/path-learning/screens/06-path.png",
             alt: "Path Learning photography path — Visual Storytelling modules",
             caption: "Photography path",
             width: 393,
             height: 852,
           },
           {
-            src: "/images/projects/path-learning/screens/05-module.png",
-            alt: "Path Learning Module 1 Framing with lesson list",
+            src: "/images/projects/path-learning/screens/07-module.png",
+            alt: "Path Learning Module 1 Framing with Choosing Your Camera current",
             caption: "Module",
             width: 393,
             height: 852,
           },
           {
-            src: "/images/projects/path-learning/screens/06-lesson.png",
+            src: "/images/projects/path-learning/screens/08-lesson.png",
             alt: "Path Learning lesson — Choosing Your Camera",
             caption: "Lesson",
             width: 393,
             height: 852,
           },
           {
-            src: "/images/projects/path-learning/screens/07-assignment.png",
+            src: "/images/projects/path-learning/screens/09-assignment.png",
             alt: "Path Learning assignment — Choose Your Camera with file upload",
             caption: "Assignment",
             width: 393,
             height: 852,
           },
           {
-            src: "/images/projects/path-learning/screens/08-feedback.png",
+            src: "/images/projects/path-learning/screens/10-module-progress.png",
+            alt: "Path Learning Module 1 Framing — first lesson complete, Framing Your Shots current",
+            caption: "Module progress",
+            width: 393,
+            height: 852,
+          },
+          {
+            src: "/images/projects/path-learning/screens/11-feedback.png",
             alt: "Path Learning feedback — 8.5 overall with mentor and AI notes",
             caption: "Feedback",
             width: 393,
             height: 852,
           },
           {
-            src: "/images/projects/path-learning/screens/09-mentor.png",
+            src: "/images/projects/path-learning/screens/12-choose-skill-progress.png",
+            alt: "Path Learning home — Photography skill card at 80 percent",
+            caption: "Skill progress",
+            width: 393,
+            height: 852,
+          },
+          {
+            src: "/images/projects/path-learning/screens/13-mentor.png",
             alt: "Path Learning mentor booking with Sarah Chen",
             caption: "Mentor",
+            width: 393,
+            height: 852,
+          },
+          {
+            src: "/images/projects/path-learning/screens/14-menu.png",
+            alt: "Path Learning menu — Home, Paths, Projects, Mentors, Settings",
+            caption: "Menu",
             width: 393,
             height: 852,
           },
@@ -744,7 +782,7 @@ export const projects: Project[] = [
           {
             title: "Illustrated skill path",
             description:
-              "Photography opens as Visual Storytelling: Framing 101 through Recreate a Film Still, so the next module is a list, not a search.",
+              "Photography opens as Visual Storytelling: Framing 101 through Recreate a Film Still, so the next module is a list, not a search. The home card later shows percent complete so progress is a project, not a video checkbox.",
           },
           {
             title: "AI and mentor feedback",
