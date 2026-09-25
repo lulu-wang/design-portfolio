@@ -2382,7 +2382,7 @@ export const experience: Experience[] = [
       ink: "#ffffff",
     },
     summary:
-      "I own ads product initiatives that drove a 0.19% revenue gain across two halves, working ranking strategy from hypothesis and experimentation through technical architecture with Data Science in London. I also built a Messenger Stories product Quicksnap 0-to-1 from backend through iOS on a small cross-functional team, and improved org-wide A/B testing with tooling, dashboards, and documentation.",
+      "I own ads product initiatives on the Monetization Dynamic Ads team that drove a 0.19% revenue gain across two halves, working ranking strategy from hypothesis and experimentation through technical architecture with Data Science in London. I also built a Messenger Stories product Quicksnap 0-to-1 from backend through iOS on a small cross-functional team, and improved org-wide A/B testing with tooling, dashboards, and documentation.",
   },
   {
     company: "Finary",

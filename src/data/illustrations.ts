@@ -494,16 +494,6 @@ export const illustrations: Illustration[] = [
     category: "photography",
   },
   {
-    id: "p19",
-    title: "Scale",
-    medium: "Photography",
-    date: "Projection",
-    image: "/images/photography/19.jpg",
-    width: 1600,
-    height: 1067,
-    category: "photography",
-  },
-  {
     id: "p21",
     title: "Tide",
     medium: "Photography",
