@@ -104,6 +104,10 @@ export default function AboutPage() {
 
           <div className="page-subtitle mt-8 max-w-2xl space-y-6 md:max-w-3xl">
             <p>
+              I immigrated from China to Canada to the US. I&rsquo;ve been doing
+              art and creative media since I was 11.
+            </p>
+            <p>
               Before transitioning into product design, I spent more than four
               years as a software engineer creating user-centered products and
               features for Meta (Monetization, Messenger) and Microsoft (Azure,

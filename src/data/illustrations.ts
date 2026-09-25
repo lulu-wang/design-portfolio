@@ -1,4 +1,8 @@
-export type GalleryCategory = "illustrations" | "photography" | "design";
+export type GalleryCategory =
+  | "illustrations"
+  | "sketches"
+  | "photography"
+  | "design";
 
 export type Illustration = {
   id: string;
@@ -13,6 +17,7 @@ export type Illustration = {
 
 export const galleryTabs: { id: GalleryCategory; label: string }[] = [
   { id: "illustrations", label: "Illustrations" },
+  { id: "sketches", label: "Sketches" },
   { id: "photography", label: "Photography" },
   { id: "design", label: "Design" },
 ];
@@ -637,5 +642,35 @@ export const illustrations: Illustration[] = [
     width: 767,
     height: 393,
     category: "design",
+  },
+  {
+    id: "s01",
+    title: "Form Exploration",
+    medium: "Pen on paper",
+    date: "2026",
+    image: "/images/sketches/form-exploration.jpg",
+    width: 768,
+    height: 1024,
+    category: "sketches",
+  },
+  {
+    id: "s02",
+    title: "Companion Study",
+    medium: "Pen on paper",
+    date: "2026",
+    image: "/images/sketches/companion-study.jpg",
+    width: 768,
+    height: 1024,
+    category: "sketches",
+  },
+  {
+    id: "s03",
+    title: "Plant Still Life",
+    medium: "Pen on paper",
+    date: "2026",
+    image: "/images/sketches/plant-still-life.jpg",
+    width: 768,
+    height: 1024,
+    category: "sketches",
   },
 ];

@@ -37,13 +37,26 @@ export default function BackgroundSection() {
             </p>
             <div className="mt-3 flex flex-col gap-1.5 sm:mt-4 sm:flex-row sm:items-baseline sm:justify-between sm:gap-8">
               <h3 className="font-reading !font-medium text-[19px] tracking-[-0.01em] text-foreground sm:text-[21px]">
-                {job.role}
+                <mark
+                  className="highlight-word !whitespace-normal"
+                  style={
+                    {
+                      "--hl": job.highlight.color,
+                      "--hl-hover": job.highlight.hover,
+                      "--hl-ink": job.highlight.ink ?? "var(--foreground)",
+                    } as React.CSSProperties
+                  }
+                >
+                  {job.role}
+                </mark>
               </h3>
               <p className="shrink-0 font-secondary text-[14px] tracking-[-0.01em] text-muted sm:text-right">
                 {job.when} · {job.where}
               </p>
             </div>
-            <p className="page-subtitle mt-6 max-w-2xl">{job.summary}</p>
+            <p className="font-reading mt-6 max-w-2xl text-[15px] !font-normal leading-[1.55] text-muted sm:text-[16px] sm:leading-[1.6]">
+              {job.summary}
+            </p>
           </article>
         ))}
       </div>

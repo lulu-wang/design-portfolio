@@ -129,7 +129,7 @@ export default function IllustrationsView() {
           style={{ animationDelay: "80ms" }}
         >
           Studies, editorial work, and visual experiments across illustration,
-          photography, and design.
+          sketches, photography, and design.
         </p>
       </section>
 

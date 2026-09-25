@@ -51,7 +51,7 @@ export default function ProjectCard({
       <p className="font-reading mt-1.5 max-w-md text-[15px] leading-relaxed text-muted">
         {subtitle}
       </p>
-      <p className="mt-2.5 text-[12px] uppercase tracking-[0.08em] text-foreground/30">
+      <p className="font-reading mt-2.5 text-[12px] font-medium tracking-[-0.01em] text-foreground/30">
         {project.tags.map((tag) => tag.label).join(" · ")}
       </p>
     </Link>
