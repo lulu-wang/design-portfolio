@@ -86,7 +86,7 @@ export default function BrandStyle({
           {branding.colors.map((color) => (
             <div key={`${color.name}-${color.hex}`} className="min-w-0">
               <div
-                className="aspect-[4/3] w-full rounded-sm border border-black/[0.08]"
+                className="aspect-[4/3] w-full rounded-xl border border-black/[0.06]"
                 style={{ backgroundColor: color.hex }}
                 title={color.hex}
               />
@@ -113,7 +113,7 @@ export default function BrandStyle({
           {branding.typefaces.map((face) => {
             const specimen = faceClass[face.name] ?? "";
             return (
-              <div key={face.name} className="min-w-0 border-t border-black/[0.07] pt-6">
+              <div key={face.name} className="min-w-0 border-t border-black/[0.06] pt-6">
                 <p className={`text-3xl font-semibold tracking-tight sm:text-4xl ${specimen}`}>
                   {face.name}
                 </p>

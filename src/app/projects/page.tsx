@@ -12,7 +12,7 @@ export default function ProjectsPage() {
   return (
     <main className="page-wrap pt-28 sm:pt-32">
       <section className="pt-6 pb-12 sm:pb-16 md:pb-20">
-        <h1 className="animate-rise font-title text-[clamp(2.35rem,5vw,4.15rem)] font-bold leading-[1.12] tracking-[-0.045em]">
+        <h1 className="page-heading animate-rise text-[clamp(2.35rem,5vw,4.15rem)]">
           Projects
         </h1>
         <p

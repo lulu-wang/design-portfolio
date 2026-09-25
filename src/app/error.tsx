@@ -12,10 +12,10 @@ export default function Error({
   return (
     <main className="page-wrap pt-28 sm:pt-32">
       <section className="flex min-h-[50vh] flex-col items-start justify-center py-16 sm:min-h-[55vh] sm:py-24">
-        <h1 className="font-title max-w-xl text-[clamp(2.35rem,5vw,4.15rem)] font-bold leading-[1.12] tracking-[-0.045em]">
+        <h1 className="page-heading max-w-xl text-[clamp(2.35rem,5vw,4.15rem)]">
           Something went wrong
         </h1>
-        <p className="font-secondary mt-6 max-w-md text-base leading-[29px] text-muted sm:mt-8">
+        <p className="font-reading mt-6 max-w-md text-base leading-[29px] text-muted sm:mt-8">
           An unexpected error occurred. You can try again, or head back home.
         </p>
         <div className="mt-8 flex flex-wrap items-center gap-6 sm:mt-10">
@@ -24,7 +24,8 @@ export default function Error({
           </button>
           <Link
             href="/"
-            className="text-sm text-foreground/50 transition-opacity hover:opacity-70"
+            className="color-hover text-sm text-foreground/50"
+            style={{ "--hover": "#7C5CF6" } as React.CSSProperties}
           >
             Back home →
           </Link>

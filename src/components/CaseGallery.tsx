@@ -205,7 +205,7 @@ function GalleryHeading({
   if (!heading) return null;
   return (
     <p
-      className={`mb-10 text-center text-[13px] font-medium tracking-[0.18em] sm:mb-12 ${
+      className={`mb-10 text-center font-display text-[13px] font-medium uppercase tracking-[0.18em] sm:mb-12 ${
         onDark ? "text-white/45" : "text-foreground/40"
       }`}
     >

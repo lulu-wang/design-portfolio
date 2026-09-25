@@ -6,6 +6,7 @@ import CaseSection from "@/components/CaseSection";
 import CaseBleed from "@/components/CaseBleed";
 import CaseGallery from "@/components/CaseGallery";
 import ProjectCover from "@/components/ProjectCover";
+import { titleHover } from "@/components/ProjectCard";
 import Wireframe from "@/components/Wireframe";
 import RichText from "@/components/RichText";
 import BrandStyle from "@/components/BrandStyle";
@@ -29,9 +30,9 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
     cs.presentation && /^https?:\/\//.test(cs.presentation.href),
   );
 
-  const body = "font-secondary text-[15px] leading-[1.55] text-foreground/65 md:text-base md:leading-[1.6]";
-  const bodyMuted = "font-secondary text-[15px] leading-[1.55] text-foreground/50 md:text-base md:leading-[1.6]";
-  const subhead = "font-title text-base font-bold tracking-[-0.03em] md:text-lg";
+  const body = "font-reading text-[15px] leading-[1.55] text-foreground/65 md:text-base md:leading-[1.6]";
+  const bodyMuted = "font-reading text-[15px] leading-[1.55] text-foreground/50 md:text-base md:leading-[1.6]";
+  const subhead = "font-display text-base font-semibold tracking-[-0.03em] md:text-lg";
 
   return (
     <>
@@ -39,13 +40,14 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
       <section className="pt-4 sm:pt-6 md:pt-8">
         <Link
           href="/projects"
-          className="arrow-link inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-foreground"
+          className="arrow-link color-hover inline-flex items-center gap-2 text-sm text-muted"
+          style={{ "--hover": "#7C5CF6" } as React.CSSProperties}
         >
           <Arrow className="h-2.5 rotate-180" /> All projects
         </Link>
 
         <div className="mt-10 max-w-3xl sm:mt-12">
-          <h1 className="animate-rise font-title text-[clamp(2.35rem,5vw,4.15rem)] font-bold leading-[1.12] tracking-[-0.045em]">
+          <h1 className="page-heading animate-rise text-[clamp(2.35rem,5vw,4.15rem)]">
             {project.name}
           </h1>
 
@@ -53,7 +55,7 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
             {project.tags.map((tag, i) => (
               <span
                 key={tag.label}
-                className="animate-rise rounded-full border border-foreground/15 px-3.5 py-1.5 text-xs font-medium text-foreground/70 sm:text-[13px]"
+                className="animate-rise rounded-full border border-foreground/12 px-3.5 py-1.5 text-[12px] uppercase tracking-[0.08em] text-foreground/55 sm:text-[13px]"
                 style={{ animationDelay: `${140 + i * 70}ms` }}
               >
                 {tag.label}
@@ -74,7 +76,8 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
                     {...(presentationExternal
                       ? { target: "_blank", rel: "noreferrer" }
                       : {})}
-                    className="text-foreground underline decoration-foreground/25 underline-offset-4 transition-colors hover:decoration-foreground"
+                    className="text-foreground color-hover underline decoration-foreground/25 underline-offset-4"
+                    style={{ "--hover": "#7C5CF6" } as React.CSSProperties}
                   >
                     View {cs.presentation.label}
                   </a>
@@ -108,7 +111,7 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
                   {...(presentationExternal
                     ? { target: "_blank", rel: "noreferrer" }
                     : {})}
-                  className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-medium text-background transition-opacity hover:opacity-90"
+                  className="pill-btn gap-2"
                 >
                   View {cs.presentation.label}
                   <Arrow className="h-2.5" />
@@ -128,7 +131,7 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
             screens={project.previewScreens}
             width={2390}
             height={1580}
-            className="animate-rise aspect-[239/158] rounded-[20px]"
+            className="animate-rise aspect-[239/158] rounded-[28px]"
             sizes="(max-width: 768px) 50vw, 25vw"
             priority
             size="hero"
@@ -187,7 +190,7 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
           <div className="mt-12 grid gap-8 sm:grid-cols-3">
             {cs.research.insights.map((insight) => (
               <div key={insight.label}>
-                <div className="text-4xl font-bold tracking-tight sm:text-5xl">
+                <div className="font-display text-4xl font-semibold tracking-tight sm:text-5xl">
                   {insight.stat}
                 </div>
                 <p className="mt-2 text-sm text-foreground/50 md:text-[15px]">
@@ -444,7 +447,7 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
               ))}
             </>
           ) : (
-            <div className="mt-12 overflow-hidden rounded-[20px] bg-[#f2f3f5]">
+            <div className="mt-12 overflow-hidden rounded-[28px] bg-[#f6f6f4]">
               <Image
                 src={project.image}
                 alt={`${project.name} high fidelity designs`}
@@ -514,7 +517,7 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
             <div className="mt-8 grid gap-8 sm:grid-cols-3">
               {cs.outcomes.map((outcome) => (
                 <div key={outcome.label}>
-                  <div className="text-4xl font-bold tracking-tight sm:text-5xl">
+                  <div className="font-display text-4xl font-semibold tracking-tight sm:text-5xl">
                     {outcome.stat}
                   </div>
                   <p className="mt-2 text-sm text-foreground/50 md:text-[15px]">
@@ -566,11 +569,19 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
         </CaseSection>
         )}
 
-        <section className="border-t border-foreground/[0.08] py-14 sm:py-16">
-          <Link href={`/projects/${nextProject.slug}`} className="group block">
-            <p className="text-sm text-foreground/40">Next</p>
-            <div className="mt-2 flex items-center justify-between gap-6">
-              <h2 className="font-title text-2xl font-bold tracking-[-0.03em] transition-opacity group-hover:opacity-60 sm:text-3xl md:text-4xl">
+        <section className="border-t border-foreground/[0.06] py-14 sm:py-16">
+          <Link
+            href={`/projects/${nextProject.slug}`}
+            className="group block"
+            style={
+              {
+                "--hover": titleHover[nextProject.slug] ?? "#7C5CF6",
+              } as React.CSSProperties
+            }
+          >
+            <p className="section-label">Next</p>
+            <div className="mt-3 flex items-center justify-between gap-6">
+              <h2 className="font-display text-2xl font-semibold tracking-[-0.04em] transition-colors duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:text-[var(--hover)] sm:text-3xl md:text-4xl">
                 {nextProject.name}
               </h2>
               <Arrow className="h-3.5 shrink-0 transition-transform group-hover:translate-x-2 sm:h-4" />

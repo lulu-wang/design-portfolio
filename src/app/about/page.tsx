@@ -68,7 +68,7 @@ export default function AboutPage() {
     <main className="page-wrap pt-28 sm:pt-32">
       <section className="relative grid gap-12 pb-20 pt-6 sm:gap-14 sm:pb-24 md:grid-cols-[minmax(0,380px)_1fr] md:items-start md:gap-16 md:pb-28 lg:grid-cols-[minmax(0,420px)_1fr] lg:gap-20">
         <div className="animate-rise relative z-10 grid gap-3">
-          <div className="overflow-hidden rounded-[20px]">
+          <div className="overflow-hidden rounded-[28px]">
             <Image
               src="/images/about-01.jpg"
               alt="Lulu Wang photographing in San Francisco"
@@ -79,7 +79,7 @@ export default function AboutPage() {
               priority
             />
           </div>
-          <div className="overflow-hidden rounded-[20px]">
+          <div className="overflow-hidden rounded-[28px]">
             <Image
               src="/images/about-02.jpg"
               alt="Lulu Wang with cherry blossoms"
@@ -92,8 +92,9 @@ export default function AboutPage() {
         </div>
 
         <div className="animate-rise relative z-10 md:pt-4" style={{ animationDelay: "120ms" }}>
-          <h1 className="mt-0 font-title text-[clamp(2.35rem,5vw,4.15rem)] font-bold leading-[1.12] tracking-[-0.045em]">
-            I&rsquo;m Lulu Wang.
+          <h1 className="mt-0 font-display text-[clamp(2.35rem,5vw,4.15rem)] font-semibold leading-[1.12] tracking-[-0.045em]">
+            I&rsquo;m{" "}
+            <span className="name-mark">Lulu Wang</span>.
           </h1>
 
           <p className="page-subtitle mt-8 max-w-2xl sm:mt-10">
@@ -121,21 +122,21 @@ export default function AboutPage() {
       </section>
 
       <section className="pb-20 sm:pb-28">
-        <h2 className="font-title text-[1.45rem] font-bold tracking-[-0.03em] sm:text-[1.65rem]">
+        <h2 className="section-label">
           Capabilities
         </h2>
 
         <div className="mt-12 grid grid-cols-2 gap-x-6 gap-y-12 sm:gap-10 lg:grid-cols-4">
           {skills.map((group) => (
             <div key={group.category}>
-              <h3 className="font-title text-[1.15rem] font-bold tracking-[-0.03em] md:text-[1.25rem]">
+              <h3 className="font-display text-[1.05rem] font-semibold tracking-[-0.03em] md:text-[1.15rem]">
                 {group.category}
               </h3>
               <ul className="mt-5 space-y-2.5">
                 {group.items.map((item) => (
                   <li
                     key={item}
-                    className="font-secondary text-base leading-snug text-foreground/70 md:text-lg"
+                    className="font-reading text-base leading-snug text-foreground/70 md:text-lg"
                   >
                     {item}
                   </li>
@@ -147,15 +148,16 @@ export default function AboutPage() {
       </section>
 
       <section id="contact" className="scroll-mt-28 pb-4">
-        <h2 className="font-title text-[1.45rem] font-bold tracking-[-0.03em] sm:text-[1.65rem]">
+        <h2 className="section-label">
           Let&rsquo;s talk
         </h2>
-        <p className="page-subtitle mt-6 max-w-2xl md:max-w-3xl">
+        <p className="page-subtitle mt-4 max-w-2xl md:max-w-3xl">
           Have a project in mind, a role to discuss, or simply want to say hello?
           Reach me at{" "}
           <a
             href="mailto:lulu.wang25@gmail.com"
-            className="font-medium text-foreground underline-offset-4 hover:underline"
+            className="color-hover text-foreground"
+            style={{ "--hover": "#7C5CF6" } as React.CSSProperties}
           >
             lulu.wang25@gmail.com
           </a>

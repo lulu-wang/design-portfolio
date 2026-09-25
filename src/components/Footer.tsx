@@ -7,42 +7,54 @@ const links = [
   { label: "Projects", href: "/projects" },
   { label: "Gallery", href: "/illustrations" },
   { label: "Blog", href: "/blog" },
+  { label: "Resume", href: "/LuluWangPMResume26.pdf", external: true },
 ];
 
 export default function Footer() {
   return (
-    <footer className="border-t border-foreground/[0.08] pb-12 pt-20 sm:pb-16 sm:pt-28">
+    <footer className="border-t border-foreground/[0.06] pb-12 pt-20 sm:pb-16 sm:pt-28">
       <div className="grid gap-14 md:grid-cols-[1.2fr_0.7fr_0.7fr] md:items-start md:gap-20">
         <div>
-          <p className="font-title text-[2.2rem] font-bold tracking-[-0.03em] sm:text-[2.65rem]">
+          <p className="font-display text-[2.05rem] font-semibold tracking-[-0.04em] sm:text-[2.4rem]">
             Lulu Wang
           </p>
-          <p className="mt-4 max-w-sm text-[17px] leading-relaxed text-muted sm:text-[18px]">
+          <p className="mt-4 max-w-sm text-[16px] leading-relaxed text-muted sm:text-[17px]">
             Building products with craft.
           </p>
         </div>
 
         <div>
-          <h3 className="font-title text-[15px] font-bold tracking-[-0.02em] text-foreground/40 sm:text-[16px]">
+          <h3 className="font-display text-[12px] font-medium uppercase tracking-[0.16em] text-muted">
             Links
           </h3>
           <ul className="mt-6 space-y-3.5">
             {links.map((item) => (
               <li key={item.href}>
-                <Link
-                  href={item.href}
-                  scroll={!item.href.includes("#")}
-                  className="text-[16px] text-foreground/70 transition-opacity hover:opacity-60 sm:text-[17px]"
-                >
-                  {item.label}
-                </Link>
+                {item.external ? (
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="font-secondary text-[16px] text-foreground sm:text-[17px]"
+                  >
+                    {item.label}
+                  </a>
+                ) : (
+                  <Link
+                    href={item.href}
+                    scroll={!item.href.includes("#")}
+                    className="font-secondary text-[16px] text-foreground sm:text-[17px]"
+                  >
+                    {item.label}
+                  </Link>
+                )}
               </li>
             ))}
           </ul>
         </div>
 
         <div>
-          <h3 className="font-title text-[15px] font-bold tracking-[-0.02em] text-foreground/40 sm:text-[16px]">
+          <h3 className="font-display text-[12px] font-medium uppercase tracking-[0.16em] text-muted">
             Contact
           </h3>
           <ul className="mt-6 space-y-3.5">
@@ -52,7 +64,8 @@ export default function Footer() {
                   href={item.href}
                   target={item.href.startsWith("http") ? "_blank" : undefined}
                   rel="noreferrer"
-                  className="text-[16px] text-foreground/70 transition-opacity hover:opacity-60 sm:text-[17px]"
+                  className="color-hover text-[16px] text-foreground/70 sm:text-[17px]"
+                  style={{ "--hover": "#7C5CF6" } as React.CSSProperties}
                 >
                   {item.label === "Email" ? "lulu.wang25@gmail.com" : item.label}
                 </a>

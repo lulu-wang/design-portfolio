@@ -25,7 +25,7 @@ export default function ProjectRow({
   return (
     <Link
       href={`/projects/${project.slug}`}
-      className="animate-rise group -mx-7 block rounded-xl border-2 border-transparent px-7 transition-colors duration-300 hover:border-foreground sm:-mx-9 sm:px-9"
+      className="animate-rise group -mx-7 block rounded-[28px] border-2 border-transparent px-7 transition-colors duration-300 hover:border-foreground/15 sm:-mx-9 sm:px-9"
       style={{ animationDelay: `${index * 100}ms` }}
     >
       <article className="grid grid-cols-1 items-start gap-6 py-8 sm:gap-10 sm:py-10 md:grid-cols-[minmax(0,260px)_1fr] md:gap-14 lg:grid-cols-[minmax(0,300px)_1fr]">
@@ -36,13 +36,13 @@ export default function ProjectRow({
           screens={project.previewScreens}
           width={720}
           height={480}
-          className="aspect-[239/158] rounded-md transition duration-500 group-hover:scale-[1.02] group-hover:opacity-90"
+          className="aspect-[239/158] rounded-[28px] transition duration-500 group-hover:opacity-95"
           sizes="(max-width: 768px) 50vw, 140px"
         />
 
         <div className="min-w-0 pt-0.5">
           <div className="flex items-baseline justify-between gap-4">
-            <h3 className="font-title text-lg font-bold tracking-[-0.03em] sm:text-xl md:text-[22px]">
+            <h3 className="font-display text-lg font-semibold tracking-[-0.03em] transition-colors duration-300 group-hover:text-[#7C5CF6] sm:text-xl md:text-[22px]">
               {project.name}
             </h3>
             {showView && (
@@ -52,7 +52,7 @@ export default function ProjectRow({
             )}
           </div>
 
-          <p className="font-secondary mt-4 max-w-2xl text-base leading-[1.55] text-muted md:max-w-3xl md:text-lg md:leading-[1.55]">
+          <p className="font-reading mt-4 max-w-2xl text-base leading-[1.55] text-muted md:max-w-3xl md:text-lg md:leading-[1.55]">
             {plainText(project.description)}
           </p>
 

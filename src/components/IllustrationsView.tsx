@@ -39,7 +39,7 @@ function Tile({
         className={`h-auto w-full transition-transform duration-500 group-hover:scale-[1.02] ${
           compactPreview ? "object-contain" : "object-cover"
         }`}
-        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+        sizes="(max-width: 1023px) 50vw, 33vw"
       />
       <span className="pointer-events-none absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/10" />
     </button>
@@ -118,10 +118,10 @@ export default function IllustrationsView() {
   };
 
   return (
-    <main className="page-wrap pt-28 sm:pt-32">
+    <main className="pt-28 sm:pt-32">
       {/* Hero */}
-      <section className="pt-6">
-        <h1 className="animate-rise font-title text-[clamp(2.35rem,5vw,4.15rem)] font-bold leading-[1.12] tracking-[-0.045em]">
+      <section className="page-wrap pt-6">
+        <h1 className="page-heading animate-rise text-[clamp(2.35rem,5vw,4.15rem)]">
           Gallery
         </h1>
         <p
@@ -134,7 +134,7 @@ export default function IllustrationsView() {
       </section>
 
       {/* Horizontal category tabs */}
-      <nav className="mt-10 sm:mt-12" aria-label="Gallery categories">
+      <nav className="page-wrap mt-10 sm:mt-12" aria-label="Gallery categories">
         <div className="flex gap-8 overflow-x-auto pb-px sm:gap-12">
           {galleryTabs.map((t) => {
             const selected = tab === t.id;
@@ -143,10 +143,10 @@ export default function IllustrationsView() {
                 key={t.id}
                 type="button"
                 onClick={() => setTab(t.id)}
-                className={`min-h-11 shrink-0 border-b-2 pb-3 pt-2 text-left font-title text-[15px] font-bold tracking-[-0.02em] transition-colors sm:min-h-0 sm:pt-0 sm:text-base ${
+                className={`min-h-11 shrink-0 border-b-2 pb-3 pt-2 text-left font-display text-[13px] font-medium uppercase tracking-[0.14em] transition-colors sm:min-h-0 sm:pt-0 ${
                   selected
                     ? "border-foreground text-foreground"
-                    : "border-transparent font-medium text-muted hover:text-foreground"
+                    : "border-transparent text-muted hover:text-[#7C5CF6]"
                 }`}
                 aria-pressed={selected}
               >
@@ -157,11 +157,11 @@ export default function IllustrationsView() {
         </div>
       </nav>
 
-      {/* Masonry — full-bleed, no gaps */}
-      <section className="pb-10 pt-8 sm:pt-10">
+      {/* Masonry — edge-to-edge, no side inset */}
+      <section className="w-full pb-10 pt-8 sm:pt-10">
         {filtered.length === 0 ? (
-          <div className="py-20 sm:py-24">
-            <h2 className="font-title text-2xl font-bold tracking-[-0.03em] sm:text-3xl">
+          <div className="page-wrap py-20 sm:py-24">
+            <h2 className="font-display text-2xl font-semibold tracking-[-0.04em] sm:text-3xl">
               Nothing here yet
             </h2>
             <p className="mt-4 max-w-md text-[15px] leading-relaxed text-muted">
@@ -172,10 +172,10 @@ export default function IllustrationsView() {
         ) : (
           <div
             key={`${tab}-${columnCount}`}
-            className="animate-rise -mx-5 grid grid-cols-2 sm:-mx-6 md:-mx-10 lg:grid-cols-3"
+            className="animate-rise grid w-full grid-cols-2 lg:grid-cols-3"
           >
             {columns.map((col, colIndex) => (
-              <div key={colIndex} className="flex flex-col">
+              <div key={colIndex} className="flex min-w-0 flex-col">
                 {col.map((item) => (
                   <Tile
                     key={item.id}
@@ -189,7 +189,9 @@ export default function IllustrationsView() {
         )}
       </section>
 
-      <Footer />
+      <div className="page-wrap">
+        <Footer />
+      </div>
 
       {active && (
         <Lightbox

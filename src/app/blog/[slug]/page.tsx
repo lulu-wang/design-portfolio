@@ -38,16 +38,17 @@ export default async function BlogPostPage({
       <section className="pt-4 sm:pt-6 md:pt-8">
         <Link
           href="/blog"
-          className="arrow-link inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-foreground"
+          className="arrow-link color-hover inline-flex items-center gap-2 text-sm text-muted"
+          style={{ "--hover": "#7C5CF6" } as React.CSSProperties}
         >
           <Arrow className="h-2.5 rotate-180" /> All posts
         </Link>
 
         <div className="mt-10 max-w-3xl sm:mt-12">
-          <h1 className="animate-rise font-title text-[clamp(2.35rem,5vw,4.15rem)] font-bold leading-[1.12] tracking-[-0.045em]">
+          <h1 className="page-heading animate-rise text-[clamp(2.35rem,5vw,4.15rem)]">
             {post.title}
           </h1>
-          <p className="animate-rise mt-5 text-sm text-foreground/45 sm:mt-6">
+          <p className="animate-rise mt-5 text-[12px] uppercase tracking-[0.08em] text-foreground/35 sm:mt-6">
             {post.date}
           </p>
           <div className="mt-10 space-y-5 pb-16 sm:mt-12 sm:pb-24">
@@ -55,7 +56,7 @@ export default async function BlogPostPage({
               <RichText
                 key={paragraph.slice(0, 40)}
                 as="p"
-                className="font-secondary text-[15px] leading-[1.55] text-foreground/65 md:text-base md:leading-[1.6] [&_strong]:text-foreground"
+                className="font-reading text-[15px] leading-[1.55] text-foreground/65 md:text-base md:leading-[1.6] [&_strong]:text-foreground"
               >
                 {paragraph}
               </RichText>

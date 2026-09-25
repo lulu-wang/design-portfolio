@@ -2,10 +2,11 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #322f2c;
-  --muted: #7a746c;
-  --ink: #3d3a36;
+  --foreground: #161616;
+  --muted: #737373;
+  --ink: #161616;
   --lavender: #e6e0f0;
+  --play: #fff38a;
 }
 
 @theme inline {
@@ -14,9 +15,10 @@
   --color-muted: var(--muted);
   --color-ink: var(--ink);
   --color-lavender: var(--lavender);
-  --font-sans: var(--font-inter);
+  --color-play: var(--play);
+  --font-sans: var(--font-satoshi);
   --font-display: var(--font-archivo);
-  --font-title: var(--font-inter);
+  --font-title: var(--font-archivo);
 }
 
 html {
@@ -31,24 +33,24 @@ html.lenis-smooth {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-inter), "Inter", sans-serif;
-  font-weight: 400;
+  font-family: var(--font-satoshi), Satoshi, system-ui, sans-serif;
+  font-weight: 500;
   letter-spacing: -0.01em;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
 
 ::selection {
-  background: #e4dcd0;
+  background: var(--play);
   color: var(--foreground);
 }
 
 h1,
 h2,
 h3 {
-  font-family: var(--font-inter), "Inter", sans-serif;
-  letter-spacing: -0.03em;
-  font-weight: 700;
+  font-family: var(--font-archivo), "Archivo", sans-serif;
+  letter-spacing: -0.035em;
+  font-weight: 600;
 }
 
 .font-display {
@@ -57,12 +59,29 @@ h3 {
 }
 
 .font-secondary {
-  font-family: var(--font-inter), "Inter", sans-serif;
+  font-family: var(--font-satoshi), Satoshi, system-ui, sans-serif;
+  font-weight: 500;
 }
 
 .font-title {
-  font-family: var(--font-inter), "Inter", sans-serif;
+  font-family: var(--font-archivo), "Archivo", sans-serif;
   letter-spacing: -0.04em;
+}
+
+.page-heading {
+  font-family: var(--font-archivo), "Archivo", sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.045em;
+  line-height: 1.12;
+}
+
+.section-label {
+  font-family: var(--font-archivo), "Archivo", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
 
 .page-wrap {
@@ -96,9 +115,17 @@ h3 {
   }
 }
 
+.font-reading {
+  font-family: var(--font-inter), Inter, sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.011em;
+}
+
 .page-subtitle {
-  font-family: var(--font-inter), "Inter", sans-serif;
+  font-family: var(--font-inter), Inter, sans-serif;
   font-size: 17px;
+  font-weight: 500;
+  letter-spacing: -0.011em;
   line-height: 30px;
   color: var(--muted);
 }
@@ -122,7 +149,7 @@ h3 {
   position: fixed;
   inset: 0;
   z-index: 80;
-  opacity: 0.08;
+  opacity: 0.025;
   mix-blend-mode: multiply;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.14  0 0 0 0 0.12  0 0 0 0 0.09  0 0 0 0.45 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
 }
@@ -134,16 +161,19 @@ h3 {
   border-radius: 999px;
   background: var(--ink);
   color: var(--background);
-  padding: 0.85rem 1.4rem;
-  font-family: var(--font-inter), "Inter", sans-serif;
+  padding: 0.85rem 1.5rem;
+  font-family: var(--font-satoshi), Satoshi, system-ui, sans-serif;
   font-size: 0.9rem;
   font-weight: 600;
   letter-spacing: -0.02em;
-  transition: opacity 0.2s ease;
+  transition:
+    background-color 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .pill-btn:hover {
-  opacity: 0.82;
+  background: #7c5cf6;
+  transform: translateY(-1px);
 }
 
 @keyframes riseIn {
@@ -161,8 +191,50 @@ h3 {
   animation: riseIn 0.95s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-.arrow-link:hover .arrow {
-  transform: translateX(6px);
+.color-hover {
+  transition: color 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.name-mark {
+  box-decoration-clone: clone;
+  border-radius: 0.18em;
+  background: var(--play);
+  color: var(--foreground);
+  padding: 0.02em 0.16em;
+  text-decoration: none;
+  transition:
+    background-color 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    color 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.highlight-word {
+  box-decoration-clone: clone;
+  border-radius: 0.22em;
+  padding: 0.05em 0.2em;
+  font: inherit;
+  color: var(--foreground);
+  background-color: var(--hl);
+  cursor: default;
+  white-space: nowrap;
+  transition:
+    background-color 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    color 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (hover: hover) {
+  .color-hover:hover {
+    color: var(--hover);
+  }
+
+  .name-mark:hover {
+    background: var(--hover, #7c5cf6);
+    color: #ffffff;
+  }
+
+  .highlight-word:hover {
+    background-color: var(--hl-hover);
+    color: var(--hl-ink, var(--foreground));
+  }
 }
 
 .arrow {
@@ -172,6 +244,14 @@ h3 {
 @media (prefers-reduced-motion: reduce) {
   .animate-rise {
     animation: none;
+  }
+
+  .color-hover,
+  .name-mark,
+  .highlight-word,
+  .pill-btn {
+    transition: none;
+    transform: none;
   }
 
   html.lenis,

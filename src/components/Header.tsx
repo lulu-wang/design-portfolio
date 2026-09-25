@@ -12,21 +12,27 @@ const nav = [
   { label: "Projects", href: "/projects" },
   { label: "Gallery", href: "/illustrations" },
   { label: "Blog", href: "/blog" },
+  { label: "Resume", href: "/LuluWangPMResume26.pdf", external: true },
 ];
 
 const desktopNav = nav.filter((item) => item.href !== "/");
+
+function isActivePath(pathname: string, href: string) {
+  if (href === "/") return pathname === "/";
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
+
+function navClass(active: boolean, extra = "") {
+  return `font-secondary font-medium tracking-[-0.01em] transition-colors duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+    active ? "text-foreground" : "text-muted hover:text-foreground"
+  } ${extra}`.trim();
+}
 
 export default function Header() {
   const pathname = usePathname();
   const lenis = useLenis();
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
-
-  const isActive = (href: string) => {
-    if (href.includes("#")) return false;
-    if (href === "/") return pathname === "/";
-    return pathname.startsWith(href);
-  };
 
   const onNavClick = (href: string) => {
     setOpen(false);
@@ -83,7 +89,7 @@ export default function Header() {
         <div className="pointer-events-auto mx-auto flex h-12 w-[min(92vw,268px)] items-center justify-between rounded-full bg-ink pl-5 pr-1.5 text-background shadow-[0_10px_30px_rgba(80,60,40,0.1)] md:hidden">
           <Link
             href="/"
-            className="font-title text-[17px] font-bold tracking-[-0.03em] text-background"
+            className="font-display text-[16px] font-semibold tracking-[-0.03em] text-background"
             onClick={() => setOpen(false)}
           >
             Lulu
@@ -113,29 +119,45 @@ export default function Header() {
         <div className="page-wrap pointer-events-none hidden items-center justify-between md:flex md:h-[4.75rem]">
           <Link
             href="/"
-            className="pointer-events-auto font-title text-[17px] font-bold tracking-[-0.03em] text-foreground"
+            className="pointer-events-auto font-display text-[16px] font-semibold tracking-[-0.03em] text-foreground"
           >
             Lulu Wang
           </Link>
           <nav
-            className="pointer-events-auto flex items-center gap-6 lg:gap-8"
+            className="pointer-events-auto flex items-center gap-5 lg:gap-8"
             aria-label="Primary"
           >
-            {desktopNav.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                scroll={!item.href.includes("#")}
-                className={`font-title text-[14px] font-medium tracking-[-0.02em] transition-colors ${
-                  isActive(item.href)
-                    ? "text-foreground"
-                    : "text-foreground/40 hover:text-foreground"
-                }`}
-                onClick={() => onNavClick(item.href)}
-              >
-                {item.label}
-              </Link>
-            ))}
+            {desktopNav.map((item) => {
+              const className = navClass(
+                !item.external && isActivePath(pathname, item.href),
+                "text-[14px]",
+              );
+              if (item.external) {
+                return (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className={className}
+                    onClick={() => setOpen(false)}
+                  >
+                    {item.label}
+                  </a>
+                );
+              }
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  scroll={!item.href.includes("#")}
+                  className={className}
+                  onClick={() => onNavClick(item.href)}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
           </nav>
         </div>
       </header>
@@ -155,23 +177,44 @@ export default function Header() {
               className="flex flex-1 flex-col justify-center gap-7 px-8 pb-24 pt-24 sm:gap-9"
               aria-label="Primary"
             >
-              {nav.map((item, i) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={`font-title text-3xl font-bold tracking-[-0.03em] transition-[opacity,transform] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] sm:text-5xl ${
-                    isActive(item.href)
-                      ? "text-foreground"
-                      : "text-foreground/35 hover:text-foreground"
-                  } ${open ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"}`}
-                  style={{ transitionDelay: open ? `${80 + i * 60}ms` : "0ms" }}
-                  scroll={!item.href.includes("#")}
-                  onClick={() => onNavClick(item.href)}
-                  tabIndex={open ? 0 : -1}
-                >
-                  {item.label}
-                </Link>
-              ))}
+              {nav.map((item, i) => {
+                const className = navClass(
+                  !item.external && isActivePath(pathname, item.href),
+                  `text-3xl tracking-[-0.02em] transition-[opacity,transform,color] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] sm:text-5xl ${
+                    open ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+                  }`,
+                );
+                const style = { transitionDelay: open ? `${80 + i * 60}ms` : "0ms" };
+                if (item.external) {
+                  return (
+                    <a
+                      key={item.href}
+                      href={item.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className={className}
+                      style={style}
+                      onClick={() => setOpen(false)}
+                      tabIndex={open ? 0 : -1}
+                    >
+                      {item.label}
+                    </a>
+                  );
+                }
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={className}
+                    style={style}
+                    scroll={!item.href.includes("#")}
+                    onClick={() => onNavClick(item.href)}
+                    tabIndex={open ? 0 : -1}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              })}
             </nav>
           </div>,
           document.body,

@@ -2354,3 +2354,41 @@ export const social = [
   { label: "Instagram", href: "https://www.instagram.com/luluw.art" },
   { label: "Email", href: "mailto:lulu.wang25@gmail.com" },
 ];
+
+export type Experience = {
+  company: string;
+  role: string;
+  when: string;
+  where: string;
+  hover?: string;
+  summary: string;
+};
+
+export const experience: Experience[] = [
+  {
+    company: "Meta",
+    role: "Software Engineer",
+    when: "2024–2026",
+    where: "Menlo Park",
+    hover: "#4A90E2",
+    summary:
+      "I own ads product initiatives that drove a 0.19% revenue gain across two halves, working ranking strategy from hypothesis and experimentation through technical architecture with Data Science in London. I also built a Messenger Stories product Quicksnap 0-to-1 on a small cross-functional team, and improved org-wide A/B testing with tooling, dashboards, and documentation.",
+  },
+  {
+    company: "Finary",
+    role: "Full-Stack Software Engineer",
+    when: "2023",
+    where: "New York",
+    summary:
+      "On a six-person team I helped shape an early-stage social investing product across web and mobile — shipping market news, chat threads, and ticker tagging that contributed to 22% user acquisition growth over three months.",
+  },
+  {
+    company: "Microsoft",
+    role: "Software Engineer, Xbox",
+    when: "2020–2023",
+    where: "Redmond",
+    hover: "#6B9A12",
+    summary:
+      "I partnered with Product and Design to ship a revamped Xbox Search experience across UX and the Search API, contributing to a 30% increase in engagement and retention. I also built customer-facing work across Cloud Gaming, Search, Home, Collection, memory, and accessibility for 120 million monthly Xbox users.",
+  },
+];

@@ -78,7 +78,7 @@ export default function ProjectCover({
 
   return (
     <div
-      className={`relative isolate overflow-hidden bg-[#f2f3f5] ${className}`}
+      className={`relative isolate overflow-hidden bg-[#f6f6f4] ${className}`}
       style={{ containerType: "size" }}
     >
       <div
