@@ -591,7 +591,7 @@ export const projects: Project[] = [
           },
         ],
         hiFi:
-          "High-fidelity screens sit on **mint, lilac, and white**, with charcoal actions and line illustration. Splash offers **Sign Up** and **Login**; onboarding asks what you want to learn; photography opens as a **Visual Storytelling** path of modules; each lesson splits into Lesson, Assignment, and Feedback — including mentor and AI scores — then a live booking surface. A menu of Home, Paths, Projects, Mentors, and Settings holds the rest of the app.",
+          "High-fidelity screens sit on **mint, lilac, and white**, with charcoal actions and line illustration. Splash offers **Get Started**, then **Sign Up** and **Login**; onboarding asks what you want to learn; photography opens as a **Visual Storytelling** path of modules; each lesson splits into Lesson, Assignment, and Feedback — including mentor and AI scores — then a live booking surface. A menu of Home, Paths, Projects, Mentors, and Settings holds the rest of the app.",
       },
       onboarding: {
         intro:
@@ -663,7 +663,7 @@ export const projects: Project[] = [
         palette:
           "Mint (#E3F5DF) holds splash and sign-up so illustration can sit on a field instead of a white void. **Lilac** is login. **Charcoal** (#242527) is the only high-contrast action. Forest (#388068) is reserved for the wordmark. White is the working surface. Sage, blush, and sky mark adjacent skills without turning the product into a toy.",
         messaging:
-          "The product speaks in short actions, not catalog copy: “Sign Up,” “Login,” “Choose Skills,” “Choose Skill,” “Next Lesson,” “Complete Lesson.” Feedback is a score plus notes — mentor and AI — instead of a vague “looks good.”",
+          "The product speaks in short actions, not catalog copy: “Get Started,” “Sign Up,” “Login,” “Choose Skills,” “Choose Skill,” “Next Lesson,” “Complete Lesson.” Feedback is a score plus notes — mentor and AI — instead of a vague “looks good.”",
       },
       visuals: {
         layout: "phones",
@@ -672,7 +672,7 @@ export const projects: Project[] = [
         images: [
           {
             src: "/images/projects/path-learning/screens/01-splash.png",
-            alt: "Path Learning splash — Explore and Master New Skills, with Sign Up and Login",
+            alt: "Path Learning splash — Explore and Master New Skills, with Get Started",
             caption: "Splash",
             width: 393,
             height: 852,
@@ -721,8 +721,15 @@ export const projects: Project[] = [
           },
           {
             src: "/images/projects/path-learning/screens/08-lesson.png",
-            alt: "Path Learning lesson — Choosing Your Camera",
+            alt: "Path Learning lesson — Choosing Your Camera with video",
             caption: "Lesson",
+            width: 393,
+            height: 852,
+          },
+          {
+            src: "/images/projects/path-learning/screens/16-reading.png",
+            alt: "Path Learning lesson reading — Choosing Your Camera full article",
+            caption: "Reading",
             width: 393,
             height: 852,
           },
@@ -730,6 +737,13 @@ export const projects: Project[] = [
             src: "/images/projects/path-learning/screens/09-assignment.png",
             alt: "Path Learning assignment — Choose Your Camera with file upload",
             caption: "Assignment",
+            width: 393,
+            height: 852,
+          },
+          {
+            src: "/images/projects/path-learning/screens/15-assignment-2.png",
+            alt: "Path Learning assignment — Your First Photo with file upload",
+            caption: "Assignment 2",
             width: 393,
             height: 852,
           },
