@@ -127,6 +127,8 @@ export type Project = {
   image: string;
   /** Optional pair of mobile screens shown in iPhone frames on project covers */
   previewScreens?: { src: string; alt: string }[];
+  /** Draw the cover image inside a desktop frame */
+  coverDevice?: "desktop";
   tags: Tag[];
   caseStudy: CaseStudy;
 };
@@ -2358,6 +2360,291 @@ export const projects: Project[] = [
         ],
         proud:
           "Building a brand people wrote to during an uncertain year — and then getting to meet them.",
+      },
+    },
+  },
+  {
+    slug: "harbor",
+    name: "Harbor",
+    description:
+      "A personal finance home that shows this month’s spend, the subscriptions still charging, and the balances behind them.",
+    image: "/images/project-harbor-cover.png",
+    coverDevice: "desktop",
+    tags: [
+      { label: "UX Design", variant: "outline" },
+      { label: "Product Design", variant: "solid" },
+      { label: "Desktop", variant: "lavender" },
+    ],
+    caseStudy: {
+      tagline:
+        "A quiet finance home for one person and two accounts — spend, subscriptions, and balances on the same page.",
+      meta: {
+        role: "Product Designer",
+        timeline: "Concept · 2026",
+        team: "Solo designer",
+        platform: "Desktop web",
+        tools: ["Figma"],
+      },
+      overview:
+        "Harbor is a personal finance product for someone who already has a checking account, a savings account, and a short list of subscriptions — and still can’t answer **what happened this month** without opening three apps. The interface is four pages and a green mark: **Overview**, **Spending**, **Subscriptions**, and **Account**. I designed it as a statement you can read, with a single line for the shape of the month and the numbers written in plain language.",
+      problem: {
+        statement:
+          "The month gets split across a bank app, a subscription tool, and a tracker — so **what happened** never lands on one screen.",
+        points: [
+          "**The bank home is a balance.** In interviews, Chase answered “how much is there” and left “what did this month do” as a scroll through transactions.",
+          "**Cancellation is its own product.** People using Rocket Money still opened a second app to see whether they had spent less than last month.",
+          "**The all-in-one tools ask you to interpret a chart first.** Copilot and Monarch were trusted, and both made the sentence the user’s job.",
+        ],
+      },
+      goals:
+        "Make the month legible in one sitting: **what you spent**, **what you kept**, **what is about to charge again**, and **which account holds the money**.",
+      research: {
+        intro:
+          "The research question was what a person with two accounts actually opens on a weeknight, and where that still fails. I ran **6 interviews** with people who check an account at least weekly, then audited **Copilot**, **Monarch**, **Rocket Money**, and **Chase**.",
+        methods: [
+          {
+            title: "User interviews",
+            description:
+              "**6 remote sessions**, ages 26–38. Each one started with the same prompt: say what last month did, without a spreadsheet. Five of six could not do it from their bank home.",
+          },
+          {
+            title: "Competitive analysis",
+            description:
+              "Audited **Copilot**, **Monarch**, **Rocket Money**, and **Chase**. Copilot and Monarch explain a month with charts and modules. Rocket Money owns cancellation and stops there. Chase leads with the balance. None of them put spend, savings versus last month, upcoming charges, and the two accounts in one spoken summary.",
+          },
+          {
+            title: "Affinity mapping",
+            description:
+              "Clustered the notes into three jobs — **read the month**, **catch a renewal before it posts**, and **see which account holds the money**. Budgets, net worth, and investment performance showed up as tools people respected and did not open on a weekday.",
+          },
+        ],
+        insights: [
+          { stat: "6", label: "interviews, ages 26–38" },
+          { stat: "4", label: "products in the competitive audit" },
+          { stat: "5/6", label: "couldn’t state last month’s spend from the bank home" },
+        ],
+        quotes: [
+          "I open Chase, see the balance, and I still don’t know if this month was fine.",
+          "Rocket Money caught the free trial. It did not tell me I spent less than August.",
+          "Monarch had every chart. I wanted one sentence and I got a cockpit.",
+        ],
+        persona: {
+          name: "Julie Nguyen",
+          role: "31 · Operations coordinator · Oakland",
+          quote:
+            "I have checking and savings. I just want to know if this month was lighter than last month, and what’s about to charge me.",
+          goals: [
+            "See spend, savings, and cash flow without exporting anything",
+            "Pause a subscription before the next date, not after",
+          ],
+          frustrations: [
+            "Chase shows a balance and hides the story of the month",
+            "Renewals are scattered across Spotify, Netflix, and iCloud",
+          ],
+        },
+        personas: [
+          {
+            name: "Julie Nguyen",
+            role: "31 · Operations coordinator · Oakland",
+            quote:
+              "I have checking and savings. I just want to know if this month was lighter than last month, and what’s about to charge me.",
+            goals: [
+              "See spend, savings, and cash flow without exporting anything",
+              "Pause a subscription before the next date, not after",
+            ],
+            frustrations: [
+              "Chase shows a balance and hides the story of the month",
+              "Renewals are scattered across Spotify, Netflix, and iCloud",
+            ],
+          },
+          {
+            name: "Sam Okonkwo",
+            role: "27 · ICU nurse · Chicago",
+            quote:
+              "I already pay for an app that finds subscriptions. I still open the bank to see if the month was okay.",
+            goals: [
+              "One list of what will charge, with the date on the row",
+              "Know the month was lighter without a second login",
+            ],
+            frustrations: [
+              "Rocket Money and Chase answer different halves of the same question",
+              "Trials post before the reminder he meant to set",
+            ],
+          },
+          {
+            name: "Priya Shah",
+            role: "34 · Product designer · Brooklyn",
+            quote:
+              "I opened Monarch for a month. It was thorough. I stopped opening it.",
+            goals: [
+              "A sentence she can repeat, then the chart if she wants it",
+              "Two accounts on the same page as the spend",
+            ],
+            frustrations: [
+              "Copilot’s categories are beautiful and still need interpreting",
+              "A household dashboard feels like a second job for one person",
+            ],
+          },
+        ],
+      },
+      define: {
+        intro:
+          "Research ran across **four weeks**. The audit made the scope decision: Harbor would not out-feature Monarch. It would answer the three jobs from the affinity map, on a desktop page you can read out loud. Settings — password, connected banks, membership, a way to write in — live under **Account**, so the other three pages can stay about the month.",
+        steps: [
+          "Interviews, then a four-product audit: Copilot, Monarch, Rocket Money, Chase",
+          "A sentence under every chart, so the chart is evidence and not the answer",
+          "Every subscription gets a price, a next date, and Pause on the same row",
+        ],
+        timeline: [
+          "Week 1: Recruitment and the interview guide",
+          "Week 2: Interviews and competitive analysis",
+          "Week 3: Affinity map, four-page IA, sentences before charts",
+          "Week 4: Hi-fi prototype and five moderated task sessions",
+        ],
+      },
+      ia: {
+        intro:
+          "Harbor is a desktop web app with one persistent nav. The green **$** mark is home. **Overview** is the default. **Spending** and **Subscriptions** are the two ways to look closer. **Account** is everything that is not this month’s money.",
+        sitemap: [
+          "Overview → month line, spend, savings versus last month, net cash flow, account list",
+          "Spending → month line, total spend, largest categories, four category rows",
+          "Subscriptions → active total, each service with price, next date, and Pause",
+          "Account → details, personal details, banks and payments, membership, contact",
+        ],
+        flow: [
+          "Land on Overview",
+          "Read the month",
+          "Open Spending or Subscriptions",
+          "Pause a renewal or check a balance",
+          "Change account settings only when something is wrong",
+        ],
+      },
+      branding: {
+        intro:
+          "The brand is a mark and a sentence. A green **$** sits in the nav. Everything else is black type on white, with gray for dates and account types. Green returns only when the number is the good news — money kept, or cash still coming in.",
+        colors: [
+          { name: "Paper", hex: "#FFFFFF", role: "Every page" },
+          { name: "Ink", hex: "#161616", role: "Headlines, amounts, active nav" },
+          { name: "Mist", hex: "#B5B5B5", role: "Inactive nav, dates, account type" },
+          { name: "Harbor", hex: "#7DCE6A", role: "Mark, savings, net cash flow" },
+          { name: "Shopping", hex: "#C9A0E8", role: "Spending category" },
+          { name: "Travel", hex: "#7DCFC4", role: "Spending category" },
+          { name: "Entertainment", hex: "#7EB6E8", role: "Spending category" },
+          { name: "Housing", hex: "#E0B15A", role: "Spending category" },
+        ],
+        typefaces: [
+          {
+            name: "System sans",
+            role: "UI and amounts",
+            weights: "Regular, Semibold, Bold",
+          },
+        ],
+        typography:
+          "Amounts are the headlines. **$2,750**, **$105**, and **$4,300** are set heavier than the sentence around them, so a scan of the page is a scan of the money. Supporting lines — “Checking Account”, “Next payment Oct 4” — stay small and gray.",
+        palette:
+          "White is the field. Black is the month. **Harbor green** is reserved for the mark and for figures that mean the month went well: $105 saved against last month, and $4,300 net cash flow. Category colors appear only on Spending, as a thin bar beside the name.",
+        messaging:
+          "The product speaks in full sentences. “This month’s spend is $2,750.” “You’ve saved $105 compared to last month.” “Your largest spending categories are shopping and travel.” “Your active subscriptions total $29.97 a month.” Pause is the only action on a subscription row.",
+      },
+      visuals: {
+        layout: "stack",
+        tone: "plain",
+        images: [
+          {
+            src: "/images/projects/harbor/01-overview.png",
+            alt: "Harbor overview — month line, $2,750 spend, $105 saved, $4,300 net cash flow, Julie’s checking and savings",
+            caption: "Overview",
+            width: 1024,
+            height: 665,
+          },
+          {
+            src: "/images/projects/harbor/02-spending.png",
+            alt: "Harbor spending — $2,750 total, shopping and travel called out, four categories at 25 percent",
+            caption: "Spending",
+            width: 1024,
+            height: 665,
+          },
+          {
+            src: "/images/projects/harbor/03-subscriptions.png",
+            alt: "Harbor subscriptions — $29.97 a month, with Pause on music, streaming, cloud storage, and entertainment",
+            caption: "Subscriptions",
+            width: 1024,
+            height: 665,
+          },
+          {
+            src: "/images/projects/harbor/04-account.png",
+            alt: "Harbor account — details, personal details, banks and payments, membership, and contact",
+            caption: "Account",
+            width: 1024,
+            height: 665,
+          },
+        ],
+      },
+      solution: {
+        intro:
+          "The prototype is Julie’s month, built around the three jobs. Spend is **$2,750**. She kept **$105** versus last month. Net cash flow is **$4,300**. Checking holds **$2,800** and savings holds **$4,800**. Overview says that out loud and shows both accounts. Spending is the chart behind the sentence. Subscriptions lists what will charge, with Pause on the row. Account stays out of the way until a bank connection or a password needs changing.",
+        features: [
+          {
+            title: "Overview",
+            description:
+              "Overview covers two jobs at once: **read the month**, and **see which account holds the money**. The sentence states the spend ($2,750), the $105 kept against last month, and $4,300 net cash flow. The line above it is the shape of that sentence. Julie’s Checking ($2,800) and Julie’s Saving ($4,800) sit on the same screen, so the balance and the month are one visit.",
+          },
+          {
+            title: "Spending",
+            description:
+              "Spending is the second step Priya asked for: the sentence first, the chart when she still needs it. It names **shopping and travel**, then lists Shopping, Travel, Entertainment, and Housing — each $687.50, a quarter of the $2,750 — with a thin color bar. The amount stays heavier than the bar, so a scan of the row is a scan of the money.",
+          },
+          {
+            title: "Subscriptions",
+            description:
+              "Subscriptions is the renewal job Sam was splitting between Rocket Money and the bank. Music renews Oct 4 at $10.99, Streaming on Oct 12 at $15.99, Cloud Storage on Oct 19 at $2.99 — the **$29.97** due this cycle. Entertainment is $2.99 on Nov 2 and stays on the list. Every row has a price, a date, and Pause, so a charge can be stopped before it posts.",
+          },
+          {
+            title: "Account",
+            description:
+              "Account holds what the interviews treated as occasional: password, personal details, connected banks, membership, and a way to write in. Banks and Payments is how the two accounts arrive. The other three pages stay about the month.",
+          },
+        ],
+      },
+      testing: {
+        intro:
+          "Five moderated sessions on the desktop prototype, using Julie’s month as the data. Tasks were the interview jobs: state this month’s spend, say whether it was lighter than last month, name the largest categories, pause Music before Oct 4, and find the connected bank without hunting through Spending.",
+        findings: [
+          "**5 of 5** read “$2,750” from the sentence before they described the line. The chart was useful once the number had been said.",
+          "**4 of 5** paused Music from the row. The fifth looked for a confirm that was not there, then stopped.",
+          "**3 of 5** stalled on Spending. The sentence named shopping and travel as the largest categories, and the rows were four equal quarters.",
+        ],
+        iterations: [
+          "Left the line above the sentence. Testing said people read the words first, so the chart stayed evidence.",
+          "Kept Pause on the row, and wrote a confirm — restating the next charge date — as the follow-up instead of a detail page.",
+          "Held spend in black after two people said green on a cost would feel like the app was congratulating them. Green stayed on the $105 and the cash flow.",
+        ],
+      },
+      outcomes: [
+        { stat: "5/6", label: "couldn’t name last month’s spend from their bank home" },
+        { stat: "5/5", label: "read this month’s spend before describing the chart" },
+        { stat: "4 wks", label: "interviews through a tested prototype" },
+      ],
+      reflection:
+        "Harbor is the page **Copilot**, **Monarch**, **Rocket Money**, and **Chase** each leave out. Copilot and Monarch can draw the month. Rocket Money can stop a charge. Chase can show the balance. The interviews asked for those facts in one sentence, with the two accounts underneath it. What I kept tight: two accounts, four categories, four subscriptions, and a settings page that does not pretend to be a fifth insight.",
+      conclusion: {
+        challenges: [
+          "A month can be understood and still be uneven. Shopping and travel are named as the largest categories while this sample splits the $2,750 into four equal quarters — the sentence and the rows need to stay honest to each other as real data comes in.",
+          "Net cash flow, balances, and spend answer different questions. Putting them on one page is the point, and it is also the risk if the labels ever get vague.",
+          "Pause is a serious action on a quiet row. The screen makes it available immediately, which is what Julie asked for, and it needs a confirm before it bills less next month.",
+        ],
+        learnings: [
+          "Say the number in a sentence, then show the line that produced it.",
+          "A subscription row is complete when it has a price, a date, and one action.",
+          "Settings belong in their own place so Overview can stay about the month.",
+        ],
+        nextSteps: [
+          "A confirm step on Pause, with the next charge date restated.",
+          "Category rows that follow real shares of the $2,750 when the month is not an even split.",
+          "A note on Overview when cash flow and the two balances are telling different stories.",
+        ],
+        proud:
+          "A finance home that can be read out loud: this month’s spend is $2,750, $105 stayed behind compared with last month, and the subscriptions still charging are listed with the day they will.",
       },
     },
   },

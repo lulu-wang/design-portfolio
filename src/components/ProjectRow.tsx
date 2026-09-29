@@ -34,6 +34,7 @@ export default function ProjectRow({
           src={project.image}
           alt={project.name}
           screens={project.previewScreens}
+          device={project.coverDevice}
           width={720}
           height={480}
           className="aspect-[239/158] rounded-[28px] transition duration-500 group-hover:opacity-95"
