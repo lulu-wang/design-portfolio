@@ -1,0 +1,15 @@
+---
+description: Grade new sketch gallery photos bright and high-contrast before adding them
+globs: src/data/illustrations.ts,public/images/sketches/**,scripts/process-sketches.py
+alwaysApply: false
+---
+
+# Sketch gallery photos
+
+Every photo added to the Sketches gallery uses the saved grade in `scripts/process-sketches.py`. Do not drop the original phone photo into `public/images/sketches`.
+
+```bash
+python3 scripts/process-sketches.py path/to/photo.jpg public/images/sketches/name.jpg
+```
+
+That grade stretches each photo so the paper goes bright white and the lines stay dark (black percentile 0.015, white percentile 0.93, gamma 0.82, contrast 1.12, color 0.88, light unsharp mask). Then add an entry in `src/data/illustrations.ts` with `category: "sketches"`, medium `Pen on paper`, and the saved width and height.

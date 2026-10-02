@@ -7,7 +7,6 @@ function plainText(text: string) {
 }
 
 export const titleHover: Record<string, string> = {
-  harbor: "#6FBF4A",
   opal: "#7C5CF6",
   "path-learning": "#388068",
   pulsefit: "#6B9A12",
@@ -41,7 +40,6 @@ export default function ProjectCard({
         src={project.image}
         alt={project.name}
         screens={project.previewScreens}
-        device={project.coverDevice}
         width={720}
         height={480}
         className="aspect-[239/158] rounded-[28px] transition duration-500 group-hover:opacity-95"

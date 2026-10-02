@@ -19,8 +19,8 @@ export default function ProjectsPage() {
           className="page-subtitle animate-rise mt-6 max-w-3xl sm:mt-8"
           style={{ animationDelay: "80ms" }}
         >
-          Product design, brand, and research across meetings, health,
-          learning, streaming, apparel, and finance.
+          Product design, brand, and research across meetings, health, learning,
+          streaming, and apparel.
         </p>
       </section>
 

@@ -2,46 +2,6 @@ import Image from "next/image";
 
 type PreviewScreen = { src: string; alt: string };
 
-function CoverDesktop({
-  src,
-  alt,
-  sizes,
-  priority,
-}: {
-  src: string;
-  alt: string;
-  sizes?: string;
-  priority: boolean;
-}) {
-  return (
-    <div className="relative z-10 flex h-full w-full items-center justify-center px-[8%] py-[7%]">
-      <div className="w-full max-w-[92%]">
-        <div className="relative rounded-[2.4cqw] bg-[#1a1a1a] p-[1.15cqw] shadow-[0_16px_36px_rgba(0,0,0,0.16)] ring-1 ring-black/10">
-          <div
-            aria-hidden
-            className="absolute top-[0.38cqw] left-1/2 z-20 h-[0.42cqw] w-[0.42cqw] -translate-x-1/2 rounded-full bg-[#3d3d3d] ring-1 ring-black/40"
-          />
-          <div className="overflow-hidden rounded-[1.35cqw] bg-white">
-            <Image
-              src={src}
-              alt={alt}
-              width={1024}
-              height={665}
-              priority={priority}
-              className="block h-auto w-full"
-              sizes={sizes}
-            />
-          </div>
-        </div>
-        <div aria-hidden className="relative mx-auto -mt-px h-[1.7cqw] w-[106%]">
-          <div className="absolute inset-x-0 top-0 h-full rounded-b-[1.5cqw] bg-gradient-to-b from-[#ececea] to-[#c9c9c6] shadow-[0_8px_16px_rgba(0,0,0,0.08)]" />
-          <div className="absolute top-0 left-1/2 h-[0.42cqw] w-[16%] -translate-x-1/2 rounded-b-[0.5cqw] bg-[#b7b7b4]" />
-        </div>
-      </div>
-    </div>
-  );
-}
-
 function CoverPhones({
   screens,
   sizes,
@@ -95,7 +55,6 @@ export default function ProjectCover({
   className = "",
   size = "card",
   screens,
-  device,
 }: {
   name: string;
   src: string;
@@ -107,7 +66,6 @@ export default function ProjectCover({
   className?: string;
   size?: "card" | "hero";
   screens?: PreviewScreen[];
-  device?: "desktop";
 }) {
   const words = name
     .replace(/[^a-zA-Z0-9\s]/g, "")
@@ -153,14 +111,7 @@ export default function ProjectCover({
             : words[0]}
         </span>
       </div>
-      {device === "desktop" ? (
-        <CoverDesktop
-          src={src}
-          alt={alt ?? name}
-          sizes={sizes}
-          priority={priority}
-        />
-      ) : pair && screens ? (
+      {pair && screens ? (
         <CoverPhones
           screens={screens}
           sizes={sizes ?? "(max-width: 768px) 50vw, 25vw"}

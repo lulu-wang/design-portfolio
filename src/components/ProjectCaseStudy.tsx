@@ -129,7 +129,6 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
             src={project.image}
             alt={`${project.name} preview`}
             screens={project.previewScreens}
-            device={project.coverDevice}
             width={2390}
             height={1580}
             className="animate-rise aspect-[239/158] rounded-[28px]"
