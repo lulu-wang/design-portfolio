@@ -20,7 +20,7 @@ function Tile({
 }) {
   // Tall phone mockups — slight inset so they don't dominate the masonry
   const compactPreview =
-    item.id === "d08" || item.id === "d09" || item.id === "d10";
+    item.id === "d08" || item.id === "d09" || item.id === "d10" || item.id === "d12";
 
   return (
     <button
