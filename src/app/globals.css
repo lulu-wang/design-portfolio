@@ -293,3 +293,43 @@ h3 {
     animation: none;
   }
 }
+
+.page-reader {
+  --page-h: min(68dvh, 820px, calc((100vw - 6rem) * 792 / 612));
+  --page-w: calc(var(--page-h) * 612 / 792);
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  width: 100%;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(22, 22, 22, 0.28) transparent;
+  cursor: grab;
+}
+
+.page-reader::before,
+.page-reader::after {
+  content: "";
+  flex: 0 0 max(0.25rem, calc((100% - var(--page-w)) / 2 - 1.25rem));
+}
+
+.page-reader.is-dragging {
+  scroll-snap-type: none;
+  cursor: grabbing;
+}
+
+.page-reader-sheet {
+  height: var(--page-h);
+  width: var(--page-w);
+  flex: none;
+  scroll-snap-align: center;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid rgba(22, 22, 22, 0.08);
+  box-shadow:
+    0 1px 1px rgba(22, 22, 22, 0.04),
+    0 18px 50px rgba(22, 22, 22, 0.08);
+}

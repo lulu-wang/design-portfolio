@@ -2,7 +2,8 @@ export type GalleryCategory =
   | "illustrations"
   | "sketches"
   | "photography"
-  | "design";
+  | "design"
+  | "comics";
 
 export type Illustration = {
   id: string;
@@ -20,6 +21,7 @@ export const galleryTabs: { id: GalleryCategory; label: string }[] = [
   { id: "sketches", label: "Sketches" },
   { id: "photography", label: "Photography" },
   { id: "design", label: "Design" },
+  { id: "comics", label: "Comics" },
 ];
 
 export const illustrations: Illustration[] = [
@@ -404,6 +406,116 @@ export const illustrations: Illustration[] = [
     category: "photography",
   },
   {
+    id: "p25",
+    title: "Morpho",
+    medium: "Photography",
+    date: "Projection",
+    image: "/images/photography/25.jpg",
+    width: 1024,
+    height: 682,
+    category: "photography",
+  },
+  {
+    id: "p26",
+    title: "Cast",
+    medium: "Photography",
+    date: "Projection",
+    image: "/images/photography/26.jpg",
+    width: 1024,
+    height: 682,
+    category: "photography",
+  },
+  {
+    id: "p27",
+    title: "Rise",
+    medium: "Photography",
+    date: "Editorial",
+    image: "/images/photography/27.jpg",
+    width: 682,
+    height: 1024,
+    category: "photography",
+  },
+  {
+    id: "p28",
+    title: "Shade",
+    medium: "Photography",
+    date: "Projection",
+    image: "/images/photography/28.jpg",
+    width: 1024,
+    height: 682,
+    category: "photography",
+  },
+  {
+    id: "p29",
+    title: "Liner",
+    medium: "Photography",
+    date: "Studio",
+    image: "/images/photography/29.jpg",
+    width: 768,
+    height: 1024,
+    category: "photography",
+  },
+  {
+    id: "p30",
+    title: "Bend",
+    medium: "Photography",
+    date: "Studio",
+    image: "/images/photography/30.jpg",
+    width: 768,
+    height: 1024,
+    category: "photography",
+  },
+  {
+    id: "p31",
+    title: "Crimson",
+    medium: "Photography",
+    date: "Studio",
+    image: "/images/photography/31.jpg",
+    width: 944,
+    height: 1024,
+    category: "photography",
+  },
+  {
+    id: "p32",
+    title: "Frame",
+    medium: "Photography",
+    date: "Studio",
+    image: "/images/photography/32.jpg",
+    width: 768,
+    height: 1024,
+    category: "photography",
+  },
+  {
+    id: "p33",
+    title: "Jaw",
+    medium: "Photography",
+    date: "Studio",
+    image: "/images/photography/33.jpg",
+    width: 768,
+    height: 1024,
+    category: "photography",
+  },
+  {
+    id: "p34",
+    title: "Cover",
+    medium: "Photography",
+    date: "Studio",
+    image: "/images/photography/34.jpg",
+    width: 768,
+    height: 1024,
+    category: "photography",
+  },
+  {
+    id: "p35",
+    title: "Shoulder",
+    medium: "Photography",
+    date: "Studio",
+    image: "/images/photography/35.jpg",
+    width: 768,
+    height: 1024,
+    category: "photography",
+  },
+  {
     id: "p10",
     title: "Gesture",
     medium: "Photography",
@@ -532,6 +644,16 @@ export const illustrations: Illustration[] = [
     width: 1024,
     height: 682,
     category: "photography",
+  },
+  {
+    id: "d16",
+    title: "Wayfarer",
+    medium: "Figma",
+    date: "2022",
+    image: "/images/design/16-wayfarer.png",
+    width: 481,
+    height: 1024,
+    category: "design",
   },
   {
     id: "d08",
