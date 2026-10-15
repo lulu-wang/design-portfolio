@@ -2283,12 +2283,6 @@ export const projects: Project[] = [
             height: 1600,
           },
           {
-            src: "/images/projects/yuugen/g85.jpg",
-            alt: "Yuugen lookbook photograph",
-            width: 1500,
-            height: 1000,
-          },
-          {
             src: "/images/projects/yuugen/g86.jpg",
             alt: "Yuugen lookbook photograph",
             width: 1500,

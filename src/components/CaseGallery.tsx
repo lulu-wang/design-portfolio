@@ -1,4 +1,8 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
+import Lightbox from "@/components/Lightbox";
 
 export type CaseMediaItem = {
   src: string;
@@ -335,24 +339,57 @@ export default function CaseGallery({
     );
   }
 
-  // masonry — mass presentation of wireframes / screens
+  return (
+    <MasonryGallery
+      items={items}
+      flush={flush}
+      surface={surface}
+    />
+  );
+}
+
+function MasonryGallery({
+  items,
+  flush,
+  surface,
+}: {
+  items: CaseMediaItem[];
+  flush: boolean;
+  surface: string;
+}) {
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const active = activeIndex === null ? null : items[activeIndex];
+
+  const step = (delta: number) => {
+    setActiveIndex((current) => {
+      if (current === null || items.length === 0) return current;
+      return (current + delta + items.length) % items.length;
+    });
+  };
+
   return (
     <div
       className={`${flush ? "mt-0" : "mt-12 sm:mt-16"} px-4 py-8 sm:px-6 sm:py-12 md:px-10 ${surface}`}
     >
       <div className="columns-2 gap-3 sm:columns-3 sm:gap-4 lg:columns-4 lg:gap-5">
-        {items.map((item) => (
+        {items.map((item, index) => (
           <figure key={item.src} className="mb-3 break-inside-avoid sm:mb-4 lg:mb-5">
-            <div className="overflow-hidden bg-white shadow-sm ring-1 ring-black/[0.06]">
+            <button
+              type="button"
+              onClick={() => setActiveIndex(index)}
+              aria-label={`View ${item.alt}`}
+              className="group relative block w-full overflow-hidden bg-white text-left shadow-sm ring-1 ring-black/[0.06]"
+            >
               <Image
                 src={item.src}
                 alt={item.alt}
                 width={item.width ?? 600}
                 height={item.height ?? 900}
-                className="h-auto w-full object-contain"
+                className="h-auto w-full object-contain transition-transform duration-500 group-hover:scale-[1.02]"
                 sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
               />
-            </div>
+              <span className="pointer-events-none absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/10" />
+            </button>
             {item.caption && (
               <figcaption className="mt-2 text-[11px] tracking-wide text-muted sm:text-xs">
                 {item.caption}
@@ -361,6 +398,18 @@ export default function CaseGallery({
           </figure>
         ))}
       </div>
+      {active && activeIndex !== null ? (
+        <Lightbox
+          item={{
+            id: active.src,
+            title: active.alt,
+            image: active.src,
+          }}
+          onClose={() => setActiveIndex(null)}
+          onPrev={() => step(-1)}
+          onNext={() => step(1)}
+        />
+      ) : null}
     </div>
   );
 }

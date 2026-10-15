@@ -3,7 +3,13 @@
 import Image from "next/image";
 import { useEffect, useCallback, useState, useRef } from "react";
 import { createPortal } from "react-dom";
-import type { Illustration } from "@/data/illustrations";
+export type LightboxItem = {
+  id: string;
+  title: string;
+  image: string;
+  medium?: string;
+  date?: string;
+};
 
 function Chevron({ dir }: { dir: "left" | "right" }) {
   return (
@@ -25,7 +31,7 @@ export default function Lightbox({
   onPrev,
   onNext,
 }: {
-  item: Illustration;
+  item: LightboxItem;
   onClose: () => void;
   onPrev: () => void;
   onNext: () => void;
@@ -198,11 +204,15 @@ export default function Lightbox({
           <h2 className="text-sm font-medium tracking-tight sm:text-base">
             {item.title}
           </h2>
-          <p className="mt-0.5 text-[13px] tracking-wide text-white/55">
-            {item.medium}
-            <span className="mx-2 text-white/30">·</span>
-            {item.date}
-          </p>
+          {item.medium || item.date ? (
+            <p className="mt-0.5 text-[13px] tracking-wide text-white/55">
+              {item.medium}
+              {item.medium && item.date ? (
+                <span className="mx-2 text-white/30">·</span>
+              ) : null}
+              {item.date}
+            </p>
+          ) : null}
         </div>
       )}
     </div>,
