@@ -6,7 +6,6 @@ export default function CaseSection({
   title,
   intro,
   children,
-  first = false,
 }: {
   index?: string;
   label?: string;
@@ -17,9 +16,7 @@ export default function CaseSection({
 }) {
   return (
     <section
-      className={`grid scroll-mt-28 gap-6 py-12 sm:py-16 lg:grid-cols-[140px_1fr] lg:gap-12 ${
-        first ? "" : "border-t border-foreground/[0.06]"
-      }`}
+      className="grid scroll-mt-28 gap-6 py-12 sm:py-16 lg:grid-cols-[140px_1fr] lg:gap-12"
     >
       {(index || label) && (
         <div className="lg:sticky lg:top-28 lg:self-start">

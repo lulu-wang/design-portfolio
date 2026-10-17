@@ -369,9 +369,10 @@ function MasonryGallery({
 
   return (
     <div
-      className={`${flush ? "mt-0" : "mt-12 sm:mt-16"} px-4 py-8 sm:px-6 sm:py-12 md:px-10 ${surface}`}
+      className={`${flush ? "mt-0" : "mt-12 sm:mt-16"} ${surface}`}
     >
-      <div className="columns-2 gap-3 sm:columns-3 sm:gap-4 lg:columns-4 lg:gap-5">
+      <div className="mx-auto max-w-6xl px-5 py-8 sm:px-8 sm:py-12 lg:px-12">
+      <div className="columns-2 gap-3 sm:columns-3 sm:gap-4 lg:gap-5">
         {items.map((item, index) => (
           <figure key={item.src} className="mb-3 break-inside-avoid sm:mb-4 lg:mb-5">
             <button
@@ -386,7 +387,7 @@ function MasonryGallery({
                 width={item.width ?? 600}
                 height={item.height ?? 900}
                 className="h-auto w-full object-contain transition-transform duration-500 group-hover:scale-[1.02]"
-                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                sizes="(max-width: 640px) 50vw, 33vw"
               />
               <span className="pointer-events-none absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/10" />
             </button>
@@ -397,6 +398,7 @@ function MasonryGallery({
             )}
           </figure>
         ))}
+      </div>
       </div>
       {active && activeIndex !== null ? (
         <Lightbox

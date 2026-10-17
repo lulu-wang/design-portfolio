@@ -40,7 +40,7 @@ export default function HomeHero() {
             >
               Lulu Wang
             </Link>{" "}
-            is a product designer based in the Bay Area, previously at{" "}
+            is a product designer based in California, previously at{" "}
             <span
               className="color-hover"
               style={{ "--hover": "#4A90E2" } as React.CSSProperties}

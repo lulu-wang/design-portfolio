@@ -5,6 +5,7 @@ import { useLenis } from "lenis/react";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
+import { useGalleryChrome } from "@/components/GalleryChrome";
 
 const nav = [
   { label: "Home", href: "/" },
@@ -22,10 +23,15 @@ function isActivePath(pathname: string, href: string) {
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
-function navClass(active: boolean, extra = "") {
-  return `font-secondary font-medium tracking-[-0.01em] transition-colors duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-    active ? "text-foreground" : "text-muted hover:text-foreground"
-  } ${extra}`.trim();
+function navClass(active: boolean, extra = "", light = false) {
+  const tone = light
+    ? active
+      ? "text-white"
+      : "text-white/70 hover:text-white"
+    : active
+      ? "text-foreground"
+      : "text-muted hover:text-foreground";
+  return `font-secondary font-medium tracking-[-0.01em] transition-colors duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${tone} ${extra}`.trim();
 }
 
 export default function Header() {
@@ -33,6 +39,11 @@ export default function Header() {
   const lenis = useLenis();
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const { galleryPaper } = useGalleryChrome();
+  const onHome = pathname === "/";
+  const onDarkGallery = pathname === "/illustrations" && !galleryPaper;
+  const light = (onHome && !scrolled && !open) || (onDarkGallery && !open);
 
   const onNavClick = (href: string) => {
     setOpen(false);
@@ -50,6 +61,26 @@ export default function Header() {
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  useEffect(() => {
+    if (!onHome) {
+      setScrolled(false);
+      return;
+    }
+    const update = () => {
+      const y = lenis?.scroll ?? window.scrollY;
+      setScrolled(y > window.innerHeight - 72);
+    };
+    update();
+    if (!lenis) {
+      window.addEventListener("scroll", update, { passive: true });
+      return () => window.removeEventListener("scroll", update);
+    }
+    lenis.on("scroll", update);
+    return () => {
+      lenis.off("scroll", update);
+    };
+  }, [onHome, lenis]);
 
   useEffect(() => {
     setOpen(false);
@@ -85,7 +116,11 @@ export default function Header() {
 
   return (
     <>
-      <header className="pointer-events-none fixed inset-x-0 top-0 z-50 px-4 pt-5 sm:pt-6 md:bg-background md:px-0 md:pt-0">
+      <header
+        className={`pointer-events-none fixed inset-x-0 top-0 z-50 px-4 pt-5 transition-colors duration-300 sm:pt-6 md:px-0 md:pt-0 ${
+          light ? "md:bg-transparent" : "md:bg-[#F7F4EF]"
+        }`}
+      >
         <div className="pointer-events-auto mx-auto flex h-12 w-[min(92vw,268px)] items-center justify-between rounded-full bg-ink pl-5 pr-1.5 text-background shadow-[0_10px_30px_rgba(80,60,40,0.1)] md:hidden">
           <Link
             href="/"
@@ -119,7 +154,9 @@ export default function Header() {
         <div className="page-wrap pointer-events-none hidden items-center justify-between md:flex md:h-[4.75rem]">
           <Link
             href="/"
-            className="pointer-events-auto font-display text-[16px] font-semibold tracking-[-0.03em] text-foreground"
+            className={`pointer-events-auto font-display text-[16px] font-semibold tracking-[-0.03em] ${
+              light ? "text-white" : "text-foreground"
+            }`}
           >
             Lulu Wang
           </Link>
@@ -131,6 +168,7 @@ export default function Header() {
               const className = navClass(
                 !item.external && isActivePath(pathname, item.href),
                 "text-[14px]",
+                light,
               );
               if (item.external) {
                 return (

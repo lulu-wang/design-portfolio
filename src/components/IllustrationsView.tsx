@@ -2,14 +2,16 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, useLayoutEffect } from "react";
+import Arrow from "@/components/Arrow";
+import { useGalleryChrome } from "@/components/GalleryChrome";
 import Footer from "@/components/Footer";
 import Lightbox from "@/components/Lightbox";
 import { arcfellSummary } from "@/data/arcfell";
 import { flipnoteOriginalUrl, flipnoteSummary } from "@/data/flipnote";
 import {
   illustrations,
-  galleryTabs,
+  visibleGalleryTabs,
   type Illustration,
   type GalleryCategory,
 } from "@/data/illustrations";
@@ -36,10 +38,10 @@ function ComicEntry({
   originalHref?: string;
 }) {
   return (
-    <div className="grid items-center gap-8 md:grid-cols-[minmax(0,280px)_1fr] md:gap-14">
+    <article className="grid items-center gap-8 md:grid-cols-[minmax(0,280px)_1fr] md:items-start md:gap-14">
       <Link
         href={href}
-        className="mx-auto w-full max-w-[280px] bg-white shadow-[0_18px_50px_rgba(22,22,22,0.08)] ring-1 ring-black/[0.06]"
+        className="mx-auto block w-full max-w-[280px] md:mx-0 md:max-w-none"
       >
         <Image
           src={image}
@@ -51,32 +53,39 @@ function ComicEntry({
         />
       </Link>
       <div className="max-w-xl">
-        <p className="font-display text-[12px] font-medium uppercase tracking-[0.14em] text-muted">
+        <p className="text-[11px] font-medium uppercase tracking-[0.28em] text-foreground/45">
           {eyebrow}
         </p>
-        <h2 className="page-heading mt-3 text-[clamp(1.45rem,2.2vw,1.85rem)]">
-          <Link href={href}>{title}</Link>
-        </h2>
-        <p className="mt-3 max-w-xl font-reading text-[15px] font-medium leading-relaxed text-muted">
-          {summary}
-        </p>
-        <div className="mt-8 flex flex-wrap items-center gap-3">
-          <Link href={href} className="pill-btn">
+        <div className="mt-3 md:mt-4">
+          <h2 className="font-display text-[clamp(1.65rem,2.8vw,2.15rem)] font-semibold leading-[1.12] tracking-[-0.045em] md:text-[clamp(2.2rem,4vw,3.6rem)] md:font-extrabold md:uppercase md:leading-[0.88] md:tracking-[-0.05em]">
+            <Link href={href}>{title}</Link>
+          </h2>
+          <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-foreground/65 sm:text-[16px] md:mt-4">
+            {summary}
+          </p>
+        </div>
+        <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-3">
+          <Link
+            href={href}
+            className="arrow-link inline-flex items-center gap-2 text-[12px] font-medium uppercase tracking-[0.2em]"
+          >
             Read
+            <Arrow className="h-2.5" />
           </Link>
           {originalHref ? (
             <a
               href={originalHref}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center justify-center rounded-full border border-foreground/15 bg-white px-6 py-[0.85rem] font-secondary text-[0.9rem] font-semibold tracking-[-0.02em] text-foreground transition hover:border-[#7C5CF6] hover:text-[#7C5CF6]"
+              className="arrow-link inline-flex items-center gap-2 text-[12px] font-medium uppercase tracking-[0.2em] text-foreground/50"
             >
-              Original Link
+              Original
+              <Arrow className="h-2.5" />
             </a>
           ) : null}
         </div>
       </div>
-    </div>
+    </article>
   );
 }
 
@@ -87,17 +96,11 @@ function Tile({
   item: Illustration;
   onOpen: () => void;
 }) {
-  // Tall phone mockups — slight inset so they don't dominate the masonry
-  const compactPreview =
-    item.id === "d08" || item.id === "d09" || item.id === "d10" || item.id === "d12";
-
   return (
     <button
       type="button"
       onClick={onOpen}
-      className={`group relative block w-full overflow-hidden text-left ${
-        compactPreview ? "px-5 py-5 sm:px-6 sm:py-6" : ""
-      }`}
+      className="group relative block w-full overflow-hidden bg-[#2A2A2A] text-left"
       aria-label={`View ${item.title}`}
     >
       <Image
@@ -105,9 +108,7 @@ function Tile({
         alt={item.title}
         width={item.width}
         height={item.height}
-        className={`h-auto w-full transition-transform duration-500 group-hover:scale-[1.02] ${
-          compactPreview ? "object-contain" : "object-cover"
-        }`}
+        className="block h-auto w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
         sizes="(max-width: 1023px) 50vw, 33vw"
       />
       <span className="pointer-events-none absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/10" />
@@ -154,6 +155,8 @@ export default function IllustrationsView({
   initialTab?: GalleryCategory;
 }) {
   const [tab, setTab] = useState<GalleryCategory>(initialTab);
+  const { setGalleryPaper } = useGalleryChrome();
+  const comics = tab === "comics";
   const [activeId, setActiveId] = useState<string | null>(null);
   const columnCount = useColumnCount();
 
@@ -170,6 +173,14 @@ export default function IllustrationsView({
   useEffect(() => {
     setActiveId(null);
   }, [tab]);
+
+  useLayoutEffect(() => {
+    setGalleryPaper(comics);
+  }, [comics, setGalleryPaper]);
+
+  useLayoutEffect(() => {
+    return () => setGalleryPaper(false);
+  }, [setGalleryPaper]);
 
   const activeIndex = useMemo(
     () => (activeId ? filtered.findIndex((i) => i.id === activeId) : -1),
@@ -191,35 +202,39 @@ export default function IllustrationsView({
   };
 
   return (
-    <main className="pt-28 sm:pt-32">
-      {/* Hero */}
-      <section className="page-wrap pt-6">
-        <h1 className="page-heading animate-rise text-[clamp(2.35rem,5vw,4.15rem)]">
+    <main className={`flex flex-col ${comics ? "" : "bg-[#2A2A2A]"}`}>
+      <section
+        className={`px-5 pb-12 pt-32 sm:px-8 sm:pb-14 sm:pt-36 lg:px-12 lg:pb-16 ${
+          comics ? "bg-[#F7F4EF]" : "bg-[#2A2A2A] text-[#F7F4EF]"
+        }`}
+      >
+        <h1 className="font-display text-[clamp(3.2rem,8vw,7rem)] font-extrabold uppercase leading-[0.84] tracking-[-0.06em]">
           Gallery
         </h1>
         <p
-          className="page-subtitle animate-rise mt-6 max-w-2xl sm:mt-8 md:max-w-3xl"
-          style={{ animationDelay: "80ms" }}
+          className={`mt-6 max-w-4xl text-[16px] leading-relaxed sm:text-[18px] ${
+            comics ? "text-foreground/60" : "text-[#F7F4EF]/65"
+          }`}
         >
           Studies, editorial work, and visual experiments across illustration,
-          sketches, photography and modeling, design, and comics.
+          sketches, photography, design, and comics.
         </p>
-      </section>
-
-      {/* Horizontal category tabs */}
-      <nav className="page-wrap mt-10 sm:mt-12" aria-label="Gallery categories">
-        <div className="flex gap-8 overflow-x-auto pb-px sm:gap-12">
-          {galleryTabs.map((t) => {
+        <nav className="mt-10 flex gap-6 overflow-x-auto sm:gap-10" aria-label="Gallery categories">
+          {visibleGalleryTabs.map((t) => {
             const selected = tab === t.id;
             return (
               <button
                 key={t.id}
                 type="button"
                 onClick={() => setTab(t.id)}
-                className={`min-h-11 shrink-0 border-b-2 pb-3 pt-2 text-left font-display text-[13px] font-medium uppercase tracking-[0.14em] transition-colors sm:min-h-0 sm:pt-0 ${
+                className={`min-h-11 shrink-0 text-left text-[12px] font-medium uppercase tracking-[0.2em] transition-colors ${
                   selected
-                    ? "border-foreground text-foreground"
-                    : "border-transparent text-muted hover:text-[#7C5CF6]"
+                    ? comics
+                      ? "text-foreground"
+                      : "text-[#F7F4EF]"
+                    : comics
+                      ? "text-foreground/35 hover:text-foreground"
+                      : "text-[#F7F4EF]/40 hover:text-[#F7F4EF]"
                 }`}
                 aria-pressed={selected}
               >
@@ -227,13 +242,12 @@ export default function IllustrationsView({
               </button>
             );
           })}
-        </div>
-      </nav>
+        </nav>
+      </section>
 
-      {/* Masonry — edge-to-edge, no side inset */}
-      <section className="w-full pb-10 pt-8 sm:pt-10">
+      <section className={comics ? undefined : "bg-[#2A2A2A]"}>
         {tab === "comics" ? (
-          <div className="page-wrap flex flex-col gap-16 py-8 sm:gap-20 sm:py-12">
+          <div className="flex flex-col gap-16 px-5 py-12 sm:gap-20 sm:px-8 sm:py-16 lg:gap-24 lg:px-12 lg:py-20">
             <ComicEntry
               href="/illustrations/flipnote"
               image="/images/flipnote/page-01.jpg"
@@ -241,7 +255,7 @@ export default function IllustrationsView({
               imageWidth={1071}
               imageHeight={1386}
               eyebrow="Comic · Flipnote on DSi · 2020"
-              title="Alek & Tain - Flipnote Manga"
+              title="Alek & Tain"
               summary={flipnoteSummary}
               originalHref={flipnoteOriginalUrl}
             />
@@ -257,11 +271,11 @@ export default function IllustrationsView({
             />
           </div>
         ) : filtered.length === 0 ? (
-          <div className="page-wrap py-20 sm:py-24">
-            <h2 className="font-display text-2xl font-semibold tracking-[-0.04em] sm:text-3xl">
+          <div className="bg-[#2A2A2A] px-5 py-20 text-[#F7F4EF] sm:px-8 sm:py-24 lg:px-12">
+            <h2 className="font-display text-[clamp(2rem,4vw,3rem)] font-medium tracking-[-0.04em]">
               Nothing here yet
             </h2>
-            <p className="mt-4 max-w-md text-[15px] leading-relaxed text-muted">
+            <p className="mt-4 max-w-md text-[15px] leading-relaxed text-[#F7F4EF]/60">
               This collection is empty for now. Check back soon, or explore the
               Illustrations tab.
             </p>
@@ -269,7 +283,7 @@ export default function IllustrationsView({
         ) : (
           <div
             key={`${tab}-${columnCount}`}
-            className="animate-rise grid w-full grid-cols-2 lg:grid-cols-3"
+            className="grid grid-cols-2 lg:grid-cols-3"
           >
             {columns.map((col, colIndex) => (
               <div key={colIndex} className="flex min-w-0 flex-col">
@@ -286,9 +300,7 @@ export default function IllustrationsView({
         )}
       </section>
 
-      <div className="page-wrap">
-        <Footer />
-      </div>
+      <Footer />
 
       {active && (
         <Lightbox

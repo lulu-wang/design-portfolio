@@ -38,6 +38,7 @@ body {
   letter-spacing: -0.01em;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  cursor: default;
 }
 
 ::selection {
@@ -306,7 +307,8 @@ h3 {
   scroll-snap-type: x mandatory;
   overscroll-behavior-x: contain;
   scrollbar-width: thin;
-  scrollbar-color: rgba(22, 22, 22, 0.28) transparent;
+  scrollbar-color: rgba(247, 244, 239, 0.35) transparent;
+  background: #2a2a2a;
   cursor: grab;
 }
 

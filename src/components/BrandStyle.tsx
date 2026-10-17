@@ -113,7 +113,7 @@ export default function BrandStyle({
           {branding.typefaces.map((face) => {
             const specimen = faceClass[face.name] ?? "";
             return (
-              <div key={face.name} className="min-w-0 border-t border-black/[0.06] pt-6">
+              <div key={face.name} className="min-w-0">
                 <p className={`text-3xl font-semibold tracking-tight sm:text-4xl ${specimen}`}>
                   {face.name}
                 </p>

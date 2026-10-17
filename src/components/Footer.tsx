@@ -2,21 +2,31 @@ import { social } from "@/data/site";
 
 export default function Footer() {
   return (
-    <footer className="pb-12 pt-12 sm:pb-16 sm:pt-16">
-      <ul className="flex flex-wrap items-center justify-between gap-x-8 gap-y-3">
-        {social.map((item) => (
-          <li key={item.label}>
-            <a
-              href={item.href}
-              target={item.href.startsWith("http") ? "_blank" : undefined}
-              rel="noreferrer"
-              className="color-hover font-secondary !font-bold text-[16px] text-foreground sm:text-[17px]"
-              style={{ "--hover": "#7C5CF6" } as React.CSSProperties}
-            >
-              {item.label === "Email" ? "lulu.wang25@gmail.com" : item.label}
-            </a>
-          </li>
-        ))}
+    <footer className="bg-[#2A2A2A] px-5 py-14 text-[#F7F4EF] sm:px-8 sm:py-16 lg:px-12">
+      <ul className="flex flex-row flex-wrap items-center gap-x-8 gap-y-3">
+        <li>
+          <a
+            href="mailto:lulu.wang25@gmail.com"
+            className="color-hover text-[15px] text-white"
+            style={{ "--hover": "#7C5CF6" } as React.CSSProperties}
+          >
+            lulu.wang25@gmail.com
+          </a>
+        </li>
+        {social
+          .filter((item) => item.label !== "Email")
+          .map((item) => (
+            <li key={item.label}>
+              <a
+                href={item.href}
+                target="_blank"
+                rel="noreferrer"
+                className="text-[15px] text-white/70"
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
       </ul>
     </footer>
   );

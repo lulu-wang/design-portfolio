@@ -34,36 +34,35 @@ export default async function BlogPostPage({
   if (!post) notFound();
 
   return (
-    <main className="page-wrap pt-24 sm:pt-28">
-      <section className="pt-4 sm:pt-6 md:pt-8">
+    <main className="flex min-h-svh flex-col">
+      <article className="flex-1 bg-[#F7F4EF] px-5 pb-16 pt-32 sm:px-8 sm:pb-20 sm:pt-36 lg:px-12 lg:pb-24">
         <Link
           href="/blog"
-          className="arrow-link color-hover inline-flex items-center gap-2 text-sm text-muted"
-          style={{ "--hover": "#7C5CF6" } as React.CSSProperties}
+          className="arrow-link inline-flex items-center gap-2 text-[13px] text-foreground/50"
         >
           <Arrow className="h-2.5 rotate-180" /> All posts
         </Link>
 
         <div className="mt-10 max-w-3xl sm:mt-12">
-          <h1 className="page-heading animate-rise text-[clamp(2.35rem,5vw,4.15rem)]">
-            {post.title}
-          </h1>
-          <p className="animate-rise mt-5 text-[12px] uppercase tracking-[0.08em] text-foreground/35 sm:mt-6">
+          <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-foreground/45">
             {post.date}
           </p>
-          <div className="mt-10 space-y-5 pb-16 sm:mt-12 sm:pb-24">
+          <h1 className="mt-5 font-display text-[clamp(2.6rem,6vw,5rem)] font-extrabold uppercase leading-[0.9] tracking-[-0.055em]">
+            {post.title}
+          </h1>
+          <div className="mt-10 space-y-6 sm:mt-12">
             {post.body.map((paragraph) => (
               <RichText
                 key={paragraph.slice(0, 40)}
                 as="p"
-                className="font-reading text-[15px] leading-[1.55] text-foreground/65 md:text-base md:leading-[1.6] [&_strong]:text-foreground"
+                className="text-[16px] leading-[1.65] text-foreground/70 sm:text-[17px] [&_strong]:text-foreground"
               >
                 {paragraph}
               </RichText>
             ))}
           </div>
         </div>
-      </section>
+      </article>
       <Footer />
     </main>
   );

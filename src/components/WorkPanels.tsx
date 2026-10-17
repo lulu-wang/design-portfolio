@@ -1,0 +1,93 @@
+import Image from "next/image";
+import Link from "next/link";
+import type { Project } from "@/data/site";
+import { titleHover } from "@/components/ProjectCard";
+
+function plainText(text: string) {
+  return text.replace(/\*\*([^*]+)\*\*/g, "$1").replace(/_([^_]+)_/g, "$1");
+}
+
+const grounds: Record<string, { bg: string; fg: string }> = {
+  opal: { bg: "#101014", fg: "#F6F4F1" },
+  "path-learning": { bg: "#E4F2DC", fg: "#1A2418" },
+  pulsefit: { bg: "#101010", fg: "#F5F5F5" },
+  "netflix-community": { bg: "#141414", fg: "#F6F4F1" },
+  yuugen: { bg: "#1A1A1A", fg: "#FFFFFF" },
+};
+
+const spans = [
+  "lg:col-span-7 lg:min-h-[44rem]",
+  "lg:col-span-5 lg:min-h-[44rem]",
+  "lg:col-span-4 lg:min-h-[38rem]",
+  "lg:col-span-4 lg:min-h-[38rem]",
+  "lg:col-span-4 lg:min-h-[38rem]",
+];
+
+export default function WorkPanels({ projects }: { projects: Project[] }) {
+  return (
+    <div className="grid lg:grid-cols-12">
+      {projects.map((project, index) => {
+        const tone = grounds[project.slug] ?? { bg: "#F7F4EF", fg: "#161616" };
+        const photo = project.slug === "yuugen";
+        const subtitle = plainText(project.description).split(".")[0] + ".";
+        const hover = titleHover[project.slug] ?? tone.fg;
+
+        return (
+          <Link
+            key={project.slug}
+            href={`/projects/${project.slug}`}
+            className={`group relative grid min-h-[30rem] grid-rows-[auto_1fr_auto] overflow-hidden p-5 sm:min-h-[34rem] sm:p-7 ${spans[index] ?? "lg:col-span-4"}`}
+            style={
+              {
+                background: tone.bg,
+                color: tone.fg,
+                "--hover": hover,
+              } as React.CSSProperties
+            }
+          >
+            {photo ? (
+              <>
+                <Image
+                  src={project.image}
+                  alt=""
+                  fill
+                  className="object-cover transition duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03]"
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-black/25" />
+              </>
+            ) : null}
+
+            <div className="relative z-10 flex items-center justify-between text-[11px] font-medium uppercase tracking-[0.22em] opacity-70">
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <span>{project.tags[0]?.label}</span>
+            </div>
+
+            {photo ? (
+              <div className="relative z-10" />
+            ) : (
+              <div className="relative z-10 min-h-[14rem]">
+                <Image
+                  src={project.image}
+                  alt={project.name}
+                  fill
+                  className="object-contain object-center transition duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03]"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+              </div>
+            )}
+
+            <div className="relative z-10 pt-6">
+              <h3 className="font-display text-[clamp(2.15rem,3.6vw,3.7rem)] font-extrabold uppercase leading-[0.86] tracking-[-0.055em] transition-colors duration-300 group-hover:text-[var(--hover)]">
+                {project.name}
+              </h3>
+              <p className="mt-3 max-w-md text-[14px] leading-relaxed opacity-70 sm:text-[15px]">
+                {subtitle}
+              </p>
+            </div>
+          </Link>
+        );
+      })}
+    </div>
+  );
+}

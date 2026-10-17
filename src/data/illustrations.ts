@@ -24,6 +24,13 @@ export const galleryTabs: { id: GalleryCategory; label: string }[] = [
   { id: "comics", label: "Comics" },
 ];
 
+/** Add a category id here to hide its tab without deleting the images. */
+const hiddenGalleryTabs = new Set<GalleryCategory>([]);
+
+export const visibleGalleryTabs = galleryTabs.filter(
+  (tab) => !hiddenGalleryTabs.has(tab.id),
+);
+
 export const illustrations: Illustration[] = [
   {
     id: "27",

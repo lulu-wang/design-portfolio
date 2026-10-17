@@ -35,33 +35,27 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
   const subhead = "font-display text-base font-semibold tracking-[-0.03em] md:text-lg";
 
   return (
-    <>
-    <main className="page-wrap pt-24 sm:pt-28">
-      <section className="pt-4 sm:pt-6 md:pt-8">
+    <div className="bg-[#F7F4EF]">
+    <main className="px-5 pt-32 sm:px-8 sm:pt-36 lg:px-12">
+      <section className="pb-12 sm:pb-16">
         <Link
           href="/projects"
-          className="arrow-link color-hover inline-flex items-center gap-2 text-sm text-muted"
-          style={{ "--hover": "#7C5CF6" } as React.CSSProperties}
+          className="arrow-link inline-flex items-center gap-2 text-[13px] text-foreground/50"
         >
           <Arrow className="h-2.5 rotate-180" /> All projects
         </Link>
 
-        <div className="mt-10 max-w-3xl sm:mt-12">
-          <h1 className="page-heading animate-rise text-[clamp(2.35rem,5vw,4.15rem)]">
+        <div className="mt-10 max-w-4xl sm:mt-12">
+          <p className="text-[11px] font-medium uppercase tracking-[0.28em] text-foreground/45">
+            Case study
+          </p>
+          <h1 className="mt-5 font-display text-[clamp(3rem,7vw,6.4rem)] font-extrabold uppercase leading-[0.86] tracking-[-0.06em]">
             {project.name}
           </h1>
 
-          <div className="mt-5 flex flex-wrap gap-2 sm:mt-6">
-            {project.tags.map((tag, i) => (
-              <span
-                key={tag.label}
-                className="animate-rise rounded-full border border-foreground/12 px-3.5 py-1.5 text-[12px] uppercase tracking-[0.08em] text-foreground/55 sm:text-[13px]"
-                style={{ animationDelay: `${140 + i * 70}ms` }}
-              >
-                {tag.label}
-              </span>
-            ))}
-          </div>
+          <p className="mt-6 text-[12px] font-medium uppercase tracking-[0.18em] text-foreground/45">
+            {project.tags.map((tag) => tag.label).join("  ·  ")}
+          </p>
 
             <p
               className="page-subtitle animate-rise mt-6 max-w-3xl sm:mt-8 md:max-w-4xl [&_strong]:text-foreground [&_em]:text-foreground/80"
@@ -123,7 +117,7 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
       </main>
 
       <CaseBleed>
-        <div className="page-wrap">
+        <div className="px-5 sm:px-8 lg:px-12">
           <ProjectCover
             name={project.name}
             src={project.image}
@@ -131,7 +125,7 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
             screens={project.previewScreens}
             width={2390}
             height={1580}
-            className="animate-rise aspect-[239/158] rounded-[28px]"
+            className="animate-rise aspect-[239/158]"
             sizes="(max-width: 768px) 50vw, 25vw"
             priority
             size="hero"
@@ -139,7 +133,7 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
         </div>
       </CaseBleed>
 
-      <main className="page-wrap">
+      <main className="px-5 sm:px-8 lg:px-12">
         <CaseSection
           label="Overview"
           title="Overview"
@@ -329,7 +323,7 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
 
       {cs.onboarding && (
         <>
-          <div className="page-wrap">
+          <div className="px-5 sm:px-8 lg:px-12">
             <CaseSection
               label="Onboarding"
               title="Onboarding quiz"
@@ -371,7 +365,7 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
         </>
       )}
 
-      <div className="page-wrap">
+      <div className="px-5 sm:px-8 lg:px-12">
         {cs.branding && (
           <CaseSection
             label="Style"
@@ -447,7 +441,7 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
               ))}
             </>
           ) : (
-            <div className="mt-12 overflow-hidden rounded-[28px] bg-[#f6f6f4]">
+            <div className="mt-12 overflow-hidden bg-[#f6f6f4]">
               <Image
                 src={project.image}
                 alt={`${project.name} high fidelity designs`}
@@ -461,7 +455,7 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
         </CaseBleed>
       )}
 
-      <main className="page-wrap">
+      <main className="px-5 sm:px-8 lg:px-12">
         {cs.solution && (
           <CaseSection
             label="Solution"
@@ -569,7 +563,7 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
         </CaseSection>
         )}
 
-        <section className="border-t border-foreground/[0.06] py-14 sm:py-16">
+        <section className="py-14 sm:py-20">
           <Link
             href={`/projects/${nextProject.slug}`}
             className="group block"
@@ -579,18 +573,19 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
               } as React.CSSProperties
             }
           >
-            <p className="section-label">Next</p>
-            <div className="mt-3 flex items-center justify-between gap-6">
-              <h2 className="font-display text-2xl font-semibold tracking-[-0.04em] transition-colors duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:text-[var(--hover)] sm:text-3xl md:text-4xl">
+            <p className="text-[11px] font-medium uppercase tracking-[0.28em] text-foreground/45">
+              Next
+            </p>
+            <div className="mt-4 flex items-end justify-between gap-6">
+              <h2 className="font-display text-[clamp(2.4rem,6vw,5rem)] font-extrabold uppercase leading-[0.86] tracking-[-0.055em] transition-colors duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:text-[var(--hover)]">
                 {nextProject.name}
               </h2>
-              <Arrow className="h-3.5 shrink-0 transition-transform group-hover:translate-x-2 sm:h-4" />
+              <Arrow className="mb-2 h-3.5 shrink-0 transition-transform group-hover:translate-x-2 sm:h-4" />
             </div>
           </Link>
         </section>
-
-        <Footer />
       </main>
-    </>
+      <Footer />
+    </div>
   );
 }

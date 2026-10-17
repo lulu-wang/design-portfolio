@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Archivo, Inter } from "next/font/google";
 import "./globals.css";
+import { GalleryChromeProvider } from "@/components/GalleryChrome";
 import Header from "@/components/Header";
 import SiteGrain from "@/components/SiteGrain";
 import SmoothScroll from "@/components/SmoothScroll";
@@ -56,10 +57,12 @@ export default function RootLayout({
         className={`${body.variable} ${archivo.variable} ${inter.variable} antialiased`}
       >
         <SiteGrain />
-        <SmoothScroll>
-          <Header />
-          {children}
-        </SmoothScroll>
+        <GalleryChromeProvider>
+          <SmoothScroll>
+            <Header />
+            {children}
+          </SmoothScroll>
+        </GalleryChromeProvider>
       </body>
     </html>
   );

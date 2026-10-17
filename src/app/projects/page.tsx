@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import ProjectCard from "@/components/ProjectCard";
 import Footer from "@/components/Footer";
+import WorkPanels from "@/components/WorkPanels";
 import { projects } from "@/data/site";
 
 export const metadata: Metadata = {
@@ -10,24 +10,19 @@ export const metadata: Metadata = {
 
 export default function ProjectsPage() {
   return (
-    <main className="page-wrap pt-28 sm:pt-32">
-      <section className="pt-6 pb-12 sm:pb-16 md:pb-20">
-        <h1 className="page-heading animate-rise text-[clamp(2.35rem,5vw,4.15rem)]">
-          Projects
+    <main className="flex flex-col">
+      <section className="bg-[#F7F4EF] px-5 pb-14 pt-32 sm:px-8 sm:pb-16 sm:pt-36 lg:px-12 lg:pb-20">
+        <h1 className="font-display text-[clamp(3.2rem,8vw,7rem)] font-extrabold uppercase leading-[0.84] tracking-[-0.06em]">
+          Selected work
         </h1>
-        <p
-          className="page-subtitle animate-rise mt-6 max-w-3xl sm:mt-8"
-          style={{ animationDelay: "80ms" }}
-        >
+        <p className="mt-6 max-w-4xl text-[16px] leading-relaxed text-foreground/60 sm:text-[18px]">
           Product design, brand, and research across meetings, health, learning,
           streaming, and apparel.
         </p>
       </section>
 
-      <section className="grid gap-12 pb-10 sm:grid-cols-2 sm:gap-8 lg:gap-10">
-        {projects.map((project, i) => (
-          <ProjectCard key={project.slug} project={project} index={i} />
-        ))}
+      <section>
+        <WorkPanels projects={projects} />
       </section>
 
       <Footer />
