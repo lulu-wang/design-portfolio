@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function NotFound() {
   return (
     <main className="flex flex-col">
-      <section className="bg-[#F7F4EF] px-5 pb-20 pt-32 sm:px-8 sm:pb-28 sm:pt-36 lg:px-12">
+      <section className="bg-[#F7F4EF] page-inset pb-20 pt-32 sm:pb-28 sm:pt-36">
         <p className="text-[11px] font-medium uppercase tracking-[0.28em] text-foreground/45">
           Missing
         </p>

@@ -36,7 +36,7 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
 
   return (
     <div className="bg-[#F7F4EF]">
-    <main className="px-5 pt-32 sm:px-8 sm:pt-36 lg:px-12">
+    <main className="page-inset pt-32 sm:pt-36">
       <section className="pb-12 sm:pb-16">
         <Link
           href="/projects"
@@ -117,7 +117,7 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
       </main>
 
       <CaseBleed>
-        <div className="px-5 sm:px-8 lg:px-12">
+        <div className="page-inset">
           <ProjectCover
             name={project.name}
             src={project.image}
@@ -133,7 +133,7 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
         </div>
       </CaseBleed>
 
-      <main className="px-5 sm:px-8 lg:px-12">
+      <main className="page-inset">
         <CaseSection
           label="Overview"
           title="Overview"
@@ -323,7 +323,7 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
 
       {cs.onboarding && (
         <>
-          <div className="px-5 sm:px-8 lg:px-12">
+          <div className="page-inset">
             <CaseSection
               label="Onboarding"
               title="Onboarding quiz"
@@ -365,7 +365,7 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
         </>
       )}
 
-      <div className="px-5 sm:px-8 lg:px-12">
+      <div className="page-inset">
         {cs.branding && (
           <CaseSection
             label="Style"
@@ -455,7 +455,7 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
         </CaseBleed>
       )}
 
-      <main className="px-5 sm:px-8 lg:px-12">
+      <main className="page-inset">
         {cs.solution && (
           <CaseSection
             label="Solution"

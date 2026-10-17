@@ -39,17 +39,14 @@ function ComicEntry({
 }) {
   return (
     <article className="grid items-center gap-8 md:grid-cols-[minmax(0,280px)_1fr] md:items-start md:gap-14">
-      <Link
-        href={href}
-        className="mx-auto block w-full max-w-[280px] md:mx-0 md:max-w-none"
-      >
+      <Link href={href} className="block w-full">
         <Image
           src={image}
           alt={imageAlt}
           width={imageWidth}
           height={imageHeight}
           className="h-auto w-full"
-          sizes="280px"
+          sizes="(max-width: 768px) 100vw, 280px"
         />
       </Link>
       <div className="max-w-xl">
@@ -204,7 +201,7 @@ export default function IllustrationsView({
   return (
     <main className={`flex flex-col ${comics ? "" : "bg-[#2A2A2A]"}`}>
       <section
-        className={`px-5 pb-12 pt-32 sm:px-8 sm:pb-14 sm:pt-36 lg:px-12 lg:pb-16 ${
+        className={`page-inset pb-12 pt-32 sm:pb-14 sm:pt-36 lg:pb-16 ${
           comics ? "bg-[#F7F4EF]" : "bg-[#2A2A2A] text-[#F7F4EF]"
         }`}
       >
@@ -247,7 +244,7 @@ export default function IllustrationsView({
 
       <section className={comics ? undefined : "bg-[#2A2A2A]"}>
         {tab === "comics" ? (
-          <div className="flex flex-col gap-16 px-5 py-12 sm:gap-20 sm:px-8 sm:py-16 lg:gap-24 lg:px-12 lg:py-20">
+          <div className="page-inset flex flex-col gap-16 py-12 sm:gap-20 sm:py-16 lg:gap-24 lg:py-20">
             <ComicEntry
               href="/illustrations/flipnote"
               image="/images/flipnote/page-01.jpg"
@@ -271,7 +268,7 @@ export default function IllustrationsView({
             />
           </div>
         ) : filtered.length === 0 ? (
-          <div className="bg-[#2A2A2A] px-5 py-20 text-[#F7F4EF] sm:px-8 sm:py-24 lg:px-12">
+          <div className="page-inset bg-[#2A2A2A] py-20 text-[#F7F4EF] sm:py-24">
             <h2 className="font-display text-[clamp(2rem,4vw,3rem)] font-medium tracking-[-0.04em]">
               Nothing here yet
             </h2>

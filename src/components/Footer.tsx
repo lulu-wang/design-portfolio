@@ -2,7 +2,7 @@ import { social } from "@/data/site";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#2A2A2A] px-5 py-14 text-[#F7F4EF] sm:px-8 sm:py-16 lg:px-12">
+    <footer className="bg-[#2A2A2A] page-inset py-14 text-[#F7F4EF] sm:py-16">
       <ul className="flex flex-row flex-wrap items-center gap-x-8 gap-y-3">
         <li>
           <a

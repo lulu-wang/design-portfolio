@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function ProjectsPage() {
   return (
     <main className="flex flex-col">
-      <section className="bg-[#F7F4EF] px-5 pb-14 pt-32 sm:px-8 sm:pb-16 sm:pt-36 lg:px-12 lg:pb-20">
+      <section className="bg-[#F7F4EF] page-inset pb-14 pt-32 sm:pb-16 sm:pt-36 lg:pb-20">
         <h1 className="font-display text-[clamp(3.2rem,8vw,7rem)] font-extrabold uppercase leading-[0.84] tracking-[-0.06em]">
           Selected work
         </h1>

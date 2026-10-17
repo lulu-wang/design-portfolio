@@ -94,10 +94,10 @@ export default function EditorialHome() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-black/30" />
 
-        <p className="absolute left-5 top-1/2 hidden -translate-y-1/2 text-[11px] font-medium uppercase tracking-[0.28em] text-white/75 [writing-mode:vertical-rl] rotate-180 sm:left-8 sm:block lg:left-12">
+        <p className="absolute left-8 top-1/2 hidden -translate-y-1/2 text-[11px] font-medium uppercase tracking-[0.28em] text-white/75 [writing-mode:vertical-rl] rotate-180 sm:left-12 sm:block lg:left-24">
           Product designer
         </p>
-        <div className="absolute inset-x-0 bottom-0 px-5 pb-8 sm:px-8 sm:pb-10 lg:px-12 lg:pb-12">
+        <div className="absolute inset-x-0 bottom-0 page-inset pb-8 sm:pb-10 lg:pb-12">
           <p className="text-[11px] font-medium uppercase tracking-[0.28em] text-white/75">
             California
           </p>
@@ -107,7 +107,7 @@ export default function EditorialHome() {
         </div>
       </section>
 
-      <section className="bg-[#F7F4EF] px-5 py-16 sm:px-8 sm:py-20 lg:px-12 lg:py-28">
+      <section className="bg-[#F7F4EF] page-inset py-16 sm:py-20 lg:py-28">
         <div className="grid items-start gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-6">
             <p className="font-display text-[clamp(1.55rem,2.35vw,2.15rem)] font-medium leading-[1.25] tracking-[-0.035em] text-foreground">
@@ -141,7 +141,7 @@ export default function EditorialHome() {
         </div>
       </section>
 
-      <section className="bg-white px-5 py-14 sm:px-8 sm:py-20 lg:px-12 lg:py-24">
+      <section className="bg-white page-inset py-14 sm:py-20 lg:py-24">
         <p className="text-[11px] font-medium uppercase tracking-[0.28em] text-foreground/45">
           Previously
         </p>
@@ -172,7 +172,7 @@ export default function EditorialHome() {
         </p>
       </section>
 
-      <section className="bg-[#F3D4C3] px-5 pt-6 pb-14 sm:px-8 sm:pt-8 sm:pb-16 lg:px-12 lg:pt-10 lg:pb-20">
+      <section className="bg-[#F3D4C3] page-inset pt-6 pb-14 sm:pt-8 sm:pb-16 lg:pt-10 lg:pb-20">
         <div className="relative mx-auto aspect-[10/7] w-full max-w-4xl">
           {phones.map((phone) => (
             <PhoneFrame key={phone.src} {...phone} />
@@ -192,7 +192,7 @@ export default function EditorialHome() {
         </div>
       </section>
 
-      <section className="bg-[#C9D4C8] px-5 py-16 text-[#1A2420] sm:px-8 sm:py-20 lg:px-12 lg:py-28">
+      <section className="bg-[#C9D4C8] page-inset py-16 text-[#1A2420] sm:py-20 lg:py-28">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-4">
             <h2 className="font-display text-[clamp(3.4rem,6vw,5.6rem)] font-extrabold uppercase leading-[0.84] tracking-[-0.06em]">
@@ -225,7 +225,7 @@ export default function EditorialHome() {
       </section>
 
       <section className="bg-[#2A2A2A]" id="work">
-        <div className="flex items-baseline justify-between px-5 py-6 sm:px-8 sm:py-8 lg:px-12">
+        <div className="flex items-baseline justify-between page-inset py-6 sm:py-8">
           <h2 className="text-[11px] font-medium uppercase tracking-[0.28em] text-white/55">
             Selected work
           </h2>
@@ -241,7 +241,7 @@ export default function EditorialHome() {
 
       <section
         id="background"
-        className="scroll-mt-28 bg-white px-5 py-16 sm:px-8 sm:py-20 lg:px-12 lg:py-28"
+        className="page-inset scroll-mt-28 bg-white py-16 sm:py-20 lg:py-28"
       >
         <div className="flex items-baseline justify-between gap-6">
           <h2 className="text-[11px] font-medium uppercase tracking-[0.28em] text-foreground/50">

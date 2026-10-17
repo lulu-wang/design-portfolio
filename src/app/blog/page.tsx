@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function BlogPage() {
   return (
     <main className="flex min-h-svh flex-col">
-      <section className="flex-1 bg-[#F7F4EF] px-5 pb-16 pt-32 sm:px-8 sm:pb-20 sm:pt-36 lg:px-12 lg:pb-24">
+      <section className="flex-1 bg-[#F7F4EF] page-inset pb-16 pt-32 sm:pb-20 sm:pt-36 lg:pb-24">
         <h1 className="font-display text-[clamp(3.2rem,8vw,7rem)] font-extrabold uppercase leading-[0.84] tracking-[-0.06em]">
           Blog
         </h1>

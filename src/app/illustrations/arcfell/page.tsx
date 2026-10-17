@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function ArcfellPage() {
   return (
     <main className="flex flex-col">
-      <section className="bg-[#F7F4EF] px-5 pb-12 pt-32 sm:px-8 sm:pt-36 lg:px-12">
+      <section className="bg-[#F7F4EF] page-inset pb-12 pt-32 sm:pt-36">
         <Link
           href="/illustrations?tab=comics"
           className="arrow-link inline-flex items-center gap-2 text-[13px] text-foreground/50"

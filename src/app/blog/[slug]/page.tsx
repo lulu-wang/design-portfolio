@@ -35,7 +35,7 @@ export default async function BlogPostPage({
 
   return (
     <main className="flex min-h-svh flex-col">
-      <article className="flex-1 bg-[#F7F4EF] px-5 pb-16 pt-32 sm:px-8 sm:pb-20 sm:pt-36 lg:px-12 lg:pb-24">
+      <article className="flex-1 bg-[#F7F4EF] page-inset pb-16 pt-32 sm:pb-20 sm:pt-36 lg:pb-24">
         <Link
           href="/blog"
           className="arrow-link inline-flex items-center gap-2 text-[13px] text-foreground/50"

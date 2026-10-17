@@ -66,7 +66,7 @@ const skills = [
 export default function AboutPage() {
   return (
     <main className="flex flex-col">
-      <section className="bg-[#F7F4EF] px-5 pb-16 pt-32 sm:px-8 sm:pb-20 sm:pt-36 lg:px-12 lg:pb-24">
+      <section className="bg-[#F7F4EF] page-inset pb-16 pt-32 sm:pb-20 sm:pt-36 lg:pb-24">
         <p className="text-[11px] font-medium uppercase tracking-[0.28em] text-foreground/45">
           About
         </p>
@@ -123,7 +123,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-[#F6E7DC] px-5 py-16 sm:px-8 sm:py-20 lg:px-12 lg:py-24">
+      <section className="bg-[#F6E7DC] page-inset py-16 sm:py-20 lg:py-24">
         <h2 className="font-display text-[clamp(2.8rem,6vw,5rem)] font-extrabold uppercase leading-[0.86] tracking-[-0.06em]">
           Capabilities
         </h2>
@@ -148,7 +148,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section id="contact" className="scroll-mt-28 bg-[#F7F4EF] px-5 py-16 sm:px-8 sm:py-20 lg:px-12 lg:py-24">
+      <section id="contact" className="scroll-mt-28 bg-[#F7F4EF] page-inset py-16 sm:py-20 lg:py-24">
         <h2 className="font-display text-[clamp(2.8rem,6vw,5rem)] font-extrabold uppercase leading-[0.86] tracking-[-0.06em]">
           Let&rsquo;s talk
         </h2>
