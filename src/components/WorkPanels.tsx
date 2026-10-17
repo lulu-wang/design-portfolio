@@ -23,6 +23,69 @@ const spans = [
   "lg:col-span-4 lg:min-h-[38rem]",
 ];
 
+const panelPhones: Record<string, { src: string; alt: string }[]> = {
+  "path-learning": [
+    {
+      src: "/images/projects/path-learning/screens/01-splash.png",
+      alt: "Path Learning splash",
+    },
+  ],
+  pulsefit: [
+    {
+      src: "/images/projects/pulsefit/final/15.png",
+      alt: "PulseFit workout detail",
+    },
+    {
+      src: "/images/projects/pulsefit/final/16.png",
+      alt: "PulseFit nutrition",
+    },
+  ],
+};
+
+function PanelPhones({ screens }: { screens: { src: string; alt: string }[] }) {
+  const single = screens.length === 1;
+
+  return (
+    <div className="relative z-10 flex h-full min-h-0 items-end justify-center gap-[4%] px-1 pt-5">
+      {screens.map((screen) => (
+        <div
+          key={screen.src}
+          className={`h-[96%] ${single ? "max-w-[54%]" : "max-w-[44%]"}`}
+          style={{ aspectRatio: "393 / 852" }}
+        >
+          <div
+            className={`flex h-full flex-col bg-[#161616] shadow-[0_18px_36px_rgba(0,0,0,0.28)] ${
+              screen.src.includes("path-learning")
+                ? "rounded-[1rem] p-[3px] sm:rounded-[1.45rem] sm:p-[6px]"
+                : "rounded-[1.45rem] p-[6px]"
+            }`}
+          >
+            <div
+              className={`relative min-h-0 flex-1 overflow-hidden bg-white ${
+                screen.src.includes("path-learning")
+                  ? "rounded-[0.8rem] sm:rounded-[1.1rem]"
+                  : "rounded-[1.1rem]"
+              }`}
+            >
+              <Image
+                src={screen.src}
+                alt={screen.alt}
+                fill
+                className={`object-center ${
+                  screen.src.includes("path-learning")
+                    ? "object-cover"
+                    : "object-contain"
+                }`}
+                sizes={single ? "240px" : "180px"}
+              />
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export default function WorkPanels({ projects }: { projects: Project[] }) {
   return (
     <div className="grid lg:grid-cols-12">
@@ -65,6 +128,8 @@ export default function WorkPanels({ projects }: { projects: Project[] }) {
 
             {photo ? (
               <div className="relative z-10" />
+            ) : panelPhones[project.slug] ? (
+              <PanelPhones screens={panelPhones[project.slug]} />
             ) : (
               <div className="relative z-10 min-h-[14rem]">
                 <Image

@@ -33,7 +33,11 @@ function CoverPhones({
                 width={393}
                 height={852}
                 priority={priority}
-                className="block h-full w-full object-cover object-top"
+                className={`block h-full w-full object-center ${
+                  screen.src.includes("path-learning")
+                    ? "object-cover"
+                    : "object-contain"
+                }`}
                 sizes={sizes}
               />
             </div>

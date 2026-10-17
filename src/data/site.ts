@@ -860,6 +860,16 @@ export const projects: Project[] = [
     description:
       "A mobile fitness and diet tracker designed for people who want to stay consistent without spending their free time in the app.",
     image: "/images/project-pulsefit-cover.png",
+    previewScreens: [
+      {
+        src: "/images/projects/pulsefit/final/15.png",
+        alt: "PulseFit workout detail — Full Body Burn",
+      },
+      {
+        src: "/images/projects/pulsefit/final/16.png",
+        alt: "PulseFit nutrition — calories and today's meals",
+      },
+    ],
     tags: [
       { label: "UX Design", variant: "outline" },
       { label: "Product Research", variant: "solid" },

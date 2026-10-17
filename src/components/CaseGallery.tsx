@@ -146,9 +146,19 @@ function PhoneFrame({
   return (
     <figure className={`mx-auto w-full ${roomy ? "max-w-[220px] sm:max-w-[240px] md:max-w-[260px]" : ""}`}>
       {/* Onur-style device shell — thin dark bezel, soft lift */}
-      <div className="rounded-[2.6rem] bg-[#111] p-[10px] shadow-[0_28px_56px_rgba(0,0,0,0.45)] ring-1 ring-white/[0.08] sm:rounded-[2.85rem] sm:p-[11px]">
+      <div
+        className={`bg-[#111] shadow-[0_28px_56px_rgba(0,0,0,0.45)] ring-1 ring-white/[0.08] ${
+          isPathScreen
+            ? "rounded-[1.35rem] p-[4px] sm:rounded-[2.85rem] sm:p-[11px]"
+            : "rounded-[2.6rem] p-[10px] sm:rounded-[2.85rem] sm:p-[11px]"
+        }`}
+      >
         <div
-          className={`relative overflow-hidden rounded-[2.05rem] leading-none sm:rounded-[2.25rem] ${
+          className={`relative overflow-hidden leading-none ${
+            isPathScreen
+              ? "rounded-[1.1rem] sm:rounded-[2.25rem]"
+              : "rounded-[2.05rem] sm:rounded-[2.25rem]"
+          } ${
             fillFrame
               ? nativeChrome
                 ? "aspect-[393/852]"
@@ -163,11 +173,7 @@ function PhoneFrame({
               src={item.src}
               alt={item.alt}
               fill
-              className={
-                isPathScreen
-                  ? "object-contain object-top"
-                  : "object-cover object-top"
-              }
+              className="object-cover object-top"
               sizes="(max-width: 768px) 50vw, (max-width: 1536px) 33vw, 25vw"
             />
           ) : (

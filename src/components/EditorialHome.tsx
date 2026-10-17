@@ -64,8 +64,8 @@ function PhoneFrame({
 }) {
   return (
     <div className={`absolute bottom-0 ${className}`}>
-      <div className="rounded-[1.7rem] bg-[#161616] p-[7px] shadow-[0_24px_50px_rgba(60,30,10,0.18)] ring-1 ring-black/10 sm:rounded-[2rem] sm:p-2">
-        <div className="aspect-[393/852] overflow-hidden rounded-[1.25rem] bg-white sm:rounded-[1.55rem]">
+      <div className="rounded-[1.05rem] bg-[#161616] p-[3px] shadow-[0_24px_50px_rgba(60,30,10,0.18)] ring-1 ring-black/10 sm:rounded-[2rem] sm:p-2">
+        <div className="aspect-[393/852] overflow-hidden rounded-[0.85rem] bg-white sm:rounded-[1.55rem]">
           <Image
             src={src}
             alt={alt}
