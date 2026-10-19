@@ -12,6 +12,7 @@ export const titleHover: Record<string, string> = {
   pulsefit: "#6B9A12",
   "netflix-community": "#E50914",
   yuugen: "#C45C6A",
+  "canada-online-tutoring": "#C71120",
 };
 
 export default function ProjectCard({

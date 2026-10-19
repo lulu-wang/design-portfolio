@@ -259,7 +259,49 @@ export default function CaseGallery({
         : "bg-[#ececec]";
   const captionClass = dark ? "text-white/45" : "text-muted";
 
-  if (layout === "full" || layout === "stack") {
+  if (layout === "stack") {
+    return (
+      <div className={`${flush ? "mt-0" : "mt-10 sm:mt-12"} px-5 sm:px-8`}>
+        <div className="mx-auto flex w-full max-w-5xl flex-col items-center gap-8 sm:gap-10">
+          <GalleryHeading heading={heading} />
+          {items.map((item) => {
+            const portrait = (item.height ?? 1) > (item.width ?? 1);
+            const widePage = portrait && (item.width ?? 0) >= 800;
+            return (
+              <figure
+                key={item.src}
+                className={`w-full ${
+                  widePage ? "max-w-3xl" : portrait ? "max-w-[440px]" : "max-w-4xl"
+                }`}
+              >
+                <Image
+                  src={item.src}
+                  alt={item.alt}
+                  width={item.width ?? 1200}
+                  height={item.height ?? 800}
+                  className="h-auto w-full"
+                  sizes={
+                    widePage
+                      ? "(max-width: 768px) 100vw, 768px"
+                      : portrait
+                        ? "440px"
+                        : "(max-width: 768px) 100vw, 896px"
+                  }
+                />
+                {item.caption && (
+                  <figcaption className="mt-3 text-center text-xs tracking-wide text-muted">
+                    {item.caption}
+                  </figcaption>
+                )}
+              </figure>
+            );
+          })}
+        </div>
+      </div>
+    );
+  }
+
+  if (layout === "full") {
     return (
       <div
         className={`${flush ? "mt-0" : "mt-10 sm:mt-12"} ${

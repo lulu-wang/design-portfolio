@@ -13,6 +13,7 @@ const grounds: Record<string, { bg: string; fg: string }> = {
   pulsefit: { bg: "#101010", fg: "#F5F5F5" },
   "netflix-community": { bg: "#141414", fg: "#F6F4F1" },
   yuugen: { bg: "#1A1A1A", fg: "#FFFFFF" },
+  "canada-online-tutoring": { bg: "#002538", fg: "#F4F4F2" },
 };
 
 const spans = [
@@ -21,6 +22,7 @@ const spans = [
   "lg:col-span-4 lg:min-h-[38rem]",
   "lg:col-span-4 lg:min-h-[38rem]",
   "lg:col-span-4 lg:min-h-[38rem]",
+  "lg:col-span-12 lg:min-h-[36rem]",
 ];
 
 const panelPhones: Record<string, { src: string; alt: string }[]> = {
@@ -130,6 +132,16 @@ export default function WorkPanels({ projects }: { projects: Project[] }) {
               <div className="relative z-10" />
             ) : panelPhones[project.slug] ? (
               <PanelPhones screens={panelPhones[project.slug]} />
+            ) : project.slug === "canada-online-tutoring" ? (
+              <div className="relative z-10 min-h-[16rem] overflow-hidden">
+                <Image
+                  src={project.image}
+                  alt={project.name}
+                  fill
+                  className="object-contain object-center transition duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03]"
+                  sizes="(max-width: 1024px) 100vw, 60vw"
+                />
+              </div>
             ) : (
               <div className="relative z-10 min-h-[14rem]">
                 <Image

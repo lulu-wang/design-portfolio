@@ -45,6 +45,11 @@ export type CaseStudy = {
     personas?: Persona[];
     quotes?: string[];
   };
+  /** Places the research said the product had to change */
+  areas?: {
+    intro: string;
+    items: { title: string; description: string }[];
+  };
   define?: {
     intro: string;
     steps: string[];
@@ -405,6 +410,240 @@ export const projects: Project[] = [
         proud:
           "Building the **working prototype** — Figma to Cursor — so the demo is the product: record, transcribe, task, assign, search, instead of a slide of the idea.",
       },
+    },
+  },
+  {
+    slug: "canada-online-tutoring",
+    name: "Canada Online Tutoring",
+    description:
+      "A UX and website redesign that gives each tutoring program its own page, from early childhood through university, career skills, and English.",
+    image: "/images/projects/canada-online-tutoring/home-photo.jpg",
+    tags: [
+      { label: "UX Design", variant: "outline" },
+      { label: "Website", variant: "solid" },
+    ],
+    caseStudy: {
+      tagline:
+        "A website redesign for a Canadian tutoring service, so families can tell the programs apart and see how to start.",
+      presentation: {
+        label: "current site",
+        href: "https://canadaonlinetutoring.ca/",
+      },
+      meta: {
+        role: "UX Designer",
+        timeline: "2026",
+        team: "Website redesign",
+        platform: "Web",
+        tools: ["Figma"],
+      },
+      overview:
+        "**Canada Online Tutoring** supports learners from early childhood through university, plus career skills and English. The current site introduces those offers as sections on one page. The redesign turns them into **six programs**, each with its own page, a shared way to browse subjects, and the same path from “this is who it’s for” to booking a consultation.",
+      problem: {
+        statement:
+          "People had to book before the site would answer a basic question.",
+        points: [
+          "**The consultation was a gate.** Pricing, weekly hours, and tutor availability were not on the page. Robin Cheng said “Book a free consultation” felt like a personal-injury site, and that he might leave.",
+          "**Subject cards didn’t go anywhere.** Allison’s mom tried to open Mathematics, hit a dead end, and rated finding a math tutor **4–5 out of 5** in difficulty. The hero buttons also disappeared into the photo.",
+          "**Programs and Subjects overlapped.** Rita expected parents to start with a subject. The age-based program pages had little on them, and it was unclear when to use Programs, Subjects, or Events.",
+        ],
+      },
+      goals:
+        "Make the programs easy to tell apart, put price and tutor details on the page before a booking, and give every subject a next step.",
+      research: {
+        intro:
+          "I interviewed **three people** on the live site — Robin Cheng, Allison’s mom, and Rita — and affinity-mapped the sessions. Five themes kept returning: the consultation gate, dead-end navigation, a confusing menu, trust, and how families actually search.",
+        methods: [
+          {
+            title: "Interviews",
+            description:
+              "**Three sessions.** Each person tried to find a tutor, a subject, and a price before deciding whether to book.",
+          },
+          {
+            title: "Affinity mapping",
+            description:
+              "Quotes grouped into **five themes**, from the booking gate to school referrals, word of mouth, and local search.",
+          },
+          {
+            title: "Task walkthroughs",
+            description:
+              "Finding a math tutor, opening a subject card, and reaching a filter or a booking. The Mathematics card was the clearest break.",
+          },
+        ],
+        insights: [
+          { stat: "3", label: "interviews on the live site" },
+          { stat: "5", label: "themes from affinity mapping" },
+          { stat: "2", label: "personas guiding the redesign" },
+        ],
+        quotes: [
+          "Before clicking on book free consultation, I want to look at the website for more info on courses and offerings and not have to book a consultation immediately.",
+          "I tried to click on the Mathematics box but it didn’t lead anywhere.",
+          "Programs and Subjects feel redundant. The age-range program pages had little information.",
+        ],
+        personas: [
+          {
+            name: "The Independent Evaluator",
+            role: "26–28 · Self-serve researcher",
+            quote:
+              "Missing basics before a consultation: cost, how many hours a week, and tutor availability.",
+            goals: [
+              "Inspect course codes, curriculum fit, prices, and availability before sharing contact details",
+              "Compare credentials, languages, and real tutor profiles",
+            ],
+            frustrations: [
+              "A consultation is required before the site shows a price, hours, or who is available",
+              "Hidden filters, overlapping Programs and Subjects pages, and reviews that all look like five stars",
+            ],
+          },
+          {
+            name: "The Direct Task-Oriented Parent",
+            role: "60 · Parent looking for a tutor now",
+            quote:
+              "I tried to click on the Mathematics box but it didn’t lead anywhere.",
+            goals: [
+              "Find a subject tutor quickly and check that they are qualified",
+              "Filter by subject, gender, and schedule, then book",
+            ],
+            frustrations: [
+              "Subject cards and calls to action that don’t lead anywhere",
+              "Pricing that stays hidden, and too many steps before a booking",
+            ],
+          },
+        ],
+      },
+      areas: {
+        intro:
+          "Four areas came out of the interviews. The program pages take on the sparse, overlapping program content. Pricing, working subject cards, and tutor filters are the rest of what those sessions asked for.",
+        items: [
+          {
+            title: "Pricing on the page",
+            description:
+              "Show a starting rate or range on Early Childhood, K–8, high school, university, and career pages, with an email list or a short inquiry beside the consultation.",
+          },
+          {
+            title: "Cards that open",
+            description:
+              "Subject and course cards need a destination. Label the course-code and grade filter so it is obvious that it opens the directory.",
+          },
+          {
+            title: "A clearer menu",
+            description:
+              "Programs, Subjects, and Events were easy to confuse. Age-based programs need enough on the page to stand apart from the subject list.",
+          },
+          {
+            title: "Tutors people can check",
+            description:
+              "Filter by subject, gender, schedule, and credentials. Keep real photos and degrees, and replace a wall of five-star reviews with proof from a source people already trust.",
+          },
+        ],
+      },
+      ia: {
+        intro:
+          "The age-based program pages had little on them, while parents started with subjects. The menu is the map: each program opens a page with the same sequence, written for that learner.",
+        flow: [
+          "Programs → Early Childhood, K–8, Secondary & High School, College & University, Career & Life Skills, English Tutoring",
+          "Program page → Hero, approach, subject grid, how tutoring works",
+          "Start → Free consultation, then lessons and progress",
+        ],
+      },
+      visuals: {
+        label: "Design",
+        title: "Before and after",
+        intro:
+          "The current high school page, before the redesign. Each new program page uses the same structure — audience, subjects, process, community, and a booking close — with navy and red carrying the brand.",
+        banner: {
+          src: "/images/projects/canada-online-tutoring/before-high-school.jpg",
+          alt: "Current Canada Online Tutoring high school page, before the redesign",
+          caption: "Current high school page",
+          width: 1440,
+          height: 5371,
+        },
+        layout: "full",
+        tone: "plain",
+        heading: "Homepage explorations",
+        images: [
+          {
+            src: "/images/projects/canada-online-tutoring/home-illustrated.jpg",
+            alt: "Homepage exploration with an illustrated hero of shapes, a question mark, and a matched badge",
+            caption: "Illustrated hero",
+            width: 2000,
+            height: 1544,
+          },
+          {
+            src: "/images/projects/canada-online-tutoring/home-photo.jpg",
+            alt: "Homepage exploration with a photo of a tutor and student inside the navy hero",
+            caption: "Photo hero",
+            width: 2000,
+            height: 1325,
+          },
+          {
+            src: "/images/projects/canada-online-tutoring/home-split.jpg",
+            alt: "Homepage exploration with a navy headline beside a full-height photo",
+            caption: "Split hero",
+            width: 2000,
+            height: 1140,
+          },
+          {
+            src: "/images/projects/canada-online-tutoring/home-full.jpg",
+            alt: "Homepage exploration with the illustrated hero, program cards, how tutoring works, and reviews",
+            caption: "Full homepage",
+            width: 1800,
+            height: 5428,
+          },
+        ],
+        galleries: [
+          {
+            heading: "Program pages",
+            layout: "stack",
+            tone: "plain",
+            images: [
+              {
+                src: "/images/projects/canada-online-tutoring/k-8.jpg",
+                alt: "K–8 program page — foundations in writing, French, math, and reading",
+                caption: "K–8",
+                width: 1600,
+                height: 5582,
+              },
+              {
+                src: "/images/projects/canada-online-tutoring/high-school.jpg",
+                alt: "Secondary and high school program page — results-driven tutoring for grades and exams",
+                caption: "Secondary & high school",
+                width: 1600,
+                height: 5637,
+              },
+              {
+                src: "/images/projects/canada-online-tutoring/university.jpg",
+                alt: "College and university program page — support for advanced courses",
+                caption: "College & university",
+                width: 1600,
+                height: 5637,
+              },
+              {
+                src: "/images/projects/canada-online-tutoring/career.jpg",
+                alt: "Career and life skills program page — in-demand skills beyond the classroom",
+                caption: "Career & life skills",
+                width: 1600,
+                height: 5616,
+              },
+              {
+                src: "/images/projects/canada-online-tutoring/english.jpg",
+                alt: "English tutoring program page — ESL and academic English pathways",
+                caption: "English tutoring",
+                width: 1600,
+                height: 5748,
+              },
+              {
+                src: "/images/projects/canada-online-tutoring/programs-menu.jpg",
+                alt: "Programs menu listing Early Childhood through English Tutoring",
+                caption: "Programs menu",
+                width: 1024,
+                height: 728,
+              },
+            ],
+          },
+        ],
+      },
+      reflection:
+        "The useful constraint was repetition. Once every program shared a page, the differences could live in the audience, the subjects, and the words — not in a new layout each time.",
     },
   },
   {
@@ -2372,6 +2611,7 @@ export const projects: Project[] = [
       },
     },
   },
+
 ];
 
 export const social = [

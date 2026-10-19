@@ -234,6 +234,25 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
         </CaseSection>
         )}
 
+        {cs.areas && (
+          <CaseSection
+            label="Redesign"
+            title="Areas to redesign"
+            intro={cs.areas.intro}
+          >
+            <div className="mt-10 grid gap-8 sm:grid-cols-2">
+              {cs.areas.items.map((item) => (
+                <div key={item.title}>
+                  <h3 className={subhead}>{item.title}</h3>
+                  <p className={`mt-2 ${bodyMuted} [&_strong]:text-foreground`}>
+                    <RichText>{item.description}</RichText>
+                  </p>
+                </div>
+              ))}
+            </div>
+          </CaseSection>
+        )}
+
         {cs.define && (
           <CaseSection
             label="Process"
@@ -412,6 +431,11 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
                 className="mx-auto h-auto w-full max-w-5xl object-contain"
                 sizes="(max-width: 1024px) 100vw, 1024px"
               />
+              {cs.visuals.banner.caption && (
+                <figcaption className="mx-auto mt-3 max-w-5xl text-center text-xs tracking-wide text-muted">
+                  {cs.visuals.banner.caption}
+                </figcaption>
+              )}
             </figure>
           )}
           {cs.visuals &&

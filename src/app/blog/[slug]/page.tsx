@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Arrow from "@/components/Arrow";
@@ -61,6 +62,21 @@ export default async function BlogPostPage({
               </RichText>
             ))}
           </div>
+          {post.images?.length ? (
+            <div className="mt-12 flex flex-col gap-4 sm:mt-16 sm:gap-5">
+              {post.images.map((image) => (
+                <Image
+                  key={image.src}
+                  src={image.src}
+                  alt={image.alt}
+                  width={image.width}
+                  height={image.height}
+                  className="h-auto w-full"
+                  sizes="(max-width: 768px) 100vw, 768px"
+                />
+              ))}
+            </div>
+          ) : null}
         </div>
       </article>
       <Footer />
