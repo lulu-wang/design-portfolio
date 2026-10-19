@@ -263,7 +263,7 @@ export default function CaseGallery({
     return (
       <div className={`${flush ? "mt-0" : "mt-10 sm:mt-12"} px-5 sm:px-8`}>
         <div className="mx-auto flex w-full max-w-5xl flex-col items-center gap-8 sm:gap-10">
-          <GalleryHeading heading={heading} />
+          <GalleryHeading heading={heading} onDark={dark} />
           {items.map((item) => {
             const portrait = (item.height ?? 1) > (item.width ?? 1);
             const widePage = portrait && (item.width ?? 0) >= 800;
