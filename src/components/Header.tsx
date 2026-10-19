@@ -10,8 +10,8 @@ import { useGalleryChrome } from "@/components/GalleryChrome";
 const nav = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
-  { label: "Projects", href: "/projects" },
   { label: "Gallery", href: "/illustrations" },
+  { label: "Projects", href: "/projects" },
   { label: "Blog", href: "/blog" },
   { label: "Resume", href: "/LuluWangPMResume26.pdf", external: true },
 ];
