@@ -597,6 +597,13 @@ export const projects: Project[] = [
             tone: "plain",
             images: [
               {
+                src: "/images/projects/canada-online-tutoring/programs-menu.jpg",
+                alt: "Programs menu listing Early Childhood through English Tutoring",
+                caption: "Programs menu",
+                width: 1024,
+                height: 728,
+              },
+              {
                 src: "/images/projects/canada-online-tutoring/k-8.jpg",
                 alt: "K–8 program page — foundations in writing, French, math, and reading",
                 caption: "K–8",
@@ -630,13 +637,6 @@ export const projects: Project[] = [
                 caption: "English tutoring",
                 width: 1600,
                 height: 5748,
-              },
-              {
-                src: "/images/projects/canada-online-tutoring/programs-menu.jpg",
-                alt: "Programs menu listing Early Childhood through English Tutoring",
-                caption: "Programs menu",
-                width: 1024,
-                height: 728,
               },
             ],
           },
