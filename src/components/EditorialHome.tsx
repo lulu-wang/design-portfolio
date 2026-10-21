@@ -2,7 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import Arrow from "@/components/Arrow";
 import Footer from "@/components/Footer";
+import HomeGallery from "@/components/HomeGallery";
 import WorkPanels from "@/components/WorkPanels";
+import { illustrations } from "@/data/illustrations";
 import { experience, projects } from "@/data/site";
 
 const phones = [
@@ -52,6 +54,15 @@ const facts = [
   { label: "Previously", value: "Meta, Microsoft, Finary" },
   { label: "Based", value: "California" },
 ];
+
+function galleryPieces(ids: string[]) {
+  return ids
+    .map((id) => illustrations.find((item) => item.id === id))
+    .filter((item): item is (typeof illustrations)[number] => Boolean(item));
+}
+
+const homeIllustrations = galleryPieces(["27", "24", "14", "23", "25", "03"]);
+const homePhotos = galleryPieces(["p25", "p01", "p02"]);
 
 function PhoneFrame({
   src,
@@ -138,6 +149,24 @@ export default function EditorialHome() {
               sizes="540px"
             />
           </div>
+        </div>
+      </section>
+
+      <section className="bg-[#F7F4EF] pb-16 sm:pb-20 lg:pb-28">
+        <div className="page-inset flex items-end justify-between gap-6">
+          <h2 className="text-[11px] font-medium uppercase tracking-[0.28em] text-foreground/45">
+            Gallery
+          </h2>
+          <Link
+            href="/illustrations"
+            className="arrow-link inline-flex shrink-0 items-center gap-2 text-[13px]"
+          >
+            View gallery <Arrow className="h-2.5" />
+          </Link>
+        </div>
+        <div className="mt-8 flex flex-col gap-10 sm:gap-14">
+          <HomeGallery items={homeIllustrations} />
+          <HomeGallery items={homePhotos} />
         </div>
       </section>
 
