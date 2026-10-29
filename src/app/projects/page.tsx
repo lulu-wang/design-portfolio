@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Footer from "@/components/Footer";
-import WorkPanels from "@/components/WorkPanels";
-import { projects } from "@/data/site";
+import FolioProjects from "@/components/FolioProjects";
 
 export const metadata: Metadata = {
   title: "Projects — Lulu Wang",
@@ -10,21 +9,13 @@ export const metadata: Metadata = {
 
 export default function ProjectsPage() {
   return (
-    <main className="flex flex-col">
-      <section className="bg-[#F7F4EF] page-inset pb-14 pt-32 sm:pb-16 sm:pt-36 lg:pb-20">
-        <h1 className="font-display text-[clamp(3.2rem,8vw,7rem)] font-extrabold uppercase leading-[0.84] tracking-[-0.06em]">
-          Selected work
-        </h1>
-        <p className="mt-6 max-w-4xl text-[16px] leading-relaxed text-foreground/60 sm:text-[18px]">
-          Product design, brand, and research across meetings, health, learning,
-          streaming, and apparel.
-        </p>
+    <main className="folio flex min-h-svh flex-col bg-white pt-[4.5rem] text-black md:pt-[5.5rem]">
+      <section className="folio-wrap flex-1 py-16 sm:py-20 lg:py-24">
+        <h1 className="text-[28px] leading-[1.3]">Selected work</h1>
+        <div className="mt-10">
+          <FolioProjects />
+        </div>
       </section>
-
-      <section>
-        <WorkPanels projects={projects} />
-      </section>
-
       <Footer />
     </main>
   );

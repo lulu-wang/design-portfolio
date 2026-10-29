@@ -1,12 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import Arrow from "@/components/Arrow";
 import Footer from "@/components/Footer";
 import CaseSection from "@/components/CaseSection";
 import CaseBleed from "@/components/CaseBleed";
 import CaseGallery from "@/components/CaseGallery";
 import ProjectCover from "@/components/ProjectCover";
-import { titleHover } from "@/components/ProjectCard";
 import Wireframe from "@/components/Wireframe";
 import RichText from "@/components/RichText";
 import BrandStyle from "@/components/BrandStyle";
@@ -21,103 +19,68 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
     ? (cs.research.personas ?? (cs.research.persona ? [cs.research.persona] : []))
     : [];
 
-  const metaLine = [cs.meta.role, cs.meta.timeline, cs.meta.team, cs.meta.platform]
-    .filter(Boolean)
-    .join("  ·  ");
   const toolsLine =
     cs.meta.tools.length > 0 ? cs.meta.tools.join("  ·  ") : null;
   const presentationExternal = Boolean(
     cs.presentation && /^https?:\/\//.test(cs.presentation.href),
   );
 
-  const body = "font-reading text-[15px] leading-[1.55] text-foreground/65 md:text-base md:leading-[1.6]";
-  const bodyMuted = "font-reading text-[15px] leading-[1.55] text-foreground/50 md:text-base md:leading-[1.6]";
-  const subhead = "font-display text-base font-semibold tracking-[-0.03em] md:text-lg";
+  const body = "text-[16px] leading-[1.47] text-black";
+  const bodyMuted = "text-[16px] leading-[1.47] text-black";
+  const subhead = "text-[16px] leading-[1.35] text-black";
+
+  const meta = [
+    { label: "Role", value: cs.meta.role },
+    { label: "Timeline", value: cs.meta.timeline },
+    { label: "Team", value: cs.meta.team },
+    { label: "Platform", value: cs.meta.platform },
+  ].filter((item) => item.value);
 
   return (
-    <div className="bg-[#F7F4EF]">
-    <main className="page-inset pt-32 sm:pt-36">
-      <section className="pb-12 sm:pb-16">
-        <Link
-          href="/projects"
-          className="arrow-link inline-flex items-center gap-2 text-[13px] text-foreground/50"
-        >
-          <Arrow className="h-2.5 rotate-180" /> All projects
-        </Link>
+    <div className="folio bg-white text-black">
+      <main className="folio-wrap pt-[4.5rem] md:pt-[5.5rem]">
+        <section className="pb-4 pt-14 sm:pt-20">
+          <Link href="/projects" className="text-[16px] hover:opacity-60">
+            All projects
+          </Link>
 
-        <div className="mt-10 max-w-4xl sm:mt-12">
-          <p className="text-[11px] font-medium uppercase tracking-[0.28em] text-foreground/45">
-            Case study
-          </p>
-          <h1 className="mt-5 font-display text-[clamp(3rem,7vw,6.4rem)] font-extrabold uppercase leading-[0.86] tracking-[-0.06em]">
+          <h1 className="mt-10 max-w-[16ch] text-[clamp(2rem,4vw,2.65rem)] font-normal leading-[1.12]">
             {project.name}
           </h1>
-
-          <p className="mt-6 text-[12px] font-medium uppercase tracking-[0.18em] text-foreground/45">
-            {project.tags.map((tag) => tag.label).join("  ·  ")}
-          </p>
-
-            <p
-              className="page-subtitle animate-rise mt-6 max-w-3xl sm:mt-8 md:max-w-4xl [&_strong]:text-foreground [&_em]:text-foreground/80"
-              style={{ animationDelay: `${220 + project.tags.length * 70}ms` }}
-            >
-              <RichText>{cs.tagline}</RichText>
-              {cs.presentation && (
-                <>
-                  {" "}
-                  <a
-                    href={cs.presentation.href}
-                    {...(presentationExternal
-                      ? { target: "_blank", rel: "noreferrer" }
-                      : {})}
-                    className="text-foreground color-hover underline decoration-foreground/25 underline-offset-4"
-                    style={{ "--hover": "#7C5CF6" } as React.CSSProperties}
-                  >
-                    View {cs.presentation.label}
-                  </a>
-                </>
-              )}
-            </p>
-
-            <p
-              className="animate-rise mt-6 text-sm leading-relaxed text-foreground/45 md:text-[15px]"
-              style={{ animationDelay: `${280 + project.tags.length * 70}ms` }}
-            >
-              {metaLine}
-            </p>
-            {toolsLine && (
-              <p
-                className="animate-rise mt-2 text-sm leading-relaxed text-foreground/45 md:text-[15px]"
-                style={{ animationDelay: `${320 + project.tags.length * 70}ms` }}
-              >
-                <span className="text-foreground/30">Tools</span>
-                <span className="mx-2.5 text-foreground/20">·</span>
-                {toolsLine}
-              </p>
-            )}
+          <p className="mt-4 max-w-[36rem] text-[16px] leading-[1.47]">
+            <RichText>{cs.tagline}</RichText>
             {cs.presentation && (
-              <div
-                className="animate-rise mt-8 mb-10 sm:mb-14 md:mb-16"
-                style={{ animationDelay: `${360 + project.tags.length * 70}ms` }}
-              >
+              <>
+                {" "}
                 <a
                   href={cs.presentation.href}
                   {...(presentationExternal
                     ? { target: "_blank", rel: "noreferrer" }
                     : {})}
-                  className="pill-btn gap-2"
+                  className="underline underline-offset-4 hover:opacity-60"
                 >
                   View {cs.presentation.label}
-                  <Arrow className="h-2.5" />
                 </a>
-              </div>
+              </>
             )}
-          </div>
-        </section>
-      </main>
+          </p>
 
-      <CaseBleed>
-        <div className="page-inset">
+          <dl className="mt-12 grid grid-cols-2 gap-x-8 gap-y-8 sm:grid-cols-4">
+            {meta.map((item) => (
+              <div key={item.label}>
+                <dt className="text-[23px] leading-[1.3]">{item.label}</dt>
+                <dd className="mt-2 text-[16px] leading-[1.47]">{item.value}</dd>
+              </div>
+            ))}
+          </dl>
+          {toolsLine && (
+            <p className="mt-8 text-[16px] leading-[1.47]">
+              Tools · {toolsLine}
+            </p>
+          )}
+        </section>
+
+        <div className="mt-12 overflow-hidden bg-black/10">
           <ProjectCover
             name={project.name}
             src={project.image}
@@ -125,15 +88,13 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
             screens={project.previewScreens}
             width={2390}
             height={1580}
-            className="animate-rise aspect-[239/158]"
-            sizes="(max-width: 768px) 50vw, 25vw"
+            className="aspect-[4/3] sm:aspect-[3/2]"
+            sizes="100vw"
             priority
             size="hero"
+            plain
           />
         </div>
-      </CaseBleed>
-
-      <main className="page-inset">
         <CaseSection
           label="Overview"
           title="Overview"
@@ -184,10 +145,10 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
           <div className="mt-12 grid gap-8 sm:grid-cols-3">
             {cs.research.insights.map((insight) => (
               <div key={insight.label}>
-                <div className="font-display text-4xl font-semibold tracking-tight sm:text-5xl">
+                <div className="text-[28px] leading-none">
                   {insight.stat}
                 </div>
-                <p className="mt-2 text-sm text-foreground/50 md:text-[15px]">
+                <p className="mt-2 text-[16px] leading-[1.47]">
                   {insight.label}
                 </p>
               </div>
@@ -299,11 +260,13 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
             <div className="mt-8 flex flex-col gap-2.5 sm:flex-row sm:flex-wrap sm:items-center">
               {cs.ia.flow.map((step, i) => (
                 <div key={step} className="flex items-center gap-2.5">
-                  <div className="rounded-full bg-white px-4 py-2 text-sm font-medium md:text-[15px]">
+                  <div className="bg-black/10 px-4 py-2 text-[16px]">
                     {step}
                   </div>
                   {i < (cs.ia?.flow.length ?? 0) - 1 && (
-                    <Arrow className="hidden h-2.5 text-muted sm:block" />
+                    <span className="hidden text-[16px] sm:block" aria-hidden>
+                      →
+                    </span>
                   )}
                 </div>
               ))}
@@ -342,7 +305,7 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
 
       {cs.onboarding && (
         <>
-          <div className="page-inset">
+          <div className="folio-wrap">
             <CaseSection
               label="Onboarding"
               title="Onboarding quiz"
@@ -384,7 +347,7 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
         </>
       )}
 
-      <div className="page-inset">
+      <div className="folio-wrap">
         {cs.branding && (
           <CaseSection
             label="Style"
@@ -479,7 +442,7 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
         </CaseBleed>
       )}
 
-      <main className="page-inset">
+      <main className="folio-wrap">
         {cs.solution && (
           <CaseSection
             label="Solution"
@@ -535,10 +498,10 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
             <div className="mt-8 grid gap-8 sm:grid-cols-3">
               {cs.outcomes.map((outcome) => (
                 <div key={outcome.label}>
-                  <div className="font-display text-4xl font-semibold tracking-tight sm:text-5xl">
+                  <div className="text-[28px] leading-none">
                     {outcome.stat}
                   </div>
-                  <p className="mt-2 text-sm text-foreground/50 md:text-[15px]">
+                  <p className="mt-2 text-[16px] leading-[1.47]">
                     {outcome.label}
                   </p>
                 </div>
@@ -588,24 +551,11 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
         )}
 
         <section className="py-14 sm:py-20">
-          <Link
-            href={`/projects/${nextProject.slug}`}
-            className="group block"
-            style={
-              {
-                "--hover": titleHover[nextProject.slug] ?? "#7C5CF6",
-              } as React.CSSProperties
-            }
-          >
-            <p className="text-[11px] font-medium uppercase tracking-[0.28em] text-foreground/45">
-              Next
-            </p>
-            <div className="mt-4 flex items-end justify-between gap-6">
-              <h2 className="font-display text-[clamp(2.4rem,6vw,5rem)] font-extrabold uppercase leading-[0.86] tracking-[-0.055em] transition-colors duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:text-[var(--hover)]">
-                {nextProject.name}
-              </h2>
-              <Arrow className="mb-2 h-3.5 shrink-0 transition-transform group-hover:translate-x-2 sm:h-4" />
-            </div>
+          <Link href={`/projects/${nextProject.slug}`} className="block hover:opacity-60">
+            <p className="text-[16px]">Next</p>
+            <h2 className="mt-2 text-[clamp(1.75rem,3vw,2.65rem)] font-normal leading-[1.15]">
+              {nextProject.name}
+            </h2>
           </Link>
         </section>
       </main>

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Arrow from "@/components/Arrow";
 import Footer from "@/components/Footer";
 import PageReader from "@/components/PageReader";
 import { arcfellPages, arcfellSummary } from "@/data/arcfell";
@@ -12,23 +11,23 @@ export const metadata: Metadata = {
 
 export default function ArcfellPage() {
   return (
-    <main className="flex flex-col">
-      <section className="bg-[#F7F4EF] page-inset pb-12 pt-32 sm:pt-36">
+    <main className="folio flex flex-col bg-white pt-[4.5rem] text-black md:pt-[5.5rem]">
+      <section className="folio-wrap pb-10 pt-14 sm:pt-20">
         <Link
           href="/illustrations?tab=comics"
-          className="arrow-link inline-flex items-center gap-2 text-[13px] text-foreground/50"
+          className="text-[16px] hover:opacity-60"
         >
-          <Arrow className="h-2.5 rotate-180" /> Gallery
+          Gallery
         </Link>
-        <h1 className="mt-8 font-display text-[clamp(2.6rem,6vw,5rem)] font-extrabold uppercase leading-[0.88] tracking-[-0.055em]">
+        <h1 className="mt-8 text-[clamp(1.75rem,4vw,2.65rem)] font-normal leading-[1.15]">
           Arcfell
         </h1>
-        <p className="mt-5 max-w-4xl text-[16px] leading-relaxed text-foreground/65">
+        <p className="mt-4 max-w-[40rem] text-[16px] leading-[1.47]">
           {arcfellSummary} Read left to right.
         </p>
       </section>
 
-      <section className="bg-[#2A2A2A] py-8 sm:py-10">
+      <section className="bg-black/10 py-8 sm:py-10">
         <PageReader pages={arcfellPages} label="Arcfell pages, read left to right" />
       </section>
 

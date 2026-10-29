@@ -1,8 +1,6 @@
 import RichText from "./RichText";
 
 export default function CaseSection({
-  index,
-  label,
   title,
   intro,
   children,
@@ -15,43 +13,22 @@ export default function CaseSection({
   first?: boolean;
 }) {
   return (
-    <section
-      className="grid scroll-mt-28 gap-6 py-12 sm:py-16 lg:grid-cols-[140px_1fr] lg:gap-12"
-    >
-      {(index || label) && (
-        <div className="lg:sticky lg:top-28 lg:self-start">
-          <div className="flex items-center gap-3 lg:flex-col lg:items-start lg:gap-1.5">
-            {index && (
-              <span className="font-display text-[11px] font-medium tracking-[0.18em] text-foreground/30">
-                {index}
-              </span>
-            )}
-            {label && (
-              <span className="font-display text-[11px] font-medium uppercase tracking-[0.16em] text-muted">
-                {label}
-              </span>
-            )}
-          </div>
-        </div>
+    <section className="scroll-mt-28 py-10 sm:py-14">
+      {title && (
+        <h2 className="max-w-[40rem] text-[23px] font-normal leading-[1.3] text-black">
+          <RichText>{title}</RichText>
+        </h2>
       )}
-
-      <div className="min-w-0">
-        {title && (
-          <h2 className="font-display max-w-3xl text-[1.45rem] font-semibold leading-[1.25] tracking-[-0.035em] sm:text-[1.75rem] sm:leading-[1.2] md:text-[2rem] md:leading-[1.18] [&_strong]:font-semibold [&_em]:font-medium [&_em]:italic">
-            <RichText>{title}</RichText>
-          </h2>
-        )}
-        {intro && (
-          <p
-            className={`font-reading max-w-2xl text-[15px] leading-[1.55] text-foreground/65 md:max-w-3xl md:text-base md:leading-[1.6] lg:text-[17px] lg:leading-[1.6] [&_strong]:text-foreground [&_em]:text-foreground/75 ${
-              title ? "mt-5 sm:mt-6" : ""
-            }`}
-          >
-            <RichText>{intro}</RichText>
-          </p>
-        )}
-        {children}
-      </div>
+      {intro && (
+        <p
+          className={`max-w-[40rem] text-[16px] leading-[1.47] text-black ${
+            title ? "mt-4" : ""
+          }`}
+        >
+          <RichText>{intro}</RichText>
+        </p>
+      )}
+      {children}
     </section>
   );
 }

@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { Archivo, Inter } from "next/font/google";
+import { Albert_Sans, Archivo, Inter } from "next/font/google";
 import "./globals.css";
 import { GalleryChromeProvider } from "@/components/GalleryChrome";
 import Header from "@/components/Header";
-import SiteGrain from "@/components/SiteGrain";
 import SmoothScroll from "@/components/SmoothScroll";
 
 const body = localFont({
@@ -27,6 +26,12 @@ const body = localFont({
   ],
   variable: "--font-satoshi",
   display: "swap",
+});
+
+const albert = Albert_Sans({
+  variable: "--font-albert",
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
 });
 
 const archivo = Archivo({
@@ -54,9 +59,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${body.variable} ${archivo.variable} ${inter.variable} antialiased`}
+        className={`${body.variable} ${albert.variable} ${archivo.variable} ${inter.variable} antialiased`}
       >
-        <SiteGrain />
         <GalleryChromeProvider>
           <SmoothScroll>
             <Header />

@@ -167,18 +167,18 @@ export default function PageReader({
   return (
     <div className="relative">
       <div className="page-wrap mb-4 flex items-center justify-between gap-4">
-        <p className="font-display text-[12px] font-medium uppercase tracking-[0.14em] text-white/55">
+        <p className="text-[16px] text-black/60">
           {current?.part ? (
             <>
               Part {current.part}
-              <span className="mx-2 text-white/30">·</span>
+              <span className="mx-2 text-black/30">·</span>
             </>
           ) : null}
           <span className="tabular-nums">
             {String(current?.number ?? 1).padStart(2, "0")} / {String(pages.length).padStart(2, "0")}
           </span>
         </p>
-        <p className="hidden font-display text-[12px] font-medium uppercase tracking-[0.14em] text-white/45 sm:block">
+        <p className="hidden text-[16px] text-black/50 sm:block">
           Scroll sideways, or use the arrow keys
         </p>
       </div>
@@ -235,9 +235,9 @@ export default function PageReader({
       </div>
 
       <div className="page-wrap mt-4" aria-hidden>
-        <div className="mx-auto h-px w-full max-w-[220px] bg-white/15">
+        <div className="mx-auto h-px w-full max-w-[220px] bg-black/15">
           <div
-            className="h-px bg-white/75 transition-[width] duration-300"
+            className="h-px bg-black transition-[width] duration-300"
             style={{ width: `${((index + 1) / pages.length) * 100}%` }}
           />
         </div>

@@ -59,6 +59,7 @@ export default function ProjectCover({
   className = "",
   size = "card",
   screens,
+  plain = false,
 }: {
   name: string;
   src: string;
@@ -70,6 +71,7 @@ export default function ProjectCover({
   className?: string;
   size?: "card" | "hero";
   screens?: PreviewScreen[];
+  plain?: boolean;
 }) {
   const words = name
     .replace(/[^a-zA-Z0-9\s]/g, "")
@@ -82,9 +84,10 @@ export default function ProjectCover({
 
   return (
     <div
-      className={`relative isolate overflow-hidden bg-[#f6f6f4] ${className}`}
+      className={`relative isolate overflow-hidden ${plain ? "bg-transparent" : "bg-[#f6f6f4]"} ${className}`}
       style={{ containerType: "size" }}
     >
+      {!plain && (
       <div
         aria-hidden
         className={`pointer-events-none absolute inset-0 z-0 flex items-center overflow-hidden ${
@@ -115,6 +118,7 @@ export default function ProjectCover({
             : words[0]}
         </span>
       </div>
+      )}
       {pair && screens ? (
         <CoverPhones
           screens={screens}

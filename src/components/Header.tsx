@@ -1,86 +1,38 @@
 "use client";
 
 import Link from "next/link";
-import { useLenis } from "lenis/react";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
-import { useGalleryChrome } from "@/components/GalleryChrome";
 
 const nav = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Gallery", href: "/illustrations" },
-  { label: "Projects", href: "/projects" },
-  { label: "Blog", href: "/blog" },
-  { label: "Resume", href: "/LuluWangPMResume26.pdf", external: true },
+  { label: "Contact", href: "/contact" },
 ];
-
-const desktopNav = nav.filter((item) => item.href !== "/");
 
 function isActivePath(pathname: string, href: string) {
   if (href === "/") return pathname === "/";
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
-function navClass(active: boolean, extra = "", light = false) {
-  const tone = light
-    ? active
-      ? "text-white"
-      : "text-white/70 hover:text-white"
-    : active
-      ? "text-foreground"
-      : "text-muted hover:text-foreground";
-  return `font-secondary font-medium tracking-[-0.01em] transition-colors duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${tone} ${extra}`.trim();
+function linkClass(active: boolean) {
+  return `relative text-[16px] font-normal text-black transition-opacity duration-200 hover:opacity-60 ${
+    active
+      ? "after:absolute after:left-1/2 after:top-[calc(100%+7px)] after:h-px after:w-4 after:-translate-x-1/2 after:bg-black"
+      : ""
+  }`;
 }
 
 export default function Header() {
   const pathname = usePathname();
-  const lenis = useLenis();
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const { galleryPaper } = useGalleryChrome();
-  const onHome = pathname === "/";
-  const onDarkGallery = pathname === "/illustrations" && !galleryPaper;
-  const light = (onHome && !scrolled && !open) || (onDarkGallery && !open);
-
-  const onNavClick = (href: string) => {
-    setOpen(false);
-    if (!href.includes("#")) return;
-    const [path, hash] = href.split("#");
-    if (pathname !== path) return;
-    window.setTimeout(() => {
-      const el = document.getElementById(hash);
-      if (!el) return;
-      lenis?.resize();
-      lenis?.scrollTo(el, { offset: -96 });
-    }, 50);
-  };
 
   useEffect(() => {
     setMounted(true);
   }, []);
-
-  useEffect(() => {
-    if (!onHome) {
-      setScrolled(false);
-      return;
-    }
-    const update = () => {
-      const y = lenis?.scroll ?? window.scrollY;
-      setScrolled(y > window.innerHeight - 72);
-    };
-    update();
-    if (!lenis) {
-      window.addEventListener("scroll", update, { passive: true });
-      return () => window.removeEventListener("scroll", update);
-    }
-    lenis.on("scroll", update);
-    return () => {
-      lenis.off("scroll", update);
-    };
-  }, [onHome, lenis]);
 
   useEffect(() => {
     setOpen(false);
@@ -116,87 +68,45 @@ export default function Header() {
 
   return (
     <>
-      <header
-        className={`pointer-events-none fixed inset-x-0 top-0 z-50 px-4 pt-5 transition-colors duration-300 sm:pt-6 md:px-0 md:pt-0 ${
-          light ? "md:bg-transparent" : "md:bg-[#F7F4EF]"
-        }`}
-      >
-        <div className="pointer-events-auto mx-auto flex h-12 w-[min(92vw,268px)] items-center justify-between rounded-full bg-ink pl-5 pr-1.5 text-background shadow-[0_10px_30px_rgba(80,60,40,0.1)] md:hidden">
-          <Link
-            href="/"
-            className="font-display text-[16px] font-semibold tracking-[-0.03em] text-background"
-            onClick={() => setOpen(false)}
-          >
-            Lulu
+      <header className="fixed inset-x-0 top-0 z-50 bg-white">
+        <div className="folio-wrap flex h-[4.5rem] items-center justify-between md:h-[5.5rem]">
+          <Link href="/" className="text-[16px] font-normal text-black">
+            Lulu Wang
           </Link>
+          <nav className="hidden items-center gap-9 md:flex" aria-label="Primary">
+            {nav.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={linkClass(isActivePath(pathname, item.href))}
+                aria-current={
+                  isActivePath(pathname, item.href) ? "page" : undefined
+                }
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
           <button
             type="button"
-            className="flex h-9 w-9 items-center justify-center rounded-full bg-background text-foreground"
+            className="flex h-11 w-11 items-center justify-center md:hidden"
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
-            onClick={() => setOpen((v) => !v)}
+            onClick={() => setOpen((value) => !value)}
           >
             {open ? (
-              <span className="relative block h-3 w-3" aria-hidden>
-                <span className="absolute left-0 top-1/2 block h-[1.5px] w-full -translate-y-1/2 rotate-45 bg-foreground" />
-                <span className="absolute left-0 top-1/2 block h-[1.5px] w-full -translate-y-1/2 -rotate-45 bg-foreground" />
+              <span className="relative block h-3.5 w-3.5" aria-hidden>
+                <span className="absolute left-0 top-1/2 block h-px w-full -translate-y-1/2 rotate-45 bg-black" />
+                <span className="absolute left-0 top-1/2 block h-px w-full -translate-y-1/2 -rotate-45 bg-black" />
               </span>
             ) : (
-              <span className="flex flex-col items-center gap-[3px]" aria-hidden>
-                <span className="block h-[3px] w-[3px] rounded-full bg-foreground" />
-                <span className="block h-[3px] w-[3px] rounded-full bg-foreground" />
-                <span className="block h-[3px] w-[3px] rounded-full bg-foreground" />
+              <span className="flex w-5 flex-col gap-[5px]" aria-hidden>
+                <span className="block h-px w-full bg-black" />
+                <span className="block h-px w-full bg-black" />
+                <span className="block h-px w-full bg-black" />
               </span>
             )}
           </button>
-        </div>
-
-        <div className="page-wrap pointer-events-none hidden items-center justify-between md:flex md:h-[4.75rem]">
-          <Link
-            href="/"
-            className={`pointer-events-auto font-display text-[16px] font-semibold tracking-[-0.03em] ${
-              light ? "text-white" : "text-foreground"
-            }`}
-          >
-            Lulu Wang
-          </Link>
-          <nav
-            className="pointer-events-auto flex items-center gap-5 lg:gap-8"
-            aria-label="Primary"
-          >
-            {desktopNav.map((item) => {
-              const className = navClass(
-                !item.external && isActivePath(pathname, item.href),
-                "text-[14px]",
-                light,
-              );
-              if (item.external) {
-                return (
-                  <a
-                    key={item.href}
-                    href={item.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className={className}
-                    onClick={() => setOpen(false)}
-                  >
-                    {item.label}
-                  </a>
-                );
-              }
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  scroll={!item.href.includes("#")}
-                  className={className}
-                  onClick={() => onNavClick(item.href)}
-                >
-                  {item.label}
-                </Link>
-              );
-            })}
-          </nav>
         </div>
       </header>
 
@@ -207,52 +117,30 @@ export default function Header() {
             aria-modal={open}
             aria-label="Navigation menu"
             inert={!open ? true : undefined}
-            className={`fixed inset-0 z-40 flex min-h-dvh w-screen flex-col bg-background md:hidden transition-[opacity,visibility] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+            className={`fixed inset-0 z-40 flex min-h-dvh w-screen flex-col bg-white pt-[4.5rem] transition-[opacity,visibility] duration-300 md:hidden ${
               open ? "visible opacity-100" : "invisible opacity-0"
             }`}
           >
             <nav
-              className="flex flex-1 flex-col justify-center gap-7 px-8 pb-24 pt-24 sm:gap-9"
+              className="flex flex-1 flex-col justify-center gap-8 px-8 pb-24"
               aria-label="Primary"
             >
-              {nav.map((item, i) => {
-                const className = navClass(
-                  !item.external && isActivePath(pathname, item.href),
-                  `text-3xl tracking-[-0.02em] transition-[opacity,transform,color] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] sm:text-5xl ${
-                    open ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
-                  }`,
-                );
-                const style = { transitionDelay: open ? `${80 + i * 60}ms` : "0ms" };
-                if (item.external) {
-                  return (
-                    <a
-                      key={item.href}
-                      href={item.href}
-                      target="_blank"
-                      rel="noreferrer"
-                      className={className}
-                      style={style}
-                      onClick={() => setOpen(false)}
-                      tabIndex={open ? 0 : -1}
-                    >
-                      {item.label}
-                    </a>
-                  );
-                }
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className={className}
-                    style={style}
-                    scroll={!item.href.includes("#")}
-                    onClick={() => onNavClick(item.href)}
-                    tabIndex={open ? 0 : -1}
-                  >
-                    {item.label}
-                  </Link>
-                );
-              })}
+              {nav.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`text-[28px] font-normal text-black ${
+                    isActivePath(pathname, item.href) ? "underline underline-offset-8" : ""
+                  }`}
+                  aria-current={
+                    isActivePath(pathname, item.href) ? "page" : undefined
+                  }
+                  tabIndex={open ? 0 : -1}
+                  onClick={() => setOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              ))}
             </nav>
           </div>,
           document.body,

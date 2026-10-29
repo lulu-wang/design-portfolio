@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useMemo, useEffect, useLayoutEffect } from "react";
-import Arrow from "@/components/Arrow";
 import { useGalleryChrome } from "@/components/GalleryChrome";
 import Footer from "@/components/Footer";
 import Lightbox from "@/components/Lightbox";
@@ -49,35 +48,26 @@ function ComicEntry({
           sizes="(max-width: 768px) 100vw, 280px"
         />
       </Link>
-      <div className="max-w-xl">
-        <p className="text-[11px] font-medium uppercase tracking-[0.28em] text-foreground/45">
-          {eyebrow}
-        </p>
-        <div className="mt-3 md:mt-4">
-          <h2 className="font-display text-[clamp(1.65rem,2.8vw,2.15rem)] font-semibold leading-[1.12] tracking-[-0.045em] md:text-[clamp(2.2rem,4vw,3.6rem)] md:font-extrabold md:uppercase md:leading-[0.88] md:tracking-[-0.05em]">
-            <Link href={href}>{title}</Link>
-          </h2>
-          <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-foreground/65 sm:text-[16px] md:mt-4">
-            {summary}
-          </p>
-        </div>
-        <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-3">
-          <Link
-            href={href}
-            className="arrow-link inline-flex items-center gap-2 text-[12px] font-medium uppercase tracking-[0.2em]"
-          >
+      <div>
+        <h2 className="text-[24px] leading-[1.3]">
+          <Link href={href} className="hover:opacity-60">
+            {title}
+          </Link>
+        </h2>
+        <p className="mt-3 max-w-xl text-[16px] leading-[1.47]">{summary}</p>
+        <p className="mt-3 text-[16px] leading-[1.47] text-black/60">{eyebrow}</p>
+        <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3 text-[16px]">
+          <Link href={href} className="underline underline-offset-4 hover:opacity-60">
             Read
-            <Arrow className="h-2.5" />
           </Link>
           {originalHref ? (
             <a
               href={originalHref}
               target="_blank"
               rel="noreferrer"
-              className="arrow-link inline-flex items-center gap-2 text-[12px] font-medium uppercase tracking-[0.2em] text-foreground/50"
+              className="underline underline-offset-4 hover:opacity-60"
             >
               Original
-              <Arrow className="h-2.5" />
             </a>
           ) : null}
         </div>
@@ -97,7 +87,7 @@ function Tile({
     <button
       type="button"
       onClick={onOpen}
-      className="group relative block w-full overflow-hidden bg-[#2A2A2A] text-left"
+      className="group relative block w-full overflow-hidden bg-black/10 text-left"
       aria-label={`View ${item.title}`}
     >
       <Image
@@ -199,24 +189,14 @@ export default function IllustrationsView({
   };
 
   return (
-    <main className={`flex flex-col ${comics ? "" : "bg-[#2A2A2A]"}`}>
-      <section
-        className={`page-inset pb-12 pt-32 sm:pb-14 sm:pt-36 lg:pb-16 ${
-          comics ? "bg-[#F7F4EF]" : "bg-[#2A2A2A] text-[#F7F4EF]"
-        }`}
-      >
-        <h1 className="font-display text-[clamp(3.2rem,8vw,7rem)] font-extrabold uppercase leading-[0.84] tracking-[-0.06em]">
-          Gallery
-        </h1>
-        <p
-          className={`mt-6 max-w-4xl text-[16px] leading-relaxed sm:text-[18px] ${
-            comics ? "text-foreground/60" : "text-[#F7F4EF]/65"
-          }`}
-        >
+    <main className="folio flex min-h-svh flex-col bg-white pt-[4.5rem] text-black md:pt-[5.5rem]">
+      <section className="folio-wrap pb-8 pt-14 sm:pt-20">
+        <h1 className="text-[28px] leading-[1.3]">Gallery</h1>
+        <p className="mt-4 max-w-xl text-[16px] leading-[1.47]">
           Studies, editorial work, and visual experiments across illustration,
           sketches, photography, design, and comics.
         </p>
-        <nav className="mt-10 flex gap-6 overflow-x-auto sm:gap-10" aria-label="Gallery categories">
+        <nav className="mt-8 flex gap-8 overflow-x-auto" aria-label="Gallery categories">
           {visibleGalleryTabs.map((t) => {
             const selected = tab === t.id;
             return (
@@ -224,14 +204,10 @@ export default function IllustrationsView({
                 key={t.id}
                 type="button"
                 onClick={() => setTab(t.id)}
-                className={`min-h-11 shrink-0 text-left text-[12px] font-medium uppercase tracking-[0.2em] transition-colors ${
+                className={`relative shrink-0 pb-1 text-[16px] ${
                   selected
-                    ? comics
-                      ? "text-foreground"
-                      : "text-[#F7F4EF]"
-                    : comics
-                      ? "text-foreground/35 hover:text-foreground"
-                      : "text-[#F7F4EF]/40 hover:text-[#F7F4EF]"
+                    ? "after:absolute after:bottom-0 after:left-1/2 after:h-px after:w-4 after:-translate-x-1/2 after:bg-black"
+                    : "hover:opacity-60"
                 }`}
                 aria-pressed={selected}
               >
@@ -242,9 +218,9 @@ export default function IllustrationsView({
         </nav>
       </section>
 
-      <section className={comics ? undefined : "bg-[#2A2A2A]"}>
+      <section className="folio-wrap flex-1 pb-16">
         {tab === "comics" ? (
-          <div className="page-inset flex flex-col gap-16 py-12 sm:gap-20 sm:py-16 lg:gap-24 lg:py-20">
+          <div className="flex flex-col gap-16 py-6 sm:gap-20">
             <ComicEntry
               href="/illustrations/flipnote"
               image="/images/flipnote/page-01.jpg"
@@ -268,11 +244,9 @@ export default function IllustrationsView({
             />
           </div>
         ) : filtered.length === 0 ? (
-          <div className="page-inset bg-[#2A2A2A] py-20 text-[#F7F4EF] sm:py-24">
-            <h2 className="font-display text-[clamp(2rem,4vw,3rem)] font-medium tracking-[-0.04em]">
-              Nothing here yet
-            </h2>
-            <p className="mt-4 max-w-md text-[15px] leading-relaxed text-[#F7F4EF]/60">
+          <div className="py-16">
+            <h2 className="text-[23px] leading-[1.3]">Nothing here yet</h2>
+            <p className="mt-4 max-w-md text-[16px] leading-[1.47]">
               This collection is empty for now. Check back soon, or explore the
               Illustrations tab.
             </p>
@@ -280,10 +254,10 @@ export default function IllustrationsView({
         ) : (
           <div
             key={`${tab}-${columnCount}`}
-            className="grid grid-cols-2 lg:grid-cols-3"
+            className="grid grid-cols-2 gap-3 lg:grid-cols-3 lg:gap-4"
           >
             {columns.map((col, colIndex) => (
-              <div key={colIndex} className="flex min-w-0 flex-col">
+              <div key={colIndex} className="flex min-w-0 flex-col gap-3 lg:gap-4">
                 {col.map((item) => (
                   <Tile
                     key={item.id}
