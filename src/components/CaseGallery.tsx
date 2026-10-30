@@ -243,6 +243,7 @@ export default function CaseGallery({
   roomy = false,
   flush = false,
   heading,
+  wide = false,
 }: {
   items: CaseMediaItem[];
   layout?: Layout;
@@ -250,6 +251,7 @@ export default function CaseGallery({
   roomy?: boolean;
   flush?: boolean;
   heading?: string;
+  wide?: boolean;
 }) {
   if (!items.length) return null;
 
@@ -265,7 +267,11 @@ export default function CaseGallery({
   if (layout === "stack") {
     return (
       <div className={`${flush ? "mt-0" : "mt-10 sm:mt-12"} px-5 sm:px-8`}>
-        <div className="mx-auto flex w-full max-w-5xl flex-col items-center gap-8 sm:gap-10">
+        <div
+          className={`mx-auto flex w-full flex-col items-center gap-8 sm:gap-10 ${
+            wide ? "max-w-6xl" : "max-w-5xl"
+          }`}
+        >
           <GalleryHeading heading={heading} onDark={dark} />
           {items.map((item) => {
             const portrait = (item.height ?? 1) > (item.width ?? 1);
@@ -274,7 +280,13 @@ export default function CaseGallery({
               <figure
                 key={item.src}
                 className={`w-full ${
-                  widePage ? "max-w-3xl" : portrait ? "max-w-[440px]" : "max-w-4xl"
+                  widePage
+                    ? wide
+                      ? "max-w-5xl"
+                      : "max-w-3xl"
+                    : portrait
+                      ? "max-w-[440px]"
+                      : "max-w-4xl"
                 }`}
               >
                 <Image
@@ -285,7 +297,9 @@ export default function CaseGallery({
                   className="h-auto w-full"
                   sizes={
                     widePage
-                      ? "(max-width: 768px) 100vw, 768px"
+                      ? wide
+                        ? "(max-width: 1024px) 100vw, 1024px"
+                        : "(max-width: 768px) 100vw, 768px"
                       : portrait
                         ? "440px"
                         : "(max-width: 768px) 100vw, 896px"
@@ -344,7 +358,7 @@ export default function CaseGallery({
   if (layout === "pair") {
     return (
       <div className={`${flush ? "mt-0" : "mt-12"} px-5 sm:mt-16 sm:px-8`}>
-        <div className="mx-auto w-full max-w-6xl">
+        <div className={`mx-auto w-full ${wide ? "max-w-[1720px]" : "max-w-6xl"}`}>
           {heading ? (
             <p className="mb-8 text-center text-[16px] leading-[1.47] text-black sm:mb-10">
               {heading}
@@ -359,7 +373,11 @@ export default function CaseGallery({
                   width={item.width ?? 900}
                   height={item.height ?? 1200}
                   className="h-auto w-full object-contain"
-                  sizes="(max-width: 640px) 100vw, 50vw"
+                  sizes={
+                    wide
+                      ? "(max-width: 640px) 100vw, 840px"
+                      : "(max-width: 640px) 100vw, 50vw"
+                  }
                 />
                 {item.caption && (
                   <figcaption className="px-4 py-3 text-center text-[16px] leading-[1.47] text-black">

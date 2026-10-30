@@ -108,6 +108,8 @@ export type CaseStudy = {
       layout?: "masonry" | "phones" | "full" | "pair" | "stack";
       tone?: "muted" | "dark" | "plain";
       roomy?: boolean;
+      /** Let desktop page screens use more of the viewport */
+      wide?: boolean;
     }[];
   };
   solution?: {
@@ -621,6 +623,7 @@ export const projects: Project[] = [
             heading: "Full homepage",
             layout: "stack",
             tone: "plain",
+            wide: true,
             images: [
               {
                 src: "/images/projects/canada-online-tutoring/explore-full.jpg",
@@ -664,6 +667,7 @@ export const projects: Project[] = [
             heading: "Program pages",
             layout: "pair",
             tone: "muted",
+            wide: true,
             images: [
               {
                 src: "/images/projects/canada-online-tutoring/k8-hero.jpg",
@@ -706,6 +710,7 @@ export const projects: Project[] = [
             heading: "Subjects and a course",
             layout: "pair",
             tone: "muted",
+            wide: true,
             images: [
               {
                 src: "/images/projects/canada-online-tutoring/subjects-hero.jpg",

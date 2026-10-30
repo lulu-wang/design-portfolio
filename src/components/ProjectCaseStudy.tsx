@@ -478,6 +478,7 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
                   layout={gallery.layout ?? "full"}
                   tone={gallery.tone ?? cs.visuals?.tone ?? "dark"}
                   roomy={gallery.roomy}
+                  wide={gallery.wide}
                   flush
                   heading={gallery.heading}
                 />
