@@ -380,12 +380,18 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
       </div>
 
       {(cs.visuals?.banner ||
+        (cs.visuals?.beforeImages?.length ?? 0) > 0 ||
         (cs.visuals?.images.length ?? 0) > 0 ||
         (cs.visuals?.galleries?.length ?? 0) > 0 ||
         cs.wireframes?.hiFi) && (
         <CaseBleed>
           {cs.visuals?.banner && (
             <figure className="bg-white px-5 py-10 sm:px-8 sm:py-14 md:px-12">
+              {cs.visuals.banner.heading && (
+                <h3 className="mx-auto mb-8 max-w-5xl text-center text-[23px] font-normal leading-[1.3] text-black sm:mb-10">
+                  {cs.visuals.banner.heading}
+                </h3>
+              )}
               <Image
                 src={cs.visuals.banner.src}
                 alt={cs.visuals.banner.alt}
@@ -401,10 +407,23 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
               )}
             </figure>
           )}
+          {cs.visuals?.beforeImages && cs.visuals.beforeImages.length > 0 && (
+            <CaseGallery
+              items={cs.visuals.beforeImages}
+              layout="pair"
+              tone="muted"
+              flush
+            />
+          )}
           {cs.visuals &&
           ((cs.visuals.images.length ?? 0) > 0 ||
             (cs.visuals.galleries?.length ?? 0) > 0) ? (
             <>
+              {cs.visuals.galleryTitle && (
+                <h3 className="px-5 pt-12 text-center text-[23px] font-normal leading-[1.3] text-black sm:px-8 sm:pt-16">
+                  {cs.visuals.galleryTitle}
+                </h3>
+              )}
               {cs.visuals.images.length > 0 && (
                 <CaseGallery
                   items={cs.visuals.images}

@@ -96,7 +96,11 @@ export type CaseStudy = {
     title?: string;
     intro?: string;
     label?: string;
-    banner?: CaseMediaItem;
+    /** Title above the primary screens, after an optional before banner */
+    galleryTitle?: string;
+    banner?: CaseMediaItem & { heading?: string };
+    /** Cropped current-site pages, shown with the before banner */
+    beforeImages?: CaseMediaItem[];
     /** Extra galleries after the primary set (e.g. TV after phone) */
     galleries?: {
       heading?: string;
@@ -416,7 +420,7 @@ export const projects: Project[] = [
     slug: "canada-online-tutoring",
     name: "Canada Online Tutoring",
     description:
-      "A UX and website redesign that gives each tutoring program its own page, from early childhood through university, career skills, and language.",
+      "A redesign of the user experience flows and website UI, giving each tutoring program its own page, from early childhood through university, career skills, and language.",
     image: "/images/projects/canada-online-tutoring/cover-v2.jpg",
     previewScreens: [
       {
@@ -434,7 +438,7 @@ export const projects: Project[] = [
     ],
     caseStudy: {
       tagline:
-        "A website redesign for a Canadian tutoring service, so families can tell the programs apart and see how to start.",
+        "A redesign of the user experience flows and website UI, so families can tell the programs apart and see how to start.",
       presentation: {
         label: "current site",
         href: "https://canadaonlinetutoring.ca/",
@@ -442,12 +446,12 @@ export const projects: Project[] = [
       meta: {
         role: "UX Designer",
         timeline: "2026",
-        team: "Website redesign",
+        team: "UX flows and website UI",
         platform: "Web",
         tools: ["Figma"],
       },
       overview:
-        "**Canada Online Tutoring** supports learners from early childhood through university, plus career skills and language. The current site introduces those offers as sections on one page. The redesign gives each audience **its own program page**, a subject directory with filters, and a course page, all sharing one path from “this is who it’s for” to booking a consultation.",
+        "**Canada Online Tutoring** supports learners from early childhood through university, plus career skills and language. The current site introduces those offers as sections on one page. The redesign covers the **user experience flows** and the **website UI**: each audience gets its own program page, a subject directory with filters, and a course page, all sharing one path from “this is who it’s for” to booking a consultation.",
       problem: {
         statement:
           "People had to book before the site would answer a basic question.",
@@ -560,41 +564,102 @@ export const projects: Project[] = [
         label: "Design",
         title: "The new website",
         intro:
-          "The current high school page is first. The redesign that follows is the site itself: a homepage, five program pages, a subject directory, and a course page. They share one menu and the same path to a free consultation.",
+          "The current site is first: the high school page, the homepage, and Early Childhood & K–8. What follows is the redesign of the user experience flows and the website UI: a homepage, five program pages, a subject directory, and a course page. They share one menu and the same path to a free consultation.",
         banner: {
-          src: "/images/projects/canada-online-tutoring/before-hero.jpg",
+          heading: "Pre-redesign",
+          src: "/images/projects/canada-online-tutoring/before-high-school.jpg",
           alt: "Current Canada Online Tutoring high school page, before the redesign",
           caption: "Current high school page",
           width: 1440,
-          height: 640,
+          height: 5371,
         },
+        beforeImages: [
+          {
+            src: "/images/projects/canada-online-tutoring/before-home.jpg",
+            alt: "Current Canada Online Tutoring homepage, cut off below the program cards",
+            caption: "Current homepage",
+            width: 1600,
+            height: 1539,
+          },
+          {
+            src: "/images/projects/canada-online-tutoring/before-k8.jpg",
+            alt: "Current Early Childhood and K–8 page, cut off at the subjects section",
+            caption: "Current Early Childhood & K–8",
+            width: 1600,
+            height: 1565,
+          },
+        ],
+        galleryTitle: "Redesign",
         layout: "pair",
         tone: "muted",
-        heading: "On a phone",
+        heading: "Homepage explorations",
         images: [
           {
-            src: "/images/projects/canada-online-tutoring/home-phone.jpg",
-            alt: "New homepage — We help you find the right tutor",
-            caption: "Homepage",
-            width: 804,
-            height: 1744,
+            src: "/images/projects/canada-online-tutoring/explore-illustrated.jpg",
+            alt: "Homepage exploration with an illustrated hero of shapes, a question mark, and a matched badge",
+            caption: "Illustrated hero",
+            width: 1024,
+            height: 790,
           },
           {
-            src: "/images/projects/canada-online-tutoring/program-phone.jpg",
-            alt: "Early Childhood and K–8 program page on a phone",
-            caption: "Early Childhood & K–8",
-            width: 804,
-            height: 1744,
+            src: "/images/projects/canada-online-tutoring/explore-photo.jpg",
+            alt: "Homepage exploration with a photo of a tutor and student inside the navy hero",
+            caption: "Photo hero",
+            width: 1024,
+            height: 678,
           },
           {
-            src: "/images/projects/canada-online-tutoring/menu-phone.jpg",
-            alt: "Open programs menu — Early Childhood and K–8 through Language Tutoring",
-            caption: "Programs menu",
-            width: 804,
-            height: 1743,
+            src: "/images/projects/canada-online-tutoring/explore-split.jpg",
+            alt: "Homepage exploration with a navy headline beside a full-height photo",
+            caption: "Split hero",
+            width: 1024,
+            height: 583,
           },
         ],
         galleries: [
+          {
+            heading: "Full homepage",
+            layout: "stack",
+            tone: "plain",
+            images: [
+              {
+                src: "/images/projects/canada-online-tutoring/explore-full.jpg",
+                alt: "Full homepage — photo hero, programs, subjects, how tutoring works, and reviews",
+                caption: "Full homepage",
+                width: 1600,
+                height: 8230,
+              },
+            ],
+          },
+          {
+            heading: "On a phone",
+            layout: "phones",
+            tone: "muted",
+            roomy: true,
+            images: [
+              {
+                src: "/images/projects/canada-online-tutoring/home-phone.jpg",
+                alt: "New homepage — We help you find the right tutor",
+                caption: "Homepage",
+                width: 804,
+                height: 1744,
+              },
+              {
+                src: "/images/projects/canada-online-tutoring/program-phone.jpg",
+                alt: "Early Childhood and K–8 program page on a phone",
+                caption: "Early Childhood & K–8",
+                width: 804,
+                height: 1744,
+              },
+              {
+                src: "/images/projects/canada-online-tutoring/menu-phone.jpg",
+                alt: "Open programs menu — Early Childhood and K–8 through Language Tutoring",
+                caption: "Programs menu",
+                width: 804,
+                height: 1743,
+              },
+            ],
+          },
           {
             heading: "Program pages",
             layout: "pair",
@@ -605,35 +670,35 @@ export const projects: Project[] = [
                 alt: "Early Childhood and K–8 program page",
                 caption: "Early Childhood & K–8",
                 width: 1600,
-                height: 980,
+                height: 3280,
               },
               {
                 src: "/images/projects/canada-online-tutoring/high-school-hero.jpg",
                 alt: "Secondary and high school program page — results-driven tutoring",
                 caption: "High / Secondary School",
                 width: 1600,
-                height: 980,
+                height: 3280,
               },
               {
                 src: "/images/projects/canada-online-tutoring/university-hero.jpg",
                 alt: "University and college program page",
                 caption: "University & College",
                 width: 1600,
-                height: 980,
+                height: 3280,
               },
               {
                 src: "/images/projects/canada-online-tutoring/career-hero.jpg",
                 alt: "Skills and career program page",
                 caption: "Skills & Career",
                 width: 1600,
-                height: 980,
+                height: 3280,
               },
               {
                 src: "/images/projects/canada-online-tutoring/english-hero.jpg",
                 alt: "English tutoring program page — ESL and academic English",
                 caption: "English Tutoring",
                 width: 1600,
-                height: 980,
+                height: 3480,
               },
             ],
           },
@@ -647,14 +712,14 @@ export const projects: Project[] = [
                 alt: "Subject directory — filter K–12 tutoring by subject, grade, province, and course code",
                 caption: "Explore subjects",
                 width: 1600,
-                height: 1000,
+                height: 2409,
               },
               {
                 src: "/images/projects/canada-online-tutoring/course-hero.jpg",
                 alt: "Biology college preparation course page",
                 caption: "Course page",
                 width: 1600,
-                height: 980,
+                height: 3280,
               },
             ],
           },

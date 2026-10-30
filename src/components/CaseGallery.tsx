@@ -137,11 +137,14 @@ function PhoneFrame({
   // PulseFit exports mix 864 and 1076-tall crops; pin them to one iPhone
   // viewport so shorter screens don't sit above a black gap in the grid.
   const isPathScreen = item.src.includes("path-learning/screens");
-  const nativeChrome = isPathScreen;
+  const isCotPhone =
+    item.src.includes("canada-online-tutoring") && item.src.includes("phone");
+  const nativeChrome = isPathScreen || isCotPhone;
   const fillFrame =
     item.src.includes("pulsefit") ||
     item.src.includes("netflix-community/phone") ||
-    isPathScreen;
+    isPathScreen ||
+    isCotPhone;
 
   return (
     <figure className={`mx-auto w-full ${roomy ? "max-w-[220px] sm:max-w-[240px] md:max-w-[260px]" : ""}`}>

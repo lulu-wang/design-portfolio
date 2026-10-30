@@ -4,7 +4,7 @@ import { projects, type Project } from "@/data/site";
 
 const blurbs: Record<string, string> = {
   opal: "Meetings, decisions, and tasks in one desktop workspace",
-  "canada-online-tutoring": "A clearer site for families choosing a tutor",
+  "canada-online-tutoring": "User experience flows and website UI",
   "path-learning": "Skill paths, assignments, and mentor feedback",
   pulsefit: "Simple fitness and diet tracking",
   "netflix-community": "Private circles for spoiler-safe watching",
