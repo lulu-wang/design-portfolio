@@ -325,24 +325,33 @@ export default function CaseGallery({
 
   if (layout === "pair") {
     return (
-      <div className="mt-12 grid gap-4 sm:mt-16 sm:grid-cols-2 sm:gap-5">
-        {items.map((item) => (
-          <figure key={item.src} className={`overflow-hidden ${surface}`}>
-            <Image
-              src={item.src}
-              alt={item.alt}
-              width={item.width ?? 900}
-              height={item.height ?? 1200}
-              className="h-auto w-full object-contain"
-              sizes="(max-width: 640px) 100vw, 50vw"
-            />
-            {item.caption && (
-              <figcaption className="px-4 py-3 text-xs tracking-wide text-muted">
-                {item.caption}
-              </figcaption>
-            )}
-          </figure>
-        ))}
+      <div className={`${flush ? "mt-0" : "mt-12"} px-5 sm:mt-16 sm:px-8`}>
+        <div className="mx-auto w-full max-w-6xl">
+          {heading ? (
+            <p className="mb-8 text-center text-[16px] leading-[1.47] text-black sm:mb-10">
+              {heading}
+            </p>
+          ) : null}
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
+            {items.map((item) => (
+              <figure key={item.src} className={`overflow-hidden ${surface}`}>
+                <Image
+                  src={item.src}
+                  alt={item.alt}
+                  width={item.width ?? 900}
+                  height={item.height ?? 1200}
+                  className="h-auto w-full object-contain"
+                  sizes="(max-width: 640px) 100vw, 50vw"
+                />
+                {item.caption && (
+                  <figcaption className="px-4 py-3 text-center text-[16px] leading-[1.47] text-black">
+                    {item.caption}
+                  </figcaption>
+                )}
+              </figure>
+            ))}
+          </div>
+        </div>
       </div>
     );
   }
