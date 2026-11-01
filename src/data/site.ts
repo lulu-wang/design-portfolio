@@ -110,6 +110,10 @@ export type CaseStudy = {
       roomy?: boolean;
       /** Let desktop page screens use more of the viewport */
       wide?: boolean;
+      /** Full screen scrolls inside a phone frame */
+      scroll?: boolean;
+      /** Show this gallery before the primary screens */
+      before?: boolean;
     }[];
   };
   solution?: {
@@ -442,8 +446,8 @@ export const projects: Project[] = [
       tagline:
         "A redesign of the user experience flows and website UI, so families can tell the programs apart and see how to start.",
       presentation: {
-        label: "current site",
-        href: "https://canadaonlinetutoring.ca/",
+        label: "prototype",
+        href: "https://www.figma.com/proto/Ow7VcysSnghqZp7yU9CZ6l/Client-Project--COT-Website?node-id=1475-7714&p=f&t=mqKKm9UNYlcjlNv1-1&scaling=min-zoom&content-scaling=fixed&page-id=1475%3A7529&starting-point-node-id=1475%3A7714&show-proto-sidebar=1",
       },
       meta: {
         role: "UX Designer",
@@ -664,6 +668,49 @@ export const projects: Project[] = [
             ],
           },
           {
+            heading: "Mobile pages",
+            layout: "phones",
+            tone: "muted",
+            scroll: true,
+            images: [
+              {
+                src: "/images/projects/canada-online-tutoring/scroll-home.jpg",
+                alt: "Mobile homepage — We help you find the right tutor, programs, and subjects",
+                caption: "Homepage",
+                width: 402,
+                height: 11245,
+              },
+              {
+                src: "/images/projects/canada-online-tutoring/scroll-program.jpg",
+                alt: "Mobile Early Childhood and K–8 program page",
+                caption: "Program page",
+                width: 402,
+                height: 6368,
+              },
+              {
+                src: "/images/projects/canada-online-tutoring/scroll-subjects.jpg",
+                alt: "Mobile subject directory — Explore K–12 tutoring subjects",
+                caption: "Subjects",
+                width: 402,
+                height: 5372,
+              },
+              {
+                src: "/images/projects/canada-online-tutoring/scroll-filter.jpg",
+                alt: "Mobile subject directory with the province filter open — Alberta, British Columbia, Manitoba, Ontario, Quebec",
+                caption: "Filtering",
+                width: 402,
+                height: 3467,
+              },
+              {
+                src: "/images/projects/canada-online-tutoring/scroll-course.jpg",
+                alt: "Mobile Biology college preparation course page",
+                caption: "Course page",
+                width: 402,
+                height: 6764,
+              },
+            ],
+          },
+          {
             heading: "Program pages",
             layout: "pair",
             tone: "muted",
@@ -671,38 +718,45 @@ export const projects: Project[] = [
             images: [
               {
                 src: "/images/projects/canada-online-tutoring/k8-hero.jpg",
-                alt: "Early Childhood and K–8 program page",
+                alt: "Early Childhood and K–8 program page — helping young learners build strong foundations, curriculum subjects, and how it works",
                 caption: "Early Childhood & K–8",
                 width: 1600,
-                height: 3280,
+                height: 6013,
               },
               {
                 src: "/images/projects/canada-online-tutoring/high-school-hero.jpg",
-                alt: "Secondary and high school program page — results-driven tutoring",
+                alt: "Secondary and high school program page — results-driven tutoring for grades and exams",
                 caption: "High / Secondary School",
                 width: 1600,
-                height: 3280,
+                height: 6091,
               },
               {
                 src: "/images/projects/canada-online-tutoring/university-hero.jpg",
-                alt: "University and college program page",
+                alt: "University and college program page — expert support for advanced university and college courses",
                 caption: "University & College",
                 width: 1600,
-                height: 3280,
+                height: 6091,
               },
               {
                 src: "/images/projects/canada-online-tutoring/career-hero.jpg",
-                alt: "Skills and career program page",
+                alt: "Skills and career program page — build in-demand skills beyond the classroom",
                 caption: "Skills & Career",
                 width: 1600,
-                height: 3280,
+                height: 6089,
               },
               {
                 src: "/images/projects/canada-online-tutoring/english-hero.jpg",
-                alt: "English tutoring program page — ESL and academic English",
+                alt: "English tutoring program page — ESL and academic English programs, pathways, and how it works",
                 caption: "English Tutoring",
                 width: 1600,
-                height: 3480,
+                height: 3894,
+              },
+              {
+                src: "/images/projects/canada-online-tutoring/ielts-hero.jpg",
+                alt: "IELTS Preparation program page — pathways, frequently asked questions, and how tutoring works",
+                caption: "IELTS Preparation",
+                width: 1600,
+                height: 3894,
               },
             ],
           },
@@ -717,14 +771,36 @@ export const projects: Project[] = [
                 alt: "Subject directory — filter K–12 tutoring by subject, grade, province, and course code",
                 caption: "Explore subjects",
                 width: 1600,
-                height: 2409,
+                height: 1472,
               },
               {
                 src: "/images/projects/canada-online-tutoring/course-hero.jpg",
-                alt: "Biology college preparation course page",
+                alt: "Biology college preparation course page — topics, what you will learn, and how it works",
                 caption: "Course page",
                 width: 1600,
-                height: 3280,
+                height: 1600,
+              },
+            ],
+          },
+          {
+            heading: "Subject directory",
+            layout: "pair",
+            tone: "muted",
+            wide: true,
+            images: [
+              {
+                src: "/images/projects/canada-online-tutoring/subjects-filter.jpg",
+                alt: "Subject directory with the province filter open — Alberta, British Columbia, Manitoba, Ontario, Quebec",
+                caption: "Province filter",
+                width: 1600,
+                height: 1551,
+              },
+              {
+                src: "/images/projects/canada-online-tutoring/subjects-empty.jpg",
+                alt: "Subject directory empty state — no courses found, with a restart search action",
+                caption: "No courses found",
+                width: 1600,
+                height: 1172,
               },
             ],
           },
@@ -742,12 +818,12 @@ export const projects: Project[] = [
     image: "/images/project-path-learning.png",
     previewScreens: [
       {
-        src: "/images/projects/path-learning/screens/04-interests.png",
-        alt: "Path Learning onboarding — Choose Your Interests with searchable skill chips",
+        src: "/images/projects/path-learning/hifi/01-splash.png",
+        alt: "Path Learning splash — Explore and Master New Skills, with Get Started",
       },
       {
-        src: "/images/projects/path-learning/screens/05-choose-skill.png",
-        alt: "Path Learning home — What do you want to learn, Photography skill selected",
+        src: "/images/projects/path-learning/hifi/04-syllabus.png",
+        alt: "Path Learning home — Today's Syllabus for Ana, Photography selected",
       },
     ],
     tags: [
@@ -998,8 +1074,87 @@ export const projects: Project[] = [
         roomy: true,
         images: [
           {
-            src: "/images/projects/path-learning/screens/01-splash.png",
+            src: "/images/projects/path-learning/hifi/01-splash.png",
             alt: "Path Learning splash — Explore and Master New Skills, with Get Started",
+            caption: "Splash",
+            width: 786,
+            height: 1704,
+          },
+          {
+            src: "/images/projects/path-learning/hifi/02-signup.png",
+            alt: "Path Learning sign up — Name, Email, and Password on a mint field",
+            caption: "Sign up",
+            width: 786,
+            height: 1704,
+          },
+          {
+            src: "/images/projects/path-learning/hifi/03-login.png",
+            alt: "Path Learning login — Email, Password, and Forgot on a lilac field",
+            caption: "Login",
+            width: 786,
+            height: 1704,
+          },
+          {
+            src: "/images/projects/path-learning/hifi/04-syllabus.png",
+            alt: "Path Learning home — Today's Syllabus for Ana, with Photography selected and Framing Fundamentals at 60 percent",
+            caption: "Today's syllabus",
+            width: 786,
+            height: 1674,
+          },
+          {
+            src: "/images/projects/path-learning/hifi/05-search.png",
+            alt: "Path Learning search — photography query over a dimmed syllabus",
+            caption: "Search",
+            width: 786,
+            height: 1674,
+          },
+          {
+            src: "/images/projects/path-learning/hifi/06-schedule.png",
+            alt: "Path Learning schedule — Monday January 15 with the week's lessons",
+            caption: "Schedule",
+            width: 786,
+            height: 1715,
+          },
+          {
+            src: "/images/projects/path-learning/hifi/07-assignment.png",
+            alt: "Path Learning assignment — Framing Fundamentals projects with an upload",
+            caption: "Assignment",
+            width: 786,
+            height: 1674,
+          },
+          {
+            src: "/images/projects/path-learning/hifi/08-lesson.png",
+            alt: "Path Learning lesson — Framing Fundamentals reading with Lesson, Assignment, and Feedback",
+            caption: "Lesson",
+            width: 786,
+            height: 1674,
+          },
+          {
+            src: "/images/projects/path-learning/hifi/09-mentor.png",
+            alt: "Path Learning mentor booking — Sarah Chen, May 2025, 4:00 PM selected",
+            caption: "Mentor",
+            width: 786,
+            height: 1704,
+          },
+          {
+            src: "/images/projects/path-learning/hifi/10-menu.png",
+            alt: "Path Learning menu — Home, Paths, Projects, Mentors, Settings",
+            caption: "Menu",
+            width: 786,
+            height: 1704,
+          },
+        ],
+        galleries: [
+          {
+            heading: "Mid-fi",
+            layout: "phones",
+            tone: "dark",
+            roomy: true,
+            before: true,
+            images: [
+          {
+            src: "/images/projects/path-learning/screens/01-splash.png",
+            alt: "Path Learning mid-fi splash — Explore and Master New Skills, with Get Started",
             caption: "Splash",
             width: 393,
             height: 852,
@@ -1108,6 +1263,8 @@ export const projects: Project[] = [
             caption: "Menu",
             width: 393,
             height: 852,
+          },
+            ],
           },
         ],
       },

@@ -79,11 +79,22 @@ export default function ProjectCover({
   const stacked = words.length > 1;
   const hero = size === "hero";
   const pair = Boolean(screens && screens.length >= 2);
+  const pathLearning = Boolean(
+    screens?.some((screen) => screen.src.includes("path-learning")),
+  );
 
   return (
     <div
       className={`relative isolate overflow-hidden bg-[#f6f6f4] ${className}`}
-      style={{ containerType: "size" }}
+      style={
+        pathLearning
+          ? {
+              containerType: "size",
+              background:
+                "radial-gradient(90% 70% at 8% 12%, #F0D9F7 0%, transparent 52%), radial-gradient(80% 60% at 96% 88%, #D7CFFE 0%, transparent 48%), radial-gradient(60% 46% at 92% 8%, #B6D8FE 0%, transparent 42%), linear-gradient(165deg, #F7FBF4 0%, #E3F5DF 58%, #D7EED0 100%)",
+            }
+          : { containerType: "size" }
+      }
     >
       <div
         aria-hidden
@@ -92,7 +103,11 @@ export default function ProjectCover({
         }`}
       >
         <span
-          className={`font-display select-none font-bold uppercase tracking-[-0.06em] text-foreground/[0.16] transition-colors duration-300 group-hover:text-foreground/[0.22] ${
+          className={`font-display select-none font-bold uppercase tracking-[-0.06em] transition-colors duration-300 ${
+            pathLearning
+              ? "text-[#388068]/25 group-hover:text-[#388068]/35"
+              : "text-foreground/[0.16] group-hover:text-foreground/[0.22]"
+          } ${
             stacked
               ? `text-left ${
                   hero

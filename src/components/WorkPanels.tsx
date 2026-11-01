@@ -9,11 +9,14 @@ function plainText(text: string) {
 
 const grounds: Record<string, { bg: string; fg: string }> = {
   opal: { bg: "#101014", fg: "#F6F4F1" },
-  "path-learning": { bg: "#E4F2DC", fg: "#1A2418" },
+  "path-learning": {
+    bg: "radial-gradient(90% 70% at 8% 12%, #F0D9F7 0%, transparent 52%), radial-gradient(80% 60% at 96% 88%, #D7CFFE 0%, transparent 48%), radial-gradient(60% 46% at 92% 8%, #B6D8FE 0%, transparent 42%), linear-gradient(165deg, #F7FBF4 0%, #E3F5DF 58%, #D7EED0 100%)",
+    fg: "#1A2418",
+  },
   pulsefit: { bg: "#101010", fg: "#F5F5F5" },
   "netflix-community": { bg: "#141414", fg: "#F6F4F1" },
   yuugen: { bg: "#1A1A1A", fg: "#FFFFFF" },
-  "canada-online-tutoring": { bg: "#002538", fg: "#F4F4F2" },
+  "canada-online-tutoring": { bg: "#E7F0F4", fg: "#002538" },
 };
 
 const spans = [
@@ -28,8 +31,12 @@ const spans = [
 const panelPhones: Record<string, { src: string; alt: string }[]> = {
   "path-learning": [
     {
-      src: "/images/projects/path-learning/screens/01-splash.png",
-      alt: "Path Learning splash",
+      src: "/images/projects/path-learning/hifi/01-splash.png",
+      alt: "Path Learning splash — Explore and Master New Skills",
+    },
+    {
+      src: "/images/projects/path-learning/hifi/04-syllabus.png",
+      alt: "Path Learning home — Today's Syllabus",
     },
   ],
   pulsefit: [

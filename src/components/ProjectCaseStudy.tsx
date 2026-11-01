@@ -400,13 +400,6 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
           </CaseSection>
         )}
 
-        {cs.wireframes?.hiFi && (
-          <CaseSection
-            label="Hi-Fidelity"
-            title="Hi-fidelity prototypes"
-            intro={cs.wireframes.hiFi}
-          />
-        )}
         {cs.visuals && (cs.visuals.title || cs.visuals.intro) && (
           <CaseSection
             label={cs.visuals.label ?? "Collection"}
@@ -415,6 +408,35 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
           />
         )}
       </div>
+
+      {(cs.visuals?.galleries?.filter((gallery) => gallery.before).length ?? 0) > 0 && (
+        <CaseBleed>
+          {cs.visuals?.galleries
+            ?.filter((gallery) => gallery.before)
+            .map((gallery, index) => (
+              <CaseGallery
+                key={gallery.heading ?? gallery.images[0]?.src ?? index}
+                items={gallery.images}
+                layout={gallery.layout ?? "full"}
+                tone={gallery.tone ?? cs.visuals?.tone ?? "dark"}
+                roomy={gallery.roomy}
+                wide={gallery.wide}
+                scroll={gallery.scroll}
+                heading={gallery.heading}
+              />
+            ))}
+        </CaseBleed>
+      )}
+
+      {cs.wireframes?.hiFi && (
+        <div className="page-inset">
+          <CaseSection
+            label="Hi-Fidelity"
+            title="Hi-fidelity prototypes"
+            intro={cs.wireframes.hiFi}
+          />
+        </div>
+      )}
 
       {(cs.visuals?.banner ||
         (cs.visuals?.beforeImages?.length ?? 0) > 0 ||
@@ -471,7 +493,9 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
                   heading={cs.visuals.heading}
                 />
               )}
-              {cs.visuals.galleries?.map((gallery, index) => (
+              {cs.visuals.galleries
+                ?.filter((gallery) => !gallery.before)
+                .map((gallery, index) => (
                 <CaseGallery
                   key={gallery.heading ?? gallery.images[0]?.src ?? index}
                   items={gallery.images}
@@ -479,6 +503,7 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
                   tone={gallery.tone ?? cs.visuals?.tone ?? "dark"}
                   roomy={gallery.roomy}
                   wide={gallery.wide}
+                  scroll={gallery.scroll}
                   flush
                   heading={gallery.heading}
                 />

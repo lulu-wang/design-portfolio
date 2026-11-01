@@ -125,6 +125,33 @@ function StatusBar({
   );
 }
 
+function ScrollPhone({ item }: { item: CaseMediaItem }) {
+  return (
+    <figure className="mx-auto w-full max-w-[188px] sm:max-w-[200px]">
+      <div className="rounded-[1.55rem] bg-[#1a1a1a] p-[6px] shadow-[0_14px_28px_rgba(0,0,0,0.16)]">
+        <div
+          data-lenis-prevent
+          className="aspect-[393/852] overflow-x-hidden overflow-y-auto overscroll-y-contain rounded-[1.15rem] bg-white [scrollbar-color:rgba(0,0,0,0.35)_transparent] [scrollbar-width:thin] [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-black/35"
+        >
+          <Image
+            src={item.src}
+            alt={item.alt}
+            width={item.width ?? 402}
+            height={item.height ?? 852}
+            className="h-auto w-full"
+            sizes="200px"
+          />
+        </div>
+      </div>
+      {item.caption && (
+        <figcaption className="mt-3 text-center text-[13px] leading-snug text-foreground/70">
+          {item.caption}
+        </figcaption>
+      )}
+    </figure>
+  );
+}
+
 function PhoneFrame({
   item,
   roomy = false,
@@ -136,31 +163,45 @@ function PhoneFrame({
   const dark = theme === "dark";
   // PulseFit exports mix 864 and 1076-tall crops; pin them to one iPhone
   // viewport so shorter screens don't sit above a black gap in the grid.
-  const isPathScreen = item.src.includes("path-learning/screens");
+  const isPathHifi = item.src.includes("path-learning/hifi");
+  const isPathScreen =
+    item.src.includes("path-learning/screens") || isPathHifi;
   const isCotPhone =
     item.src.includes("canada-online-tutoring") && item.src.includes("phone");
   const nativeChrome = isPathScreen || isCotPhone;
   const fillFrame =
     item.src.includes("pulsefit") ||
     item.src.includes("netflix-community/phone") ||
-    isPathScreen ||
+    (isPathScreen && !isPathHifi) ||
     isCotPhone;
 
   return (
-    <figure className={`mx-auto w-full ${roomy ? "max-w-[220px] sm:max-w-[240px] md:max-w-[260px]" : ""}`}>
+    <figure
+      className={`mx-auto w-full ${
+        isCotPhone
+          ? "max-w-[168px] sm:max-w-[184px] md:max-w-[200px]"
+          : roomy
+            ? "max-w-[220px] sm:max-w-[240px] md:max-w-[260px]"
+            : ""
+      }`}
+    >
       {/* Onur-style device shell — thin dark bezel, soft lift */}
       <div
         className={`bg-[#111] shadow-[0_28px_56px_rgba(0,0,0,0.45)] ring-1 ring-white/[0.08] ${
-          isPathScreen
-            ? "rounded-[1.35rem] p-[4px] sm:rounded-[2.85rem] sm:p-[11px]"
-            : "rounded-[2.6rem] p-[10px] sm:rounded-[2.85rem] sm:p-[11px]"
+          isCotPhone
+            ? "rounded-[1.55rem] p-[6px]"
+            : isPathScreen
+              ? "rounded-[1.55rem] p-[7px]"
+              : "rounded-[2.6rem] p-[10px] sm:rounded-[2.85rem] sm:p-[11px]"
         }`}
       >
         <div
           className={`relative overflow-hidden leading-none ${
-            isPathScreen
-              ? "rounded-[1.1rem] sm:rounded-[2.25rem]"
-              : "rounded-[2.05rem] sm:rounded-[2.25rem]"
+            isCotPhone
+              ? "rounded-[1.15rem]"
+              : isPathScreen
+                ? "rounded-[1.15rem]"
+                : "rounded-[2.05rem] sm:rounded-[2.25rem]"
           } ${
             fillFrame
               ? nativeChrome
@@ -244,6 +285,7 @@ export default function CaseGallery({
   flush = false,
   heading,
   wide = false,
+  scroll = false,
 }: {
   items: CaseMediaItem[];
   layout?: Layout;
@@ -252,6 +294,7 @@ export default function CaseGallery({
   flush?: boolean;
   heading?: string;
   wide?: boolean;
+  scroll?: boolean;
 }) {
   if (!items.length) return null;
 
@@ -387,6 +430,23 @@ export default function CaseGallery({
               </figure>
             ))}
           </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (layout === "phones" && scroll) {
+    return (
+      <div
+        className={`${surface} ${
+          flush ? "mt-0" : "mt-12 sm:mt-16"
+        } px-5 py-12 sm:px-8 sm:py-16`}
+      >
+        <GalleryHeading heading={heading} onDark={dark} />
+        <div className="mx-auto grid max-w-6xl grid-cols-2 justify-items-center gap-x-5 gap-y-10 md:grid-cols-5 md:gap-x-6">
+          {items.map((item) => (
+            <ScrollPhone key={item.src} item={item} />
+          ))}
         </div>
       </div>
     );

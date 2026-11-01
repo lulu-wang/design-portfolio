@@ -9,8 +9,8 @@ import { experience, projects } from "@/data/site";
 
 const phones = [
   {
-    src: "/images/projects/path-learning/screens/12-choose-skill-progress.png",
-    alt: "Path Learning skill progress",
+    src: "/images/projects/path-learning/hifi/04-syllabus.png",
+    alt: "Path Learning syllabus",
     className: "left-[6%] w-[28%] -rotate-[7deg] sm:left-[10%]",
   },
   {
@@ -19,8 +19,8 @@ const phones = [
     className: "left-1/2 z-10 w-[30%] -translate-x-1/2",
   },
   {
-    src: "/images/projects/path-learning/screens/04-interests.png",
-    alt: "Path Learning interests",
+    src: "/images/projects/path-learning/hifi/08-lesson.png",
+    alt: "Path Learning lesson",
     className: "right-[6%] w-[28%] rotate-[7deg] sm:right-[10%]",
   },
 ];
