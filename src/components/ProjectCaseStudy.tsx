@@ -489,6 +489,7 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
                   layout={cs.visuals.layout ?? "phones"}
                   tone={cs.visuals.tone ?? "dark"}
                   roomy={cs.visuals.roomy}
+                  scroll={cs.visuals.scroll}
                   flush={Boolean(cs.visuals.banner)}
                   heading={cs.visuals.heading}
                 />

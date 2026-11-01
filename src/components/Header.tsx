@@ -13,7 +13,7 @@ const nav = [
   { label: "Gallery", href: "/illustrations" },
   { label: "Projects", href: "/projects" },
   { label: "Blog", href: "/blog" },
-  { label: "Resume", href: "/LuluWangPMResume26.pdf", external: true },
+  { label: "Resume", href: "/CreativeSoftwareDesignResume.pdf", external: true },
 ];
 
 const desktopNav = nav.filter((item) => item.href !== "/");

@@ -6,7 +6,7 @@ export default function BackgroundSection() {
       <div className="flex items-baseline justify-between gap-6">
         <h2 className="section-label">Background</h2>
         <a
-          href="/LuluWangPMResume26.pdf"
+          href="/CreativeSoftwareDesignResume.pdf"
           target="_blank"
           rel="noopener noreferrer"
           className="color-hover hidden shrink-0 text-sm text-foreground/45 sm:inline"
@@ -62,7 +62,7 @@ export default function BackgroundSection() {
       </div>
 
       <a
-        href="/LuluWangPMResume26.pdf"
+        href="/CreativeSoftwareDesignResume.pdf"
         target="_blank"
         rel="noopener noreferrer"
         className="color-hover mt-2 inline-block text-sm text-foreground/45 sm:hidden"

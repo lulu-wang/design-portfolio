@@ -92,6 +92,8 @@ export type CaseStudy = {
     tone?: "muted" | "dark" | "plain";
     /** Smaller phones with more space between frames */
     roomy?: boolean;
+    /** Full screen scrolls inside a phone frame */
+    scroll?: boolean;
     heading?: string;
     title?: string;
     intro?: string;
@@ -148,277 +150,531 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    slug: "opal",
-    name: "Opal",
+    slug: "path-learning",
+    name: "Path Learning",
     description:
-      "A desktop workspace that transcribes meetings, captures decisions, and turns them into assigned work for product, design, and engineering.",
-    image: "/images/project-opal-cover.png",
+      "A mobile learning app that replaces tutorial watching with illustrated skill paths, hands-on assignments, and feedback from AI and mentors.",
+    image: "/images/project-path-learning.png",
+    previewScreens: [
+      {
+        src: "/images/projects/path-learning/hifi/01-splash.png",
+        alt: "Path Learning splash — Explore and Master New Skills, with Get Started",
+      },
+      {
+        src: "/images/projects/path-learning/hifi/04-syllabus.png",
+        alt: "Path Learning home — Today's Syllabus for Ana, Photography selected",
+      },
+    ],
     tags: [
       { label: "UX Design", variant: "outline" },
-      { label: "Product Design", variant: "solid" },
-      { label: "Desktop", variant: "lavender" },
+      { label: "Product Research", variant: "solid" },
+      { label: "Mobile", variant: "lavender" },
     ],
     caseStudy: {
       tagline:
-        "A desktop workspace for product teams that turns meeting recordings into a shared transcript, captured decisions, and assigned tasks.",
-      presentation: {
-        label: "live prototype",
-        href: "/prototypes/opal",
-      },
+        "A practice-first learning app that turns skill-building into modules — with a path for what to do next, and feedback when you get stuck.",
       meta: {
-        role: "Product Designer & Developer",
-        timeline: "Prototype · 2026",
-        team: "Solo designer-developer",
-        platform: "Desktop web",
-        tools: ["Figma", "Cursor", "Next.js"],
+        role: "Product Designer",
+        timeline: "Capstone · 2026",
+        team: "Solo designer",
+        platform: "iOS",
+        tools: ["Figma", "FigJam", "Google Meet"],
       },
       overview:
-        "Opal started from a gap I kept hitting as a **software engineer**: there was no clean way to summarize a meeting from everyone’s point of view, or to turn a decision into a task without a tedious multi-step process. Notes went into docs, recaps went out over email, and tickets were created somewhere else — so the record of the meeting was **scattered**. I designed and built a single desktop workspace that records and transcribes meetings with AI, attaches tasks to those decisions, and lets engineering, design, and product share one dashboard instead of three follow-up rituals.",
+        "Path Learning is a project-based mobile app for self-directed learners who are tired of **watching** without **doing**. Instead of course catalogs and completion badges, the product is built around illustrated skill paths and modules — a lesson, an assignment that produces an artifact, then AI and mentor feedback. I led research, IA, wireframes, visual design, and two rounds of usability testing as sole designer.",
       problem: {
         statement:
-          "Meeting follow-through is a **multi-tool chore** — notes, email recaps, and tickets never land in one place.",
+          "Learners get stuck in **tutorial hell**, drowned in content choices, and left without feedback that actually helps them improve.",
         points: [
-          "**Notes, email, and tasks splinter.** People capture the meeting in a doc, send a recap, then recreate the work in a tracker. Nothing is the source of truth.",
-          "**No shared summary.** There isn’t a streamlined way to see the discussion from all contributors’ perspectives — engineering, design, and product each leave with a different version.",
-          "**Decisions don’t become work.** Turning what was agreed into an assigned task takes too many steps, so the administrative burden sits on whoever cares enough to do it by hand.",
+          "Passive video consumption creates a false sense of mastery that disappears the moment someone opens a blank project.",
+          "Feedback is either generic praise or binary pass/fail — not category-specific enough to change lighting, composition, or logic.",
+          "Fragmented catalogs cause choice paralysis, so people spend their limited free time searching instead of practicing.",
         ],
       },
       goals:
-        "Cut that overhead with **one tool**: AI transcription of recordings, tasks created from decisions, a central dashboard to manage them, and a way to assign work to projects and the people across functions who own it.",
+        "Flip the default EdTech loop from Watch → Read → Quiz to **Try → Struggle → Learn → Feedback → Retry**, so every concept is immediately practiced and every completed assignment becomes portfolio evidence.",
       research: {
         intro:
-          "I framed both the **user problem** (scattered notes, unpaid admin work) and the **business problem** (teams stay misaligned because follow-through is expensive). The design had to serve cross-functional contributors — designers, PMs, and developers — not a single role’s note-taking habit. I used my own engineering workflow as the brief, then looked at how existing boards and meeting tools split the same loop apart.",
+          "The research question was how self-directed learners move from theory to practice — and where they abandon that jump. I interviewed self-taught creatives, mid-career switchers, and hobbyists, and audited **Maven**, **Exercism**, and **MentorCruise** to map gaps in feedback, structure, and mentorship.",
         methods: [
           {
-            title: "Problem framing",
+            title: "User interviews",
             description:
-              "Wrote the user and business jobs from firsthand experience: reduce administrative overhead, and make **eng / design / product** look at the same record after a call.",
+              "Structured sessions on how people currently learn, where projects stall, and what makes feedback feel **actionable** versus empty.",
           },
           {
-            title: "Flow + competitive boards",
+            title: "Competitive analysis",
             description:
-              "Sketched the path from recording → transcript → decision → task. Modeled the task surface after **Jira-style boards**, because that’s where the work already tried to live — just not connected to the meeting.",
+              "Compared Maven, Exercism, and MentorCruise on practice loops, mentor access, and whether progress felt like **portfolio work** or video check-offs.",
           },
           {
-            title: "Feature mapping",
+            title: "Affinity mapping",
             description:
-              "Listed what a product contributor actually needs to stay productive: daily meetings, a home dashboard, projects, people, files, and more than one way to see tasks. The hard part was **not** adding everything — it was naming the set.",
+              "Synthesized quotes into three problem clusters — tutorial dependency, feedback quality, and choice overload — which became the product’s north star.",
           },
         ],
         insights: [
-          { stat: "3", label: "places work used to scatter" },
-          { stat: "3", label: "task views for different working styles" },
-          { stat: "1", label: "live prototype built in Cursor" },
+          { stat: "3", label: "problem clusters from affinity mapping" },
+          { stat: "3", label: "competitor platforms audited" },
+          { stat: "5", label: "moderated usability participants" },
         ],
         quotes: [
-          "We take notes in a doc, send an email recap, then recreate the tasks in another tool.",
-          "There’s no one place that holds what everyone heard in the meeting.",
-          "Turning a decision into a ticket is a multi-step chore.",
+          "I feel like a pro when I'm following a video tutorial, but the second I close the tab and try to write a single line of code on my own, I realize I haven't actually learned how to think for myself.",
+          "Getting 'looks good!' or vague online comments doesn't tell me what to fix about my lighting or composition to actually get better.",
+          "I spent three hours searching for the 'perfect' intro course. By the time I finally picked one, I was too mentally exhausted to actually start the first lesson.",
         ],
         persona: {
-          name: "Alex Rivera",
-          role: "32 · Product Manager · San Francisco",
+          name: "Maya Osei",
+          role: "28 · Marketing Coordinator · Atlanta",
           quote:
-            "I leave a meeting sure we decided something, and two days later the notes are in a doc, the recap is in email, and the tickets still aren’t filed.",
+            "I’ve watched a hundred YouTube tutorials and I still can’t build anything from scratch. I need a path — not more content.",
           goals: [
-            "Keep engineering, design, and product looking at the same record",
-            "Turn a decision into an assigned task without leaving the meeting",
+            "Escape tutorial hell and follow one clear, trusted roadmap",
+            "Build a portfolio that passes real hiring screens",
           ],
           frustrations: [
-            "Notes, email follow-ups, and the task tracker are three different jobs",
-            "No shared summary from everyone who was in the room",
+            "Hundreds of hours watched, nothing built",
+            "Fragmented resources with no sequence or quality signal",
           ],
         },
+        personas: [
+          {
+            name: "Maya Osei",
+            role: "28 · Marketing Coordinator · Atlanta",
+            quote:
+              "I’ve watched a hundred YouTube tutorials and I still can’t build anything from scratch. I need a path — not more content.",
+            goals: [
+              "Escape tutorial hell and follow one clear, trusted roadmap",
+              "Build a portfolio that passes real hiring screens",
+            ],
+            frustrations: [
+              "Hundreds of hours watched, nothing built",
+              "Fragmented resources with no sequence or quality signal",
+            ],
+          },
+          {
+            name: "Nico Valls",
+            role: "24 · Photographer · Portland",
+            quote:
+              "I have a hundred ideas. I just freeze the second I open a blank file. I need someone — or something — to just get me unstuck.",
+            goals: [
+              "Ship a finished creative project with an audience",
+              "Get feedback in a low-pressure space, without judgment",
+            ],
+            frustrations: [
+              "Blank-page syndrome — staring at empty files",
+              "Overly theoretical content that kills creative momentum",
+            ],
+          },
+          {
+            name: "Dr. Priya Nair",
+            role: "35 · ML Research Scientist · Cambridge",
+            quote:
+              "I don’t want to just build it. I want to understand why it works — and why every alternative approach doesn’t.",
+            goals: [
+              "A first-principles understanding of new domains",
+              "Know the limits and failure modes before adopting a tool",
+            ],
+            frustrations: [
+              "Platforms that teach how and skip why",
+              "Black-box tools with no explanatory depth",
+            ],
+          },
+        ],
       },
       define: {
         intro:
-          "The process was linear on purpose: **frame → lo-fi in Figma → moodboard → hi-fi → working prototype in Cursor**, then iterate on what the first build was missing. I collaborated with ChatGPT on visual direction while I locked structure myself, so AI helped explore look, not invent the IA.",
+          "Research ran across **four weeks** — planning, interviews, synthesis, then concept testing. Design work followed the same loop the product teaches: try, get feedback, iterate. Two usability rounds (Phase 1 and Phase 2) validated the lesson-and-assignment model, then tightened pricing, resources, and mentor booking.",
         steps: [
-          "Frame the user and business problem from engineering work",
-          "Lo-fi the flow in Figma; model the board after Jira",
-          "Moodboard + ChatGPT for visual direction, then hi-fi and a Cursor prototype",
+          "Problem framing: tutorial hell, feedback quality, choice overload",
+          "IA around sign-up, interests, skill choice, modules, assignment, and mentor booking",
+          "Hi-fi prototype and two rounds of remote moderated testing",
         ],
         timeline: [
-          "Figma lo-fi: meetings desktop, decisions list, Jira-like task board",
-          "Moodboard with ChatGPT: purple brand, pastel glance cards, work-tool rail",
-          "Cursor prototype, then a second pass for People, Home, projects, files, search",
+          "Week 1: Planning and recruitment",
+          "Week 2: Interviews and competitive analysis",
+          "Week 3: Synthesis and insights mapping",
+          "Week 4: Concept testing and prototyping",
         ],
       },
       ia: {
         intro:
-          "The rail is the product: **Home, Meetings, Tasks, Projects, People, Settings**. Home is the central dashboard. Meetings is the daily breakdown — up next, calendar, today’s table. Tasks needed **board, list, and calendar** so different contributors can use the same work. Global search sits above all of it, because finding a meeting, task, project, or file should not depend on remembering which tab it lives in. People exists so engineering, design, and product are named in the system, not only in the recap email.",
+          "The app is organized around a **practice loop**, not a course catalog. After **sign up or login**, learners pick interests, choose a skill, follow a module path, then work through **Lesson / Assignment / Feedback** — with a mentor to book when they want a human eye. Home, Paths, Projects, Mentors, and Settings live in the menu.",
         sitemap: [
-          "Home → glance cards, upcoming meetings, my tasks, projects",
-          "Meetings → daily breakdown: up next, calendar, today’s table",
-          "Meeting → recording, AI notes / transcript, decisions, linked tasks, files",
-          "Tasks → board, list, and calendar — assign to people and projects",
-          "Projects · People · Search → the rest of the workspace, not a second tool",
+          "Splash → Sign up or login",
+          "Onboarding → Choose your interests, then a skill",
+          "Home → What do you want to learn? For you / Featured / Saved",
+          "Path → Photography · Visual Storytelling modules",
+          "Module → Lesson list (e.g. Module 1: Framing)",
+          "Lesson → Lesson, Assignment, and Feedback tabs",
+          "Mentors → Profile, availability, live booking",
+          "Menu → Home, Paths, Projects, Mentors, Settings",
         ],
         flow: [
-          "Record the meeting",
-          "Read the AI transcript",
-          "Create a task from a decision",
-          "Assign it to a project",
-          "Find it again in search",
+          "Sign up / login",
+          "Choose interests",
+          "Choose a skill",
+          "Start the path",
+          "Lesson → Assignment → Feedback",
+          "Book a mentor",
         ],
       },
       wireframes: {
         lowFi:
-          "I sketched **low-fidelity wireframes in Figma** before any color: a dark sidebar for the jobs, a three-up meetings canvas (next event, calendar, today’s counts), and a table of the day underneath. That layout was the contract for “scan today, join what’s next, open notes.” **Decisions** sat on the meeting itself — owner, status, create task — so a call could become work without leaving the room. The **task board** was modeled on **Jira** so the destination for a decision would feel familiar. Hi-fi kept this skeleton and filled it — real calendar, people, Join meeting as the one solid action.",
+          "Early screens locked the core loop before visual design: **skill choice**, a photography path, a lesson with upload, and mentor booking. Testing later confirmed the path-and-assignment format; the friction lived in drafts, academic depth, and pricing transparency.",
         layout: "full",
         images: [
           {
-            src: "/images/projects/opal/wireframe-meetings.png",
-            alt: "Low-fidelity desktop wireframe of Opal’s meetings home, with a dark sidebar, up-next meeting card, calendar, today stats, and a table of today’s meetings",
-            caption:
-              "Figma lo-fi — meetings as the day’s home: up next, calendar, today, then the table",
-            width: 1024,
-            height: 728,
-          },
-          {
-            src: "/images/projects/opal/wireframe-decisions.png",
-            alt: "Low-fidelity desktop wireframe of Opal meeting decisions, with a dark sidebar, a list of decisions with status chips and create-task actions, and a labeled meeting-context rail for attendees, linked project, files, and meeting details",
-            caption:
-              "Figma lo-fi — decisions on the meeting: owner, status, and create task in one list",
-            width: 1024,
-            height: 728,
-          },
-          {
-            src: "/images/projects/opal/wireframe-tasks.png",
-            alt: "Low-fidelity desktop wireframe of Opal’s all-tasks board, with to-do, in-progress, and completed columns, an assignee on each card, and status buttons",
-            caption:
-              "Figma lo-fi — Jira-like board: to do, in progress, completed, with status on the card",
-            width: 1024,
-            height: 728,
-          },
-          {
-            src: "/images/projects/opal/moodboard.jpg",
-            alt: "Opal moodboard combining pastel glance cards, meeting notes with a recording bar, calendar and meeting list, account settings, and a meeting detail card",
-            caption:
-              "Moodboard, explored with ChatGPT — purple brand, pastel glances, recording over notes",
-            width: 1024,
-            height: 827,
+            src: "/images/projects/path-learning/wireframes.jpg",
+            alt: "Path Learning grayscale screens — skill selection, photography path, lesson, submission, and mentor booking",
+            caption: "Core loop in grayscale: choose a skill, follow the path, submit work, book a mentor",
+            width: 2400,
+            height: 1218,
           },
         ],
         hiFi:
-          "Hi-fidelity started as Figma mockups, then I used **Cursor** to build a working prototype. Meetings keeps the wireframe’s three-up scan. Home is the central dashboard the first build didn’t have. Tasks ship as **board, list, and calendar**, because one view would have locked the product to one kind of contributor. The live prototype is the demo — including AI-transcribed notes that can become assigned work.",
+          "High-fidelity screens sit on **mint, lilac, and white**, with charcoal actions and line illustration. Splash offers **Get Started**, then **Sign Up** and **Login**; onboarding asks what you want to learn; photography opens as a **Visual Storytelling** path of modules; each lesson splits into Lesson, Assignment, and Feedback — including mentor and AI scores — then a live booking surface. A menu of Home, Paths, Projects, Mentors, and Settings holds the rest of the app.",
+      },
+      onboarding: {
+        intro:
+          "Onboarding asks **what do you want to learn?** after **Choose Your Interests** — searchable skill chips (Design, Photography, Marketing) instead of a course catalogue. Search on the interests screen is how a freeform goal still becomes a path.",
+        insights: [
+          {
+            title: "Outcome-first phrasing",
+            description:
+              "Participants preferred a direct “What do you want to learn?” over a course catalogue — it felt tailored rather than like shopping.",
+          },
+          {
+            title: "Snackable over exhaustive",
+            description:
+              "Busy professionals wanted directed, short practice — not another hour-long lecture before they could start.",
+          },
+          {
+            title: "Pricing up front",
+            description:
+              "Career switchers wanted ROI and plan details early. Phase 2 added a pricing step without hurting completion.",
+          },
+        ],
+        quotes: [
+          "It's so visually clean and directly asks what I want to make. It feels like it's tailoring the journey to me.",
+          "It's simple and concise—not too much wording. Very easy to read and answer.",
+        ],
+        layout: "full",
+        images: [
+          {
+            src: "/images/projects/path-learning/design-system.png",
+            alt: "Path Learning brand system — Newsreader wordmark, Poppins headlines, palette, iconography, and UI",
+            caption: "Type, palette, iconography, and core UI",
+            width: 1024,
+            height: 729,
+          },
+        ],
       },
       branding: {
         intro:
-          "After the lo-fi, I built a **visual style moodboard** and used ChatGPT to explore directions: consumer notes apps (pastel glance cards, lilac calendars) against serious work software (black rail, white settings, named people on a meeting card). Opal is the overlap — gem-colored enough to feel like a product, structured enough to sit next to a Jira-like board all day.",
+          "The brand needed to feel like a studio for practice — playful illustration, not another gamified course app. A **Newsreader** wordmark in forest green, mint fields, and charcoal actions keep skill cards and completion states distinct without turning the product into a toy.",
         colors: [
-          { name: "Rail", hex: "#0E0F13", role: "Sidebar, primary buttons" },
-          { name: "Opal", hex: "#7C5CF6", role: "Brand, selected nav, today on the calendar" },
-          { name: "Canvas", hex: "#F4F5F8", role: "App background" },
-          { name: "Glance mint", hex: "#E6F6E8", role: "Open tasks at a glance" },
-          { name: "Glance peach", hex: "#FCF6F0", role: "Needs review — work that is waiting" },
+          { name: "Paper", hex: "#FFFFFF", role: "Buttons, search, working surfaces" },
+          { name: "Charcoal", hex: "#242527", role: "Primary buttons, selected chips, text" },
+          { name: "Forest", hex: "#388068", role: "Wordmark" },
+          { name: "Mint", hex: "#E3F5DF", role: "Splash, interests, path fields" },
+          { name: "Sage", hex: "#C3E7BB", role: "Skill-path chips" },
+          { name: "Lilac", hex: "#D7CFFE", role: "Skill and completion accents" },
+          { name: "Blush", hex: "#F0D9F7", role: "Secondary skill accents" },
+          { name: "Sky", hex: "#B6D8FE", role: "Secondary UI accent" },
         ],
         typefaces: [
           {
-            name: "Inter",
-            role: "UI, tables, and meeting titles — dense enough for a desktop work surface",
-            weights: "Regular, Medium, Semibold",
+            name: "Newsreader",
+            role: "Wordmark",
+            weights: "Medium, Semibold",
+          },
+          {
+            name: "Poppins",
+            role: "H1 and H2 headlines",
+            weights: "Semibold, Bold",
+          },
+          {
+            name: "Work Sans",
+            role: "Body and UI",
+            weights: "Regular, Medium",
           },
         ],
         typography:
-          "Titles are large and tight, like the wireframe’s **Good Morning, Alex**. Body copy stays small and cool-gray so a day’s table can hold names, times, and notes without shouting. Purple is reserved for selection and “up next” — never for every chip.",
+          "**Newsreader** is the Path Learning wordmark. **Poppins** carries H1 and H2 so “Choose Your Interests” and skill names stay friendly at phone size. **Work Sans** is the body — search, chips, and long lesson copy — so it doesn’t compete with the display type.",
         palette:
-          "The moodboard’s **purple** became the brand mark and the calendar’s today state, not a wash over the whole UI. **Black rail / white canvas** came from the lo-fi and from the settings reference — it keeps the product feeling like software, not a notes toy. Glance cards stay **pastel and separate** (blue, mint, peach) so Home can be read in one pass, the way the phone mockup counted meetings, notes, and time.",
+          "Mint (#E3F5DF) holds splash and sign-up so illustration can sit on a field instead of a white void. **Lilac** is login. **Charcoal** (#242527) is the only high-contrast action. Forest (#388068) is reserved for the wordmark. White is the working surface. Sage, blush, and sky mark adjacent skills without turning the product into a toy.",
         messaging:
-          "“Good morning, Alex.” “Here’s what’s on your schedule today.” “Join meeting.” The product talks like a desk, not a coach.",
+          "The product speaks in short actions, not catalog copy: “Get Started,” “Sign Up,” “Login,” “Choose Skills,” “Choose Skill,” “Next Lesson,” “Complete Lesson.” Feedback is a score plus notes — mentor and AI — instead of a vague “looks good.”",
       },
       visuals: {
-        layout: "full",
+        layout: "phones",
         tone: "muted",
+        scroll: true,
+        heading: "Mobile screens",
         images: [
           {
-            src: "/images/projects/opal/hifi-meetings.png",
-            alt: "Opal meetings desktop with an up-next Product Weekly card, September calendar, today stats, and a table of today’s meetings",
-            caption: "Meetings — the daily breakdown the first prototype was missing",
-            width: 2400,
-            height: 1500,
+            src: "/images/projects/path-learning/hifi/01-splash.png",
+            alt: "Path Learning splash — Explore and Master New Skills, with Get Started",
+            caption: "Splash",
+            width: 786,
+            height: 1704,
           },
           {
-            src: "/images/projects/opal/hifi-home.png",
-            alt: "Opal home desktop with pastel glance cards for meetings, tasks, and review, plus upcoming meetings and projects",
-            caption: "Home — the central dashboard, added after the first Cursor build",
-            width: 2400,
-            height: 1500,
+            src: "/images/projects/path-learning/hifi/02-signup.png",
+            alt: "Path Learning sign up — Name, Email, and Password on a mint field",
+            caption: "Sign up",
+            width: 786,
+            height: 1704,
           },
           {
-            src: "/images/projects/opal/hifi-tasks.png",
-            alt: "Opal tasks board with To do, In progress, and Completed columns, each card showing an assignee and due date",
-            caption: "Tasks — Jira-like board, with list and calendar for other working styles",
-            width: 2400,
-            height: 1500,
+            src: "/images/projects/path-learning/hifi/03-login.png",
+            alt: "Path Learning login — Email, Password, and Forgot on a lilac field",
+            caption: "Login",
+            width: 786,
+            height: 1704,
+          },
+          {
+            src: "/images/projects/path-learning/hifi/04-syllabus.png",
+            alt: "Path Learning home — Today's Syllabus for Ana, with Photography selected and Framing Fundamentals at 60 percent",
+            caption: "Today's syllabus",
+            width: 786,
+            height: 1674,
+          },
+          {
+            src: "/images/projects/path-learning/hifi/05-search.png",
+            alt: "Path Learning search — photography query over a dimmed syllabus",
+            caption: "Search",
+            width: 786,
+            height: 1674,
+          },
+          {
+            src: "/images/projects/path-learning/hifi/06-schedule.png",
+            alt: "Path Learning schedule — Monday January 15 with the week's lessons",
+            caption: "Schedule",
+            width: 786,
+            height: 1715,
+          },
+          {
+            src: "/images/projects/path-learning/hifi/07-assignment.png",
+            alt: "Path Learning assignment — Framing Fundamentals projects with an upload",
+            caption: "Assignment",
+            width: 786,
+            height: 1674,
+          },
+          {
+            src: "/images/projects/path-learning/hifi/08-lesson.png",
+            alt: "Path Learning lesson — Framing Fundamentals reading with Lesson, Assignment, and Feedback",
+            caption: "Lesson",
+            width: 786,
+            height: 1674,
+          },
+          {
+            src: "/images/projects/path-learning/hifi/09-mentor.png",
+            alt: "Path Learning mentor booking — Sarah Chen, May 2025, 4:00 PM selected",
+            caption: "Mentor",
+            width: 786,
+            height: 1704,
+          },
+          {
+            src: "/images/projects/path-learning/hifi/10-menu.png",
+            alt: "Path Learning menu — Home, Paths, Projects, Mentors, Settings",
+            caption: "Menu",
+            width: 786,
+            height: 1704,
+          },
+        ],
+        galleries: [
+          {
+            heading: "Mid-fi",
+            layout: "phones",
+            tone: "dark",
+            roomy: true,
+            before: true,
+            images: [
+          {
+            src: "/images/projects/path-learning/screens/01-splash.png",
+            alt: "Path Learning mid-fi splash — Explore and Master New Skills, with Get Started",
+            caption: "Splash",
+            width: 393,
+            height: 852,
+          },
+          {
+            src: "/images/projects/path-learning/screens/02-signup.png",
+            alt: "Path Learning sign up — Name, Email, and Password",
+            caption: "Sign up",
+            width: 393,
+            height: 852,
+          },
+          {
+            src: "/images/projects/path-learning/screens/03-login.png",
+            alt: "Path Learning login — Email, Password, and Forgot",
+            caption: "Login",
+            width: 393,
+            height: 852,
+          },
+          {
+            src: "/images/projects/path-learning/screens/04-interests.png",
+            alt: "Path Learning onboarding — Choose Your Interests with searchable skill chips",
+            caption: "Interests",
+            width: 393,
+            height: 852,
+          },
+          {
+            src: "/images/projects/path-learning/screens/05-choose-skill.png",
+            alt: "Path Learning home — What do you want to learn, Photography skill selected",
+            caption: "Choose a skill",
+            width: 393,
+            height: 852,
+          },
+          {
+            src: "/images/projects/path-learning/screens/06-path.png",
+            alt: "Path Learning photography path — Visual Storytelling modules",
+            caption: "Photography path",
+            width: 393,
+            height: 852,
+          },
+          {
+            src: "/images/projects/path-learning/screens/07-module.png",
+            alt: "Path Learning Module 1 Framing with Choosing Your Camera current",
+            caption: "Module",
+            width: 393,
+            height: 852,
+          },
+          {
+            src: "/images/projects/path-learning/screens/08-lesson.png",
+            alt: "Path Learning lesson — Choosing Your Camera with video",
+            caption: "Lesson",
+            width: 393,
+            height: 852,
+          },
+          {
+            src: "/images/projects/path-learning/screens/16-reading.png",
+            alt: "Path Learning lesson reading — Choosing Your Camera full article",
+            caption: "Reading",
+            width: 393,
+            height: 852,
+          },
+          {
+            src: "/images/projects/path-learning/screens/09-assignment.png",
+            alt: "Path Learning assignment — Choose Your Camera with file upload",
+            caption: "Assignment",
+            width: 393,
+            height: 852,
+          },
+          {
+            src: "/images/projects/path-learning/screens/15-assignment-2.png",
+            alt: "Path Learning assignment — Your First Photo with file upload",
+            caption: "Assignment 2",
+            width: 393,
+            height: 852,
+          },
+          {
+            src: "/images/projects/path-learning/screens/10-module-progress.png",
+            alt: "Path Learning Module 1 Framing — first lesson complete, Framing Your Shots current",
+            caption: "Module progress",
+            width: 393,
+            height: 852,
+          },
+          {
+            src: "/images/projects/path-learning/screens/11-feedback.png",
+            alt: "Path Learning feedback — 8.5 overall with mentor and AI notes",
+            caption: "Feedback",
+            width: 393,
+            height: 852,
+          },
+          {
+            src: "/images/projects/path-learning/screens/12-choose-skill-progress.png",
+            alt: "Path Learning home — Photography skill card at 80 percent",
+            caption: "Skill progress",
+            width: 393,
+            height: 852,
+          },
+          {
+            src: "/images/projects/path-learning/screens/13-mentor.png",
+            alt: "Path Learning mentor booking with Sarah Chen",
+            caption: "Mentor",
+            width: 393,
+            height: 852,
+          },
+          {
+            src: "/images/projects/path-learning/screens/14-menu.png",
+            alt: "Path Learning menu — Home, Paths, Projects, Mentors, Settings",
+            caption: "Menu",
+            width: 393,
+            height: 852,
+          },
+            ],
           },
         ],
       },
       solution: {
         intro:
-          "One loop instead of three tools: **record and transcribe, make the decision a task, manage it on a dashboard, assign it to a project and a person.**",
+          "Path is a **practice loop** of modules, assignments, and feedback — not a video library with a progress bar. Four surfaces carry the core loop; the mentor calendar sits one step up when automated notes run out.",
         features: [
           {
-            title: "AI notes that become work",
+            title: "Lesson + assignment",
             description:
-              "Recordings transcribe into notes on the meeting. A decision can become a task there — no doc, no recap email, no second tracker to re-type it into.",
+              "A short lesson, then an **artifact** — choose a camera, upload a photo — instead of finishing a video and stopping.",
           },
           {
-            title: "A home dashboard and a daily breakdown",
+            title: "Illustrated skill path",
             description:
-              "Home is the glance across meetings, tasks, and projects. Meetings is today: up next, calendar, and a table of the rest. Join and notes stay attached to the event.",
+              "Photography opens as Visual Storytelling: Framing 101 through Recreate a Film Still, so the next module is a list, not a search. The home card later shows percent complete so progress is a project, not a video checkbox.",
           },
           {
-            title: "Board, list, and calendar",
+            title: "AI and mentor feedback",
             description:
-              "Different contributors organize work differently. The task surface ships three views so a designer, a PM, and a developer can all use the same board.",
+              "An overall score with separate mentor and AI notes — lighting, composition, color — instead of a pass/fail.",
           },
           {
-            title: "People, projects, files, and search",
+            title: "Mentor booking",
             description:
-              "Work is assigned to projects and to named people across functions. Files sit on the meeting. Global search finds a meeting, task, project, or file without hunting tabs.",
+              "Live availability on Sarah Chen’s calendar when the assignment needs a human eye. Testing made the calendar easy; the remaining request is a lower-cost **quick critique**.",
           },
         ],
       },
       testing: {
         intro:
-          "The first Cursor prototype was useful and incomplete. I treated the gaps as a second design pass, not as polish.",
+          "Two rounds of remote moderated tests with **5 participants** (career switchers, an active maker, a theoretical learner, a structured learner). Phase 1 proved the lesson-and-assignment loop. Phase 2 measured iterations on pricing, module progression, collapsible deep-dives, and mentor booking.",
         findings: [
-          "**People was missing**, so contributors across engineering, design, and product had no home in the product.",
-          "**Meeting actions were redundant** — too many ways to start or open the same thing.",
-          "The first build didn’t yet have a **daily meeting breakdown**, a **central home**, **project organization**, or **file attachments**.",
+          "**100%** completed onboarding in both rounds; difficulty moved from 1.2 to **1.1 / 5** after adding pricing.",
+          "The photography path and snackable lessons were the strongest engagement drivers — “checking off videos doesn’t feel like real progress.”",
+          "Mentor booking hit **100%** completion; Phase 2 ease improved from 1.8 to **1.1 / 5**.",
+          "AI + structured peer prompts (“what works” / “one change”) reduced isolation; scholars still wanted Socratic depth over a single 8.5 score.",
         ],
         iterations: [
-          "Added People, Home, a daily meetings canvas, projects, and files.",
-          "Shipped **board, list, and calendar** on tasks so the board wasn’t the only mental model.",
-          "Added **global search** for meetings, tasks, projects, and files.",
+          "Added early pricing transparency for structured learners and career switchers.",
+          "Collapsible deep-dive literature and Socratic prompts for theoretical learners.",
+          "Persistent **Complete Lesson** on the feedback tab; draft/sandbox remains a next-step for submission anxiety.",
+          "Redesigned Sarah Chen booking calendar; planned a $20 asynchronous quick critique beside live sessions.",
         ],
       },
       outcomes: [
-        { stat: "1", label: "working prototype from Figma into Cursor" },
-        { stat: "3", label: "task views for different contributors" },
-        { stat: "2", label: "design passes after the first build" },
+        { stat: "100%", label: "onboarding completion in both test rounds" },
+        { stat: "1.1", label: "mentor booking difficulty after iteration" },
+        { stat: "5", label: "archetypes tested across two phases" },
       ],
       reflection:
-        "Two challenges sat on top of the product ones. Guiding **Cursor** meant rewriting prompts until they were modular and explicit — interactions, hover states, responsive layout, visual consistency — or the generation drifted. And I had to map the **exact feature set** a product contributor needs to stay productive, without turning the rail into a junk drawer. If I had more time I would thicken the design system, go deeper on AI-assisted project management (permissions, org-wide workspaces, an analytics home for completion trends), and **cut sub-menus** so the hierarchy stays concise.",
+        "The product only works if the **first session produces work**, not a watched video. The path, the assignment, and the feedback ladder all exist to get someone from a blank page to an artifact they can show. What I’m still holding: a true draft/sandbox, and a cheaper asynchronous mentor option so live calls aren’t the only human door.",
       conclusion: {
         challenges: [
-          "Steering Cursor with modular, explicit prompts when generation missed interactions or visual consistency.",
-          "Naming the feature set a contributor actually needs — then noticing People, Home, and files were still missing.",
-          "Keeping board, list, and calendar as one task system instead of three products.",
+          "Serving switchers who want a rigid roadmap, makers who want open paths, and scholars who want depth — without three separate apps.",
+          "Submission anxiety: people would finish the assignment steps and still hesitate to mark work final.",
+          "Pricing trust versus onboarding length — adding a plan step helped, but the questionnaire can’t grow forever.",
         ],
         learnings: [
-          "AI is useful for transcription and for exploring a moodboard; the IA still has to be decided by hand.",
-          "A first prototype is a diagnostic: redundant buttons and a missing People tab were clearer in the build than in Figma.",
-          "Search and multiple task views are how cross-functional teams share one tool without sharing one working style.",
+          "Progress has to look like a project milestone, not a video checkbox.",
+          "Feedback is a ladder: AI for speed, constrained peer prompts for quality, humans for judgment.",
+          "Collapsible depth lets scholars go further without trapping casual learners in literature.",
         ],
         nextSteps: [
-          "Expand design system guidelines, and reduce sub-menus for a more minimal hierarchy.",
-          "Granular team permissions and organization-wide workspaces.",
-          "A fuller analytics dashboard on Home for performance and task-completion trends.",
+          "Save-draft / sandbox on assignment upload.",
+          "Stronger visual affordance on deep-dive toggles.",
+          "Asynchronous $20 quick critiques next to live booking.",
         ],
         proud:
-          "Building the **working prototype** — Figma to Cursor — so the demo is the product: record, transcribe, task, assign, search, instead of a slide of the idea.",
+          "Designing a full practice loop — from path choice through mentor booking — and watching testers describe it as job-ready progress instead of another course to finish.",
       },
     },
   },
@@ -811,530 +1067,277 @@ export const projects: Project[] = [
     },
   },
   {
-    slug: "path-learning",
-    name: "Path Learning",
+    slug: "opal",
+    name: "Opal",
     description:
-      "A mobile learning app that replaces tutorial watching with illustrated skill paths, hands-on assignments, and feedback from AI and mentors.",
-    image: "/images/project-path-learning.png",
-    previewScreens: [
-      {
-        src: "/images/projects/path-learning/hifi/01-splash.png",
-        alt: "Path Learning splash — Explore and Master New Skills, with Get Started",
-      },
-      {
-        src: "/images/projects/path-learning/hifi/04-syllabus.png",
-        alt: "Path Learning home — Today's Syllabus for Ana, Photography selected",
-      },
-    ],
+      "A desktop workspace that transcribes meetings, captures decisions, and turns them into assigned work for product, design, and engineering.",
+    image: "/images/project-opal-cover.png",
     tags: [
       { label: "UX Design", variant: "outline" },
-      { label: "Product Research", variant: "solid" },
-      { label: "Mobile", variant: "lavender" },
+      { label: "Product Design", variant: "solid" },
+      { label: "Desktop", variant: "lavender" },
     ],
     caseStudy: {
       tagline:
-        "A practice-first learning app that turns skill-building into modules — with a path for what to do next, and feedback when you get stuck.",
+        "A desktop workspace for product teams that turns meeting recordings into a shared transcript, captured decisions, and assigned tasks.",
+      presentation: {
+        label: "live prototype",
+        href: "/prototypes/opal",
+      },
       meta: {
-        role: "Product Designer",
-        timeline: "Capstone · 2026",
-        team: "Solo designer",
-        platform: "iOS",
-        tools: ["Figma", "FigJam", "Google Meet"],
+        role: "Product Designer & Developer",
+        timeline: "Prototype · 2026",
+        team: "Solo designer-developer",
+        platform: "Desktop web",
+        tools: ["Figma", "Cursor", "Next.js"],
       },
       overview:
-        "Path Learning is a project-based mobile app for self-directed learners who are tired of **watching** without **doing**. Instead of course catalogs and completion badges, the product is built around illustrated skill paths and modules — a lesson, an assignment that produces an artifact, then AI and mentor feedback. I led research, IA, wireframes, visual design, and two rounds of usability testing as sole designer.",
+        "Opal started from a gap I kept hitting as a **software engineer**: there was no clean way to summarize a meeting from everyone’s point of view, or to turn a decision into a task without a tedious multi-step process. Notes went into docs, recaps went out over email, and tickets were created somewhere else — so the record of the meeting was **scattered**. I designed and built a single desktop workspace that records and transcribes meetings with AI, attaches tasks to those decisions, and lets engineering, design, and product share one dashboard instead of three follow-up rituals.",
       problem: {
         statement:
-          "Learners get stuck in **tutorial hell**, drowned in content choices, and left without feedback that actually helps them improve.",
+          "Meeting follow-through is a **multi-tool chore** — notes, email recaps, and tickets never land in one place.",
         points: [
-          "Passive video consumption creates a false sense of mastery that disappears the moment someone opens a blank project.",
-          "Feedback is either generic praise or binary pass/fail — not category-specific enough to change lighting, composition, or logic.",
-          "Fragmented catalogs cause choice paralysis, so people spend their limited free time searching instead of practicing.",
+          "**Notes, email, and tasks splinter.** People capture the meeting in a doc, send a recap, then recreate the work in a tracker. Nothing is the source of truth.",
+          "**No shared summary.** There isn’t a streamlined way to see the discussion from all contributors’ perspectives — engineering, design, and product each leave with a different version.",
+          "**Decisions don’t become work.** Turning what was agreed into an assigned task takes too many steps, so the administrative burden sits on whoever cares enough to do it by hand.",
         ],
       },
       goals:
-        "Flip the default EdTech loop from Watch → Read → Quiz to **Try → Struggle → Learn → Feedback → Retry**, so every concept is immediately practiced and every completed assignment becomes portfolio evidence.",
+        "Cut that overhead with **one tool**: AI transcription of recordings, tasks created from decisions, a central dashboard to manage them, and a way to assign work to projects and the people across functions who own it.",
       research: {
         intro:
-          "The research question was how self-directed learners move from theory to practice — and where they abandon that jump. I interviewed self-taught creatives, mid-career switchers, and hobbyists, and audited **Maven**, **Exercism**, and **MentorCruise** to map gaps in feedback, structure, and mentorship.",
+          "I framed both the **user problem** (scattered notes, unpaid admin work) and the **business problem** (teams stay misaligned because follow-through is expensive). The design had to serve cross-functional contributors — designers, PMs, and developers — not a single role’s note-taking habit. I used my own engineering workflow as the brief, then looked at how existing boards and meeting tools split the same loop apart.",
         methods: [
           {
-            title: "User interviews",
+            title: "Problem framing",
             description:
-              "Structured sessions on how people currently learn, where projects stall, and what makes feedback feel **actionable** versus empty.",
+              "Wrote the user and business jobs from firsthand experience: reduce administrative overhead, and make **eng / design / product** look at the same record after a call.",
           },
           {
-            title: "Competitive analysis",
+            title: "Flow + competitive boards",
             description:
-              "Compared Maven, Exercism, and MentorCruise on practice loops, mentor access, and whether progress felt like **portfolio work** or video check-offs.",
+              "Sketched the path from recording → transcript → decision → task. Modeled the task surface after **Jira-style boards**, because that’s where the work already tried to live — just not connected to the meeting.",
           },
           {
-            title: "Affinity mapping",
+            title: "Feature mapping",
             description:
-              "Synthesized quotes into three problem clusters — tutorial dependency, feedback quality, and choice overload — which became the product’s north star.",
+              "Listed what a product contributor actually needs to stay productive: daily meetings, a home dashboard, projects, people, files, and more than one way to see tasks. The hard part was **not** adding everything — it was naming the set.",
           },
         ],
         insights: [
-          { stat: "3", label: "problem clusters from affinity mapping" },
-          { stat: "3", label: "competitor platforms audited" },
-          { stat: "5", label: "moderated usability participants" },
+          { stat: "3", label: "places work used to scatter" },
+          { stat: "3", label: "task views for different working styles" },
+          { stat: "1", label: "live prototype built in Cursor" },
         ],
         quotes: [
-          "I feel like a pro when I'm following a video tutorial, but the second I close the tab and try to write a single line of code on my own, I realize I haven't actually learned how to think for myself.",
-          "Getting 'looks good!' or vague online comments doesn't tell me what to fix about my lighting or composition to actually get better.",
-          "I spent three hours searching for the 'perfect' intro course. By the time I finally picked one, I was too mentally exhausted to actually start the first lesson.",
+          "We take notes in a doc, send an email recap, then recreate the tasks in another tool.",
+          "There’s no one place that holds what everyone heard in the meeting.",
+          "Turning a decision into a ticket is a multi-step chore.",
         ],
         persona: {
-          name: "Maya Osei",
-          role: "28 · Marketing Coordinator · Atlanta",
+          name: "Alex Rivera",
+          role: "32 · Product Manager · San Francisco",
           quote:
-            "I’ve watched a hundred YouTube tutorials and I still can’t build anything from scratch. I need a path — not more content.",
+            "I leave a meeting sure we decided something, and two days later the notes are in a doc, the recap is in email, and the tickets still aren’t filed.",
           goals: [
-            "Escape tutorial hell and follow one clear, trusted roadmap",
-            "Build a portfolio that passes real hiring screens",
+            "Keep engineering, design, and product looking at the same record",
+            "Turn a decision into an assigned task without leaving the meeting",
           ],
           frustrations: [
-            "Hundreds of hours watched, nothing built",
-            "Fragmented resources with no sequence or quality signal",
+            "Notes, email follow-ups, and the task tracker are three different jobs",
+            "No shared summary from everyone who was in the room",
           ],
         },
-        personas: [
-          {
-            name: "Maya Osei",
-            role: "28 · Marketing Coordinator · Atlanta",
-            quote:
-              "I’ve watched a hundred YouTube tutorials and I still can’t build anything from scratch. I need a path — not more content.",
-            goals: [
-              "Escape tutorial hell and follow one clear, trusted roadmap",
-              "Build a portfolio that passes real hiring screens",
-            ],
-            frustrations: [
-              "Hundreds of hours watched, nothing built",
-              "Fragmented resources with no sequence or quality signal",
-            ],
-          },
-          {
-            name: "Nico Valls",
-            role: "24 · Photographer · Portland",
-            quote:
-              "I have a hundred ideas. I just freeze the second I open a blank file. I need someone — or something — to just get me unstuck.",
-            goals: [
-              "Ship a finished creative project with an audience",
-              "Get feedback in a low-pressure space, without judgment",
-            ],
-            frustrations: [
-              "Blank-page syndrome — staring at empty files",
-              "Overly theoretical content that kills creative momentum",
-            ],
-          },
-          {
-            name: "Dr. Priya Nair",
-            role: "35 · ML Research Scientist · Cambridge",
-            quote:
-              "I don’t want to just build it. I want to understand why it works — and why every alternative approach doesn’t.",
-            goals: [
-              "A first-principles understanding of new domains",
-              "Know the limits and failure modes before adopting a tool",
-            ],
-            frustrations: [
-              "Platforms that teach how and skip why",
-              "Black-box tools with no explanatory depth",
-            ],
-          },
-        ],
       },
       define: {
         intro:
-          "Research ran across **four weeks** — planning, interviews, synthesis, then concept testing. Design work followed the same loop the product teaches: try, get feedback, iterate. Two usability rounds (Phase 1 and Phase 2) validated the lesson-and-assignment model, then tightened pricing, resources, and mentor booking.",
+          "The process was linear on purpose: **frame → lo-fi in Figma → moodboard → hi-fi → working prototype in Cursor**, then iterate on what the first build was missing. I collaborated with ChatGPT on visual direction while I locked structure myself, so AI helped explore look, not invent the IA.",
         steps: [
-          "Problem framing: tutorial hell, feedback quality, choice overload",
-          "IA around sign-up, interests, skill choice, modules, assignment, and mentor booking",
-          "Hi-fi prototype and two rounds of remote moderated testing",
+          "Frame the user and business problem from engineering work",
+          "Lo-fi the flow in Figma; model the board after Jira",
+          "Moodboard + ChatGPT for visual direction, then hi-fi and a Cursor prototype",
         ],
         timeline: [
-          "Week 1: Planning and recruitment",
-          "Week 2: Interviews and competitive analysis",
-          "Week 3: Synthesis and insights mapping",
-          "Week 4: Concept testing and prototyping",
+          "Figma lo-fi: meetings desktop, decisions list, Jira-like task board",
+          "Moodboard with ChatGPT: purple brand, pastel glance cards, work-tool rail",
+          "Cursor prototype, then a second pass for People, Home, projects, files, search",
         ],
       },
       ia: {
         intro:
-          "The app is organized around a **practice loop**, not a course catalog. After **sign up or login**, learners pick interests, choose a skill, follow a module path, then work through **Lesson / Assignment / Feedback** — with a mentor to book when they want a human eye. Home, Paths, Projects, Mentors, and Settings live in the menu.",
+          "The rail is the product: **Home, Meetings, Tasks, Projects, People, Settings**. Home is the central dashboard. Meetings is the daily breakdown — up next, calendar, today’s table. Tasks needed **board, list, and calendar** so different contributors can use the same work. Global search sits above all of it, because finding a meeting, task, project, or file should not depend on remembering which tab it lives in. People exists so engineering, design, and product are named in the system, not only in the recap email.",
         sitemap: [
-          "Splash → Sign up or login",
-          "Onboarding → Choose your interests, then a skill",
-          "Home → What do you want to learn? For you / Featured / Saved",
-          "Path → Photography · Visual Storytelling modules",
-          "Module → Lesson list (e.g. Module 1: Framing)",
-          "Lesson → Lesson, Assignment, and Feedback tabs",
-          "Mentors → Profile, availability, live booking",
-          "Menu → Home, Paths, Projects, Mentors, Settings",
+          "Home → glance cards, upcoming meetings, my tasks, projects",
+          "Meetings → daily breakdown: up next, calendar, today’s table",
+          "Meeting → recording, AI notes / transcript, decisions, linked tasks, files",
+          "Tasks → board, list, and calendar — assign to people and projects",
+          "Projects · People · Search → the rest of the workspace, not a second tool",
         ],
         flow: [
-          "Sign up / login",
-          "Choose interests",
-          "Choose a skill",
-          "Start the path",
-          "Lesson → Assignment → Feedback",
-          "Book a mentor",
+          "Record the meeting",
+          "Read the AI transcript",
+          "Create a task from a decision",
+          "Assign it to a project",
+          "Find it again in search",
         ],
       },
       wireframes: {
         lowFi:
-          "Early screens locked the core loop before visual design: **skill choice**, a photography path, a lesson with upload, and mentor booking. Testing later confirmed the path-and-assignment format; the friction lived in drafts, academic depth, and pricing transparency.",
+          "I sketched **low-fidelity wireframes in Figma** before any color: a dark sidebar for the jobs, a three-up meetings canvas (next event, calendar, today’s counts), and a table of the day underneath. That layout was the contract for “scan today, join what’s next, open notes.” **Decisions** sat on the meeting itself — owner, status, create task — so a call could become work without leaving the room. The **task board** was modeled on **Jira** so the destination for a decision would feel familiar. Hi-fi kept this skeleton and filled it — real calendar, people, Join meeting as the one solid action.",
         layout: "full",
         images: [
           {
-            src: "/images/projects/path-learning/wireframes.jpg",
-            alt: "Path Learning grayscale screens — skill selection, photography path, lesson, submission, and mentor booking",
-            caption: "Core loop in grayscale: choose a skill, follow the path, submit work, book a mentor",
-            width: 2400,
-            height: 1218,
+            src: "/images/projects/opal/wireframe-meetings.png",
+            alt: "Low-fidelity desktop wireframe of Opal’s meetings home, with a dark sidebar, up-next meeting card, calendar, today stats, and a table of today’s meetings",
+            caption:
+              "Figma lo-fi — meetings as the day’s home: up next, calendar, today, then the table",
+            width: 1024,
+            height: 728,
+          },
+          {
+            src: "/images/projects/opal/wireframe-decisions.png",
+            alt: "Low-fidelity desktop wireframe of Opal meeting decisions, with a dark sidebar, a list of decisions with status chips and create-task actions, and a labeled meeting-context rail for attendees, linked project, files, and meeting details",
+            caption:
+              "Figma lo-fi — decisions on the meeting: owner, status, and create task in one list",
+            width: 1024,
+            height: 728,
+          },
+          {
+            src: "/images/projects/opal/wireframe-tasks.png",
+            alt: "Low-fidelity desktop wireframe of Opal’s all-tasks board, with to-do, in-progress, and completed columns, an assignee on each card, and status buttons",
+            caption:
+              "Figma lo-fi — Jira-like board: to do, in progress, completed, with status on the card",
+            width: 1024,
+            height: 728,
+          },
+          {
+            src: "/images/projects/opal/moodboard.jpg",
+            alt: "Opal moodboard combining pastel glance cards, meeting notes with a recording bar, calendar and meeting list, account settings, and a meeting detail card",
+            caption:
+              "Moodboard, explored with ChatGPT — purple brand, pastel glances, recording over notes",
+            width: 1024,
+            height: 827,
           },
         ],
         hiFi:
-          "High-fidelity screens sit on **mint, lilac, and white**, with charcoal actions and line illustration. Splash offers **Get Started**, then **Sign Up** and **Login**; onboarding asks what you want to learn; photography opens as a **Visual Storytelling** path of modules; each lesson splits into Lesson, Assignment, and Feedback — including mentor and AI scores — then a live booking surface. A menu of Home, Paths, Projects, Mentors, and Settings holds the rest of the app.",
-      },
-      onboarding: {
-        intro:
-          "Onboarding asks **what do you want to learn?** after **Choose Your Interests** — searchable skill chips (Design, Photography, Marketing) instead of a course catalogue. Search on the interests screen is how a freeform goal still becomes a path.",
-        insights: [
-          {
-            title: "Outcome-first phrasing",
-            description:
-              "Participants preferred a direct “What do you want to learn?” over a course catalogue — it felt tailored rather than like shopping.",
-          },
-          {
-            title: "Snackable over exhaustive",
-            description:
-              "Busy professionals wanted directed, short practice — not another hour-long lecture before they could start.",
-          },
-          {
-            title: "Pricing up front",
-            description:
-              "Career switchers wanted ROI and plan details early. Phase 2 added a pricing step without hurting completion.",
-          },
-        ],
-        quotes: [
-          "It's so visually clean and directly asks what I want to make. It feels like it's tailoring the journey to me.",
-          "It's simple and concise—not too much wording. Very easy to read and answer.",
-        ],
-        layout: "full",
-        images: [
-          {
-            src: "/images/projects/path-learning/design-system.png",
-            alt: "Path Learning brand system — Newsreader wordmark, Poppins headlines, palette, iconography, and UI",
-            caption: "Type, palette, iconography, and core UI",
-            width: 1024,
-            height: 729,
-          },
-        ],
+          "Hi-fidelity started as Figma mockups, then I used **Cursor** to build a working prototype. Meetings keeps the wireframe’s three-up scan. Home is the central dashboard the first build didn’t have. Tasks ship as **board, list, and calendar**, because one view would have locked the product to one kind of contributor. The live prototype is the demo — including AI-transcribed notes that can become assigned work.",
       },
       branding: {
         intro:
-          "The brand needed to feel like a studio for practice — playful illustration, not another gamified course app. A **Newsreader** wordmark in forest green, mint fields, and charcoal actions keep skill cards and completion states distinct without turning the product into a toy.",
+          "After the lo-fi, I built a **visual style moodboard** and used ChatGPT to explore directions: consumer notes apps (pastel glance cards, lilac calendars) against serious work software (black rail, white settings, named people on a meeting card). Opal is the overlap — gem-colored enough to feel like a product, structured enough to sit next to a Jira-like board all day.",
         colors: [
-          { name: "Paper", hex: "#FFFFFF", role: "Buttons, search, working surfaces" },
-          { name: "Charcoal", hex: "#242527", role: "Primary buttons, selected chips, text" },
-          { name: "Forest", hex: "#388068", role: "Wordmark" },
-          { name: "Mint", hex: "#E3F5DF", role: "Splash, interests, path fields" },
-          { name: "Sage", hex: "#C3E7BB", role: "Skill-path chips" },
-          { name: "Lilac", hex: "#D7CFFE", role: "Skill and completion accents" },
-          { name: "Blush", hex: "#F0D9F7", role: "Secondary skill accents" },
-          { name: "Sky", hex: "#B6D8FE", role: "Secondary UI accent" },
+          { name: "Rail", hex: "#0E0F13", role: "Sidebar, primary buttons" },
+          { name: "Opal", hex: "#7C5CF6", role: "Brand, selected nav, today on the calendar" },
+          { name: "Canvas", hex: "#F4F5F8", role: "App background" },
+          { name: "Glance mint", hex: "#E6F6E8", role: "Open tasks at a glance" },
+          { name: "Glance peach", hex: "#FCF6F0", role: "Needs review — work that is waiting" },
         ],
         typefaces: [
           {
-            name: "Newsreader",
-            role: "Wordmark",
-            weights: "Medium, Semibold",
-          },
-          {
-            name: "Poppins",
-            role: "H1 and H2 headlines",
-            weights: "Semibold, Bold",
-          },
-          {
-            name: "Work Sans",
-            role: "Body and UI",
-            weights: "Regular, Medium",
+            name: "Inter",
+            role: "UI, tables, and meeting titles — dense enough for a desktop work surface",
+            weights: "Regular, Medium, Semibold",
           },
         ],
         typography:
-          "**Newsreader** is the Path Learning wordmark. **Poppins** carries H1 and H2 so “Choose Your Interests” and skill names stay friendly at phone size. **Work Sans** is the body — search, chips, and long lesson copy — so it doesn’t compete with the display type.",
+          "Titles are large and tight, like the wireframe’s **Good Morning, Alex**. Body copy stays small and cool-gray so a day’s table can hold names, times, and notes without shouting. Purple is reserved for selection and “up next” — never for every chip.",
         palette:
-          "Mint (#E3F5DF) holds splash and sign-up so illustration can sit on a field instead of a white void. **Lilac** is login. **Charcoal** (#242527) is the only high-contrast action. Forest (#388068) is reserved for the wordmark. White is the working surface. Sage, blush, and sky mark adjacent skills without turning the product into a toy.",
+          "The moodboard’s **purple** became the brand mark and the calendar’s today state, not a wash over the whole UI. **Black rail / white canvas** came from the lo-fi and from the settings reference — it keeps the product feeling like software, not a notes toy. Glance cards stay **pastel and separate** (blue, mint, peach) so Home can be read in one pass, the way the phone mockup counted meetings, notes, and time.",
         messaging:
-          "The product speaks in short actions, not catalog copy: “Get Started,” “Sign Up,” “Login,” “Choose Skills,” “Choose Skill,” “Next Lesson,” “Complete Lesson.” Feedback is a score plus notes — mentor and AI — instead of a vague “looks good.”",
+          "“Good morning, Alex.” “Here’s what’s on your schedule today.” “Join meeting.” The product talks like a desk, not a coach.",
       },
       visuals: {
-        layout: "phones",
-        tone: "dark",
-        roomy: true,
+        layout: "full",
+        tone: "muted",
         images: [
           {
-            src: "/images/projects/path-learning/hifi/01-splash.png",
-            alt: "Path Learning splash — Explore and Master New Skills, with Get Started",
-            caption: "Splash",
-            width: 786,
-            height: 1704,
+            src: "/images/projects/opal/hifi-meetings.png",
+            alt: "Opal meetings desktop with an up-next Product Weekly card, September calendar, today stats, and a table of today’s meetings",
+            caption: "Meetings — the daily breakdown the first prototype was missing",
+            width: 2400,
+            height: 1500,
           },
           {
-            src: "/images/projects/path-learning/hifi/02-signup.png",
-            alt: "Path Learning sign up — Name, Email, and Password on a mint field",
-            caption: "Sign up",
-            width: 786,
-            height: 1704,
+            src: "/images/projects/opal/hifi-home.png",
+            alt: "Opal home desktop with pastel glance cards for meetings, tasks, and review, plus upcoming meetings and projects",
+            caption: "Home — the central dashboard, added after the first Cursor build",
+            width: 2400,
+            height: 1500,
           },
           {
-            src: "/images/projects/path-learning/hifi/03-login.png",
-            alt: "Path Learning login — Email, Password, and Forgot on a lilac field",
-            caption: "Login",
-            width: 786,
-            height: 1704,
-          },
-          {
-            src: "/images/projects/path-learning/hifi/04-syllabus.png",
-            alt: "Path Learning home — Today's Syllabus for Ana, with Photography selected and Framing Fundamentals at 60 percent",
-            caption: "Today's syllabus",
-            width: 786,
-            height: 1674,
-          },
-          {
-            src: "/images/projects/path-learning/hifi/05-search.png",
-            alt: "Path Learning search — photography query over a dimmed syllabus",
-            caption: "Search",
-            width: 786,
-            height: 1674,
-          },
-          {
-            src: "/images/projects/path-learning/hifi/06-schedule.png",
-            alt: "Path Learning schedule — Monday January 15 with the week's lessons",
-            caption: "Schedule",
-            width: 786,
-            height: 1715,
-          },
-          {
-            src: "/images/projects/path-learning/hifi/07-assignment.png",
-            alt: "Path Learning assignment — Framing Fundamentals projects with an upload",
-            caption: "Assignment",
-            width: 786,
-            height: 1674,
-          },
-          {
-            src: "/images/projects/path-learning/hifi/08-lesson.png",
-            alt: "Path Learning lesson — Framing Fundamentals reading with Lesson, Assignment, and Feedback",
-            caption: "Lesson",
-            width: 786,
-            height: 1674,
-          },
-          {
-            src: "/images/projects/path-learning/hifi/09-mentor.png",
-            alt: "Path Learning mentor booking — Sarah Chen, May 2025, 4:00 PM selected",
-            caption: "Mentor",
-            width: 786,
-            height: 1704,
-          },
-          {
-            src: "/images/projects/path-learning/hifi/10-menu.png",
-            alt: "Path Learning menu — Home, Paths, Projects, Mentors, Settings",
-            caption: "Menu",
-            width: 786,
-            height: 1704,
-          },
-        ],
-        galleries: [
-          {
-            heading: "Mid-fi",
-            layout: "phones",
-            tone: "dark",
-            roomy: true,
-            before: true,
-            images: [
-          {
-            src: "/images/projects/path-learning/screens/01-splash.png",
-            alt: "Path Learning mid-fi splash — Explore and Master New Skills, with Get Started",
-            caption: "Splash",
-            width: 393,
-            height: 852,
-          },
-          {
-            src: "/images/projects/path-learning/screens/02-signup.png",
-            alt: "Path Learning sign up — Name, Email, and Password",
-            caption: "Sign up",
-            width: 393,
-            height: 852,
-          },
-          {
-            src: "/images/projects/path-learning/screens/03-login.png",
-            alt: "Path Learning login — Email, Password, and Forgot",
-            caption: "Login",
-            width: 393,
-            height: 852,
-          },
-          {
-            src: "/images/projects/path-learning/screens/04-interests.png",
-            alt: "Path Learning onboarding — Choose Your Interests with searchable skill chips",
-            caption: "Interests",
-            width: 393,
-            height: 852,
-          },
-          {
-            src: "/images/projects/path-learning/screens/05-choose-skill.png",
-            alt: "Path Learning home — What do you want to learn, Photography skill selected",
-            caption: "Choose a skill",
-            width: 393,
-            height: 852,
-          },
-          {
-            src: "/images/projects/path-learning/screens/06-path.png",
-            alt: "Path Learning photography path — Visual Storytelling modules",
-            caption: "Photography path",
-            width: 393,
-            height: 852,
-          },
-          {
-            src: "/images/projects/path-learning/screens/07-module.png",
-            alt: "Path Learning Module 1 Framing with Choosing Your Camera current",
-            caption: "Module",
-            width: 393,
-            height: 852,
-          },
-          {
-            src: "/images/projects/path-learning/screens/08-lesson.png",
-            alt: "Path Learning lesson — Choosing Your Camera with video",
-            caption: "Lesson",
-            width: 393,
-            height: 852,
-          },
-          {
-            src: "/images/projects/path-learning/screens/16-reading.png",
-            alt: "Path Learning lesson reading — Choosing Your Camera full article",
-            caption: "Reading",
-            width: 393,
-            height: 852,
-          },
-          {
-            src: "/images/projects/path-learning/screens/09-assignment.png",
-            alt: "Path Learning assignment — Choose Your Camera with file upload",
-            caption: "Assignment",
-            width: 393,
-            height: 852,
-          },
-          {
-            src: "/images/projects/path-learning/screens/15-assignment-2.png",
-            alt: "Path Learning assignment — Your First Photo with file upload",
-            caption: "Assignment 2",
-            width: 393,
-            height: 852,
-          },
-          {
-            src: "/images/projects/path-learning/screens/10-module-progress.png",
-            alt: "Path Learning Module 1 Framing — first lesson complete, Framing Your Shots current",
-            caption: "Module progress",
-            width: 393,
-            height: 852,
-          },
-          {
-            src: "/images/projects/path-learning/screens/11-feedback.png",
-            alt: "Path Learning feedback — 8.5 overall with mentor and AI notes",
-            caption: "Feedback",
-            width: 393,
-            height: 852,
-          },
-          {
-            src: "/images/projects/path-learning/screens/12-choose-skill-progress.png",
-            alt: "Path Learning home — Photography skill card at 80 percent",
-            caption: "Skill progress",
-            width: 393,
-            height: 852,
-          },
-          {
-            src: "/images/projects/path-learning/screens/13-mentor.png",
-            alt: "Path Learning mentor booking with Sarah Chen",
-            caption: "Mentor",
-            width: 393,
-            height: 852,
-          },
-          {
-            src: "/images/projects/path-learning/screens/14-menu.png",
-            alt: "Path Learning menu — Home, Paths, Projects, Mentors, Settings",
-            caption: "Menu",
-            width: 393,
-            height: 852,
-          },
-            ],
+            src: "/images/projects/opal/hifi-tasks.png",
+            alt: "Opal tasks board with To do, In progress, and Completed columns, each card showing an assignee and due date",
+            caption: "Tasks — Jira-like board, with list and calendar for other working styles",
+            width: 2400,
+            height: 1500,
           },
         ],
       },
       solution: {
         intro:
-          "Path is a **practice loop** of modules, assignments, and feedback — not a video library with a progress bar. Four surfaces carry the core loop; the mentor calendar sits one step up when automated notes run out.",
+          "One loop instead of three tools: **record and transcribe, make the decision a task, manage it on a dashboard, assign it to a project and a person.**",
         features: [
           {
-            title: "Lesson + assignment",
+            title: "AI notes that become work",
             description:
-              "A short lesson, then an **artifact** — choose a camera, upload a photo — instead of finishing a video and stopping.",
+              "Recordings transcribe into notes on the meeting. A decision can become a task there — no doc, no recap email, no second tracker to re-type it into.",
           },
           {
-            title: "Illustrated skill path",
+            title: "A home dashboard and a daily breakdown",
             description:
-              "Photography opens as Visual Storytelling: Framing 101 through Recreate a Film Still, so the next module is a list, not a search. The home card later shows percent complete so progress is a project, not a video checkbox.",
+              "Home is the glance across meetings, tasks, and projects. Meetings is today: up next, calendar, and a table of the rest. Join and notes stay attached to the event.",
           },
           {
-            title: "AI and mentor feedback",
+            title: "Board, list, and calendar",
             description:
-              "An overall score with separate mentor and AI notes — lighting, composition, color — instead of a pass/fail.",
+              "Different contributors organize work differently. The task surface ships three views so a designer, a PM, and a developer can all use the same board.",
           },
           {
-            title: "Mentor booking",
+            title: "People, projects, files, and search",
             description:
-              "Live availability on Sarah Chen’s calendar when the assignment needs a human eye. Testing made the calendar easy; the remaining request is a lower-cost **quick critique**.",
+              "Work is assigned to projects and to named people across functions. Files sit on the meeting. Global search finds a meeting, task, project, or file without hunting tabs.",
           },
         ],
       },
       testing: {
         intro:
-          "Two rounds of remote moderated tests with **5 participants** (career switchers, an active maker, a theoretical learner, a structured learner). Phase 1 proved the lesson-and-assignment loop. Phase 2 measured iterations on pricing, module progression, collapsible deep-dives, and mentor booking.",
+          "The first Cursor prototype was useful and incomplete. I treated the gaps as a second design pass, not as polish.",
         findings: [
-          "**100%** completed onboarding in both rounds; difficulty moved from 1.2 to **1.1 / 5** after adding pricing.",
-          "The photography path and snackable lessons were the strongest engagement drivers — “checking off videos doesn’t feel like real progress.”",
-          "Mentor booking hit **100%** completion; Phase 2 ease improved from 1.8 to **1.1 / 5**.",
-          "AI + structured peer prompts (“what works” / “one change”) reduced isolation; scholars still wanted Socratic depth over a single 8.5 score.",
+          "**People was missing**, so contributors across engineering, design, and product had no home in the product.",
+          "**Meeting actions were redundant** — too many ways to start or open the same thing.",
+          "The first build didn’t yet have a **daily meeting breakdown**, a **central home**, **project organization**, or **file attachments**.",
         ],
         iterations: [
-          "Added early pricing transparency for structured learners and career switchers.",
-          "Collapsible deep-dive literature and Socratic prompts for theoretical learners.",
-          "Persistent **Complete Lesson** on the feedback tab; draft/sandbox remains a next-step for submission anxiety.",
-          "Redesigned Sarah Chen booking calendar; planned a $20 asynchronous quick critique beside live sessions.",
+          "Added People, Home, a daily meetings canvas, projects, and files.",
+          "Shipped **board, list, and calendar** on tasks so the board wasn’t the only mental model.",
+          "Added **global search** for meetings, tasks, projects, and files.",
         ],
       },
       outcomes: [
-        { stat: "100%", label: "onboarding completion in both test rounds" },
-        { stat: "1.1", label: "mentor booking difficulty after iteration" },
-        { stat: "5", label: "archetypes tested across two phases" },
+        { stat: "1", label: "working prototype from Figma into Cursor" },
+        { stat: "3", label: "task views for different contributors" },
+        { stat: "2", label: "design passes after the first build" },
       ],
       reflection:
-        "The product only works if the **first session produces work**, not a watched video. The path, the assignment, and the feedback ladder all exist to get someone from a blank page to an artifact they can show. What I’m still holding: a true draft/sandbox, and a cheaper asynchronous mentor option so live calls aren’t the only human door.",
+        "Two challenges sat on top of the product ones. Guiding **Cursor** meant rewriting prompts until they were modular and explicit — interactions, hover states, responsive layout, visual consistency — or the generation drifted. And I had to map the **exact feature set** a product contributor needs to stay productive, without turning the rail into a junk drawer. If I had more time I would thicken the design system, go deeper on AI-assisted project management (permissions, org-wide workspaces, an analytics home for completion trends), and **cut sub-menus** so the hierarchy stays concise.",
       conclusion: {
         challenges: [
-          "Serving switchers who want a rigid roadmap, makers who want open paths, and scholars who want depth — without three separate apps.",
-          "Submission anxiety: people would finish the assignment steps and still hesitate to mark work final.",
-          "Pricing trust versus onboarding length — adding a plan step helped, but the questionnaire can’t grow forever.",
+          "Steering Cursor with modular, explicit prompts when generation missed interactions or visual consistency.",
+          "Naming the feature set a contributor actually needs — then noticing People, Home, and files were still missing.",
+          "Keeping board, list, and calendar as one task system instead of three products.",
         ],
         learnings: [
-          "Progress has to look like a project milestone, not a video checkbox.",
-          "Feedback is a ladder: AI for speed, constrained peer prompts for quality, humans for judgment.",
-          "Collapsible depth lets scholars go further without trapping casual learners in literature.",
+          "AI is useful for transcription and for exploring a moodboard; the IA still has to be decided by hand.",
+          "A first prototype is a diagnostic: redundant buttons and a missing People tab were clearer in the build than in Figma.",
+          "Search and multiple task views are how cross-functional teams share one tool without sharing one working style.",
         ],
         nextSteps: [
-          "Save-draft / sandbox on assignment upload.",
-          "Stronger visual affordance on deep-dive toggles.",
-          "Asynchronous $20 quick critiques next to live booking.",
+          "Expand design system guidelines, and reduce sub-menus for a more minimal hierarchy.",
+          "Granular team permissions and organization-wide workspaces.",
+          "A fuller analytics dashboard on Home for performance and task-completion trends.",
         ],
         proud:
-          "Designing a full practice loop — from path choice through mentor booking — and watching testers describe it as job-ready progress instead of another course to finish.",
+          "Building the **working prototype** — Figma to Cursor — so the demo is the product: record, transcribe, task, assign, search, instead of a slide of the idea.",
       },
     },
   },

@@ -201,7 +201,14 @@ export default function EditorialHome() {
         </p>
       </section>
 
-      <section className="bg-[#F3D4C3] page-inset pt-6 pb-14 sm:pt-8 sm:pb-16 lg:pt-10 lg:pb-20">
+      <section
+        id="portfolio"
+        className="page-inset pt-6 pb-14 sm:pt-8 sm:pb-16 lg:pt-10 lg:pb-20"
+        style={{
+          background:
+            "linear-gradient(165deg, #F6E7E0 0%, #E4CDC4 46%, #D5D2C6 100%)",
+        }}
+      >
         <div className="relative mx-auto aspect-[10/7] w-full max-w-4xl">
           {phones.map((phone) => (
             <PhoneFrame key={phone.src} {...phone} />
@@ -277,7 +284,7 @@ export default function EditorialHome() {
             Experience
           </h2>
           <a
-            href="/LuluWangPMResume26.pdf"
+            href="/CreativeSoftwareDesignResume.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="text-[13px] text-foreground/50"
