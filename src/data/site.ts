@@ -23,6 +23,8 @@ export type CaseStudy = {
   presentation?: {
     label: string;
     href: string;
+    /** Extra buttons beside the primary link, such as a mobile prototype */
+    more?: { label: string; href: string }[];
   };
   meta: {
     role: string;
@@ -702,8 +704,14 @@ export const projects: Project[] = [
       tagline:
         "A redesign of the user experience flows and website UI, so families can tell the programs apart and see how to start.",
       presentation: {
-        label: "prototype",
-        href: "https://www.figma.com/proto/Ow7VcysSnghqZp7yU9CZ6l/Client-Project--COT-Website?node-id=1475-7714&p=f&t=mqKKm9UNYlcjlNv1-1&scaling=min-zoom&content-scaling=fixed&page-id=1475%3A7529&starting-point-node-id=1475%3A7714&show-proto-sidebar=1",
+        label: "web prototype",
+        href: "https://www.figma.com/proto/Ow7VcysSnghqZp7yU9CZ6l/Client-Project--COT-Website?node-id=1475-7714&starting-point-node-id=1475%3A7714&t=FkNEabZ9n56yVptI-1",
+        more: [
+          {
+            label: "original website",
+            href: "https://canadaonlinetutoring.ca/",
+          },
+        ],
       },
       meta: {
         role: "UX Designer",

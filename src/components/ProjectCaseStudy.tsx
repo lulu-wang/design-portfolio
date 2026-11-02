@@ -26,9 +26,9 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
     .join("  ·  ");
   const toolsLine =
     cs.meta.tools.length > 0 ? cs.meta.tools.join("  ·  ") : null;
-  const presentationExternal = Boolean(
-    cs.presentation && /^https?:\/\//.test(cs.presentation.href),
-  );
+  const presentationLinks = cs.presentation
+    ? [cs.presentation, ...(cs.presentation.more ?? [])]
+    : [];
 
   const body = "font-reading text-[15px] leading-[1.55] text-foreground/65 md:text-base md:leading-[1.6]";
   const bodyMuted = "font-reading text-[15px] leading-[1.55] text-foreground/50 md:text-base md:leading-[1.6]";
@@ -67,7 +67,7 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
                   {" "}
                   <a
                     href={cs.presentation.href}
-                    {...(presentationExternal
+                    {...(/^https?:\/\//.test(cs.presentation.href)
                       ? { target: "_blank", rel: "noreferrer" }
                       : {})}
                     className="text-foreground color-hover underline decoration-foreground/25 underline-offset-4"
@@ -95,21 +95,24 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
                 {toolsLine}
               </p>
             )}
-            {cs.presentation && (
+            {presentationLinks.length > 0 && (
               <div
-                className="animate-rise mt-8 mb-10 sm:mb-14 md:mb-16"
+                className="animate-rise mt-8 mb-10 flex flex-wrap gap-3 sm:mb-14 md:mb-16"
                 style={{ animationDelay: `${360 + project.tags.length * 70}ms` }}
               >
-                <a
-                  href={cs.presentation.href}
-                  {...(presentationExternal
-                    ? { target: "_blank", rel: "noreferrer" }
-                    : {})}
-                  className="pill-btn gap-2"
-                >
-                  View {cs.presentation.label}
-                  <Arrow className="h-2.5" />
-                </a>
+                {presentationLinks.map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    {...(/^https?:\/\//.test(link.href)
+                      ? { target: "_blank", rel: "noreferrer" }
+                      : {})}
+                    className="pill-btn gap-2"
+                  >
+                    View {link.label}
+                    <Arrow className="h-2.5" />
+                  </a>
+                ))}
               </div>
             )}
           </div>
