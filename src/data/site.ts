@@ -826,7 +826,7 @@ export const projects: Project[] = [
         label: "Design",
         title: "The new website",
         intro:
-          "The current site is first: the high school page, the homepage, and Early Childhood & K–8. What follows is the redesign of the user experience flows and the website UI: a homepage, five program pages, a subject directory, and a course page. They share one menu and the same path to a free consultation.",
+          "The current site is first: the high school page, the homepage, and Early Childhood & K–8. What follows is the redesign of the user experience flows and the website UI: a homepage, a reviews page, five program pages, a subject directory, and a course page. They share one menu and the same path to a free consultation.",
         banner: {
           heading: "Pre-redesign",
           src: "/images/projects/canada-online-tutoring/before-high-school.jpg",
@@ -890,7 +890,36 @@ export const projects: Project[] = [
                 alt: "Full homepage — photo hero, programs, subjects, how tutoring works, and reviews",
                 caption: "Full homepage",
                 width: 1600,
-                height: 8230,
+                height: 8554,
+              },
+            ],
+          },
+          {
+            heading: "Reviews",
+            layout: "stack",
+            tone: "plain",
+            wide: true,
+            images: [
+              {
+                src: "/images/projects/canada-online-tutoring/reviews.jpg",
+                alt: "Reviews page — real results from Canadian families, a featured story, and what families are saying",
+                caption: "Reviews",
+                width: 1600,
+                height: 5229,
+              },
+            ],
+          },
+          {
+            heading: "Programs menu",
+            layout: "full",
+            tone: "plain",
+            images: [
+              {
+                src: "/images/projects/canada-online-tutoring/programs-menu.jpg",
+                alt: "Programs menu open — Early Childhood, K–8, high school, university, career, and English tutoring",
+                caption: "Programs menu",
+                width: 1440,
+                height: 1024,
               },
             ],
           },
@@ -933,8 +962,8 @@ export const projects: Project[] = [
                 src: "/images/projects/canada-online-tutoring/scroll-home.jpg",
                 alt: "Mobile homepage — We help you find the right tutor, programs, and subjects",
                 caption: "Homepage",
-                width: 402,
-                height: 11245,
+                width: 804,
+                height: 22101,
               },
               {
                 src: "/images/projects/canada-online-tutoring/scroll-program.jpg",
@@ -1017,18 +1046,11 @@ export const projects: Project[] = [
             ],
           },
           {
-            heading: "Subjects and a course",
-            layout: "pair",
+            heading: "Course page",
+            layout: "stack",
             tone: "muted",
             wide: true,
             images: [
-              {
-                src: "/images/projects/canada-online-tutoring/subjects-hero.jpg",
-                alt: "Subject directory — filter K–12 tutoring by subject, grade, province, and course code",
-                caption: "Explore subjects",
-                width: 1600,
-                height: 1472,
-              },
               {
                 src: "/images/projects/canada-online-tutoring/course-hero.jpg",
                 alt: "Biology college preparation course page — topics, what you will learn, and how it works",
