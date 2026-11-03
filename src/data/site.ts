@@ -105,6 +105,11 @@ export type CaseStudy = {
     banner?: CaseMediaItem & { heading?: string };
     /** Cropped current-site pages, shown with the before banner */
     beforeImages?: CaseMediaItem[];
+    /** Boards shown between the current site and the redesign */
+    bridge?: {
+      heading: string;
+      images: CaseMediaItem[];
+    };
     /** Extra galleries after the primary set (e.g. TV after phone) */
     galleries?: {
       heading?: string;
@@ -834,7 +839,7 @@ export const projects: Project[] = [
         label: "Design",
         title: "The new website",
         intro:
-          "The current site is first: the high school page, the homepage, and Early Childhood & K–8. What follows is the redesign of the user experience flows and the website UI: a homepage, a reviews page, five program pages, a subject directory, and a course page. They share one menu and the same path to a free consultation.",
+          "The current site is first: the high school page, the homepage, and Early Childhood & K–8. The design system and components come next. What follows is the redesign of the user experience flows and the website UI: a homepage, a reviews page, five program pages, a subject directory, and a course page. They share one menu and the same path to a free consultation.",
         banner: {
           heading: "Pre-redesign",
           src: "/images/projects/canada-online-tutoring/before-high-school.jpg",
@@ -859,6 +864,25 @@ export const projects: Project[] = [
             height: 1565,
           },
         ],
+        bridge: {
+          heading: "Design system and components",
+          images: [
+            {
+              src: "/images/projects/canada-online-tutoring/components-homepage.jpg",
+              alt: "Homepage design system — buttons, navigation, program cards, and subject tiles",
+              caption: "Homepage components",
+              width: 1588,
+              height: 2640,
+            },
+            {
+              src: "/images/projects/canada-online-tutoring/components-reused.jpg",
+              alt: "Reused website components — header, footer, reviews, how it works, and calls to action",
+              caption: "Reused components",
+              width: 1600,
+              height: 5580,
+            },
+          ],
+        },
         galleryTitle: "Redesign",
         layout: "pair",
         tone: "muted",
@@ -1850,6 +1874,16 @@ export const projects: Project[] = [
     description:
       "A private-by-default social layer for Netflix that keeps post-watch conversation, spoiler-safe discussion, and trusted recommendations inside the app.",
     image: "/images/project-netflix-community.png",
+    previewScreens: [
+      {
+        src: "/images/projects/netflix-community/phone/01-title.png",
+        alt: "Netflix title page with the Community tab on Stranger Things",
+      },
+      {
+        src: "/images/projects/netflix-community/phone/02-hub.png",
+        alt: "Community Discussion Hub for Stranger Things",
+      },
+    ],
     tags: [
       { label: "UX Design", variant: "outline" },
       { label: "Product Research", variant: "solid" },

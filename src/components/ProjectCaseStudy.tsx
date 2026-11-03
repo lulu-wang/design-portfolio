@@ -477,6 +477,32 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
               flush
             />
           )}
+          {cs.visuals?.bridge && cs.visuals.bridge.images.length > 0 && (
+            <section className="bg-[#111] px-5 py-12 sm:px-8 sm:py-16">
+              <h3 className="mx-auto mb-8 max-w-5xl text-center text-[23px] font-normal leading-[1.3] text-white sm:mb-12">
+                {cs.visuals.bridge.heading}
+              </h3>
+              <div className="mx-auto flex w-full max-w-5xl flex-col items-center gap-10 sm:gap-14">
+                {cs.visuals.bridge.images.map((item) => (
+                  <figure key={item.src} className="w-full">
+                    <Image
+                      src={item.src}
+                      alt={item.alt}
+                      width={item.width ?? 1600}
+                      height={item.height ?? 2400}
+                      className="mx-auto h-auto w-full object-contain"
+                      sizes="(max-width: 1024px) 100vw, 1024px"
+                    />
+                    {item.caption && (
+                      <figcaption className="mt-4 text-center text-[16px] leading-[1.47] text-white/70">
+                        {item.caption}
+                      </figcaption>
+                    )}
+                  </figure>
+                ))}
+              </div>
+            </section>
+          )}
           {cs.visuals &&
           ((cs.visuals.images.length ?? 0) > 0 ||
             (cs.visuals.galleries?.length ?? 0) > 0) ? (

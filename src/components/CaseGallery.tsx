@@ -168,10 +168,14 @@ function PhoneFrame({
     item.src.includes("path-learning/screens") || isPathHifi;
   const isCotPhone =
     item.src.includes("canada-online-tutoring") && item.src.includes("phone");
-  const nativeChrome = isPathScreen || isCotPhone;
-  const fillFrame =
+  // PulseFit and Netflix exports are full screens. A drawn status bar
+  // and home indicator sit on top of the UI, and a fixed frame crops
+  // the taller pages.
+  const isAppScreen =
     item.src.includes("pulsefit") ||
-    item.src.includes("netflix-community/phone") ||
+    item.src.includes("netflix-community/phone");
+  const nativeChrome = isPathScreen || isCotPhone || isAppScreen;
+  const fillFrame =
     (isPathScreen && !isPathHifi) ||
     isCotPhone;
 

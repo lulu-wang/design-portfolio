@@ -1,5 +1,6 @@
 export type GalleryCategory =
   | "illustrations"
+  | "paintings"
   | "sketches"
   | "photography"
   | "design"
@@ -18,6 +19,7 @@ export type Illustration = {
 
 export const galleryTabs: { id: GalleryCategory; label: string }[] = [
   { id: "illustrations", label: "Illustrations" },
+  { id: "paintings", label: "Paintings" },
   { id: "sketches", label: "Sketches" },
   { id: "photography", label: "Photography" },
   { id: "design", label: "Design" },
@@ -32,6 +34,46 @@ export const visibleGalleryTabs = galleryTabs.filter(
 );
 
 export const illustrations: Illustration[] = [
+  {
+    id: "pt01",
+    title: "House Study",
+    medium: "Painting",
+    date: "2026",
+    image: "/images/paintings/01-house-study.jpg",
+    width: 3000,
+    height: 4000,
+    category: "paintings",
+  },
+  {
+    id: "pt02",
+    title: "House Study, Yard",
+    medium: "Painting",
+    date: "2026",
+    image: "/images/paintings/02-house-study-yard.jpg",
+    width: 3000,
+    height: 4000,
+    category: "paintings",
+  },
+  {
+    id: "pt03",
+    title: "House Study, Eave",
+    medium: "Painting",
+    date: "2026",
+    image: "/images/paintings/03-house-study-eave.jpg",
+    width: 3000,
+    height: 4000,
+    category: "paintings",
+  },
+  {
+    id: "pt04",
+    title: "House Study, Wall",
+    medium: "Painting",
+    date: "2026",
+    image: "/images/paintings/04-house-study-wall.jpg",
+    width: 3000,
+    height: 4000,
+    category: "paintings",
+  },
   {
     id: "27",
     title: "Red Wake",
@@ -330,6 +372,26 @@ export const illustrations: Illustration[] = [
     image: "/images/illustrations/13.jpg",
     width: 1589,
     height: 1800,
+    category: "illustrations",
+  },
+  {
+    id: "31",
+    title: "Makima",
+    medium: "Digital Illustration",
+    date: "2026",
+    image: "/images/illustrations/31.jpg",
+    width: 1789,
+    height: 2632,
+    category: "illustrations",
+  },
+  {
+    id: "32",
+    title: "Quanxi",
+    medium: "Digital Illustration",
+    date: "2026",
+    image: "/images/illustrations/32.jpg",
+    width: 1789,
+    height: 2632,
     category: "illustrations",
   },
   {
@@ -653,6 +715,36 @@ export const illustrations: Illustration[] = [
     category: "photography",
   },
   {
+    id: "d17",
+    title: "Dark Mode Toggle",
+    medium: "Figma",
+    date: "2026",
+    image: "/images/design/17-dark-mode-toggle.png",
+    width: 2154,
+    height: 1078,
+    category: "design",
+  },
+  {
+    id: "d18",
+    title: "Course Card",
+    medium: "Figma",
+    date: "2026",
+    image: "/images/design/18-course-card.png",
+    width: 1460,
+    height: 1124,
+    category: "design",
+  },
+  {
+    id: "d19",
+    title: "Log In and Submit",
+    medium: "Figma",
+    date: "2026",
+    image: "/images/design/19-login-submit.png",
+    width: 1854,
+    height: 1394,
+    category: "design",
+  },
+  {
     id: "d16",
     title: "Wayfarer",
     medium: "Figma",
@@ -708,8 +800,8 @@ export const illustrations: Illustration[] = [
     medium: "Figma",
     date: "2024",
     image: "/images/design/04-job-cards.png",
-    width: 919,
-    height: 1024,
+    width: 2544,
+    height: 2652,
     category: "design",
   },
   {
@@ -718,8 +810,8 @@ export const illustrations: Illustration[] = [
     medium: "Figma",
     date: "2024",
     image: "/images/design/01-payment-buttons.png",
-    width: 1024,
-    height: 657,
+    width: 3060,
+    height: 2174,
     category: "design",
   },
   {
@@ -798,9 +890,29 @@ export const illustrations: Illustration[] = [
     medium: "Figma",
     date: "2024",
     image: "/images/design/03-product-card.png",
-    width: 767,
-    height: 393,
+    width: 2744,
+    height: 1610,
     category: "design",
+  },
+  {
+    id: "s08",
+    title: "Nude Still Life",
+    medium: "Pencil on paper",
+    date: "2022",
+    image: "/images/sketches/nude-still-life.jpg",
+    width: 2910,
+    height: 4034,
+    category: "sketches",
+  },
+  {
+    id: "s09",
+    title: "Still Life",
+    medium: "Pencil on paper",
+    date: "2022",
+    image: "/images/sketches/still-life.jpg",
+    width: 4321,
+    height: 4034,
+    category: "sketches",
   },
   {
     id: "s01",

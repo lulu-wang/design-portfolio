@@ -214,7 +214,7 @@ export default function IllustrationsView({
           }`}
         >
           Studies, editorial work, and visual experiments across illustration,
-          sketches, photography, design, and comics.
+          paintings, sketches, photography, design, and comics.
         </p>
         <nav className="mt-10 flex gap-6 overflow-x-auto sm:gap-10" aria-label="Gallery categories">
           {visibleGalleryTabs.map((t) => {

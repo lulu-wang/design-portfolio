@@ -49,6 +49,16 @@ const panelPhones: Record<string, { src: string; alt: string }[]> = {
       alt: "PulseFit nutrition",
     },
   ],
+  "netflix-community": [
+    {
+      src: "/images/projects/netflix-community/phone/01-title.png",
+      alt: "Netflix title page with the Community tab",
+    },
+    {
+      src: "/images/projects/netflix-community/phone/02-hub.png",
+      alt: "Community Discussion Hub",
+    },
+  ],
 };
 
 function PanelPhones({ screens }: { screens: { src: string; alt: string }[] }) {
@@ -80,11 +90,7 @@ function PanelPhones({ screens }: { screens: { src: string; alt: string }[] }) {
                 src={screen.src}
                 alt={screen.alt}
                 fill
-                className={`object-center ${
-                  screen.src.includes("path-learning")
-                    ? "object-cover"
-                    : "object-contain"
-                }`}
+                className="object-cover object-top"
                 sizes={single ? "240px" : "180px"}
               />
             </div>

@@ -5,7 +5,7 @@ import { visibleGalleryTabs, type GalleryCategory } from "@/data/illustrations";
 export const metadata: Metadata = {
   title: "Gallery — Lulu Wang",
   description:
-    "A personal archive of illustrations, sketches, design, and comics by Lulu Wang.",
+    "A personal archive of illustrations, paintings, sketches, design, and comics by Lulu Wang.",
 };
 
 export default async function IllustrationsPage({
