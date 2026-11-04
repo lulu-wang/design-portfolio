@@ -1420,8 +1420,8 @@ export const projects: Project[] = [
       tagline:
         "A fitness and diet app for busy adults who need tracking that stays simple and personal.",
       presentation: {
-        label: "case study presentation",
-        href: "https://www.figma.com/deck/UkAoxp7axZkm6oXXOlDUk7",
+        label: "prototype",
+        href: "https://www.figma.com/proto/79iMuiPEMzazgSyfoOfsLe/Untitled?node-id=6-101&p=f&t=zNc73EpU6jnlFltl-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=6%3A101",
       },
       meta: {
         role: "UX/UI Lead",
