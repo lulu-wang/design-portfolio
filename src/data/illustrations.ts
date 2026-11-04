@@ -1,9 +1,9 @@
 export type GalleryCategory =
   | "illustrations"
   | "design"
+  | "photography"
   | "paintings"
   | "sketches"
-  | "photography"
   | "comics";
 
 export type Illustration = {
@@ -20,9 +20,9 @@ export type Illustration = {
 export const galleryTabs: { id: GalleryCategory; label: string }[] = [
   { id: "illustrations", label: "Illustrations" },
   { id: "design", label: "Design" },
+  { id: "photography", label: "Photography" },
   { id: "paintings", label: "Paintings" },
   { id: "sketches", label: "Sketches" },
-  { id: "photography", label: "Photography" },
   { id: "comics", label: "Comics" },
 ];
 
