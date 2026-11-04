@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Footer from "@/components/Footer";
-import WorkPanels from "@/components/WorkPanels";
+import ProjectShowcase from "@/components/ProjectShowcase";
 import { projects } from "@/data/site";
 
 export const metadata: Metadata = {
@@ -10,20 +10,18 @@ export const metadata: Metadata = {
 
 export default function ProjectsPage() {
   return (
-    <main className="flex flex-col">
-      <section className="bg-[#F7F4EF] page-inset pb-14 pt-32 sm:pb-16 sm:pt-36 lg:pb-20">
-        <h1 className="font-display text-[clamp(3.2rem,8vw,7rem)] font-extrabold uppercase leading-[0.84] tracking-[-0.06em]">
+    <main className="flex flex-col bg-[#F3F0E8]">
+      <section className="page-inset bg-[#F3F0E8] pb-8 pt-32 sm:pb-10 sm:pt-36">
+        <h1 className="text-[clamp(3rem,7vw,5.5rem)] font-medium leading-[0.92] tracking-[-0.05em]">
           Selected work
         </h1>
-        <p className="mt-6 max-w-4xl text-[16px] leading-relaxed text-foreground/60 sm:text-[18px]">
+        <p className="mt-5 text-[16px] leading-relaxed text-foreground/65 sm:text-[18px]">
           Product design, brand, and research across meetings, health, learning,
           streaming, and apparel.
         </p>
       </section>
 
-      <section>
-        <WorkPanels projects={projects} />
-      </section>
+      <ProjectShowcase projects={projects} />
 
       <Footer />
     </main>

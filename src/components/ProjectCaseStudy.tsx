@@ -5,8 +5,8 @@ import Footer from "@/components/Footer";
 import CaseSection from "@/components/CaseSection";
 import CaseBleed from "@/components/CaseBleed";
 import CaseGallery from "@/components/CaseGallery";
-import ProjectCover from "@/components/ProjectCover";
 import { titleHover } from "@/components/ProjectCard";
+import { projectTone } from "@/components/ProjectShowcase";
 import Wireframe from "@/components/Wireframe";
 import RichText from "@/components/RichText";
 import BrandStyle from "@/components/BrandStyle";
@@ -21,9 +21,6 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
     ? (cs.research.personas ?? (cs.research.persona ? [cs.research.persona] : []))
     : [];
 
-  const metaLine = [cs.meta.role, cs.meta.timeline, cs.meta.team, cs.meta.platform]
-    .filter(Boolean)
-    .join("  ·  ");
   const toolsLine =
     cs.meta.tools.length > 0 ? cs.meta.tools.join("  ·  ") : null;
   const presentationLinks = cs.presentation
@@ -34,109 +31,115 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
   const bodyMuted = "font-reading text-[15px] leading-[1.55] text-foreground/50 md:text-base md:leading-[1.6]";
   const subhead = "font-display text-base font-semibold tracking-[-0.03em] md:text-lg";
 
-  return (
-    <div className="bg-[#F7F4EF]">
-    <main className="page-inset pt-32 sm:pt-36">
-      <section className="pb-12 sm:pb-16">
-        <Link
-          href="/projects"
-          className="arrow-link inline-flex items-center gap-2 text-[13px] text-foreground/50"
-        >
-          <Arrow className="h-2.5 rotate-180" /> All projects
-        </Link>
+  const tone = projectTone(slug);
+  const screens = project.previewScreens ?? [];
 
-        <div className="mt-10 max-w-4xl sm:mt-12">
-          <p className="text-[11px] font-medium uppercase tracking-[0.28em] text-foreground/45">
-            Case study
+  return (
+    <div style={{ background: tone.wash, color: "#151515" }}>
+      <header
+        className="sticky top-0 z-40 border-b border-[#151515]/20 px-5 py-4 sm:px-8"
+        style={{ background: tone.wash }}
+      >
+        <div className="mx-auto flex max-w-6xl items-center justify-between text-[11px] font-medium uppercase tracking-[0.18em]">
+          <p>
+            Case study {String(currentIndex + 1).padStart(2, "0")} /{" "}
+            {String(projects.length).padStart(2, "0")}
           </p>
-          <h1 className="mt-5 font-display text-[clamp(3rem,7vw,6.4rem)] font-extrabold uppercase leading-[0.86] tracking-[-0.06em]">
+          <Link href="/projects" className="inline-flex items-center gap-2">
+            All projects
+            <span aria-hidden className="grid h-7 w-7 place-items-center rounded-full border border-current text-[13px]">
+              ×
+            </span>
+          </Link>
+        </div>
+      </header>
+
+      <div className="mx-auto max-w-6xl px-6 pb-16 pt-12 sm:px-10 sm:pt-16">
+        <p className="text-[11px] font-medium uppercase tracking-[0.2em] opacity-60">
+          {project.tags.map((tag) => tag.label).join("  ·  ")}
+        </p>
+        <div className="mt-8 grid items-end gap-8 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,0.8fr)]">
+          <h1 className="text-[clamp(3.2rem,7vw,6.4rem)] font-medium leading-[0.9] tracking-[-0.05em]">
             {project.name}
           </h1>
-
-          <p className="mt-6 text-[12px] font-medium uppercase tracking-[0.18em] text-foreground/45">
-            {project.tags.map((tag) => tag.label).join("  ·  ")}
+          <p className="text-right text-[16px] leading-snug sm:text-[18px]">
+            <RichText>{cs.tagline}</RichText>
           </p>
-
-            <p
-              className="page-subtitle animate-rise mt-6 max-w-3xl sm:mt-8 md:max-w-4xl [&_strong]:text-foreground [&_em]:text-foreground/80"
-              style={{ animationDelay: `${220 + project.tags.length * 70}ms` }}
-            >
-              <RichText>{cs.tagline}</RichText>
-              {cs.presentation && (
-                <>
-                  {" "}
-                  <a
-                    href={cs.presentation.href}
-                    {...(/^https?:\/\//.test(cs.presentation.href)
-                      ? { target: "_blank", rel: "noreferrer" }
-                      : {})}
-                    className="text-foreground color-hover underline decoration-foreground/25 underline-offset-4"
-                    style={{ "--hover": "#7C5CF6" } as React.CSSProperties}
-                  >
-                    View {cs.presentation.label}
-                  </a>
-                </>
-              )}
-            </p>
-
-            <p
-              className="animate-rise mt-6 text-sm leading-relaxed text-foreground/45 md:text-[15px]"
-              style={{ animationDelay: `${280 + project.tags.length * 70}ms` }}
-            >
-              {metaLine}
-            </p>
-            {toolsLine && (
-              <p
-                className="animate-rise mt-2 text-sm leading-relaxed text-foreground/45 md:text-[15px]"
-                style={{ animationDelay: `${320 + project.tags.length * 70}ms` }}
-              >
-                <span className="text-foreground/30">Tools</span>
-                <span className="mx-2.5 text-foreground/20">·</span>
-                {toolsLine}
+        </div>
+        <div className="mt-12 grid grid-cols-2 gap-6 border-t border-[#151515]/20 pt-5 sm:grid-cols-4">
+          {[
+            ["Role", cs.meta.role],
+            ["Timeline", cs.meta.timeline],
+            ["Team", cs.meta.team],
+            ["Platform", cs.meta.platform],
+          ].map(([label, value]) => (
+            <div key={label}>
+              <p className="text-[10px] font-medium uppercase tracking-[0.16em] opacity-45">
+                {label}
               </p>
-            )}
-            {presentationLinks.length > 0 && (
-              <div
-                className="animate-rise mt-8 mb-10 flex flex-wrap gap-3 sm:mb-14 md:mb-16"
-                style={{ animationDelay: `${360 + project.tags.length * 70}ms` }}
+              <p className="mt-2 text-[14px] leading-snug">{value}</p>
+            </div>
+          ))}
+        </div>
+        {toolsLine && (
+          <p className="mt-4 text-[13px] opacity-60">Tools · {toolsLine}</p>
+        )}
+        {presentationLinks.length > 0 && (
+          <div className="mt-8 flex flex-wrap gap-3">
+            {presentationLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                {...(/^https?:\/\//.test(link.href)
+                  ? { target: "_blank", rel: "noreferrer" }
+                  : {})}
+                className="inline-flex items-center gap-2 rounded-full border border-[#151515] px-4 py-2 text-[12px] font-medium uppercase tracking-[0.14em]"
               >
-                {presentationLinks.map((link) => (
-                  <a
-                    key={link.href}
-                    href={link.href}
-                    {...(/^https?:\/\//.test(link.href)
-                      ? { target: "_blank", rel: "noreferrer" }
-                      : {})}
-                    className="pill-btn gap-2"
-                  >
-                    View {link.label}
-                    <Arrow className="h-2.5" />
-                  </a>
-                ))}
-              </div>
-            )}
+                View {link.label}
+                <Arrow className="h-2.5" />
+              </a>
+            ))}
           </div>
-        </section>
-      </main>
+        )}
+      </div>
 
-      <CaseBleed>
-        <div className="page-inset">
-          <ProjectCover
-            name={project.name}
+      <div className="mx-auto max-w-6xl px-4 py-14 sm:px-8 sm:py-20" style={{ background: tone.stage }}>
+        {screens.length >= 2 ? (
+          <div className="flex items-end justify-center gap-3 sm:gap-8">
+            {screens.slice(0, 2).map((screen, index) => (
+              <div
+                key={screen.src}
+                className={`w-[46%] max-w-[280px] ${index === 0 ? "-rotate-6" : "rotate-3"}`}
+              >
+                <div className="rounded-[1.7rem] bg-[#111] p-[7px] shadow-[0_24px_50px_rgba(0,0,0,0.45)] ring-1 ring-white/10">
+                  <div className="relative aspect-[393/852] overflow-hidden rounded-[1.3rem] bg-white">
+                    <Image
+                      src={screen.src}
+                      alt={screen.alt}
+                      fill
+                      priority
+                      className="object-cover object-top"
+                      sizes="280px"
+                    />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <Image
             src={project.image}
             alt={`${project.name} preview`}
-            screens={project.previewScreens}
-            width={2390}
-            height={1580}
-            className="animate-rise aspect-[239/158]"
-            sizes="(max-width: 768px) 50vw, 25vw"
+            width={1600}
+            height={1000}
             priority
-            size="hero"
+            className="mx-auto h-auto w-full max-w-4xl object-contain"
+            sizes="(max-width: 1024px) 100vw, 900px"
           />
-        </div>
-      </CaseBleed>
+        )}
+      </div>
 
-      <main className="page-inset">
+      <main className="mx-auto max-w-6xl bg-[#F4F1EA]">
         <CaseSection
           label="Overview"
           title="Overview"
@@ -198,13 +201,21 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
           </div>
 
           {cs.research.quotes && cs.research.quotes.length > 0 && (
-            <ul className="mt-12 max-w-2xl space-y-4">
-              {cs.research.quotes.slice(0, 3).map((quote) => (
-                <li key={quote} className={`${bodyMuted} italic`}>
-                  &ldquo;{quote}&rdquo;
-                </li>
-              ))}
-            </ul>
+            <div className="-mx-6 mt-16 bg-[#111] px-6 py-16 text-[#F6F3EC] sm:-mx-10 sm:px-10 sm:py-24 lg:-mx-14 lg:px-14">
+              <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-white/45">
+                Research insight
+              </p>
+              <blockquote className="mt-8 max-w-4xl font-serif text-[clamp(1.8rem,4.2vw,3.5rem)] leading-[1.12] tracking-[-0.03em]">
+                &ldquo;{cs.research.quotes[0]}&rdquo;
+              </blockquote>
+              {cs.research.quotes.length > 1 && (
+                <ul className="mt-10 max-w-2xl space-y-4 text-[15px] leading-relaxed text-white/70">
+                  {cs.research.quotes.slice(1, 3).map((quote) => (
+                    <li key={quote}>&ldquo;{quote}&rdquo;</li>
+                  ))}
+                </ul>
+              )}
+            </div>
           )}
 
           <div className="mt-12 space-y-10">
@@ -262,15 +273,20 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
             title="Process"
             intro={cs.define.intro}
           >
-            <div className="mt-8 grid gap-8 sm:grid-cols-2">
-              <ol className="space-y-2.5">
-                {cs.define.steps.map((step) => (
-                  <li key={step} className={`${body} [&_strong]:text-foreground`}>
+            <ol className="mt-12 grid gap-8 border-t border-[#151515]/15 pt-8 sm:grid-cols-2 lg:grid-cols-3">
+              {cs.define.steps.map((step, i) => (
+                <li key={step}>
+                  <p className="text-[12px] font-medium tracking-[0.16em] text-[#151515]/45">
+                    {String(i + 1).padStart(2, "0")}
+                  </p>
+                  <p className={`mt-3 ${body} [&_strong]:text-foreground`}>
                     <RichText>{step}</RichText>
-                  </li>
-                ))}
-              </ol>
-              <ul className="space-y-2.5">
+                  </p>
+                </li>
+              ))}
+            </ol>
+            {cs.define.timeline.length > 0 && (
+              <ul className="mt-10 grid gap-3 sm:grid-cols-2">
                 {cs.define.timeline.map((item) => (
                   <li
                     key={item}
@@ -280,7 +296,7 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
                   </li>
                 ))}
               </ul>
-            </div>
+            )}
           </CaseSection>
         )}
 
@@ -554,7 +570,7 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
         </CaseBleed>
       )}
 
-      <main className="page-inset">
+      <main className="mx-auto max-w-6xl bg-[#F4F1EA]">
         {cs.solution && (
           <CaseSection
             label="Solution"
@@ -662,7 +678,7 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
         </CaseSection>
         )}
 
-        <section className="py-14 sm:py-20">
+        <section className="px-6 py-14 sm:px-10 sm:py-20 lg:px-14">
           <Link
             href={`/projects/${nextProject.slug}`}
             className="group block"
@@ -676,9 +692,9 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
               Next
             </p>
             <div className="mt-4 flex items-end justify-between gap-6">
-              <h2 className="font-display text-[clamp(2.4rem,6vw,5rem)] font-extrabold uppercase leading-[0.86] tracking-[-0.055em] transition-colors duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:text-[var(--hover)]">
-                {nextProject.name}
-              </h2>
+            <h2 className="mt-4 text-[clamp(2.6rem,6vw,5rem)] font-medium leading-[0.92] tracking-[-0.05em] transition-opacity duration-300 group-hover:opacity-60">
+              {nextProject.name}
+            </h2>
               <Arrow className="mb-2 h-3.5 shrink-0 transition-transform group-hover:translate-x-2 sm:h-4" />
             </div>
           </Link>

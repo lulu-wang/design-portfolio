@@ -13,6 +13,7 @@ export const titleHover: Record<string, string> = {
   "netflix-community": "#E50914",
   yuugen: "#C45C6A",
   "canada-online-tutoring": "#C71120",
+  "alma-healthcare": "#4B3D7D",
 };
 
 export default function ProjectCard({

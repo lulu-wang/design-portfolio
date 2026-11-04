@@ -3,7 +3,7 @@ import Link from "next/link";
 import Arrow from "@/components/Arrow";
 import Footer from "@/components/Footer";
 import HomeGallery from "@/components/HomeGallery";
-import WorkPanels from "@/components/WorkPanels";
+import ProjectShowcase from "@/components/ProjectShowcase";
 import { illustrations } from "@/data/illustrations";
 import { experience, projects } from "@/data/site";
 
@@ -260,19 +260,19 @@ export default function EditorialHome() {
         </div>
       </section>
 
-      <section className="bg-[#2A2A2A]" id="work">
-        <div className="flex items-baseline justify-between page-inset py-6 sm:py-8">
-          <h2 className="text-[11px] font-medium uppercase tracking-[0.28em] text-white/55">
+      <section className="bg-[#F3F0E8]" id="work">
+        <div className="flex items-baseline justify-between page-inset py-8 sm:py-10">
+          <h2 className="text-[11px] font-medium uppercase tracking-[0.28em] text-foreground/55">
             Selected work
           </h2>
           <Link
             href="/projects"
-            className="arrow-link inline-flex items-center gap-2 text-[13px] text-white/60"
+            className="arrow-link inline-flex items-center gap-2 text-[13px] text-foreground/60"
           >
             All work <Arrow className="h-2.5" />
           </Link>
         </div>
-        <WorkPanels projects={projects} />
+        <ProjectShowcase projects={projects} />
       </section>
 
       <section

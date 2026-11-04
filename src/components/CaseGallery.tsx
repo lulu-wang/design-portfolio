@@ -173,7 +173,8 @@ function PhoneFrame({
   // the taller pages.
   const isAppScreen =
     item.src.includes("pulsefit") ||
-    item.src.includes("netflix-community/phone");
+    item.src.includes("netflix-community/phone") ||
+    item.src.includes("alma-healthcare");
   const nativeChrome = isPathScreen || isCotPhone || isAppScreen;
   const fillFrame =
     (isPathScreen && !isPathHifi) ||

@@ -15,38 +15,21 @@ export default function CaseSection({
   first?: boolean;
 }) {
   return (
-    <section
-      className="grid scroll-mt-28 gap-6 py-12 sm:py-16 lg:grid-cols-[140px_1fr] lg:gap-12"
-    >
+    <section className="scroll-mt-24 px-6 py-16 sm:px-10 sm:py-24 lg:px-14">
       {(index || label) && (
-        <div className="lg:sticky lg:top-28 lg:self-start">
-          <div className="flex items-center gap-3 lg:flex-col lg:items-start lg:gap-1.5">
-            {index && (
-              <span className="font-display text-[11px] font-medium tracking-[0.18em] text-foreground/30">
-                {index}
-              </span>
-            )}
-            {label && (
-              <span className="font-display text-[11px] font-medium uppercase tracking-[0.16em] text-muted">
-                {label}
-              </span>
-            )}
-          </div>
-        </div>
+        <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#151515]/45">
+          {[index, label].filter(Boolean).join(" / ")}
+        </p>
       )}
 
       <div className="min-w-0">
         {title && (
-          <h2 className="font-display max-w-3xl text-[1.45rem] font-semibold leading-[1.25] tracking-[-0.035em] sm:text-[1.75rem] sm:leading-[1.2] md:text-[2rem] md:leading-[1.18] [&_strong]:font-semibold [&_em]:font-medium [&_em]:italic">
+          <h2 className="mt-5 max-w-4xl text-[clamp(2.4rem,5vw,4.4rem)] font-medium leading-[0.95] tracking-[-0.045em] text-[#151515] [&_em]:italic [&_strong]:font-medium">
             <RichText>{title}</RichText>
           </h2>
         )}
         {intro && (
-          <p
-            className={`font-reading max-w-2xl text-[15px] leading-[1.55] text-foreground/65 md:max-w-3xl md:text-base md:leading-[1.6] lg:text-[17px] lg:leading-[1.6] [&_strong]:text-foreground [&_em]:text-foreground/75 ${
-              title ? "mt-5 sm:mt-6" : ""
-            }`}
-          >
+          <p className="ml-auto mt-8 max-w-xl text-right text-[15px] leading-relaxed text-[#151515]/75 sm:text-[16px] [&_em]:text-[#151515]/70 [&_strong]:text-[#151515]">
             <RichText>{intro}</RichText>
           </p>
         )}

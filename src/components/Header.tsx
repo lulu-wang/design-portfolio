@@ -112,7 +112,7 @@ export default function Header() {
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
-  if (pathname.startsWith("/prototypes")) return null;
+  if (pathname.startsWith("/prototypes") || pathname.startsWith("/projects/")) return null;
 
   return (
     <>

@@ -157,6 +157,639 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: "alma-healthcare",
+    name: "Alma Healthcare",
+    description:
+      "A mobile care app that starts with what you're feeling, then helps you book a visit and keep up with messages, labs, and medication.",
+    image: "/images/projects/alma-healthcare/01-welcome.png",
+    previewScreens: [
+      {
+        src: "/images/projects/alma-healthcare/01-welcome.png",
+        alt: "Alma welcome — Care that starts with listening",
+      },
+      {
+        src: "/images/projects/alma-healthcare/03-choose-care.png",
+        alt: "Choose a video visit and a provider time",
+      },
+    ],
+    tags: [
+      { label: "UX Design", variant: "outline" },
+      { label: "Product Design", variant: "solid" },
+      { label: "Mobile", variant: "lavender" },
+    ],
+    caseStudy: {
+      tagline:
+        "Care that starts with listening — describe what's going on, book the next step, and keep results and medication close by.",
+      meta: {
+        role: "Product Designer",
+        timeline: "2026",
+        team: "Personal project",
+        platform: "iOS",
+        tools: ["Figma"],
+      },
+      overview:
+        "**Alma** is a mobile healthcare app. The first screen asks what is going on, not which department to call. From there someone can choose a video visit and a provider, then find messages, lab results, medication, and accessibility settings in the same place.",
+      problem: {
+        statement:
+          "The next step in care is hard to see when symptoms, visits, results, and prescriptions live apart.",
+        points: [
+          "People arrive with a feeling — a sore throat, fatigue — not a department name.",
+          "Booking should happen in the same flow as describing symptoms.",
+          "After the visit, messages, labs, and refills still need to be easy to find.",
+        ],
+      },
+      goals:
+        "Take someone from **what they are experiencing** to a booked visit, and keep the follow-up — messages, results, and medication — one menu away.",
+      ia: {
+        intro:
+          "The app is a short path into care, then a menu for everything that comes after.",
+        flow: [
+          "Welcome → Get Started",
+          "Tell us more → symptoms, step 2 of 4",
+          "Choose your care → video visit and a provider time",
+          "Visit booked, or no upcoming visits",
+        ],
+        sitemap: [
+          "Find care",
+          "Messages",
+          "Lab Results",
+          "Medication",
+          "Accessibility",
+        ],
+      },
+      branding: {
+        intro:
+          "Alma should feel calm before it feels clinical. A warm paper ground, a serif wordmark, and a purple used only for the mark, selected choices, and the next action.",
+        colors: [
+          { name: "Paper", hex: "#FAF8F0", role: "App background" },
+          { name: "Iris", hex: "#4B3D7D", role: "Wordmark, primary buttons, body text" },
+          { name: "Lilac", hex: "#E6E0FC", role: "Best match and active prescription" },
+          { name: "Bloom", hex: "#B299DF", role: "Emblem" },
+          { name: "Sage", hex: "#E3EFDE", role: "Results that are in range" },
+          { name: "Peach", hex: "#FDD2C5", role: "Provider accent" },
+        ],
+        typefaces: [
+          {
+            name: "Serif",
+            role: "Wordmark and screen titles",
+          },
+          {
+            name: "Sans",
+            role: "Labels, body, and controls",
+          },
+        ],
+        typography:
+          "Screen titles are a serif, large enough to be the sentence of the page: “What are you experiencing?” Labels and helper text stay in a smaller sans so chips, times, and ranges can sit under that title without competing.",
+        palette:
+          "Paper holds every screen. Iris is the only strong color — the wordmark, selected symptom chips, and the bottom action. Lilac marks the recommended visit and an active prescription. Sage is reserved for a result that is in range.",
+        messaging:
+          "“Care that starts with listening.” “Tell us what’s going on. We’ll help with the next step.” The voice stays plain: best match, doses left, healthy range.",
+      },
+      visuals: {
+        label: "Screens",
+        title: "From symptoms to a booked visit",
+        intro:
+          "Welcome, the symptom check, choosing a provider, and the places someone returns to afterward.",
+        layout: "phones",
+        tone: "dark",
+        roomy: true,
+        images: [
+          {
+            src: "/images/projects/alma-healthcare/01-welcome.png",
+            alt: "Alma welcome screen with Get Started",
+            caption: "Welcome",
+            width: 1179,
+            height: 2556,
+          },
+          {
+            src: "/images/projects/alma-healthcare/02-symptoms.png",
+            alt: "Symptom check — What are you experiencing?",
+            caption: "Symptoms",
+            width: 1179,
+            height: 2556,
+          },
+          {
+            src: "/images/projects/alma-healthcare/03-choose-care.png",
+            alt: "Choose a video visit and a provider time",
+            caption: "Choose care",
+            width: 1179,
+            height: 2556,
+          },
+          {
+            src: "/images/projects/alma-healthcare/04-booked.png",
+            alt: "Visit booked with Dr Jamie Morris at 2:30 PM",
+            caption: "Booked",
+            width: 1179,
+            height: 2556,
+          },
+          {
+            src: "/images/projects/alma-healthcare/05-no-visits.png",
+            alt: "No upcoming visits, with Find Care",
+            caption: "No upcoming visits",
+            width: 1179,
+            height: 2556,
+          },
+          {
+            src: "/images/projects/alma-healthcare/06-messages.png",
+            alt: "Messages from care providers",
+            caption: "Messages",
+            width: 1179,
+            height: 2556,
+          },
+          {
+            src: "/images/projects/alma-healthcare/07-lab-results.png",
+            alt: "Lab results in the expected range",
+            caption: "Lab results",
+            width: 1179,
+            height: 2556,
+          },
+          {
+            src: "/images/projects/alma-healthcare/08-medication.png",
+            alt: "Active Atorvastatin prescription and Request Refill",
+            caption: "Medication",
+            width: 1179,
+            height: 2556,
+          },
+          {
+            src: "/images/projects/alma-healthcare/09-menu.png",
+            alt: "Alma menu — Find care, Messages, Lab Results, Medication, Accessibility",
+            caption: "Menu",
+            width: 1179,
+            height: 2556,
+          },
+          {
+            src: "/images/projects/alma-healthcare/10-accessibility.png",
+            alt: "Accessibility settings for text size, motion, and captions",
+            caption: "Accessibility",
+            width: 1179,
+            height: 2556,
+          },
+        ],
+      },
+      solution: {
+        intro:
+          "Four surfaces carry the product: say what is going on, pick a visit, see what comes back, and adjust how Alma reads.",
+        features: [
+          {
+            title: "Symptoms first",
+            description:
+              "Step 2 of 4 asks what you are experiencing. Chips for headache, fever, sore throat, cough, fatigue, and other, plus a note for anything the chips miss.",
+          },
+          {
+            title: "A visit you can book",
+            description:
+              "A best-match video visit sits above providers, each with open times. Confirming books Dr Jamie Morris today at 2:30 PM.",
+          },
+          {
+            title: "After the visit",
+            description:
+              "Messages, lab results with a healthy range, and an active prescription with doses left and a refill request.",
+          },
+          {
+            title: "Readable by default",
+            description:
+              "Text size, reduced motion, video captions, and whether prescription history stays visible — preferences that apply everywhere.",
+          },
+        ],
+      },
+    },
+  },
+  {
+    slug: "canada-online-tutoring",
+    name: "Canada Online Tutoring",
+    description:
+      "A redesign of the user experience flows and website UI, giving each tutoring program its own page, from early childhood through university, career skills, and language.",
+    image: "/images/projects/canada-online-tutoring/cover-v2.jpg",
+    previewScreens: [
+      {
+        src: "/images/projects/canada-online-tutoring/home-phone.jpg",
+        alt: "Canada Online Tutoring homepage — We help you find the right tutor",
+      },
+      {
+        src: "/images/projects/canada-online-tutoring/program-phone.jpg",
+        alt: "Early Childhood and K–8 program page on a phone",
+      },
+    ],
+    tags: [
+      { label: "UX Design", variant: "outline" },
+      { label: "Website", variant: "solid" },
+    ],
+    caseStudy: {
+      tagline:
+        "A redesign of the user experience flows and website UI, so families can tell the programs apart and see how to start.",
+      presentation: {
+        label: "web prototype",
+        href: "https://www.figma.com/proto/Ow7VcysSnghqZp7yU9CZ6l/Client-Project--COT-Website?node-id=1475-7714&starting-point-node-id=1475%3A7714&t=FkNEabZ9n56yVptI-1",
+        more: [
+          {
+            label: "original website",
+            href: "https://canadaonlinetutoring.ca/",
+          },
+        ],
+      },
+      meta: {
+        role: "UX Designer",
+        timeline: "2026",
+        team: "UX flows and website UI",
+        platform: "Web",
+        tools: ["Figma"],
+      },
+      overview:
+        "**Canada Online Tutoring** supports learners from early childhood through university, plus career skills and language. The current site introduces those offers as sections on one page. The redesign covers the **user experience flows** and the **website UI**: each audience gets its own program page, a subject directory with filters, and a course page, all sharing one path from “this is who it’s for” to booking a consultation.",
+      problem: {
+        statement:
+          "People had to book before the site would answer a basic question.",
+        points: [
+          "**The consultation was a gate.** Pricing, weekly hours, and tutor availability were not on the page. Robin Cheng said “Book a free consultation” felt like a personal-injury site, and that he might leave.",
+          "**Subject cards didn’t go anywhere.** Allison’s mom tried to open Mathematics, hit a dead end, and rated finding a math tutor **4–5 out of 5** in difficulty. The hero buttons also disappeared into the photo.",
+          "**Programs and Subjects overlapped.** Rita expected parents to start with a subject. The age-based program pages had little on them, and it was unclear when to use Programs, Subjects, or Events.",
+        ],
+      },
+      goals:
+        "Make the programs easy to tell apart, put price and tutor details on the page before a booking, and give every subject a next step.",
+      research: {
+        intro:
+          "I interviewed **three people** on the live site — Robin Cheng, Allison’s mom, and Rita — and affinity-mapped the sessions. Five themes kept returning: the consultation gate, dead-end navigation, a confusing menu, trust, and how families actually search.",
+        methods: [
+          {
+            title: "Interviews",
+            description:
+              "**Three sessions.** Each person tried to find a tutor, a subject, and a price before deciding whether to book.",
+          },
+          {
+            title: "Affinity mapping",
+            description:
+              "Quotes grouped into **five themes**, from the booking gate to school referrals, word of mouth, and local search.",
+          },
+          {
+            title: "Task walkthroughs",
+            description:
+              "Finding a math tutor, opening a subject card, and reaching a filter or a booking. The Mathematics card was the clearest break.",
+          },
+        ],
+        insights: [
+          { stat: "3", label: "interviews on the live site" },
+          { stat: "5", label: "themes from affinity mapping" },
+          { stat: "2", label: "personas guiding the redesign" },
+        ],
+        quotes: [
+          "Before clicking on book free consultation, I want to look at the website for more info on courses and offerings and not have to book a consultation immediately.",
+          "I tried to click on the Mathematics box but it didn’t lead anywhere.",
+          "Programs and Subjects feel redundant. The age-range program pages had little information.",
+        ],
+        personas: [
+          {
+            name: "The Independent Evaluator",
+            role: "26–28 · Self-serve researcher",
+            quote:
+              "Missing basics before a consultation: cost, how many hours a week, and tutor availability.",
+            goals: [
+              "Inspect course codes, curriculum fit, prices, and availability before sharing contact details",
+              "Compare credentials, languages, and real tutor profiles",
+            ],
+            frustrations: [
+              "A consultation is required before the site shows a price, hours, or who is available",
+              "Hidden filters, overlapping Programs and Subjects pages, and reviews that all look like five stars",
+            ],
+          },
+          {
+            name: "The Direct Task-Oriented Parent",
+            role: "60 · Parent looking for a tutor now",
+            quote:
+              "I tried to click on the Mathematics box but it didn’t lead anywhere.",
+            goals: [
+              "Find a subject tutor quickly and check that they are qualified",
+              "Filter by subject, gender, and schedule, then book",
+            ],
+            frustrations: [
+              "Subject cards and calls to action that don’t lead anywhere",
+              "Pricing that stays hidden, and too many steps before a booking",
+            ],
+          },
+        ],
+      },
+      areas: {
+        intro:
+          "Four areas came out of the interviews. The program pages take on the sparse, overlapping program content. Pricing, working subject cards, and tutor filters are the rest of what those sessions asked for.",
+        items: [
+          {
+            title: "Pricing on the page",
+            description:
+              "Show a starting rate or range on Early Childhood, K–8, high school, university, and career pages, with an email list or a short inquiry beside the consultation.",
+          },
+          {
+            title: "Cards that open",
+            description:
+              "Subject and course cards need a destination. Label the course-code and grade filter so it is obvious that it opens the directory.",
+          },
+          {
+            title: "A clearer menu",
+            description:
+              "Programs, Subjects, and Events were easy to confuse. Age-based programs need enough on the page to stand apart from the subject list.",
+          },
+          {
+            title: "Tutors people can check",
+            description:
+              "Filter by subject, gender, schedule, and credentials. Keep real photos and degrees, and replace a wall of five-star reviews with proof from a source people already trust.",
+          },
+        ],
+      },
+      ia: {
+        intro:
+          "The age-based program pages had little on them, while parents started with subjects. The menu is the map: each program opens a page with the same sequence, written for that learner.",
+        flow: [
+          "Programs → Early Childhood & K–8, High / Secondary School, University & College, Skills & Career, Language Tutoring",
+          "Program page → who it’s for, subjects, how tutoring works, booking",
+          "Subjects → filter by subject, grade, province, and course code",
+          "Start → free consultation, then lessons",
+        ],
+      },
+      visuals: {
+        label: "Design",
+        title: "The new website",
+        intro:
+          "The current site is first: the high school page, the homepage, and Early Childhood & K–8. The design system and components come next. What follows is the redesign of the user experience flows and the website UI: a homepage, a reviews page, five program pages, a subject directory, and a course page. They share one menu and the same path to a free consultation.",
+        banner: {
+          heading: "Pre-redesign",
+          src: "/images/projects/canada-online-tutoring/before-high-school.jpg",
+          alt: "Current Canada Online Tutoring high school page, before the redesign",
+          caption: "Current high school page",
+          width: 1440,
+          height: 5371,
+        },
+        beforeImages: [
+          {
+            src: "/images/projects/canada-online-tutoring/before-home.jpg",
+            alt: "Current Canada Online Tutoring homepage, cut off below the program cards",
+            caption: "Current homepage",
+            width: 1600,
+            height: 1539,
+          },
+          {
+            src: "/images/projects/canada-online-tutoring/before-k8.jpg",
+            alt: "Current Early Childhood and K–8 page, cut off at the subjects section",
+            caption: "Current Early Childhood & K–8",
+            width: 1600,
+            height: 1565,
+          },
+        ],
+        bridge: {
+          heading: "Design system and components",
+          images: [
+            {
+              src: "/images/projects/canada-online-tutoring/components-homepage.jpg",
+              alt: "Homepage design system — buttons, navigation, program cards, and subject tiles",
+              caption: "Homepage components",
+              width: 1588,
+              height: 2640,
+            },
+            {
+              src: "/images/projects/canada-online-tutoring/components-reused.jpg",
+              alt: "Reused website components — header, footer, reviews, how it works, and calls to action",
+              caption: "Reused components",
+              width: 1600,
+              height: 5580,
+            },
+          ],
+        },
+        galleryTitle: "Redesign",
+        layout: "pair",
+        tone: "muted",
+        heading: "Homepage explorations",
+        images: [
+          {
+            src: "/images/projects/canada-online-tutoring/explore-illustrated.jpg",
+            alt: "Homepage exploration with an illustrated hero of shapes, a question mark, and a matched badge",
+            caption: "Illustrated hero",
+            width: 1024,
+            height: 790,
+          },
+          {
+            src: "/images/projects/canada-online-tutoring/explore-photo.jpg",
+            alt: "Homepage exploration with a photo of a tutor and student inside the navy hero",
+            caption: "Photo hero",
+            width: 1024,
+            height: 678,
+          },
+          {
+            src: "/images/projects/canada-online-tutoring/explore-split.jpg",
+            alt: "Homepage exploration with a navy headline beside a full-height photo",
+            caption: "Split hero",
+            width: 1024,
+            height: 583,
+          },
+        ],
+        galleries: [
+          {
+            heading: "Full homepage",
+            layout: "stack",
+            tone: "plain",
+            wide: true,
+            images: [
+              {
+                src: "/images/projects/canada-online-tutoring/explore-full.jpg",
+                alt: "Full homepage — photo hero, programs, subjects, how tutoring works, and reviews",
+                caption: "Full homepage",
+                width: 1600,
+                height: 8554,
+              },
+            ],
+          },
+          {
+            heading: "Reviews",
+            layout: "stack",
+            tone: "plain",
+            wide: true,
+            images: [
+              {
+                src: "/images/projects/canada-online-tutoring/reviews.jpg",
+                alt: "Reviews page — real results from Canadian families, a featured story, and what families are saying",
+                caption: "Reviews",
+                width: 1600,
+                height: 5229,
+              },
+            ],
+          },
+          {
+            heading: "Programs menu",
+            layout: "full",
+            tone: "plain",
+            images: [
+              {
+                src: "/images/projects/canada-online-tutoring/programs-menu.jpg",
+                alt: "Programs menu open — Early Childhood, K–8, high school, university, career, and English tutoring",
+                caption: "Programs menu",
+                width: 1440,
+                height: 1024,
+              },
+            ],
+          },
+          {
+            heading: "On a phone",
+            layout: "phones",
+            tone: "muted",
+            roomy: true,
+            images: [
+              {
+                src: "/images/projects/canada-online-tutoring/home-phone.jpg",
+                alt: "New homepage — We help you find the right tutor",
+                caption: "Homepage",
+                width: 804,
+                height: 1744,
+              },
+              {
+                src: "/images/projects/canada-online-tutoring/program-phone.jpg",
+                alt: "Early Childhood and K–8 program page on a phone",
+                caption: "Early Childhood & K–8",
+                width: 804,
+                height: 1744,
+              },
+              {
+                src: "/images/projects/canada-online-tutoring/menu-phone.jpg",
+                alt: "Open programs menu — Early Childhood and K–8 through Language Tutoring",
+                caption: "Programs menu",
+                width: 804,
+                height: 1743,
+              },
+            ],
+          },
+          {
+            heading: "Mobile pages",
+            layout: "phones",
+            tone: "muted",
+            scroll: true,
+            images: [
+              {
+                src: "/images/projects/canada-online-tutoring/scroll-home.jpg",
+                alt: "Mobile homepage — We help you find the right tutor, programs, and subjects",
+                caption: "Homepage",
+                width: 804,
+                height: 22101,
+              },
+              {
+                src: "/images/projects/canada-online-tutoring/scroll-program.jpg",
+                alt: "Mobile Early Childhood and K–8 program page",
+                caption: "Program page",
+                width: 402,
+                height: 6368,
+              },
+              {
+                src: "/images/projects/canada-online-tutoring/scroll-subjects.jpg",
+                alt: "Mobile subject directory — Explore K–12 tutoring subjects",
+                caption: "Subjects",
+                width: 402,
+                height: 5372,
+              },
+              {
+                src: "/images/projects/canada-online-tutoring/scroll-filter.jpg",
+                alt: "Mobile subject directory with the province filter open — Alberta, British Columbia, Manitoba, Ontario, Quebec",
+                caption: "Filtering",
+                width: 402,
+                height: 3467,
+              },
+              {
+                src: "/images/projects/canada-online-tutoring/scroll-course.jpg",
+                alt: "Mobile Biology college preparation course page",
+                caption: "Course page",
+                width: 402,
+                height: 6764,
+              },
+            ],
+          },
+          {
+            heading: "Program pages",
+            layout: "pair",
+            tone: "muted",
+            wide: true,
+            images: [
+              {
+                src: "/images/projects/canada-online-tutoring/k8-hero.jpg",
+                alt: "Early Childhood and K–8 program page — helping young learners build strong foundations, curriculum subjects, and how it works",
+                caption: "Early Childhood & K–8",
+                width: 1600,
+                height: 6013,
+              },
+              {
+                src: "/images/projects/canada-online-tutoring/high-school-hero.jpg",
+                alt: "Secondary and high school program page — results-driven tutoring for grades and exams",
+                caption: "High / Secondary School",
+                width: 1600,
+                height: 6091,
+              },
+              {
+                src: "/images/projects/canada-online-tutoring/university-hero.jpg",
+                alt: "University and college program page — expert support for advanced university and college courses",
+                caption: "University & College",
+                width: 1600,
+                height: 6091,
+              },
+              {
+                src: "/images/projects/canada-online-tutoring/career-hero.jpg",
+                alt: "Skills and career program page — build in-demand skills beyond the classroom",
+                caption: "Skills & Career",
+                width: 1600,
+                height: 6089,
+              },
+              {
+                src: "/images/projects/canada-online-tutoring/english-hero.jpg",
+                alt: "English tutoring program page — ESL and academic English programs, pathways, and how it works",
+                caption: "English Tutoring",
+                width: 1600,
+                height: 3894,
+              },
+              {
+                src: "/images/projects/canada-online-tutoring/ielts-hero.jpg",
+                alt: "IELTS Preparation program page — pathways, frequently asked questions, and how tutoring works",
+                caption: "IELTS Preparation",
+                width: 1600,
+                height: 3894,
+              },
+            ],
+          },
+          {
+            heading: "Course page",
+            layout: "stack",
+            tone: "muted",
+            wide: true,
+            images: [
+              {
+                src: "/images/projects/canada-online-tutoring/course-hero.jpg",
+                alt: "Biology college preparation course page — topics, what you will learn, and how it works",
+                caption: "Course page",
+                width: 1600,
+                height: 1600,
+              },
+            ],
+          },
+          {
+            heading: "Subject directory",
+            layout: "pair",
+            tone: "muted",
+            wide: true,
+            images: [
+              {
+                src: "/images/projects/canada-online-tutoring/subjects-filter.jpg",
+                alt: "Subject directory with the province filter open — Alberta, British Columbia, Manitoba, Ontario, Quebec",
+                caption: "Province filter",
+                width: 1600,
+                height: 1551,
+              },
+              {
+                src: "/images/projects/canada-online-tutoring/subjects-empty.jpg",
+                alt: "Subject directory empty state — no courses found, with a restart search action",
+                caption: "No courses found",
+                width: 1600,
+                height: 1172,
+              },
+            ],
+          },
+        ],
+      },
+      reflection:
+        "The useful constraint was repetition. Once every program shared a page, the differences could live in the audience, the subjects, and the words — not in a new layout each time.",
+    },
+  },
+  {
     slug: "path-learning",
     name: "Path Learning",
     description:
@@ -683,441 +1316,6 @@ export const projects: Project[] = [
         proud:
           "Designing a full practice loop — from path choice through mentor booking — and watching testers describe it as job-ready progress instead of another course to finish.",
       },
-    },
-  },
-  {
-    slug: "canada-online-tutoring",
-    name: "Canada Online Tutoring",
-    description:
-      "A redesign of the user experience flows and website UI, giving each tutoring program its own page, from early childhood through university, career skills, and language.",
-    image: "/images/projects/canada-online-tutoring/cover-v2.jpg",
-    previewScreens: [
-      {
-        src: "/images/projects/canada-online-tutoring/home-phone.jpg",
-        alt: "Canada Online Tutoring homepage — We help you find the right tutor",
-      },
-      {
-        src: "/images/projects/canada-online-tutoring/program-phone.jpg",
-        alt: "Early Childhood and K–8 program page on a phone",
-      },
-    ],
-    tags: [
-      { label: "UX Design", variant: "outline" },
-      { label: "Website", variant: "solid" },
-    ],
-    caseStudy: {
-      tagline:
-        "A redesign of the user experience flows and website UI, so families can tell the programs apart and see how to start.",
-      presentation: {
-        label: "web prototype",
-        href: "https://www.figma.com/proto/Ow7VcysSnghqZp7yU9CZ6l/Client-Project--COT-Website?node-id=1475-7714&starting-point-node-id=1475%3A7714&t=FkNEabZ9n56yVptI-1",
-        more: [
-          {
-            label: "original website",
-            href: "https://canadaonlinetutoring.ca/",
-          },
-        ],
-      },
-      meta: {
-        role: "UX Designer",
-        timeline: "2026",
-        team: "UX flows and website UI",
-        platform: "Web",
-        tools: ["Figma"],
-      },
-      overview:
-        "**Canada Online Tutoring** supports learners from early childhood through university, plus career skills and language. The current site introduces those offers as sections on one page. The redesign covers the **user experience flows** and the **website UI**: each audience gets its own program page, a subject directory with filters, and a course page, all sharing one path from “this is who it’s for” to booking a consultation.",
-      problem: {
-        statement:
-          "People had to book before the site would answer a basic question.",
-        points: [
-          "**The consultation was a gate.** Pricing, weekly hours, and tutor availability were not on the page. Robin Cheng said “Book a free consultation” felt like a personal-injury site, and that he might leave.",
-          "**Subject cards didn’t go anywhere.** Allison’s mom tried to open Mathematics, hit a dead end, and rated finding a math tutor **4–5 out of 5** in difficulty. The hero buttons also disappeared into the photo.",
-          "**Programs and Subjects overlapped.** Rita expected parents to start with a subject. The age-based program pages had little on them, and it was unclear when to use Programs, Subjects, or Events.",
-        ],
-      },
-      goals:
-        "Make the programs easy to tell apart, put price and tutor details on the page before a booking, and give every subject a next step.",
-      research: {
-        intro:
-          "I interviewed **three people** on the live site — Robin Cheng, Allison’s mom, and Rita — and affinity-mapped the sessions. Five themes kept returning: the consultation gate, dead-end navigation, a confusing menu, trust, and how families actually search.",
-        methods: [
-          {
-            title: "Interviews",
-            description:
-              "**Three sessions.** Each person tried to find a tutor, a subject, and a price before deciding whether to book.",
-          },
-          {
-            title: "Affinity mapping",
-            description:
-              "Quotes grouped into **five themes**, from the booking gate to school referrals, word of mouth, and local search.",
-          },
-          {
-            title: "Task walkthroughs",
-            description:
-              "Finding a math tutor, opening a subject card, and reaching a filter or a booking. The Mathematics card was the clearest break.",
-          },
-        ],
-        insights: [
-          { stat: "3", label: "interviews on the live site" },
-          { stat: "5", label: "themes from affinity mapping" },
-          { stat: "2", label: "personas guiding the redesign" },
-        ],
-        quotes: [
-          "Before clicking on book free consultation, I want to look at the website for more info on courses and offerings and not have to book a consultation immediately.",
-          "I tried to click on the Mathematics box but it didn’t lead anywhere.",
-          "Programs and Subjects feel redundant. The age-range program pages had little information.",
-        ],
-        personas: [
-          {
-            name: "The Independent Evaluator",
-            role: "26–28 · Self-serve researcher",
-            quote:
-              "Missing basics before a consultation: cost, how many hours a week, and tutor availability.",
-            goals: [
-              "Inspect course codes, curriculum fit, prices, and availability before sharing contact details",
-              "Compare credentials, languages, and real tutor profiles",
-            ],
-            frustrations: [
-              "A consultation is required before the site shows a price, hours, or who is available",
-              "Hidden filters, overlapping Programs and Subjects pages, and reviews that all look like five stars",
-            ],
-          },
-          {
-            name: "The Direct Task-Oriented Parent",
-            role: "60 · Parent looking for a tutor now",
-            quote:
-              "I tried to click on the Mathematics box but it didn’t lead anywhere.",
-            goals: [
-              "Find a subject tutor quickly and check that they are qualified",
-              "Filter by subject, gender, and schedule, then book",
-            ],
-            frustrations: [
-              "Subject cards and calls to action that don’t lead anywhere",
-              "Pricing that stays hidden, and too many steps before a booking",
-            ],
-          },
-        ],
-      },
-      areas: {
-        intro:
-          "Four areas came out of the interviews. The program pages take on the sparse, overlapping program content. Pricing, working subject cards, and tutor filters are the rest of what those sessions asked for.",
-        items: [
-          {
-            title: "Pricing on the page",
-            description:
-              "Show a starting rate or range on Early Childhood, K–8, high school, university, and career pages, with an email list or a short inquiry beside the consultation.",
-          },
-          {
-            title: "Cards that open",
-            description:
-              "Subject and course cards need a destination. Label the course-code and grade filter so it is obvious that it opens the directory.",
-          },
-          {
-            title: "A clearer menu",
-            description:
-              "Programs, Subjects, and Events were easy to confuse. Age-based programs need enough on the page to stand apart from the subject list.",
-          },
-          {
-            title: "Tutors people can check",
-            description:
-              "Filter by subject, gender, schedule, and credentials. Keep real photos and degrees, and replace a wall of five-star reviews with proof from a source people already trust.",
-          },
-        ],
-      },
-      ia: {
-        intro:
-          "The age-based program pages had little on them, while parents started with subjects. The menu is the map: each program opens a page with the same sequence, written for that learner.",
-        flow: [
-          "Programs → Early Childhood & K–8, High / Secondary School, University & College, Skills & Career, Language Tutoring",
-          "Program page → who it’s for, subjects, how tutoring works, booking",
-          "Subjects → filter by subject, grade, province, and course code",
-          "Start → free consultation, then lessons",
-        ],
-      },
-      visuals: {
-        label: "Design",
-        title: "The new website",
-        intro:
-          "The current site is first: the high school page, the homepage, and Early Childhood & K–8. The design system and components come next. What follows is the redesign of the user experience flows and the website UI: a homepage, a reviews page, five program pages, a subject directory, and a course page. They share one menu and the same path to a free consultation.",
-        banner: {
-          heading: "Pre-redesign",
-          src: "/images/projects/canada-online-tutoring/before-high-school.jpg",
-          alt: "Current Canada Online Tutoring high school page, before the redesign",
-          caption: "Current high school page",
-          width: 1440,
-          height: 5371,
-        },
-        beforeImages: [
-          {
-            src: "/images/projects/canada-online-tutoring/before-home.jpg",
-            alt: "Current Canada Online Tutoring homepage, cut off below the program cards",
-            caption: "Current homepage",
-            width: 1600,
-            height: 1539,
-          },
-          {
-            src: "/images/projects/canada-online-tutoring/before-k8.jpg",
-            alt: "Current Early Childhood and K–8 page, cut off at the subjects section",
-            caption: "Current Early Childhood & K–8",
-            width: 1600,
-            height: 1565,
-          },
-        ],
-        bridge: {
-          heading: "Design system and components",
-          images: [
-            {
-              src: "/images/projects/canada-online-tutoring/components-homepage.jpg",
-              alt: "Homepage design system — buttons, navigation, program cards, and subject tiles",
-              caption: "Homepage components",
-              width: 1588,
-              height: 2640,
-            },
-            {
-              src: "/images/projects/canada-online-tutoring/components-reused.jpg",
-              alt: "Reused website components — header, footer, reviews, how it works, and calls to action",
-              caption: "Reused components",
-              width: 1600,
-              height: 5580,
-            },
-          ],
-        },
-        galleryTitle: "Redesign",
-        layout: "pair",
-        tone: "muted",
-        heading: "Homepage explorations",
-        images: [
-          {
-            src: "/images/projects/canada-online-tutoring/explore-illustrated.jpg",
-            alt: "Homepage exploration with an illustrated hero of shapes, a question mark, and a matched badge",
-            caption: "Illustrated hero",
-            width: 1024,
-            height: 790,
-          },
-          {
-            src: "/images/projects/canada-online-tutoring/explore-photo.jpg",
-            alt: "Homepage exploration with a photo of a tutor and student inside the navy hero",
-            caption: "Photo hero",
-            width: 1024,
-            height: 678,
-          },
-          {
-            src: "/images/projects/canada-online-tutoring/explore-split.jpg",
-            alt: "Homepage exploration with a navy headline beside a full-height photo",
-            caption: "Split hero",
-            width: 1024,
-            height: 583,
-          },
-        ],
-        galleries: [
-          {
-            heading: "Full homepage",
-            layout: "stack",
-            tone: "plain",
-            wide: true,
-            images: [
-              {
-                src: "/images/projects/canada-online-tutoring/explore-full.jpg",
-                alt: "Full homepage — photo hero, programs, subjects, how tutoring works, and reviews",
-                caption: "Full homepage",
-                width: 1600,
-                height: 8554,
-              },
-            ],
-          },
-          {
-            heading: "Reviews",
-            layout: "stack",
-            tone: "plain",
-            wide: true,
-            images: [
-              {
-                src: "/images/projects/canada-online-tutoring/reviews.jpg",
-                alt: "Reviews page — real results from Canadian families, a featured story, and what families are saying",
-                caption: "Reviews",
-                width: 1600,
-                height: 5229,
-              },
-            ],
-          },
-          {
-            heading: "Programs menu",
-            layout: "full",
-            tone: "plain",
-            images: [
-              {
-                src: "/images/projects/canada-online-tutoring/programs-menu.jpg",
-                alt: "Programs menu open — Early Childhood, K–8, high school, university, career, and English tutoring",
-                caption: "Programs menu",
-                width: 1440,
-                height: 1024,
-              },
-            ],
-          },
-          {
-            heading: "On a phone",
-            layout: "phones",
-            tone: "muted",
-            roomy: true,
-            images: [
-              {
-                src: "/images/projects/canada-online-tutoring/home-phone.jpg",
-                alt: "New homepage — We help you find the right tutor",
-                caption: "Homepage",
-                width: 804,
-                height: 1744,
-              },
-              {
-                src: "/images/projects/canada-online-tutoring/program-phone.jpg",
-                alt: "Early Childhood and K–8 program page on a phone",
-                caption: "Early Childhood & K–8",
-                width: 804,
-                height: 1744,
-              },
-              {
-                src: "/images/projects/canada-online-tutoring/menu-phone.jpg",
-                alt: "Open programs menu — Early Childhood and K–8 through Language Tutoring",
-                caption: "Programs menu",
-                width: 804,
-                height: 1743,
-              },
-            ],
-          },
-          {
-            heading: "Mobile pages",
-            layout: "phones",
-            tone: "muted",
-            scroll: true,
-            images: [
-              {
-                src: "/images/projects/canada-online-tutoring/scroll-home.jpg",
-                alt: "Mobile homepage — We help you find the right tutor, programs, and subjects",
-                caption: "Homepage",
-                width: 804,
-                height: 22101,
-              },
-              {
-                src: "/images/projects/canada-online-tutoring/scroll-program.jpg",
-                alt: "Mobile Early Childhood and K–8 program page",
-                caption: "Program page",
-                width: 402,
-                height: 6368,
-              },
-              {
-                src: "/images/projects/canada-online-tutoring/scroll-subjects.jpg",
-                alt: "Mobile subject directory — Explore K–12 tutoring subjects",
-                caption: "Subjects",
-                width: 402,
-                height: 5372,
-              },
-              {
-                src: "/images/projects/canada-online-tutoring/scroll-filter.jpg",
-                alt: "Mobile subject directory with the province filter open — Alberta, British Columbia, Manitoba, Ontario, Quebec",
-                caption: "Filtering",
-                width: 402,
-                height: 3467,
-              },
-              {
-                src: "/images/projects/canada-online-tutoring/scroll-course.jpg",
-                alt: "Mobile Biology college preparation course page",
-                caption: "Course page",
-                width: 402,
-                height: 6764,
-              },
-            ],
-          },
-          {
-            heading: "Program pages",
-            layout: "pair",
-            tone: "muted",
-            wide: true,
-            images: [
-              {
-                src: "/images/projects/canada-online-tutoring/k8-hero.jpg",
-                alt: "Early Childhood and K–8 program page — helping young learners build strong foundations, curriculum subjects, and how it works",
-                caption: "Early Childhood & K–8",
-                width: 1600,
-                height: 6013,
-              },
-              {
-                src: "/images/projects/canada-online-tutoring/high-school-hero.jpg",
-                alt: "Secondary and high school program page — results-driven tutoring for grades and exams",
-                caption: "High / Secondary School",
-                width: 1600,
-                height: 6091,
-              },
-              {
-                src: "/images/projects/canada-online-tutoring/university-hero.jpg",
-                alt: "University and college program page — expert support for advanced university and college courses",
-                caption: "University & College",
-                width: 1600,
-                height: 6091,
-              },
-              {
-                src: "/images/projects/canada-online-tutoring/career-hero.jpg",
-                alt: "Skills and career program page — build in-demand skills beyond the classroom",
-                caption: "Skills & Career",
-                width: 1600,
-                height: 6089,
-              },
-              {
-                src: "/images/projects/canada-online-tutoring/english-hero.jpg",
-                alt: "English tutoring program page — ESL and academic English programs, pathways, and how it works",
-                caption: "English Tutoring",
-                width: 1600,
-                height: 3894,
-              },
-              {
-                src: "/images/projects/canada-online-tutoring/ielts-hero.jpg",
-                alt: "IELTS Preparation program page — pathways, frequently asked questions, and how tutoring works",
-                caption: "IELTS Preparation",
-                width: 1600,
-                height: 3894,
-              },
-            ],
-          },
-          {
-            heading: "Course page",
-            layout: "stack",
-            tone: "muted",
-            wide: true,
-            images: [
-              {
-                src: "/images/projects/canada-online-tutoring/course-hero.jpg",
-                alt: "Biology college preparation course page — topics, what you will learn, and how it works",
-                caption: "Course page",
-                width: 1600,
-                height: 1600,
-              },
-            ],
-          },
-          {
-            heading: "Subject directory",
-            layout: "pair",
-            tone: "muted",
-            wide: true,
-            images: [
-              {
-                src: "/images/projects/canada-online-tutoring/subjects-filter.jpg",
-                alt: "Subject directory with the province filter open — Alberta, British Columbia, Manitoba, Ontario, Quebec",
-                caption: "Province filter",
-                width: 1600,
-                height: 1551,
-              },
-              {
-                src: "/images/projects/canada-online-tutoring/subjects-empty.jpg",
-                alt: "Subject directory empty state — no courses found, with a restart search action",
-                caption: "No courses found",
-                width: 1600,
-                height: 1172,
-              },
-            ],
-          },
-        ],
-      },
-      reflection:
-        "The useful constraint was repetition. Once every program shared a page, the differences could live in the audience, the subjects, and the words — not in a new layout each time.",
     },
   },
   {
@@ -2922,8 +3120,7 @@ export const projects: Project[] = [
           "Building a brand people wrote to during an uncertain year — and then getting to meet them.",
       },
     },
-  },
-
+  }
 ];
 
 export const social = [

@@ -1,15 +1,11 @@
 /**
- * Full-width media band for case studies (Onur-style).
- * Place as a sibling outside the max-w-6xl text column.
+ * Media band for case studies, kept inside the centered column
+ * so the project color shows in the side gutters.
  */
 export default function CaseBleed({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <div className="w-full max-w-[100vw] overflow-x-hidden">
-      <div className="mx-auto max-w-[1920px]">{children}</div>
-    </div>
-  );
+  return <div className="mx-auto w-full max-w-6xl">{children}</div>;
 }
