@@ -50,8 +50,9 @@ h1,
 h2,
 h3 {
   font-family: var(--font-archivo), "Archivo", sans-serif;
-  letter-spacing: -0.035em;
-  font-weight: 600;
+  letter-spacing: -0.045em;
+  font-weight: 500;
+  line-height: 0.95;
 }
 
 .font-display {
@@ -71,9 +72,9 @@ h3 {
 
 .page-heading {
   font-family: var(--font-archivo), "Archivo", sans-serif;
-  font-weight: 600;
-  letter-spacing: -0.045em;
-  line-height: 1.12;
+  font-weight: 500;
+  letter-spacing: -0.05em;
+  line-height: 0.92;
 }
 
 .section-label {

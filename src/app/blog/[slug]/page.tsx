@@ -48,7 +48,7 @@ export default async function BlogPostPage({
           <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-foreground/45">
             {post.date}
           </p>
-          <h1 className="mt-5 font-display text-[clamp(2.6rem,6vw,5rem)] font-extrabold uppercase leading-[0.9] tracking-[-0.055em]">
+          <h1 className="mt-5 text-[clamp(2.4rem,5vw,4.4rem)] font-medium leading-[0.95] tracking-[-0.045em]">
             {post.title}
           </h1>
           <div className="mt-10 space-y-6 sm:mt-12">

@@ -16,7 +16,7 @@ export default function Error({
         <p className="text-[11px] font-medium uppercase tracking-[0.28em] text-foreground/45">
           Error
         </p>
-        <h1 className="mt-5 max-w-3xl font-display text-[clamp(2.8rem,6vw,5.4rem)] font-extrabold uppercase leading-[0.88] tracking-[-0.055em]">
+        <h1 className="mt-5 max-w-3xl text-[clamp(2.4rem,5vw,4.4rem)] font-medium leading-[0.95] tracking-[-0.045em]">
           Something went wrong
         </h1>
         <p className="mt-6 max-w-4xl text-[16px] leading-relaxed text-foreground/60">

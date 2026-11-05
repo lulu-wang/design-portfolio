@@ -20,7 +20,7 @@ export default function FlipnotePage() {
         >
           <Arrow className="h-2.5 rotate-180" /> Gallery
         </Link>
-        <h1 className="mt-8 font-display text-[clamp(2.6rem,6vw,5rem)] font-extrabold uppercase leading-[0.88] tracking-[-0.055em]">
+        <h1 className="mt-8 text-[clamp(2.4rem,5vw,4.4rem)] font-medium leading-[0.95] tracking-[-0.045em]">
           Alek & Tain
         </h1>
         <p className="mt-5 max-w-4xl text-[16px] leading-relaxed text-foreground/65">

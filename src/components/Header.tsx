@@ -124,7 +124,7 @@ export default function Header() {
         <div className="pointer-events-auto mx-auto flex h-12 w-[min(92vw,268px)] items-center justify-between rounded-full bg-ink pl-5 pr-1.5 text-background shadow-[0_10px_30px_rgba(80,60,40,0.1)] md:hidden">
           <Link
             href="/"
-            className="font-display text-[16px] font-semibold tracking-[-0.03em] text-background"
+            className="text-[16px] font-medium tracking-[-0.02em] text-background"
             onClick={() => setOpen(false)}
           >
             Lulu
@@ -154,7 +154,7 @@ export default function Header() {
         <div className="page-wrap pointer-events-none hidden items-center justify-between md:flex md:h-[4.75rem]">
           <Link
             href="/"
-            className={`pointer-events-auto font-display text-[16px] font-semibold tracking-[-0.03em] ${
+            className={`pointer-events-auto text-[16px] font-medium tracking-[-0.02em] ${
               light ? "text-white" : "text-foreground"
             }`}
           >

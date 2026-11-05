@@ -12,7 +12,7 @@ const stages: Record<string, { wash: string; stage: string; ink: string }> = {
   opal: { wash: "#E4DCF8", stage: "#3C3266", ink: "#241C3A" },
   pulsefit: { wash: "#E8F0D6", stage: "#3A4A28", ink: "#1A1E14" },
   "netflix-community": { wash: "#F3E4E1", stage: "#3A2424", ink: "#1C1414" },
-  yuugen: { wash: "#F4F0E8", stage: "#171717", ink: "#161616" },
+  yuugen: { wash: "#E7E0D4", stage: "#171717", ink: "#161616" },
   "alma-healthcare": { wash: "#E4D6FB", stage: "#4E3F7C", ink: "#2A2148" },
 };
 
@@ -55,21 +55,29 @@ function StageStill({
   alt: string;
   photo: boolean;
 }) {
+  if (photo) {
+    return (
+      <div className="relative h-full min-h-[22rem] lg:absolute lg:inset-0 lg:min-h-0">
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          className="object-cover object-center"
+          sizes="(max-width: 1024px) 100vw, 55vw"
+        />
+      </div>
+    );
+  }
+
   return (
     <div className="flex h-full min-h-[18rem] items-center justify-center px-6 py-8 sm:px-10 sm:py-12 lg:min-h-[34rem]">
-      <div
-        className={`w-full overflow-hidden shadow-[0_24px_60px_rgba(0,0,0,0.32)] ${
-          photo ? "max-w-xl rounded-2xl" : "rounded-xl"
-        }`}
-      >
+      <div className="w-full overflow-hidden rounded-xl shadow-[0_24px_60px_rgba(0,0,0,0.32)]">
         <Image
           src={src}
           alt={alt}
           width={1600}
           height={1000}
-          className={`h-auto w-full ${
-            photo ? "aspect-[16/10] object-cover object-[center_40%]" : "object-contain"
-          }`}
+          className="h-auto w-full object-contain"
           sizes="(max-width: 1024px) 90vw, 40vw"
         />
       </div>
@@ -124,7 +132,7 @@ export default function ProjectShowcase({ projects }: { projects: Project[] }) {
                 </span>
               </p>
             </div>
-            <div style={{ background: tone.stage }}>
+            <div className="relative h-full min-h-[22rem]" style={{ background: tone.stage }}>
               {screens.length >= 2 ? (
                 <Phones screens={screens} />
               ) : (

@@ -112,7 +112,7 @@ export default function EditorialHome() {
           <p className="text-[11px] font-medium uppercase tracking-[0.28em] text-white/75">
             California
           </p>
-          <h1 className="animate-rise mt-3 font-display text-[clamp(3.4rem,11.6vw,10.75rem)] font-extrabold uppercase leading-[0.78] tracking-[-0.06em] text-white">
+          <h1 className="animate-rise mt-3 text-[clamp(3.2rem,7vw,6.4rem)] font-medium leading-[0.9] tracking-[-0.05em] text-white">
             Lulu Wang
           </h1>
         </div>
@@ -121,7 +121,7 @@ export default function EditorialHome() {
       <section className="bg-[#F7F4EF] page-inset py-16 sm:py-20 lg:py-28">
         <div className="grid items-start gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-6">
-            <p className="font-display text-[clamp(1.55rem,2.35vw,2.15rem)] font-medium leading-[1.25] tracking-[-0.035em] text-foreground">
+            <p className="max-w-xl text-[16px] leading-relaxed text-foreground/70 sm:text-[18px]">
               Lulu Wang is a designer and artist in California. She shapes
               user experience and the look of products and brands, with a
               background building software as an engineer at Meta and Xbox.
@@ -182,7 +182,7 @@ export default function EditorialHome() {
             >
               <a
                 href={`#experience-${job.company.toLowerCase()}`}
-                className="color-hover font-display text-[clamp(2.35rem,13vw,7.4rem)] font-extrabold uppercase leading-none tracking-[-0.06em] sm:text-[clamp(3rem,8.2vw,7.4rem)] sm:leading-[0.84]"
+                className="color-hover text-[clamp(2.4rem,5vw,4.4rem)] font-medium leading-[0.95] tracking-[-0.045em]"
                 style={{ "--hover": job.hover } as React.CSSProperties}
               >
                 {job.company}
@@ -196,8 +196,8 @@ export default function EditorialHome() {
             </li>
           ))}
         </ul>
-        <p className="mt-5 font-display text-[clamp(2rem,5.5vw,4.6rem)] font-medium lowercase leading-none tracking-[-0.05em] text-foreground/25">
-          california
+        <p className="mt-5 text-[clamp(2.4rem,5vw,4.4rem)] font-medium leading-[0.95] tracking-[-0.045em] text-foreground/25">
+          California
         </p>
       </section>
 
@@ -216,7 +216,7 @@ export default function EditorialHome() {
         </div>
 
         <div className="mt-8 flex flex-wrap items-end justify-between gap-x-6 gap-y-3 sm:mt-10">
-          <h2 className="font-display text-[clamp(2.7rem,14vw,9.2rem)] font-extrabold uppercase leading-[0.8] tracking-[-0.065em]">
+          <h2 className="text-[clamp(2.4rem,5vw,4.4rem)] font-medium leading-[0.95] tracking-[-0.045em]">
             Portfolio
           </h2>
           <Link
@@ -231,7 +231,7 @@ export default function EditorialHome() {
       <section className="bg-[#C9D4C8] page-inset py-16 text-[#1A2420] sm:py-20 lg:py-28">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-4">
-            <h2 className="font-display text-[clamp(3.4rem,6vw,5.6rem)] font-extrabold uppercase leading-[0.84] tracking-[-0.06em]">
+            <h2 className="text-[clamp(2.4rem,5vw,4.4rem)] font-medium leading-[0.95] tracking-[-0.045em]">
               Process
             </h2>
             <p className="mt-6 text-[15px] leading-relaxed text-[#1A2420]/70">
@@ -248,7 +248,7 @@ export default function EditorialHome() {
                 <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#1A2420]/50">
                   {step.n}
                 </span>
-                <h3 className="font-display text-[1.7rem] font-semibold tracking-[-0.04em] sm:text-[2rem]">
+                <h3 className="text-[1.7rem] font-medium leading-[0.95] tracking-[-0.045em] sm:text-[2rem]">
                   {step.title}
                 </h3>
                 <p className="col-start-2 mt-2 text-[15px] leading-relaxed text-[#1A2420]/70 sm:col-start-3 sm:mt-0">
@@ -301,7 +301,7 @@ export default function EditorialHome() {
             >
               <div className="grid gap-4 lg:grid-cols-12 lg:gap-8">
                 <p
-                  className="color-hover font-display text-[clamp(2rem,4vw,3.2rem)] font-semibold uppercase leading-[0.9] tracking-[-0.05em] lg:col-span-4"
+                  className="color-hover text-[clamp(2rem,4vw,3.2rem)] font-medium leading-[0.95] tracking-[-0.045em] lg:col-span-4"
                   style={{ "--hover": job.hover } as React.CSSProperties}
                 >
                   {job.company}

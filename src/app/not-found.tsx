@@ -14,7 +14,7 @@ export default function NotFound() {
         <p className="text-[11px] font-medium uppercase tracking-[0.28em] text-foreground/45">
           Missing
         </p>
-        <h1 className="mt-5 font-display text-[clamp(3.2rem,8vw,7rem)] font-extrabold uppercase leading-[0.84] tracking-[-0.06em]">
+        <h1 className="mt-5 text-[clamp(3rem,7vw,5.5rem)] font-medium leading-[0.92] tracking-[-0.05em]">
           404
         </h1>
         <p className="mt-6 max-w-4xl text-[16px] leading-relaxed text-foreground/60 sm:text-[18px]">

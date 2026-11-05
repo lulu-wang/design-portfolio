@@ -54,7 +54,7 @@ function ComicEntry({
           {eyebrow}
         </p>
         <div className="mt-3 md:mt-4">
-          <h2 className="font-display text-[clamp(1.65rem,2.8vw,2.15rem)] font-semibold leading-[1.12] tracking-[-0.045em] md:text-[clamp(2.2rem,4vw,3.6rem)] md:font-extrabold md:uppercase md:leading-[0.88] md:tracking-[-0.05em]">
+          <h2 className="text-[clamp(2rem,4vw,3.2rem)] font-medium leading-[0.95] tracking-[-0.045em]">
             <Link href={href}>{title}</Link>
           </h2>
           <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-foreground/65 sm:text-[16px] md:mt-4">
@@ -205,7 +205,7 @@ export default function IllustrationsView({
           comics ? "bg-[#F7F4EF]" : "bg-[#2A2A2A] text-[#F7F4EF]"
         }`}
       >
-        <h1 className="font-display text-[clamp(3.2rem,8vw,7rem)] font-extrabold uppercase leading-[0.84] tracking-[-0.06em]">
+        <h1 className="text-[clamp(3rem,7vw,5.5rem)] font-medium leading-[0.92] tracking-[-0.05em]">
           Gallery
         </h1>
         <p
@@ -269,7 +269,7 @@ export default function IllustrationsView({
           </div>
         ) : filtered.length === 0 ? (
           <div className="page-inset bg-[#2A2A2A] py-20 text-[#F7F4EF] sm:py-24">
-            <h2 className="font-display text-[clamp(2rem,4vw,3rem)] font-medium tracking-[-0.04em]">
+            <h2 className="text-[clamp(2rem,4vw,3.2rem)] font-medium leading-[0.95] tracking-[-0.045em]">
               Nothing here yet
             </h2>
             <p className="mt-4 max-w-md text-[15px] leading-relaxed text-[#F7F4EF]/60">

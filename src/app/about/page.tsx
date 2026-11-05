@@ -92,7 +92,7 @@ export default function AboutPage() {
           </div>
 
           <div className="lg:col-span-7 lg:pt-4">
-            <h1 className="font-display text-[clamp(3rem,6vw,5.4rem)] font-extrabold uppercase leading-[0.86] tracking-[-0.06em]">
+            <h1 className="text-[clamp(3rem,7vw,5.5rem)] font-medium leading-[0.92] tracking-[-0.05em]">
               Lulu Wang
             </h1>
             <p className="mt-8 max-w-4xl text-[17px] leading-relaxed text-foreground/70 sm:text-[18px]">
@@ -124,7 +124,7 @@ export default function AboutPage() {
       </section>
 
       <section className="bg-[#F6E7DC] page-inset py-16 sm:py-20 lg:py-24">
-        <h2 className="font-display text-[clamp(2.8rem,6vw,5rem)] font-extrabold uppercase leading-[0.86] tracking-[-0.06em]">
+        <h2 className="text-[clamp(2.4rem,5vw,4.4rem)] font-medium leading-[0.95] tracking-[-0.045em]">
           Capabilities
         </h2>
         <div className="mt-12 grid grid-cols-2 gap-x-6 gap-y-12 sm:gap-10 lg:grid-cols-4">
@@ -149,7 +149,7 @@ export default function AboutPage() {
       </section>
 
       <section id="contact" className="scroll-mt-28 bg-[#F7F4EF] page-inset py-16 sm:py-20 lg:py-24">
-        <h2 className="font-display text-[clamp(2.8rem,6vw,5rem)] font-extrabold uppercase leading-[0.86] tracking-[-0.06em]">
+        <h2 className="text-[clamp(2.4rem,5vw,4.4rem)] font-medium leading-[0.95] tracking-[-0.045em]">
           Let&rsquo;s talk
         </h2>
         <p className="mt-6 max-w-4xl text-[16px] leading-relaxed text-foreground/65 sm:text-[18px]">
