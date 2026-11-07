@@ -14,6 +14,7 @@ const stages: Record<string, { wash: string; stage: string; ink: string }> = {
   "netflix-community": { wash: "#F3E4E1", stage: "#3A2424", ink: "#1C1414" },
   yuugen: { wash: "#E7E0D4", stage: "#171717", ink: "#161616" },
   "alma-healthcare": { wash: "#E4D6FB", stage: "#4E3F7C", ink: "#2A2148" },
+  pace: { wash: "#E7F6C8", stage: "#243018", ink: "#1A2414" },
 };
 
 export function projectTone(slug: string) {
@@ -29,8 +30,8 @@ function Phones({
     <div className="flex h-full min-h-[22rem] items-center justify-center gap-3 px-5 py-8 sm:gap-5 sm:px-8 sm:py-10 lg:min-h-[34rem]">
       {screens.slice(0, 2).map((screen) => (
         <div key={screen.src} className="w-[44%] max-w-[240px]">
-          <div className="rounded-[1.65rem] bg-[#F7F4EF] p-[6px] shadow-[0_22px_48px_rgba(0,0,0,0.32)] ring-1 ring-black/10">
-            <div className="relative aspect-[393/852] overflow-hidden rounded-[1.3rem] bg-white">
+          <div className="rounded-[1.55rem] bg-[#F7F4EF] p-[6px] shadow-[0_22px_48px_rgba(0,0,0,0.32)] ring-1 ring-black/10">
+            <div className="relative aspect-[393/852] overflow-hidden rounded-[1.15rem] bg-white">
               <Image
                 src={screen.src}
                 alt={screen.alt}

@@ -16,8 +16,8 @@ export default function ProjectsPage() {
           Selected work
         </h1>
         <p className="mt-5 text-[16px] leading-relaxed text-foreground/65 sm:text-[18px]">
-          Product design, brand, and research across meetings, health, learning,
-          streaming, and apparel.
+          Product design, brand, and research across finance, health, learning,
+          meetings, streaming, and apparel.
         </p>
       </section>
 

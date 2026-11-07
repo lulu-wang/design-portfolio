@@ -111,8 +111,8 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
                 key={screen.src}
                 className={`w-[46%] max-w-[280px] ${index === 0 ? "-rotate-6" : "rotate-3"}`}
               >
-                <div className="rounded-[1.7rem] bg-[#111] p-[7px] shadow-[0_24px_50px_rgba(0,0,0,0.45)] ring-1 ring-white/10">
-                  <div className="relative aspect-[393/852] overflow-hidden rounded-[1.3rem] bg-white">
+                <div className="rounded-[1.55rem] bg-[#111] p-[6px] shadow-[0_24px_50px_rgba(0,0,0,0.45)] ring-1 ring-white/10">
+                  <div className="relative aspect-[393/852] overflow-hidden rounded-[1.15rem] bg-white">
                     <Image
                       src={screen.src}
                       alt={screen.alt}

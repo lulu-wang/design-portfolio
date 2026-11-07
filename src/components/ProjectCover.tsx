@@ -25,8 +25,8 @@ function CoverPhones({
           className={`relative aspect-[393/852] ${hero ? "h-[84%]" : "h-[86%]"}`}
           style={{ containerType: "size" }}
         >
-          <div className="absolute inset-0 rounded-[13.5cqw] bg-[#111] p-[3.4cqw] shadow-[0_14px_28px_rgba(0,0,0,0.22)] ring-1 ring-white/10">
-            <div className="h-full w-full overflow-hidden rounded-[10.4cqw] bg-white">
+          <div className="absolute inset-0 rounded-[9cqw] bg-[#111] p-[2.2cqw] shadow-[0_14px_28px_rgba(0,0,0,0.22)] ring-1 ring-white/10">
+            <div className="h-full w-full overflow-hidden rounded-[7cqw] bg-white">
               <Image
                 src={screen.src}
                 alt={screen.alt}

@@ -174,7 +174,8 @@ function PhoneFrame({
   const isAppScreen =
     item.src.includes("pulsefit") ||
     item.src.includes("netflix-community/phone") ||
-    item.src.includes("alma-healthcare");
+    item.src.includes("alma-healthcare") ||
+    item.src.includes("/pace/");
   const nativeChrome = isPathScreen || isCotPhone || isAppScreen;
   const fillFrame =
     (isPathScreen && !isPathHifi) ||
@@ -192,22 +193,12 @@ function PhoneFrame({
     >
       {/* Onur-style device shell — thin dark bezel, soft lift */}
       <div
-        className={`bg-[#111] shadow-[0_28px_56px_rgba(0,0,0,0.45)] ring-1 ring-white/[0.08] ${
-          isCotPhone
-            ? "rounded-[1.55rem] p-[6px]"
-            : isPathScreen
-              ? "rounded-[1.55rem] p-[7px]"
-              : "rounded-[2.6rem] p-[10px] sm:rounded-[2.85rem] sm:p-[11px]"
+        className={`rounded-[1.55rem] bg-[#111] shadow-[0_28px_56px_rgba(0,0,0,0.45)] ring-1 ring-white/[0.08] ${
+          isPathScreen ? "p-[7px]" : "p-[6px]"
         }`}
       >
         <div
-          className={`relative overflow-hidden leading-none ${
-            isCotPhone
-              ? "rounded-[1.15rem]"
-              : isPathScreen
-                ? "rounded-[1.15rem]"
-                : "rounded-[2.05rem] sm:rounded-[2.25rem]"
-          } ${
+          className={`relative overflow-hidden rounded-[1.15rem] leading-none ${
             fillFrame
               ? nativeChrome
                 ? "aspect-[393/852]"

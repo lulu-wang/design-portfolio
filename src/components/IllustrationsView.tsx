@@ -97,7 +97,7 @@ function Tile({
     <button
       type="button"
       onClick={onOpen}
-      className="group relative block w-full overflow-hidden bg-[#2A2A2A] text-left"
+      className="group relative block w-full overflow-hidden bg-white text-left"
       aria-label={`View ${item.title}`}
     >
       <Image
@@ -153,7 +153,6 @@ export default function IllustrationsView({
 }) {
   const [tab, setTab] = useState<GalleryCategory>(initialTab);
   const { setGalleryPaper } = useGalleryChrome();
-  const comics = tab === "comics";
   const [activeId, setActiveId] = useState<string | null>(null);
   const columnCount = useColumnCount();
 
@@ -172,8 +171,8 @@ export default function IllustrationsView({
   }, [tab]);
 
   useLayoutEffect(() => {
-    setGalleryPaper(comics);
-  }, [comics, setGalleryPaper]);
+    setGalleryPaper(true);
+  }, [setGalleryPaper]);
 
   useLayoutEffect(() => {
     return () => setGalleryPaper(false);
@@ -199,20 +198,12 @@ export default function IllustrationsView({
   };
 
   return (
-    <main className={`flex flex-col ${comics ? "" : "bg-[#2A2A2A]"}`}>
-      <section
-        className={`page-inset pb-12 pt-32 sm:pb-14 sm:pt-36 lg:pb-16 ${
-          comics ? "bg-[#F7F4EF]" : "bg-[#2A2A2A] text-[#F7F4EF]"
-        }`}
-      >
+    <main className="flex flex-col bg-white">
+      <section className="page-inset bg-white pb-12 pt-32 sm:pb-14 sm:pt-36 lg:pb-16">
         <h1 className="text-[clamp(3rem,7vw,5.5rem)] font-medium leading-[0.92] tracking-[-0.05em]">
           Gallery
         </h1>
-        <p
-          className={`mt-6 max-w-4xl text-[16px] leading-relaxed sm:text-[18px] ${
-            comics ? "text-foreground/60" : "text-[#F7F4EF]/65"
-          }`}
-        >
+        <p className="mt-6 max-w-4xl text-[16px] leading-relaxed text-foreground/60 sm:text-[18px]">
           Studies, editorial work, and visual experiments across illustration,
           paintings, sketches, photography, design, and comics.
         </p>
@@ -226,12 +217,8 @@ export default function IllustrationsView({
                 onClick={() => setTab(t.id)}
                 className={`min-h-11 shrink-0 text-left text-[12px] font-medium uppercase tracking-[0.2em] transition-colors ${
                   selected
-                    ? comics
-                      ? "text-foreground"
-                      : "text-[#F7F4EF]"
-                    : comics
-                      ? "text-foreground/35 hover:text-foreground"
-                      : "text-[#F7F4EF]/40 hover:text-[#F7F4EF]"
+                    ? "text-foreground"
+                    : "text-foreground/35 hover:text-foreground"
                 }`}
                 aria-pressed={selected}
               >
@@ -242,7 +229,7 @@ export default function IllustrationsView({
         </nav>
       </section>
 
-      <section className={comics ? undefined : "bg-[#2A2A2A]"}>
+      <section className="bg-white">
         {tab === "comics" ? (
           <div className="page-inset flex flex-col gap-16 py-12 sm:gap-20 sm:py-16 lg:gap-24 lg:py-20">
             <ComicEntry
@@ -268,11 +255,11 @@ export default function IllustrationsView({
             />
           </div>
         ) : filtered.length === 0 ? (
-          <div className="page-inset bg-[#2A2A2A] py-20 text-[#F7F4EF] sm:py-24">
+          <div className="page-inset bg-white py-20 sm:py-24">
             <h2 className="text-[clamp(2rem,4vw,3.2rem)] font-medium leading-[0.95] tracking-[-0.045em]">
               Nothing here yet
             </h2>
-            <p className="mt-4 max-w-md text-[15px] leading-relaxed text-[#F7F4EF]/60">
+            <p className="mt-4 max-w-md text-[15px] leading-relaxed text-foreground/60">
               This collection is empty for now. Check back soon, or explore the
               Illustrations tab.
             </p>
@@ -297,7 +284,7 @@ export default function IllustrationsView({
         )}
       </section>
 
-      <Footer />
+      <Footer light />
 
       {active && (
         <Lightbox

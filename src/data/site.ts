@@ -157,6 +157,175 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: "pace",
+    name: "Pace",
+    description:
+      "A mobile app for checking your finances and whether you're on track, simply enough to fit a busy schedule.",
+    image: "/images/projects/pace/01-home.png",
+    previewScreens: [
+      {
+        src: "/images/projects/pace/01-home.png",
+        alt: "Pace home — balance, savings plans, and spending",
+      },
+      {
+        src: "/images/projects/pace/02-monthly-plan.png",
+        alt: "Pace monthly plan — $640 left to spend",
+      },
+    ],
+    tags: [
+      { label: "UX Design", variant: "outline" },
+      { label: "Product Design", variant: "solid" },
+      { label: "Mobile", variant: "lavender" },
+    ],
+    caseStudy: {
+      tagline:
+        "A mobile check-in for your money — see if you're on track without sitting down to do finance.",
+      presentation: {
+        label: "prototype",
+        href: "https://www.figma.com/proto/79iMuiPEMzazgSyfoOfsLe/Alma?node-id=27-578&p=f&t=ErjFOMXaBpKyxa6J-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=27%3A578&show-proto-sidebar=1",
+      },
+      meta: {
+        role: "Product Designer",
+        timeline: "2026",
+        team: "Solo",
+        platform: "Mobile",
+        tools: ["Figma"],
+      },
+      overview:
+        "Pace is a **mobile app** for checking your finances conveniently and seeing whether you're on track, in a way that stays intuitive and simple. It is designed for busy schedules: a glance should be enough. Home answers that question first — balance, the week's change, savings plans, and spending — so someone can open the app between other things and know where they stand. A monthly plan says what's left to spend. Creating a goal suggests a monthly pace based on current earnings, spending, and savings. Activity, a single transaction, and insights stay one tap away when there is time for a closer look.",
+      problem: {
+        statement:
+          "Knowing whether you're on track usually takes more time and more tools than a busy day allows.",
+        points: [
+          "People want a convenient check on their phone, not a long finance session.",
+          "A balance on its own doesn't say if the month is on track.",
+          "If the app isn't simple, it gets skipped between meetings, commutes, and everything else.",
+        ],
+      },
+      goals:
+        "Let someone open Pace, see if they're on track, and get back to their day — with what's left, what's already spoken for, and a pace that fits how money is actually moving.",
+      ia: {
+        intro:
+          "The daily check is the shortest path. Five tabs keep that glance separate from history, goals, and a closer look.",
+        flow: ["Home", "Activity", "Goals", "Insights", "Profile"],
+        sitemap: [
+          "Home → Balance, plans, spending, See Spending",
+          "Activity → All, Income, Spending, transaction detail",
+          "Goals → Empty state, new goal, monthly plan",
+          "Insights → Underspend, upcoming bills",
+        ],
+      },
+      solution: {
+        intro:
+          "Each screen is meant to be read in a moment. The interface stays on warm paper, with lime reserved for progress, money in, and the tab you're on. Categories keep a stable color — lavender for groceries, coral for entertainment and income, mint for home and bills — so a list can be scanned without reading every label.",
+        features: [
+          {
+            title: "Balance, then the week",
+            description:
+              "Home opens on total balance and the change this week, before plans and category totals.",
+          },
+          {
+            title: "A pace, not just a target",
+            description:
+              "A new goal takes an amount and a date, then suggests a monthly amount and says whether that plan looks achievable.",
+          },
+          {
+            title: "What's left this month",
+            description:
+              "The monthly plan shows dollars left to spend against a used-versus-budget bar, then the same categories from home.",
+          },
+          {
+            title: "Activity you can filter",
+            description:
+              "Transactions group by day and split into income and spending. A row opens into merchant, amount, category, account, and time.",
+          },
+          {
+            title: "Insights with a next step",
+            description:
+              "An underspend can move to a goal. An upcoming bill says whether the balance already covers it.",
+          },
+        ],
+      },
+      branding: {
+        intro:
+          "The product should feel like a paper notebook with one electric accent, not a trading terminal.",
+        colors: [
+          { name: "Paper", hex: "#F6F3EC", role: "App background" },
+          { name: "Ink", hex: "#1C1C1C", role: "Type, cards, and actions" },
+          { name: "Lime", hex: "#D6F34C", role: "Progress, income, and the active tab" },
+          { name: "Lavender", hex: "#C9B6F2", role: "Groceries" },
+          { name: "Coral", hex: "#F0A07A", role: "Entertainment and income" },
+          { name: "Mint", hex: "#B7E7C8", role: "Home and bills" },
+        ],
+        typefaces: [],
+        typography:
+          "Names and amounts are large and tight. Supporting lines stay small and gray so a balance or a merchant can lead the screen.",
+        palette:
+          "Lime is the only high-chroma color used for state. Category colors stay soft so they can repeat down a list.",
+      },
+      visuals: {
+        label: "Screens",
+        title: "The app",
+        intro:
+          "Home, the monthly plan, activity, a transaction, an empty goals state, a new goal, and insights.",
+        layout: "phones",
+        tone: "dark",
+        roomy: true,
+        images: [
+          {
+            src: "/images/projects/pace/01-home.png",
+            alt: "Pace home with balance, savings plans, and spending",
+            caption: "Home",
+            width: 385,
+            height: 1024,
+          },
+          {
+            src: "/images/projects/pace/02-monthly-plan.png",
+            alt: "Monthly plan with $640 left to spend",
+            caption: "Monthly plan",
+            width: 472,
+            height: 1024,
+          },
+          {
+            src: "/images/projects/pace/03-activity.png",
+            alt: "Activity filtered by all, income, or spending",
+            caption: "Activity",
+            width: 472,
+            height: 1024,
+          },
+          {
+            src: "/images/projects/pace/04-transaction.png",
+            alt: "Common Ground transaction for $15.30",
+            caption: "Transaction",
+            width: 472,
+            height: 1024,
+          },
+          {
+            src: "/images/projects/pace/05-goals.png",
+            alt: "Empty goals state inviting you to create a goal",
+            caption: "Goals",
+            width: 472,
+            height: 1024,
+          },
+          {
+            src: "/images/projects/pace/06-new-goal.png",
+            alt: "New monthly savings goal with a suggested pace",
+            caption: "New goal",
+            width: 472,
+            height: 1024,
+          },
+          {
+            src: "/images/projects/pace/07-insights.png",
+            alt: "Insights for an underspend and rent due this week",
+            caption: "Insights",
+            width: 472,
+            height: 1024,
+          },
+        ],
+      },
+    },
+  },
+  {
     slug: "alma-healthcare",
     name: "Alma Healthcare",
     description:

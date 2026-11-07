@@ -13,7 +13,7 @@ const nav = [
   { label: "Gallery", href: "/illustrations" },
   { label: "Projects", href: "/projects" },
   { label: "Blog", href: "/blog" },
-  { label: "Resume", href: "/CreativeSoftwareDesignResume.pdf", external: true },
+  { label: "Notes", href: "/notes" },
 ];
 
 const desktopNav = nav.filter((item) => item.href !== "/");
@@ -118,7 +118,7 @@ export default function Header() {
     <>
       <header
         className={`pointer-events-none fixed inset-x-0 top-0 z-50 px-4 pt-5 transition-colors duration-300 sm:pt-6 md:px-0 md:pt-0 md:backdrop-blur-md ${
-          light ? "md:bg-[#141414]/88" : "md:bg-[#F7F4EF]/95"
+          light ? "md:bg-[#141414]/88" : "md:bg-white"
         }`}
       >
         <div className="pointer-events-auto mx-auto flex h-12 w-[min(92vw,268px)] items-center justify-between rounded-full bg-ink pl-5 pr-1.5 text-background shadow-[0_10px_30px_rgba(80,60,40,0.1)] md:hidden">

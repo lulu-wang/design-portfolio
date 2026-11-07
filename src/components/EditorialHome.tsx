@@ -336,7 +336,7 @@ export default function EditorialHome() {
         </div>
       </section>
 
-      <Footer />
+      <Footer light />
     </main>
   );
 }
