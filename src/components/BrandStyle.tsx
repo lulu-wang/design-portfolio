@@ -1,7 +1,6 @@
 import {
   Fraunces,
   Instrument_Sans,
-  Newsreader,
   Plus_Jakarta_Sans,
   Poppins,
   Work_Sans,
@@ -26,12 +25,6 @@ const plusJakarta = Plus_Jakarta_Sans({
   display: "swap",
 });
 
-const newsreader = Newsreader({
-  subsets: ["latin"],
-  weight: ["500", "600"],
-  display: "swap",
-});
-
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["600", "700"],
@@ -50,7 +43,7 @@ const faceClass: Record<string, string> = {
   Fraunces: fraunces.className,
   "Instrument Sans": instrumentSans.className,
   "Plus Jakarta Sans": plusJakarta.className,
-  Newsreader: newsreader.className,
+  Newsreader: "font-[family-name:'Newsreader',serif]",
   Poppins: poppins.className,
   "Work Sans": workSans.className,
 };
@@ -105,6 +98,12 @@ export default function BrandStyle({
       </div>
 
       <div className="mt-14">
+        {branding.typefaces.some((face) => face.name === "Newsreader") && (
+          <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Newsreader:wght@500;600&display=swap"
+          />
+        )}
         <h3 className={subhead}>Typography</h3>
         <p className={`mt-3 max-w-2xl ${bodyMuted} [&_strong]:text-foreground`}>
           <RichText>{branding.typography}</RichText>
