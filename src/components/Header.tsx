@@ -166,24 +166,10 @@ export default function Header() {
           >
             {desktopNav.map((item) => {
               const className = navClass(
-                !item.external && isActivePath(pathname, item.href),
+                isActivePath(pathname, item.href),
                 "text-[14px]",
                 light,
               );
-              if (item.external) {
-                return (
-                  <a
-                    key={item.href}
-                    href={item.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className={className}
-                    onClick={() => setOpen(false)}
-                  >
-                    {item.label}
-                  </a>
-                );
-              }
               return (
                 <Link
                   key={item.href}
@@ -217,28 +203,12 @@ export default function Header() {
             >
               {nav.map((item, i) => {
                 const className = navClass(
-                  !item.external && isActivePath(pathname, item.href),
+                  isActivePath(pathname, item.href),
                   `text-3xl tracking-[-0.02em] transition-[opacity,transform,color] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] sm:text-5xl ${
                     open ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
                   }`,
                 );
                 const style = { transitionDelay: open ? `${80 + i * 60}ms` : "0ms" };
-                if (item.external) {
-                  return (
-                    <a
-                      key={item.href}
-                      href={item.href}
-                      target="_blank"
-                      rel="noreferrer"
-                      className={className}
-                      style={style}
-                      onClick={() => setOpen(false)}
-                      tabIndex={open ? 0 : -1}
-                    >
-                      {item.label}
-                    </a>
-                  );
-                }
                 return (
                   <Link
                     key={item.href}
