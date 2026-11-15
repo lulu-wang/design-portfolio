@@ -15,6 +15,35 @@ export type BlogPost = {
 
 export const posts: BlogPost[] = [
   {
+    slug: "the-holy-art-exhibition-in-nyc",
+    title: "The Holy Art Exhibition in NYC",
+    date: "November 2026",
+    body: [
+      "I had an opportunity to exhibit my art at The Holy, a three-day weekend exhibition in a SoHo gallery. Over a thousand people came through and talked about the artwork.",
+      "I'm grateful for the chance to show my artwork in front of live gallery attendees. I'll keep improving my techniques, color theory, and design sense, and continue learning from other talented artists around the world.",
+    ],
+    images: [
+      {
+        src: "/images/blog/holy-01.jpg",
+        alt: "The Relief, a framed portrait, hanging at The Holy Art Gallery in SoHo",
+        width: 768,
+        height: 1024,
+      },
+      {
+        src: "/images/blog/holy-02.jpg",
+        alt: "Visitors looking at paintings during The Holy exhibition",
+        width: 682,
+        height: 1024,
+      },
+      {
+        src: "/images/blog/holy-03.jpg",
+        alt: "Poster for the Holy Art Gallery exhibition in New York, 13 to 16 November 2026",
+        width: 768,
+        height: 1024,
+      },
+    ],
+  },
+  {
     slug: "my-first-art-show-in-a-cafe",
     title: "My first art show in a cafe",
     date: "May 2026",
