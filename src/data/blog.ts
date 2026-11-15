@@ -38,7 +38,7 @@ export const posts: BlogPost[] = [
       {
         src: "/images/blog/holy-03.jpg",
         alt: "Poster for the Holy Art Gallery exhibition in New York, 13 to 16 November 2026",
-        width: 768,
+        width: 576,
         height: 1024,
       },
     ],
