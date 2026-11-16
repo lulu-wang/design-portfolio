@@ -192,6 +192,19 @@ h3 {
   transform: translateY(-1px);
 }
 
+@keyframes screenIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.screen-in {
+  animation: screenIn 0.22s ease-out both;
+}
+
 @keyframes riseIn {
   from {
     opacity: 0;
@@ -258,7 +271,8 @@ h3 {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .animate-rise {
+  .animate-rise,
+  .screen-in {
     animation: none;
   }
 

@@ -1,6 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 import type { Project } from "@/data/site";
+import { InteractivePhones, InteractiveStill } from "@/components/InteractivePreview";
 
 function plainText(text: string) {
   return text.replace(/\*\*([^*]+)\*\*/g, "$1").replace(/_([^_]+)_/g, "$1");
@@ -21,71 +21,6 @@ export function projectTone(slug: string) {
   return stages[slug] ?? { wash: "#F4F0E8", stage: "#2A2A2A", ink: "#161616" };
 }
 
-function Phones({
-  screens,
-}: {
-  screens: { src: string; alt: string }[];
-}) {
-  return (
-    <div className="flex h-full min-h-[22rem] items-center justify-center gap-3 px-5 py-8 sm:gap-5 sm:px-8 sm:py-10 lg:min-h-[34rem]">
-      {screens.slice(0, 2).map((screen) => (
-        <div key={screen.src} className="w-[44%] max-w-[240px]">
-          <div className="rounded-[1.55rem] bg-[#F7F4EF] p-[6px] shadow-[0_22px_48px_rgba(0,0,0,0.32)] ring-1 ring-black/10">
-            <div className="relative aspect-[393/852] overflow-hidden rounded-[1.15rem] bg-white">
-              <Image
-                src={screen.src}
-                alt={screen.alt}
-                fill
-                className="object-cover object-top"
-                sizes="240px"
-              />
-            </div>
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-function StageStill({
-  src,
-  alt,
-  photo,
-}: {
-  src: string;
-  alt: string;
-  photo: boolean;
-}) {
-  if (photo) {
-    return (
-      <div className="relative h-full min-h-[22rem] lg:absolute lg:inset-0 lg:min-h-0">
-        <Image
-          src={src}
-          alt={alt}
-          fill
-          className="object-cover object-center"
-          sizes="(max-width: 1024px) 100vw, 55vw"
-        />
-      </div>
-    );
-  }
-
-  return (
-    <div className="flex h-full min-h-[18rem] items-center justify-center px-6 py-8 sm:px-10 sm:py-12 lg:min-h-[34rem]">
-      <div className="w-full overflow-hidden rounded-xl shadow-[0_24px_60px_rgba(0,0,0,0.32)]">
-        <Image
-          src={src}
-          alt={alt}
-          width={1600}
-          height={1000}
-          className="h-auto w-full object-contain"
-          sizes="(max-width: 1024px) 90vw, 40vw"
-        />
-      </div>
-    </div>
-  );
-}
-
 export default function ProjectShowcase({ projects }: { projects: Project[] }) {
   return (
     <div className="flex flex-col gap-3 bg-[#F3F0E8] px-3 pb-6 sm:gap-4 sm:px-5 sm:pb-8 lg:px-8">
@@ -95,12 +30,12 @@ export default function ProjectShowcase({ projects }: { projects: Project[] }) {
         const photo = project.slug === "yuugen";
 
         return (
-          <Link
+          <article
             key={project.slug}
-            href={`/projects/${project.slug}`}
             className="group grid overflow-hidden rounded-[1.25rem] lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)]"
           >
-            <div
+            <Link
+              href={`/projects/${project.slug}`}
               className="flex flex-col justify-between gap-10 px-6 py-8 sm:px-10 sm:py-12 lg:px-12 lg:py-14"
               style={{ background: tone.wash, color: tone.ink }}
             >
@@ -132,15 +67,17 @@ export default function ProjectShowcase({ projects }: { projects: Project[] }) {
                   →
                 </span>
               </p>
-            </div>
+            </Link>
             <div className="relative h-full min-h-[22rem]" style={{ background: tone.stage }}>
               {screens.length >= 2 ? (
-                <Phones screens={screens} />
+                <InteractivePhones slug={project.slug} screens={screens} />
               ) : (
-                <StageStill src={project.image} alt={project.name} photo={photo} />
+                <Link href={`/projects/${project.slug}`} className="block h-full">
+                  <InteractiveStill src={project.image} alt={project.name} photo={photo} />
+                </Link>
               )}
             </div>
-          </Link>
+          </article>
         );
       })}
     </div>
