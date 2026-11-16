@@ -333,6 +333,35 @@ export default function EditorialHome() {
               </div>
             </article>
           ))}
+          <article className="scroll-mt-28 border-t border-foreground/10 py-10 sm:py-12">
+            <p className="text-[11px] font-medium uppercase tracking-[0.28em] text-foreground/50">
+              Education
+            </p>
+            <div className="mt-8 grid gap-4 lg:grid-cols-12 lg:gap-8">
+              <p className="text-[clamp(2rem,4vw,3.2rem)] font-medium leading-[0.95] tracking-[-0.045em] lg:col-span-4">
+                UC Berkeley
+              </p>
+              <div className="lg:col-span-8">
+                <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
+                  <h3 className="font-reading text-[18px] font-medium tracking-[-0.01em] sm:text-[20px]">
+                    <mark
+                      className="highlight-word !whitespace-normal"
+                      style={
+                        {
+                          "--hl": "#C5D4E8",
+                          "--hl-hover": "#003262",
+                          "--hl-ink": "#ffffff",
+                        } as React.CSSProperties
+                      }
+                    >
+                      BA Computer Science
+                    </mark>
+                  </h3>
+                  <p className="shrink-0 text-[13px] text-foreground/50">2020</p>
+                </div>
+              </div>
+            </div>
+          </article>
         </div>
       </section>
 
