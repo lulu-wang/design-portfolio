@@ -62,7 +62,7 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
           <h1 className="text-[clamp(3.2rem,7vw,6.4rem)] font-medium leading-[0.9] tracking-[-0.05em]">
             {project.name}
           </h1>
-          <p className="text-right text-[16px] leading-snug sm:text-[18px]">
+          <p className="max-w-md text-[16px] leading-snug sm:text-[18px]">
             <RichText>{cs.tagline}</RichText>
           </p>
         </div>
@@ -103,7 +103,12 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
         )}
       </div>
 
-      <div className="mx-auto max-w-6xl px-4 py-14 sm:px-8 sm:py-20" style={{ background: tone.stage }}>
+      <div
+        className={`mx-auto max-w-6xl ${
+          slug === "yuugen" ? "" : "px-4 py-14 sm:px-8 sm:py-20"
+        }`}
+        style={{ background: tone.stage }}
+      >
         {screens.length >= 2 ? (
           <div className="flex items-end justify-center gap-3 sm:gap-8">
             {screens.slice(0, 2).map((screen, index) => (
@@ -133,8 +138,16 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
             width={1600}
             height={1000}
             priority
-            className="mx-auto h-auto w-full max-w-4xl object-contain"
-            sizes="(max-width: 1024px) 100vw, 900px"
+            className={
+              slug === "yuugen"
+                ? "block h-auto w-full object-cover"
+                : "mx-auto h-auto w-full max-w-4xl object-contain"
+            }
+            sizes={
+              slug === "yuugen"
+                ? "(max-width: 1152px) 100vw, 1152px"
+                : "(max-width: 1024px) 100vw, 900px"
+            }
           />
         )}
       </div>

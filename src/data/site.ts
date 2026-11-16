@@ -2647,7 +2647,7 @@ export const projects: Project[] = [
         tools: ["Procreate", "Illustrator", "Shopify", "Instagram"],
       },
       overview:
-        "**Yuugen** (n.) — a profound, mysterious sense of subtle beauty in the universe. I started Yuugen Apparel to get my art off the screen and onto clothing. Original work was drawn in **Procreate**, mocked up in **Illustrator**, and printed with local suppliers after weeks of sample shipping and trial and error. I ran user and market research, then launched as an online fashion brand in 2020. Over a year of operating primarily online I designed the Instagram presence, learned ads in the Facebook / Instagram ecosystem, posted drops and collections, and made **over 1,000 sales** through Instagram, Shopify, and Etsy. People wrote in during an uncertain period of time to say the brand meant something to them. I began collaborating with artists in the US and overseas, worked with fashion influencers, and pivoted to selling in person at anime conventions — where I met the communities the work was actually for.",
+        "**Yuugen** (n.) — a profound, mysterious sense of subtle beauty in the universe. I started Yuugen Apparel to get my art off the screen and onto clothing. Original work was drawn in **Procreate**, mocked up in **Illustrator**, and printed with local suppliers after weeks of sample shipping and trial and error. I ran user and market research, then launched as an online fashion brand in 2020. Over a year of operating primarily online I designed the Instagram presence, learned ads in the Facebook / Instagram ecosystem, posted drops and collections, and made **over 1,000 sales** through Instagram, Shopify, and Etsy. People wrote in during an uncertain period of time to say the brand meant something to them. I began collaborating with artists in the US and overseas, worked with fashion influencers, and took the work onto convention floors — exhibiting at the Annex at Anime Expo, for several years in the exhibitor hall at Anime NYC, and at other shows including ALA and Anime Impulse.",
       goals:
         "My art lived on a screen — a Procreate file with no path to something people could wear. I wanted to **build an artist-owned Japanese streetwear brand** from my own graphics: get my drawings onto garments, communicate with vendors locally and overseas, prove production through samples, and learn how to sell it myself — market research, visual identity, Instagram and ads, Shopify and Etsy, then conventions.",
       define: {
@@ -2665,7 +2665,7 @@ export const projects: Project[] = [
           "2020 — first samples, brand identity, online launch",
           "Year one — Instagram, Shopify, Etsy, 1,000+ sales",
           "Artist collaborations in the US and overseas",
-          "Pivot to anime conventions and in-person community",
+          "Exhibiting at the Annex at Anime Expo, the Anime NYC exhibitor hall, ALA, and Anime Impulse",
           "2020–2022 — Yuugen as a living streetwear practice",
         ],
       },
@@ -3259,14 +3259,14 @@ export const projects: Project[] = [
           {
             title: "Collaborations and conventions",
             description:
-              "Work with artists in the US and overseas, fashion influencers, then in-person selling at anime conventions — the community the graphics were for.",
+              "Work with artists in the US and overseas and fashion influencers, then exhibiting in person: the Annex at Anime Expo, several years in the exhibitor hall at Anime NYC, and other conventions including ALA and Anime Impulse.",
           },
         ],
       },
       outcomes: [
         { stat: "1,000+", label: "sales across Instagram, Shopify, and Etsy" },
         { stat: "2020–22", label: "years running the brand end to end" },
-        { stat: "IRL", label: "pivot to anime conventions and artist collabs" },
+        { stat: "IRL", label: "Anime Expo, Anime NYC, ALA, and Anime Impulse" },
       ],
       reflection:
         "This was my first solo project. I’m grateful to everyone who helped sell, photograph, and show up for the brand. Thank you for letting me make something that told my story and reached people along the way.",
@@ -3278,7 +3278,7 @@ export const projects: Project[] = [
         ],
         learnings: [
           "The name was the identity — yuugen as a feeling, not a logo exercise.",
-          "Community showed up in DMs first, then in person at conventions.",
+          "Community showed up in DMs first, then in person at Anime Expo, Anime NYC, and the other convention floors.",
           "Drops work when the graphic is the product, not decoration on a blank.",
         ],
         nextSteps: [

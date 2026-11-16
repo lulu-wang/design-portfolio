@@ -29,7 +29,7 @@ export default function CaseSection({
           </h2>
         )}
         {intro && (
-          <p className="ml-auto mt-8 max-w-xl text-right text-[15px] leading-relaxed text-[#151515]/75 sm:text-[16px] [&_em]:text-[#151515]/70 [&_strong]:text-[#151515]">
+          <p className="mt-8 max-w-2xl text-[15px] leading-relaxed text-[#151515]/75 sm:text-[16px] [&_em]:text-[#151515]/70 [&_strong]:text-[#151515]">
             <RichText>{intro}</RichText>
           </p>
         )}
