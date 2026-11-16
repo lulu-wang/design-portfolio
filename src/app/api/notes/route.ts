@@ -31,9 +31,12 @@ export async function POST(request: Request) {
     const note = await addNote({ name, message });
     return NextResponse.json(note, { status: 201 });
   } catch (error) {
-    const text =
-      error instanceof Error ? error.message : "Could not save the note.";
-    const status = text === "A name and a note are required." ? 400 : 500;
-    return NextResponse.json({ error: text }, { status });
+    const missing =
+      error instanceof Error &&
+      error.message === "A name and a note are required.";
+    return NextResponse.json(
+      { error: missing ? error.message : "Could not save the note." },
+      { status: missing ? 400 : 500 },
+    );
   }
 }
